@@ -1,0 +1,116 @@
+﻿@*@using Newtonsoft.Json;*@
+@model IEnumerable<LiquadCargoManagment.Models.Driver>
+@using LiquadCargoManagment.Models;
+
+    <div class="table-responsive">
+        <table class="table display table-striped" id="example">
+            <thead>
+                <tr>
+                    <td>Created Date</td>
+                    <td>Image</td>
+                    <td>Code</td>
+                    <td>Name</td>
+                    <td>Contact No</td>
+                    <td>NIC</td>
+                    <td>License</td>
+                    <td>Description</td>
+                    <td>IsActive</td>
+                    <td>Operation</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    //string jsonData = JsonConvert.SerializeObject(item);
+                    string jsonData = "{";
+                    jsonData += " 'ID' : '" + item.ID + "', ";
+                    jsonData += " 'CreatedDate' : '" + item.CreatedDate + "', ";
+                    jsonData += " 'Code' : '" + item.Code + "', ";
+                    jsonData += " 'Name' : '" + item.Name + "', ";
+                    jsonData += " 'FatherName' : '" + item.FatherName + "', ";
+                    jsonData += " 'Type' : '" + item.Type + "', ";
+                    jsonData += " 'DateOfBirth' : '" + item.DateOfBirth + "', ";
+                    jsonData += " 'Gender' : '" + item.Gender + "', ";
+                    jsonData += " 'BloodGroup' : '" + item.BloodGroup + "', ";
+                    jsonData += " 'CellNo' : '" + item.CellNo + "' ,";
+                    jsonData += " 'OtherContact' : '" + item.OtherContact + "' ,";
+                    jsonData += " 'HomeNo' : '" + item.HomeNo + "' ,";
+                    jsonData += " 'Address' : '" + item.Address + "' ,";
+                    jsonData += " 'NIC' : '" + item.NIC + "' ,";
+                    jsonData += " 'IdentityMark' : '" + item.IdentityMark + "' ,";
+                    jsonData += " 'NICIssueDate' : '" + item.NICIssueDate + "' ,";
+                    jsonData += " 'NICExpiryDate' : '" + item.NICExpiryDate + "' ,";
+                    jsonData += " 'LicenseNo' : '" + item.LicenseNo + "' ,";
+                    jsonData += " 'LicenseCategory' : '" + item.LicenseCategory + "' ,";
+                    jsonData += " 'LicenseIssueDate' : '" + item.LicenseIssueDate + "' ,";
+                    jsonData += " 'LicenseExpiryDate' : '" + item.LicenseExpiryDate + "' ,";
+                    jsonData += " 'LicenseIssuingAuthority' : '" + item.LicenseIssuingAuthority + "' ,";
+                    jsonData += " 'LicenseStatus' : '" + item.LicenseStatus + "' ,";
+                    jsonData += " 'EmergencyContactName' : '" + item.EmergencyContactName + "' ,";
+                    jsonData += " 'EmergencyContactNo' : '" + item.EmergencyContactNo + "' ,";
+                    jsonData += " 'ContactRelation' : '" + item.ContactRelation + "' ,";
+                    jsonData += " 'Description' : '" + item.Description + "' ,";
+                    jsonData += " 'Document' : '" + item.Document + "' ,";
+                    jsonData += " 'DriverImageID' : '" + item.DriverImageID + "'";
+                    jsonData += "}";
+
+                <tr>
+                    @if (item.CreatedDate != null)
+                    {
+                        <td>@Convert.ToDateTime(item.CreatedDate).ToString(SoftwareFormatting.DateFormat)</td>
+                    }
+                    else
+                    {
+                        <td>@Convert.ToDateTime(item.ModifiedDate).ToString(SoftwareFormatting.DateFormat)</td>
+                    }
+                    @if (item.Document != null)
+                    {
+                        <td><img src="~/assets/DriverDocuments/@item.Document" width="20" height="20" /></td>
+                    }
+                    else
+                    {
+                        <td class="bg-danger"><img src="~/assets/Closed.png" height="20" width="20" /></td>
+                    }
+                    <td>@item.Code</td>
+                    <td>@item.Name</td>
+                    @*<td>@item.CellNo</td>*@
+                    <td>@string.Format(SoftwareFormatting.ContactNoFormat, item.CellNo)</td>
+                    @if (item.NIC != null)
+                    {
+                        <td><img src="~/assets/Success.png" height="20" width="20" /></td>
+                    }
+                    else
+                    {
+                        <td class="bg-danger"><img src="~/assets/Closed.png" height="20" width="20" /></td>
+                    }
+                    @if (item.LicenseNo != null)
+                    {
+                        <td><img src="~/assets/Success.png" height="20" width="20" /></td>
+                    }
+                    else
+                    {
+                        <td class="bg-danger"><img src="~/assets/Closed.png" height="20" width="20" /></td>
+                    }
+                    <td>@item.Description</td>
+                    @if (item.Active == true)
+                    {
+                        <td>
+                            <a onclick="ChangeStatus(@item.ID,false)"><i class="fa fa-toggle-on text-primary" style="font-size:25px;"></i></a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <a onclick="ChangeStatus(@item.ID,true)"><i class="fa fa-toggle-off text-danger" style="font-size:25px;"></i></a>
+                        </td>
+                    }
+                    <td>
+                        <button type="button" onclick="viewRecordRead(@jsonData,this)" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></button>
+                        <button type="button" onclick="viewRecord(@jsonData,this)" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></button>
+                        <button type="button" onclick="DeleteModel(@item.ID)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>

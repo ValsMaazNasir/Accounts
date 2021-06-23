@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4134ff30aaa94eaa86b30ec1de5f3786" Name="Diagram1">
+        <EntityTypeShape EntityType="LCMModel.Area" Width="1.5" PointX="10.25" PointY="196" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.AssignDriver" Width="1.5" PointX="7.5" PointY="222.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.BankAccount" Width="1.5" PointX="10.25" PointY="189.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Bank" Width="1.5" PointX="14.75" PointY="189.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.BillChild" Width="1.5" PointX="28.25" PointY="235.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Bill" Width="1.5" PointX="26" PointY="242.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Bilty" Width="1.5" PointX="18.75" PointY="220.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.BiltyDetail" Width="1.5" PointX="24" PointY="203.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.BiltyRole" Width="1.5" PointX="7.5" PointY="308.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Broker" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Category" Width="1.5" PointX="5.25" PointY="134.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Challan" Width="1.5" PointX="24" PointY="224.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.City" Width="1.5" PointX="7.5" PointY="225.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CompactBill" Width="1.5" PointX="5.25" PointY="146.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CompactBillLog" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CompactCheckBill" Width="1.5" PointX="21" PointY="186.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CompactCheckBilty" Width="1.5" PointX="29.25" PointY="224.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Company" Width="1.5" PointX="5.25" PointY="151.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.ContactNoType" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Container" Width="1.5" PointX="7.5" PointY="187.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.ContainerType" Width="1.5" PointX="5.25" PointY="163.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Country" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CurrencyType" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Customer" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CustomerCompany" Width="1.5" PointX="12.5" PointY="187.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CustomerDepartment" Width="1.5" PointX="14.75" PointY="196.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CustomerGroup" Width="1.5" PointX="5.25" PointY="177.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CustomerProfile" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CustomerProfileDetail" Width="1.5" PointX="9.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CustomerProfileLM" Width="1.5" PointX="17" PointY="193.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Damage" Width="1.5" PointX="7.5" PointY="204.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.DamageType" Width="1.5" PointX="5.25" PointY="188.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.DateType" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Department" Width="1.5" PointX="5.25" PointY="192.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.DepartmentPerson" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Designation" Width="1.5" PointX="5.25" PointY="198.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Diesel" Width="1.5" PointX="5.25" PointY="202.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.DieselExpense" Width="1.5" PointX="7.5" PointY="209.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Document" Width="1.5" PointX="15.5" PointY="204" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.DocumentType" Width="1.5" PointX="5.25" PointY="213.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Driver" Width="1.5" PointX="5.25" PointY="222.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.DriverType" Width="1.5" PointX="5.25" PointY="218.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Employee" Width="1.5" PointX="7.5" PointY="194.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Expense" Width="1.5" PointX="10.5" PointY="213.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.ExpensesType" Width="1.5" PointX="5.25" PointY="236" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.FillingStation" Width="1.5" PointX="5.25" PointY="242.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Gener" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Group" Width="1.5" PointX="11.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.LocalDropProduct" Width="1.5" PointX="21.5" PointY="220.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.LocalDropUniversalBilty" Width="1.5" PointX="19.25" PointY="241.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.LocalPickProduct" Width="1.5" PointX="24.5" PointY="220.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.LocalPickUniversalBilty" Width="1.5" PointX="22.25" PointY="238.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.LocationType" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.MaintenanceType" Width="1.5" PointX="5.25" PointY="248.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.MCBBranch" Width="1.5" PointX="11.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Menu" Width="1.5" PointX="2.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Nature" Width="1.5" PointX="5.25" PointY="252.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.NavMenu" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Notification" Width="1.5" PointX="13.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.NoType" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.OrderDetail" Width="1.5" PointX="14.75" PointY="263.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Organization" Width="1.5" PointX="13.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.OwnCompany" Width="1.5" PointX="3" PointY="182.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.OwnGroup" Width="1.5" PointX="0.75" PointY="187.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.PackageType" Width="1.5" PointX="5.25" PointY="257.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.PartialBilty" Width="1.5" PointX="18.75" PointY="204.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.PartialBiltyDetail" Width="1.5" PointX="21" PointY="200.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.PickDropLocation" Width="1.5" PointX="13.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.PickLocation" Width="1.5" PointX="16.5" PointY="225.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.PrincipleCompany" Width="1.5" PointX="5.25" PointY="262.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Product" Width="1.5" PointX="12.5" PointY="198.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.ProductBroker" Width="1.5" PointX="5.25" PointY="267.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Province" Width="1.5" PointX="5.25" PointY="271.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.RateList" Width="1.5" PointX="6.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Region" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Revenue" Width="1.5" PointX="10.5" PointY="235.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.RevenueType" Width="1.5" PointX="5.25" PointY="274.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.RolePermission" Width="1.5" PointX="15.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Role" Width="1.5" PointX="15.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SaleOrdeDestination" Width="1.5" PointX="18.75" PointY="233.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SaleOrder" Width="1.5" PointX="23.75" PointY="245.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SaleOrderChild" Width="1.5" PointX="26" PointY="232.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SaleOrderDieselExpense" Width="1.5" PointX="27" PointY="224.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SaleOrderExpens" Width="1.5" PointX="26" PointY="215.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SalesOrderChildDestination" Width="1.5" PointX="28.25" PointY="217.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SalesOrderChildDieselExpens" Width="1.5" PointX="28.25" PointY="248.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SalesOrderChildExpens" Width="1.5" PointX="31.25" PointY="235.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SecondLevelMenu" Width="1.5" PointX="15.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Section" Width="1.5" PointX="8.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.ShipmentType" Width="1.5" PointX="5.25" PointY="280.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.ShippingLine" Width="1.5" PointX="10.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.ShippingType" Width="1.5" PointX="15.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SoftwareSetup" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.StandardVehicle" Width="1.5" PointX="5.25" PointY="285.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Station" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SubcriptionModule" Width="1.5" PointX="5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Subcription" Width="1.5" PointX="2.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.TaxRateRegistration" Width="1.5" PointX="10.5" PointY="225.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.TaxRateTransportation" Width="1.5" PointX="13.5" PointY="232.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.TaxType" Width="1.5" PointX="0.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.tblBrand" Width="1.5" PointX="2.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Trailer" Width="1.5" PointX="7.5" PointY="237.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.TrailerType" Width="1.5" PointX="5.25" PointY="293.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBilty" Width="1.5" PointX="5.25" PointY="297.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyContainerInformation" Width="1.5" PointX="7.5" PointY="233.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyCustomerInformation" Width="1.5" PointX="17" PointY="249.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyDamageDetail" Width="1.5" PointX="14.75" PointY="245.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyDispatchDocument" Width="1.5" PointX="17.75" PointY="254.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyExpenseDetail" Width="1.5" PointX="12.75" PointY="258.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyLocationInformation" Width="1.5" PointX="23.75" PointY="255.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyProductInformation" Width="1.5" PointX="14.75" PointY="251.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyReceivingDocumentDetail" Width="1.5" PointX="20.75" PointY="254.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyReceivingInformation" Width="1.5" PointX="9.75" PointY="249.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyVehicleInformation" Width="1.5" PointX="7.5" PointY="313.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyVehicleLoadingReporting" Width="1.5" PointX="7.5" PointY="298.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyVehicleUnLoadingReporting" Width="1.5" PointX="7.5" PointY="302.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalChallan" Width="1.5" PointX="21.75" PointY="225" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalCheckBilty" Width="1.5" PointX="24" PointY="264.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalContainerDetail" Width="1.5" PointX="10.5" PointY="229.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalVehicleDetail" Width="1.5" PointX="12.75" PointY="240.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UserAccount" Width="1.5" PointX="5.25" PointY="307.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UserAssignedCompany" Width="1.5" PointX="7.5" PointY="245.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Vehicle" Width="1.5" PointX="10.5" PointY="253.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.VehicleDocument" Width="1.5" PointX="17.75" PointY="257.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.VehicleExpens" Width="1.5" PointX="17" PointY="214.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.VehicleMaintenance" Width="1.5" PointX="7.5" PointY="253.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.VehicleType" Width="1.5" PointX="5.25" PointY="325.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Vendor" Width="1.5" PointX="7.5" PointY="260.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.VendorType" Width="1.5" PointX="5.25" PointY="339.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.WorkOrder" Width="1.5" PointX="5.25" PointY="345" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CustomerProfileDetail_Audit" Width="1.5" PointX="17.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="LCMModel.FK__Area__OwnCompany__17C286CF" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Area__OwnCompany__18B6AB08" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Area__OwnCompany__19AACF41" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Area__OwnCompany__1A9EF37A" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Area__OwnCompany__1B9317B3" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Area__OwnCompany__1C873BEC" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Area__OwnCompany__1D7B6025" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Area__OwnCompany__1E6F845E" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Area__OwnCompany__1F63A897" ManuallyRouted="false" />
+      <Diagram DiagramId="94a823e857444b67af00491cfc209054" Name="Diagram1">
+        <EntityTypeShape EntityType="LCMModel.Area" Width="1.5" PointX="10.25" PointY="207.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.AssignDriver" Width="1.5" PointX="7.5" PointY="232.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.BankAccount" Width="1.5" PointX="10.25" PointY="200.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Bank" Width="1.5" PointX="14.75" PointY="198.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.BillChild" Width="1.5" PointX="32.25" PointY="258.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Bill" Width="1.5" PointX="30" PointY="265.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Bilty" Width="1.5" PointX="21.75" PointY="248" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.BiltyDetail" Width="1.5" PointX="24" PointY="208.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.BiltyRole" Width="1.5" PointX="7.5" PointY="319" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Broker" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Category" Width="1.5" PointX="5.25" PointY="145.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Challan" Width="1.5" PointX="27" PointY="250.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.City" Width="1.5" PointX="7.5" PointY="237" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CompactBill" Width="1.5" PointX="5.25" PointY="156.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CompactCheckBill" Width="1.5" PointX="24" PointY="205.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CompactCheckBilty" Width="1.5" PointX="32.25" PointY="251.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Company" Width="1.5" PointX="5.25" PointY="161.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.ContactNoType" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Container" Width="1.5" PointX="7.5" PointY="195" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.ContainerType" Width="1.5" PointX="5.25" PointY="172.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Country" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CurrencyType" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Customer" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CustomerCompany" Width="1.5" PointX="12.5" PointY="196.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CustomerDepartment" Width="1.5" PointX="14.75" PointY="206.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CustomerGroup" Width="1.5" PointX="5.25" PointY="185.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CustomerProfile" Width="1.5" PointX="17.75" PointY="203.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CustomerProfileDetail" Width="1.5" PointX="20" PointY="221.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CustomerProfileLM" Width="1.5" PointX="20" PointY="200.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Damage" Width="1.5" PointX="7.5" PointY="201.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.DamageType" Width="1.5" PointX="5.25" PointY="195" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.DateType" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Department" Width="1.5" PointX="5.25" PointY="199.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.DepartmentPerson" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Designation" Width="1.5" PointX="5.25" PointY="205.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Diesel" Width="1.5" PointX="5.25" PointY="209.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.DieselExpense" Width="1.5" PointX="7.5" PointY="216" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Document" Width="1.5" PointX="10.5" PointY="217.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.DocumentType" Width="1.5" PointX="5.25" PointY="220.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Driver" Width="1.5" PointX="5.25" PointY="229.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.DriverType" Width="1.5" PointX="5.25" PointY="225.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Employee" Width="1.5" PointX="7.5" PointY="206" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Expense" Width="1.5" PointX="7.5" PointY="221.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.ExpensesType" Width="1.5" PointX="5.25" PointY="242.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.FillingStation" Width="1.5" PointX="5.25" PointY="247.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Gener" Width="1.5" PointX="6.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Group" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.LocalDropProduct" Width="1.5" PointX="26.5" PointY="232" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.LocalDropUniversalBilty" Width="1.5" PointX="24.25" PointY="253.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.LocalPickProduct" Width="1.5" PointX="25.5" PointY="235.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.LocalPickUniversalBilty" Width="1.5" PointX="23.25" PointY="260.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.LocationType" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.MaintenanceType" Width="1.5" PointX="5.25" PointY="254.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Menu" Width="1.5" PointX="2.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Nature" Width="1.5" PointX="5.25" PointY="258.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.NavMenu" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Notification" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.NoType" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.OrderDetail" Width="1.5" PointX="14.75" PointY="269.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Organization" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.OwnCompany" Width="1.5" PointX="3" PointY="199.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.OwnGroup" Width="1.5" PointX="0.75" PointY="198.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.PackageType" Width="1.5" PointX="5.25" PointY="262.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.PartialBilty" Width="1.5" PointX="30" PointY="245.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.PartialBiltyDetail" Width="1.5" PointX="18.75" PointY="209" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.PickDropLocation" Width="1.5" PointX="12.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.PickLocation" Width="1.5" PointX="16.5" PointY="235.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.PrincipleCompany" Width="1.5" PointX="5.25" PointY="268.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Product" Width="1.5" PointX="12.5" PointY="207.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.ProductBroker" Width="1.5" PointX="5.25" PointY="272.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Province" Width="1.5" PointX="5.25" PointY="276.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.RateList" Width="1.5" PointX="10.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Region" Width="1.5" PointX="12.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Revenue" Width="1.5" PointX="10.5" PointY="245" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.RevenueType" Width="1.5" PointX="5.25" PointY="280.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.RolePermission" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Role" Width="1.5" PointX="14.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SaleOrdeDestination" Width="1.5" PointX="18.75" PointY="240.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SaleOrder" Width="1.5" PointX="25.75" PointY="260.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SaleOrderChild" Width="1.5" PointX="30" PointY="254.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SaleOrderDieselExpense" Width="1.5" PointX="28" PointY="235.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SaleOrderExpens" Width="1.5" PointX="29" PointY="230.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SalesOrderChildDestination" Width="1.5" PointX="32.25" PointY="233.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SalesOrderChildDieselExpens" Width="1.5" PointX="32.25" PointY="263.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SalesOrderChildExpens" Width="1.5" PointX="35.25" PointY="251.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SecondLevelMenu" Width="1.5" PointX="4.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Section" Width="1.5" PointX="6.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.ShipmentType" Width="1.5" PointX="5.25" PointY="285" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.ShippingLine" Width="1.5" PointX="14.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.ShippingType" Width="1.5" PointX="14.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SoftwareSetup" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.StandardVehicle" Width="1.5" PointX="5.25" PointY="289.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.SubcriptionModule" Width="1.5" PointX="5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Subcription" Width="1.5" PointX="2.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.TaxRateRegistration" Width="1.5" PointX="10.5" PointY="234.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.TaxRateTransportation" Width="1.5" PointX="13.5" PointY="241.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.TaxType" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.tblBrand" Width="1.5" PointX="16.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Trailer" Width="1.5" PointX="7.5" PointY="248.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.TrailerType" Width="1.5" PointX="5.25" PointY="298" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBill" Width="1.5" PointX="5.25" PointY="302" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBilty" Width="1.5" PointX="5.25" PointY="306.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyContainerInformation" Width="1.5" PointX="7.5" PointY="243.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyCustomerInformation" Width="1.5" PointX="21" PointY="263.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyDamageDetail" Width="1.5" PointX="14.75" PointY="254.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyDispatchDocument" Width="1.5" PointX="12.75" PointY="266.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyExpenseDetail" Width="1.5" PointX="9.75" PointY="268" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyFreightDetail" Width="1.5" PointX="7.5" PointY="306.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyLocationInformation" Width="1.5" PointX="18.75" PointY="265" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyProductInformation" Width="1.5" PointX="15.75" PointY="261" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyReceivingDocumentDetail" Width="1.5" PointX="15.75" PointY="265.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyReceivingInformation" Width="1.5" PointX="12.75" PointY="260.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyVehicleInformation" Width="1.5" PointX="10.5" PointY="317" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyVehicleLoadingReporting" Width="1.5" PointX="7.5" PointY="310" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalBiltyVehicleUnLoadingReporting" Width="1.5" PointX="7.5" PointY="313.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalChallan" Width="1.5" PointX="18.75" PointY="250.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalCheckBill" Width="1.5" PointX="10.5" PointY="307.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalCheckBilty" Width="1.5" PointX="21" PointY="282.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalContainerDetail" Width="1.5" PointX="10.5" PointY="239.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UniversalVehicleDetail" Width="1.5" PointX="10.5" PointY="257" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UserAccount" Width="1.5" PointX="5.25" PointY="317.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.UserAssignedCompany" Width="1.5" PointX="10.5" PointY="262.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Vehicle" Width="1.5" PointX="13.5" PointY="302.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.VehicleDocument" Width="1.5" PointX="18.75" PointY="256.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.VehicleExpens" Width="1.5" PointX="17" PointY="221.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.VehicleMaintenance" Width="1.5" PointX="7.5" PointY="259.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.VehicleType" Width="1.5" PointX="5.25" PointY="322.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.Vendor" Width="1.5" PointX="7.5" PointY="267.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.VendorType" Width="1.5" PointX="5.25" PointY="335.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.WorkOrder" Width="1.5" PointX="5.25" PointY="339.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMModel.CustomerProfileDetail_Audit" Width="1.5" PointX="16.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="LCMModel.FK__Area__OwnCompany__14E61A24" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Area__OwnCompany__15DA3E5D" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Area__OwnCompany__16CE6296" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Area_City" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_PickLocation_Area" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrder_Area" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrder_Area1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyLocationInformation_Area" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyLocationInformation_DropArea" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_AssignDrivers_Driver" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_AssignDrivers_Vehicle" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_BankAccounts_Banks" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_BankAccounts_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Banks_CustomerCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrderExpenses_Banks" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_VehicleExpenses_Banks" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_BillChild_BillChild" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_BillChild_SaleOrderChild" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Bilty_CustomerCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Bilty_CustomerCompany1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Bilty_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Bilty_OwnCompany1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Bilty_PickLocation" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Bilty_PickLocation2" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Bilty_Vehicle" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_BiltyDetails_Bilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Challan_Bilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CompactCheckBill_Bilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CompactCheckBilty_Bilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_PartialBilty_Bilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_BiltyDetails_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_BiltyDetails_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_BiltyDetails_ProductBroker" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_BiltyRole_UserAccounts" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Category__OwnCom__2CBDA3B5" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Category__OwnCom__2DB1C7EE" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Category__OwnCom__2EA5EC27" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Category__OwnCom__2F9A1060" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Category__OwnCom__308E3499" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Category__OwnCom__318258D2" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Category__OwnCom__32767D0B" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Category__OwnCom__336AA144" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Category__OwnCom__345EC57D" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Category__OwnCom__2AD55B43" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Category__OwnCom__2BC97F7C" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Category__OwnCom__2CBDA3B5" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_PartialBiltyDetails_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Product_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Challan_Driver" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Challan_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Challan_PickLocation" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Challan_PickLocation1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Challan_Vehicle" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Challan_Vendor" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CompactCheckBilty_Challan" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_City_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_City_Province" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_PickLocation_PickLocation" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrdeDestination_City" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrderChild_City" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyLocationInformation_City" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyLocationInformation_DropCity" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CompactBill_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CompactCheckBill_CompactBill" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CompactBillLog_CompactBillLog" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Company__OwnComp__43A1090D" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Company__OwnComp__44952D46" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Company__OwnComp__4589517F" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Company__OwnComp__467D75B8" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Company__OwnComp__477199F1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Company__OwnComp__4865BE2A" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Company__OwnComp__4959E263" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Company__OwnComp__4A4E069C" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Company__OwnComp__4B422AD5" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Company__OwnComp__3B0BC30C" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Company__OwnComp__3BFFE745" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Company__OwnComp__3CF40B7E" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SoftwareSetup_ContactNoType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Container_ContainerType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Container_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_ContainerType_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyContainerInformation_Container" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalContainerDetail_ContainerType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SoftwareSetup_CurrencyType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerC__OwnCo__4F12BBB9" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerC__OwnCo__5006DFF2" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerC__OwnCo__50FB042B" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerC__OwnCo__51EF2864" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerC__OwnCo__52E34C9D" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerC__OwnCo__53D770D6" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerC__OwnCo__54CB950F" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerC__OwnCo__55BFB948" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerC__OwnCo__56B3DD81" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CustomerCompany_CustomerGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CustomerDepartment_CustomerCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CustomerProfile_CustomerCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerC__OwnCo__40C49C62" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerC__OwnCo__41B8C09B" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerC__OwnCo__42ACE4D4" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CustomerCompany_CustomerGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CustomerDepartment_CustomerCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CustomerProfile_CustomerCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CustomerProfile_CustomerCompany1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_PartialBilty_CustomerCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_PartialBilty_CustomerCompany1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrder_CustomerCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrderChild_CustomerCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CustomerDepartment_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CustomerProfile_CustomerDepartment" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyCustomerInformation_CustomerProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyCustomerInformation_CustomerProfile1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyCustomerInformation_CustomerProfile2" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerG__OwnCo__5A846E65" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerG__OwnCo__5B78929E" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerG__OwnCo__5C6CB6D7" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerG__OwnCo__5D60DB10" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerG__OwnCo__5E54FF49" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerG__OwnCo__5F492382" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerG__OwnCo__603D47BB" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerG__OwnCo__61316BF4" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerG__OwnCo__6225902D" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CustomerProfile_CustomerGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerG__OwnCo__467D75B8" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerG__OwnCo__477199F1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__CustomerG__OwnCo__4865BE2A" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CustomerProfile_CustomerGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CustomerProfile_OwnCompany1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CustomerProfileDetail_CustomerProfiles" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CustomerProfileDetail_LocationFrom" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CustomerProfileDetail_LocationTo" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CustomerProfileDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_CustomerProfile_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_LocalDropUniversalBilty_CustomerProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_LocalDropUniversalBilty_CustomerProfile1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_LocalDropUniversalBilty_CustomerProfile2" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_LocalPickUniversalBilty_CustomerProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_LocalPickUniversalBilty_CustomerProfile1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_LocalPickUniversalBilty_CustomerProfile2" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Damage_DamageType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Damage_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_DamageType_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyDamageDetail_DamageType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SoftwareSetup_DateType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Department_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Department_OwnCompany1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Employees_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Designation_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Employees_Designation" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Diesel_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_DieselExpense_Diesel" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_DieselExpense_Vehicle" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Documents_DocumentType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Documents_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyDispatchDocument_Documents" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyReceivingDocumentDetail_Documents" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_VehicleDocuments_Documents" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_DocumentType_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyDamageDetail_DocumentType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_VehicleDocuments_VehicleDocumentType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Driver_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalChallan_Driver" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_DriverType_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Employees_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Employees_OwnCompany1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Employees_OwnGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyReceivingInformation_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Expense_ExpensesType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Expense_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyExpenseDetail_Expense" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__ExpensesT__OwnCo__00AA174D" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__ExpensesT__OwnCo__019E3B86" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__ExpensesT__OwnCo__02925FBF" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__ExpensesT__OwnCo__7AF13DF7" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__ExpensesT__OwnCo__7BE56230" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__ExpensesT__OwnCo__7CD98669" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__ExpensesT__OwnCo__7DCDAAA2" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__ExpensesT__OwnCo__7EC1CEDB" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__ExpensesT__OwnCo__7FB5F314" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__ExpensesT__OwnCo__66EA454A" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__ExpensesT__OwnCo__67DE6983" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__ExpensesT__OwnCo__68D28DBC" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrderExpenses_ExpensesType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SalesOrderChildExpenses_ExpensesType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_VehicleExpenses_ExpensesType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_FillingStation_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_LocalDropProduct_LocalDropUniversalBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_LocalDropProduct_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_LocalDropUniversalBilty_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_LocalDropUniversalBilty_PickLocation" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_LocalDropUniversalBilty_PickLocation1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_LocalDropUniversalBilty_UniversalBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_LocalDropUniversalBilty_Vehicle" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_LocalPickProduct_LocalPickUniversalBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_LocalPickProduct_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_LocalPickUniversalBilty_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_LocalPickUniversalBilty_PickLocation" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_LocalPickUniversalBilty_PickLocation1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_LocalPickUniversalBilty_UniversalBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_LocalPickUniversalBilty_Vehicle" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_MaintenanceType_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_VehicleMaintenance_MaintenanceType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SubcriptionModules_Menu" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Nature_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Product_Nature" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SoftwareSetup_NoType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_OrderDetail_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_OrderDetail_PackageType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_OrderDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_OrderDetail_ProductBroker" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_OrderDetail_WorkOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Product__OwnComp__2E70E1FD" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Product__OwnComp__2F650636" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Product__OwnComp__30592A6F" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Product__OwnComp__314D4EA8" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Product__OwnComp__324172E1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Product__OwnComp__3335971A" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Product__OwnComp__79FD19BE" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Product__OwnComp__7AF13DF7" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Product__OwnComp__7BE56230" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__RevenueTy__OwnCo__3DB3258D" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__RevenueTy__OwnCo__3EA749C6" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__RevenueTy__OwnCo__3F9B6DFF" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__RevenueTy__OwnCo__408F9238" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__RevenueTy__OwnCo__4183B671" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__RevenueTy__OwnCo__4277DAAA" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__RevenueTy__OwnCo__436BFEE3" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__RevenueTy__OwnCo__4460231C" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__RevenueTy__OwnCo__45544755" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Vehicle__OwnComp__278EDA44" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Vehicle__OwnComp__2882FE7D" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Vehicle__OwnComp__297722B6" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VehicleTy__OwnCo__3B95D2F1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VehicleTy__OwnCo__3C89F72A" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VehicleTy__OwnCo__3D7E1B63" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VehicleTy__OwnCo__3E723F9C" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VehicleTy__OwnCo__3F6663D5" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VehicleTy__OwnCo__405A880E" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VehicleTy__OwnCo__414EAC47" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VehicleTy__OwnCo__4242D080" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VehicleTy__OwnCo__4336F4B9" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Vendor__OwnCompa__7755B73D" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VendorTyp__OwnCo__46136164" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VendorTyp__OwnCo__4707859D" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VendorTyp__OwnCo__47FBA9D6" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VendorTyp__OwnCo__48EFCE0F" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VendorTyp__OwnCo__49E3F248" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VendorTyp__OwnCo__4AD81681" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VendorTyp__OwnCo__4BCC3ABA" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VendorTyp__OwnCo__4CC05EF3" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VendorTyp__OwnCo__4DB4832C" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_OwnCompany_OwnGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_PackageType_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_PartialBilty_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Product__OwnComp__1699586C" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Product__OwnComp__178D7CA5" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Product__OwnComp__1881A0DE" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__RevenueTy__OwnCo__2022C2A6" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__RevenueTy__OwnCo__2116E6DF" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__RevenueTy__OwnCo__220B0B18" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VehicleTy__OwnCo__184C96B4" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VehicleTy__OwnCo__1940BAED" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VehicleTy__OwnCo__1A34DF26" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__Vendor__OwnCompa__7755B73D" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VendorTyp__OwnCo__1D114BD1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VendorTyp__OwnCo__1E05700A" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK__VendorTyp__OwnCo__1EF99443" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_OwnCompany_OwnGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_PackageType_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_PartialBilty_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_PartialBilty_OwnCompany1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_PickLocation_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_PrincipleCompany_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_ProductBroker_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Province_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Reciver_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Revenue_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrder_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrderDieselExpense_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrderExpenses_OwnCompany1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Sender_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_ShipmentType_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_StandardVehicle_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_TaxRateRegistration_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_TaxRateTransportation_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Trailer_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_TrailerType_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBill_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBilty_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBilty_OwnCompany1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalChallan_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalContainerDetail_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalVehicleDetail_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UserAccounts_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UserAssignedCompanies_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_VehicleDocuments_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_VehicleMaintenance_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Product_PackageType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_PartialBilty_PickLocation" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_PartialBiltyDetails_PartialBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_PartialBilty_PickLocation2" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_PartialBilty_Vehicle" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_PartialBiltyDetails_PickLocation" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_PartialBiltyDetails_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_PartialBiltyDetails_ProductBroker" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_PickLocation_ShipmentType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrdeDestination_PickLocation" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrder_PickLocation" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrderChild_PickLocation" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SalesOrderChildDestinations_PickLocation" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyLocationInformation_PickLocation" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyLocationInformation_PickLocation1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalChallan_PickLocation" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalChallan_PickLocation1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Vehicle_PrincipleCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_VehicleDocuments_PrincipleCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_VehicleMaintenance_PrincipleCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrdeDestination_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SalesOrderChildDestinations_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyDamageDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyProductInformation_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrdeDestination_Province" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_TaxRateRegistration_TaxRateRegistration" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_TaxRateTransportation_Province" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_TaxRateTransportation_Province1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Revenue_RevenueType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrdeDestination_SaleOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrdeDestination_TaxRateRegistration" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrdeDestination_TaxRateTransportation" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrder_ShipmentType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrder_UserAccounts" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrder_Vehicle" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrderChild_SaleOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrderDieselExpense_SaleOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrderExpenses_SaleOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrderChild_ShipmentType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrderChild_Vehicle" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SalesOrderChildDestinations_SaleOrderChild" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SalesOrderChildDieselExpenses_SaleOrderChild" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SalesOrderChildExpenses_SaleOrderChild" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SaleOrderDieselExpense_Vendor" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SalesOrderChildDieselExpenses_Vendor" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyCustomerInformation_ShipmentType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Vehicle_StandardVehicle" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_SubcriptionModules_SubcriptionModules" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Trailer_TrailerType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalCheckBill_UniversalBill" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyContainerInformation_UniversalBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyCustomerInformation_UniversalBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyDamageDetail_UniversalBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyDispatchDocument_UniversalBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyExpenseDetail_UniversalBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyFreightDetail_UniversalBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyLocationInformation_UniversalBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyProductInformation_UniversalBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyReceivingDocumentDetail_UniversalBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyReceivingInformation_UniversalBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyVehicleInformation_UniversalBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyVehicleLoadingReporting_UniversalBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyVehicleUnLoadingReporting_UniversalBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalCheckBill_UniversalBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalCheckBilty_UniversalBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalContainerDetail_UniversalBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalVehicleDetail_UniversalBilty" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalBiltyVehicleInformation_VehicleType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalChallan_Vehicle" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalChallan_Vendor" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalCheckBilty_UniversalChallan" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalVehicleDetail_Vehicle" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UniversalVehicleDetail_VehicleType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_UserAssignedCompanies_UserAccounts" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Vehicle_VehicleType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_VehicleDocuments_Vehicle" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_VehicleDocuments_VehicleOwnership" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_VehicleMaintenance_Vehicle" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_VehicleMaintenance_Vehicle1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_VehicleDocuments_VehicleType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_VehicleMaintenance_VehicleType" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMModel.FK_Vendor_VendorType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

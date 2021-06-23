@@ -1,0 +1,87 @@
+﻿
+@using Newtonsoft.Json;
+@model IEnumerable<LiquadCargoManagment.Models.PackageType>
+@using LiquadCargoManagment.Models
+
+    <div class="table-responsive">
+        <table class="table display table-striped" id="example">
+            <thead>
+                <tr>
+
+                    <td>Created Date</td>
+                    <td>Updated Date</td>
+                    <td>Code</td>
+                    <td>Name</td>
+                    <td>Description</td>
+                    <td>IsActive</td>
+                    <td>Operation</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    //string jsonData = JsonConvert.SerializeObject(item);
+                    string jsonData = "{";
+                    jsonData += " 'PackageTypeID' : '" + item.PackageTypeID + "', ";
+                    jsonData += " 'CreatedDate' : '" + item.DateCreated + "', ";
+                    jsonData += " 'OrderNo' : '" + item.OrderNo + "', ";
+                    jsonData += " 'PackageTypeCode' : '" + item.PackageTypeCode + "', ";
+                    jsonData += " 'PackageTypeName' : '" + item.PackageTypeName + "', ";
+                    jsonData += " 'Length' : '" + item.Length + "', ";
+                    jsonData += " 'Width' : '" + item.Width + "', ";
+                    jsonData += " 'Height' : '" + item.Height + "', ";
+                    jsonData += " 'DimensionUnit' : '" + item.DimensionUnit + "', ";
+                    jsonData += " 'Weight' : '" + item.Weight + "', ";
+                    jsonData += " 'WeightUnit' : '" + item.WeightUnit + "' ,";
+                    jsonData += " 'Description' : '" + item.Description + "' ";
+                    jsonData += "}";
+                <tr>
+                    @if (item.DateCreated != null)
+                    {
+                        <td>@Convert.ToDateTime(item.DateCreated).ToString(SoftwareFormatting.DateFormat)</td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                    @if (item.DateModified != null)
+                    {
+                        <td>@Convert.ToDateTime(item.DateModified).ToString(SoftwareFormatting.DateFormat)</td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                    <td>@item.PackageTypeCode</td>
+                    <td>@item.PackageTypeName</td>
+                    <td>@item.Description</td>
+                    @if (item.IsActive == true)
+                    {
+                        <td>
+                            <a onclick="ChangeStatus(@item.PackageTypeID,false)"><i class="fa fa-toggle-on text-primary" style="font-size:25px;"></i></a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <a onclick="ChangeStatus(@item.PackageTypeID,true)"><i class="fa fa-toggle-off text-danger" style="font-size:25px;"></i></a>
+                        </td>
+                    }
+                    <td>
+
+                        <button type="button" onclick="viewRecordRead(@jsonData,this)" class="btn btn-primary btn-xs">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                        <button type="button" onclick="viewRecord(@jsonData,this)" class="btn btn-default btn-xs">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button type="button" onclick="DeleteModel(@item.PackageTypeID)" class="btn btn-danger btn-xs">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+

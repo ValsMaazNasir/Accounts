@@ -1,0 +1,340 @@
+﻿
+@model LiquadCargoManagment.Areas.Accounts.Models.ChartOfAccountsModel
+@using LiquadCargoManagment.Areas.Accounts.Helpers;
+@{ 
+Layout = "~/Areas/Accounts/Views/Shared/_Layout1.cshtml";
+}
+@section LinkStyleSection{
+    @Styles.Render("~/assets/cache/datepickerstyle")
+    @Styles.Render("~/assets/cache/select2style")
+    <style>
+        #Payment1, #Payment {
+            display: none;
+        }
+    </style>
+}
+@section LinkScriptSection{
+    @Scripts.Render("~/assets/cache/datepickerscript")
+    @Scripts.Render("~/assets/cache/select2script")
+    @Scripts.Render("~/assets/js/Incoming")
+}
+@section InLineScriptSection{
+    <script>    
+
+    @if (ViewBag.PageType == "View")
+    {
+       @:DisableView();
+    }
+
+    </script>
+}
+
+<!--Page content-->
+<!--===================================================-->
+<div id="page-content">
+    @{Html.RenderPartial("BreadCrumb");}
+    <div class="panel">
+        <!--Block Styled Form -->
+        <!--===================================================-->
+        @using (Ajax.BeginForm("Save", "chartofaccounts", null, new AjaxOptions { HttpMethod = "POST", OnBegin = "OnFormBegin", OnComplete = "OnFormComplete", OnSuccess = "OnFormSuccess", OnFailure = "OnFormFailure" }, new { @id = "FormMember", @autocomplete = "off" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.ID)
+            <div class="panel-body">
+                <div class="row">
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label">Series<span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" id="DocNum" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label">Posting Date<span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="DocDate" />
+                        </div>
+                    </div>
+
+                    <br clear="all" />
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label">Due Date<span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="DueDate" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label">Document Date <span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="DocumentDate" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label">Description <span class="text-danger">*</span></label>
+                            <textarea class="form-control" rows="3" id="Description"></textarea>
+
+                        </div>
+                    </div>
+
+                    <table class="table table-striped heavyTable" id="GlTable">
+                        <thead>
+                            <tr>
+                                <td>
+                                    G/L Acct/BP Acct Code
+
+                                </td>
+
+                                <td>Remarks</td>
+                                <td>Debit</td>
+                                <td>Credit</td>
+
+                                <td>Business Line</td>
+                                <td>Cost Center</td>
+
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr class="change">
+                                <td style="width:300px">
+
+                                    @*@Html.DropDownList("GL", ViewBag.GLAccounts as SelectList, "--Select--", new { @class = "form-control" })*@
+
+                                </td>
+
+                                <td>
+                                    <input type="text" class="form-control" name="Remarks" id="Remarks" />
+                                </td>
+
+                                <td>
+                                    <input type="text" class="form-control" name="Debit" id="Debit" onkeyup="Grandtotal('#GlTable', 2, 'Debit')" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" name="Credit" id="Credit" onkeyup="Grandtotal('#GlTable', 3, 'Credit')" />
+                                </td>
+
+                                <td>
+                                    @*@Html.DropDownList("Business", ViewBag.BusinessLine as SelectList, "--Select--", new { @class = "form-control" })*@
+
+                                </td>
+                                <td>
+                                    @*@Html.DropDownList("Cost", ViewBag.CostCenter as SelectList, "--Select--", new { @class = "form-control" })*@
+
+                                </td>
+
+                                <td>
+                                    <a class="btn btn-primary" onclick="AddRow(this)"><i class=" fa fa-plus"></i></a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                        <tfoot>
+                            <tr class="grand_total" style="font-weight:bold;">
+                                <td>
+                                    <label>Journal Remarks</label>
+                                    <input type="text" class="form-control" />
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Grand Total</td>
+                                <td id="DocTotal">
+                                </td>
+                                <td><button type="button" class="btn btn-info" onclick="" data-toggle="modal" data-target="#modal-add"><i class="fa fa-paypal"></i></button></td>
+                            </tr>
+
+                            <tr class="Total">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+
+
+                    </table>
+
+                </div>
+            </div>
+            <div class="panel-footer text-right">
+                <a class="btn btn-info" href="@ViewBag.PageURL" tabindex="8">Back</a>
+                <button class="btn btn-success" type="submit" tabindex="9">Save</button>
+
+
+            </div>}
+
+        <!--===================================================-->
+        <!--End Block Styled Form -->
+        <div id="modal-add" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header text-center">
+                        <h2 class="modal-title"><i class="fa fa-pencil-alt"></i> Payment Methods</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="block full">
+                                    <!-- Block Tabs Title -->
+                                    <div class="block-title">
+                                        <ul class="nav nav-tabs" data-toggle="tabs">
+                                            <li class="active"><a href="#example-tabs2-activity" data-toggle="tooltip" title="Checks">Checks</a></li>
+                                            <li><a href="#example-tabs2-NIC" data-toggle="tooltip" title="Bank Transfer">Bank Transfer</a></li>
+                                            <li><a href="#example-tabs2-License" data-toggle="tooltip" title="Account">Account</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- END Block Tabs Title -->
+                                    <!-- Tabs Content -->
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="example-tabs2-activity">
+                                            <table class="table table-striped" id="PaymentMeans">
+                                                <thead>
+                                                    <tr>
+                                                        <td>Amount</td>
+                                                        <td>Bank Name</td>
+                                                        <td>Acount No.</td>
+                                                        <td>Check No.</td>
+                                                    </tr>
+                                                </thead>
+
+
+                                                <tbody>
+                                                    <tr class="cascade Check">
+                                                        <td>
+                                                            <input type="text" id="ModalAmount" class="form-control" onkeyup="Grandtotal('#PaymentMeans',0,'Amount')" />
+                                                        </td>
+                                                        <td style="width:200px;">
+                                                            @*@Html.DropDownList("GlAccountID", ViewBag.GLAccount as SelectList, "Selected", new { @class = "form-control ", onchange = "GetGl(this)" })*@
+                                                        </td>
+                                                        <td>
+
+                                                            <input class="form-control" type="text" id="Name" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control" id="CheckNo" />
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr class="grand_total">
+                                                        <td></td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+
+                                        </div>
+
+                                        <div class="tab-pane" id="example-tabs2-NIC">
+                                            <table class="table table-striped" id="Bank">
+                                                <thead>
+                                                    <tr>
+                                                        <td>Amount</td>
+                                                        <td>Account Code</td>
+
+
+
+                                                    </tr>
+                                                </thead>
+
+
+                                                <tbody>
+                                                    <tr class="cascade Bank">
+                                                        <td>
+                                                            <input type="text" id="BankAmount" class="form-control" onkeyup="Grandtotal('#Bank',0,'Amount')" />
+                                                        </td>
+                                                        <td style="width:400px;">
+                                                            @*@Html.DropDownList("GlAccountID", ViewBag.GLAccount as SelectList, "Selected", new
+                                                            {
+                                                                @class = "form-control select-chosen "})*@
+                                                        </td>
+
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr class="grand_total">
+                                                        <td></td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+
+
+                                        </div>
+
+                                        <div class="tab-pane" id="example-tabs2-License">
+                                            <table class="table table-striped" id="Account2">
+                                                <thead>
+                                                    <tr>
+                                                        <td>Amount</td>
+                                                        <td>Account Code</td>
+
+
+
+                                                    </tr>
+                                                </thead>
+
+
+                                                <tbody>
+                                                    <tr class="cascade Cash">
+
+                                                        <td>
+                                                            <input type="text" id="CashAmount" class="form-control" onkeyup="Grandtotal('#Account2', 0, 'Amount')" />
+                                                        </td>
+                                                        <td style="width:400px;">
+                                                            @*@Html.DropDownList("GlAccountID", ViewBag.GLAccount as SelectList, "Selected", new
+                                                            {
+                                                                @class = "form-control ddlchosen "})*@
+                                                        </td>
+
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr class="grand_total">
+                                                        <td></td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- END Tabs Content -->
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- END Modal Header -->
+                    <!-- Modal Body -->
+                    <!-- END Modal Body -->
+                    <div class="modal-footer">
+                        <div class="container-fluid">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <input type="text" class="form-control" id="Amount" />
+                                    </div>
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-3">
+                                        <button type="button" class="btn btn-primary" onclick="ModalHide(this)">Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</div>
+<!--===================================================-->
+<!--End page content-->

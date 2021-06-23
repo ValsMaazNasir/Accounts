@@ -1,0 +1,3150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LMSModelStoreContainer" CdmEntityContainer="LCMEntities">
+    <EntitySetMapping Name="accounts">
+      <EntityTypeMapping TypeName="LMSModel.account">
+  <EntityContainerMapping StorageEntityContainer="LCMModelStoreContainer" CdmEntityContainer="LCMEntities">
+    <EntitySetMapping Name="accounts">
+      <EntityTypeMapping TypeName="LCMModel.account">
+        <MappingFragment StoreEntitySet="accounts">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="docDate" ColumnName="docDate" />
+          <ScalarProperty Name="accountTitle" ColumnName="accountTitle" />
+          <ScalarProperty Name="accountId" ColumnName="accountId" />
+          <ScalarProperty Name="narration" ColumnName="narration" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="TranstypeId" ColumnName="TranstypeId" />
+          <ScalarProperty Name="vchrStatus" ColumnName="vchrStatus" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="accounts_transaction">
+      <EntityTypeMapping TypeName="LMSModel.accounts_transaction">
+        <MappingFragment StoreEntitySet="accounts_transaction">
+          <ScalarProperty Name="chq_date" ColumnName="chq_date" />
+          <ScalarProperty Name="chq_ok" ColumnName="chq_ok" />
+      <EntityTypeMapping TypeName="LCMModel.accounts_transaction">
+        <MappingFragment StoreEntitySet="accounts_transaction">
+          <ScalarProperty Name="accounts_transaction_id" ColumnName="accounts_transaction_id" />
+          <ScalarProperty Name="refId" ColumnName="refId" />
+          <ScalarProperty Name="orders_id" ColumnName="orders_id" />
+          <ScalarProperty Name="customers_id" ColumnName="customers_id" />
+          <ScalarProperty Name="details" ColumnName="details" />
+          <ScalarProperty Name="trans_db" ColumnName="trans_db" />
+          <ScalarProperty Name="trans_cr" ColumnName="trans_cr" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="chqNo" ColumnName="chqNo" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="chq_ok" ColumnName="chq_ok" />
+          <ScalarProperty Name="chq_date" ColumnName="chq_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Areas">
+      <EntityTypeMapping TypeName="LCMModel.Area">
+        <MappingFragment StoreEntitySet="Area">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AssignDrivers">
+      <EntityTypeMapping TypeName="LCMModel.AssignDriver">
+        <MappingFragment StoreEntitySet="AssignDrivers">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+          <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BankAccounts">
+      <EntityTypeMapping TypeName="LCMModel.BankAccount">
+        <MappingFragment StoreEntitySet="BankAccounts">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BankID" ColumnName="BankID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+          <ScalarProperty Name="AccountTitle" ColumnName="AccountTitle" />
+          <ScalarProperty Name="BranchManager" ColumnName="BranchManager" />
+          <ScalarProperty Name="BranchManagerContact" ColumnName="BranchManagerContact" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="SecContactPerson" ColumnName="SecContactPerson" />
+          <ScalarProperty Name="SecContactNo" ColumnName="SecContactNo" />
+          <ScalarProperty Name="LandLineNo" ColumnName="LandLineNo" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Banks">
+      <EntityTypeMapping TypeName="LCMModel.Bank">
+        <MappingFragment StoreEntitySet="Banks">
+          <ScalarProperty Name="BankID" ColumnName="BankID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BillChilds">
+      <EntityTypeMapping TypeName="LCMModel.BillChild">
+        <MappingFragment StoreEntitySet="BillChild">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BillId" ColumnName="BillId" />
+          <ScalarProperty Name="SaleOrderChildId" ColumnName="SaleOrderChildId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bills">
+      <EntityTypeMapping TypeName="LCMModel.Bill">
+        <MappingFragment StoreEntitySet="Bills">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bilties">
+      <EntityTypeMapping TypeName="LCMModel.Bilty">
+        <MappingFragment StoreEntitySet="Bilty">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="Reciever" ColumnName="Reciever" />
+          <ScalarProperty Name="BillTo" ColumnName="BillTo" />
+          <ScalarProperty Name="ExternalVno" ColumnName="ExternalVno" />
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+          <ScalarProperty Name="OwnCompany" ColumnName="OwnCompany" />
+          <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+          <ScalarProperty Name="PickLocation" ColumnName="PickLocation" />
+          <ScalarProperty Name="WeightQTYTotal" ColumnName="WeightQTYTotal" />
+          <ScalarProperty Name="TotalFreight" ColumnName="TotalFreight" />
+          <ScalarProperty Name="OrderDetailsTotalQTY" ColumnName="OrderDetailsTotalQTY" />
+          <ScalarProperty Name="OrderDetailsTotalWeight" ColumnName="OrderDetailsTotalWeight" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="ExternalVehicleNo" ColumnName="ExternalVehicleNo" />
+          <ScalarProperty Name="TotalAdditionalFreight" ColumnName="TotalAdditionalFreight" />
+          <ScalarProperty Name="TotalWeighbridge" ColumnName="TotalWeighbridge" />
+          <ScalarProperty Name="Labour" ColumnName="Labour" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BiltyDetails">
+      <EntityTypeMapping TypeName="LCMModel.BiltyDetail">
+        <MappingFragment StoreEntitySet="BiltyDetails">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BiltyID" ColumnName="BiltyID" />
+          <ScalarProperty Name="ProductBrokerID" ColumnName="ProductBrokerID" />
+          <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
+          <ScalarProperty Name="Freight" ColumnName="Freight" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="AdditionalFreight" ColumnName="AdditionalFreight" />
+          <ScalarProperty Name="Weighbridge" ColumnName="Weighbridge" />
+          <ScalarProperty Name="Labour" ColumnName="Labour" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BiltyRoles">
+      <EntityTypeMapping TypeName="LMSModel.BiltyRole">
+      <EntityTypeMapping TypeName="LCMModel.BiltyRole">
+        <MappingFragment StoreEntitySet="BiltyRole">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BiltyRole1" ColumnName="BiltyRole" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContactNoTypes">
+      <EntityTypeMapping TypeName="LMSModel.ContactNoType">
+    <EntitySetMapping Name="Brokers">
+      <EntityTypeMapping TypeName="LCMModel.Broker">
+        <MappingFragment StoreEntitySet="Brokers">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+          <ScalarProperty Name="HomeNo" ColumnName="HomeNo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="NIC" ColumnName="NIC" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="LCMModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Challans">
+      <EntityTypeMapping TypeName="LCMModel.Challan">
+        <MappingFragment StoreEntitySet="Challan">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ChallanDate" ColumnName="ChallanDate" />
+          <ScalarProperty Name="ChallanNo" ColumnName="ChallanNo" />
+          <ScalarProperty Name="ChallanManualNo" ColumnName="ChallanManualNo" />
+          <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+          <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+          <ScalarProperty Name="ExternalVehicleNo" ColumnName="ExternalVehicleNo" />
+          <ScalarProperty Name="PickLocationID" ColumnName="PickLocationID" />
+          <ScalarProperty Name="DropLocationID" ColumnName="DropLocationID" />
+          <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="BiltyID" ColumnName="BiltyID" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="LCMModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="CityCode" ColumnName="CityCode" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+          <ScalarProperty Name="ModifiedByUserId" ColumnName="ModifiedByUserId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompactBills">
+      <EntityTypeMapping TypeName="LCMModel.CompactBill">
+        <MappingFragment StoreEntitySet="CompactBill">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+          <ScalarProperty Name="ReferenceNo" ColumnName="ReferenceNo" />
+          <ScalarProperty Name="BillingDate" ColumnName="BillingDate" />
+          <ScalarProperty Name="ReportType" ColumnName="ReportType" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompactCheckBills">
+      <EntityTypeMapping TypeName="LCMModel.CompactCheckBill">
+        <MappingFragment StoreEntitySet="CompactCheckBill">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CompactBillID" ColumnName="CompactBillID" />
+          <ScalarProperty Name="BiltyID" ColumnName="BiltyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompactCheckBilties">
+      <EntityTypeMapping TypeName="LCMModel.CompactCheckBilty">
+        <MappingFragment StoreEntitySet="CompactCheckBilty">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CompactChallanID" ColumnName="CompactChallanID" />
+          <ScalarProperty Name="CompactBiltyID" ColumnName="CompactBiltyID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="LCMModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyEmail" ColumnName="CompanyEmail" />
+          <ScalarProperty Name="CompanyWebSite" ColumnName="CompanyWebSite" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="OtherContact" ColumnName="OtherContact" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="STN" ColumnName="STN" />
+          <ScalarProperty Name="NTN" ColumnName="NTN" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContactNoTypes">
+      <EntityTypeMapping TypeName="LCMModel.ContactNoType">
+        <MappingFragment StoreEntitySet="ContactNoType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ContactNoType1" ColumnName="ContactNoType" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrencyTypes">
+      <EntityTypeMapping TypeName="LMSModel.CurrencyType">
+    <EntitySetMapping Name="Containers">
+      <EntityTypeMapping TypeName="LCMModel.Container">
+        <MappingFragment StoreEntitySet="Container">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ContainerTypeID" ColumnName="ContainerTypeID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContainerTypes">
+      <EntityTypeMapping TypeName="LCMModel.ContainerType">
+        <MappingFragment StoreEntitySet="ContainerType">
+          <ScalarProperty Name="ContainerTypeID" ColumnName="ContainerTypeID" />
+          <ScalarProperty Name="ContainerTypeName" ColumnName="ContainerTypeName" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="LCMModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="CountryDialCode" ColumnName="CountryDialCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrencyTypes">
+      <EntityTypeMapping TypeName="LCMModel.CurrencyType">
+        <MappingFragment StoreEntitySet="CurrencyType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CurrencyType1" ColumnName="CurrencyType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerCompanies">
+      <EntityTypeMapping TypeName="LMSModel.CustomerCompany">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="LCMModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+          <ScalarProperty Name="CustomerAdd" ColumnName="CustomerAdd" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CustomerContact1" ColumnName="CustomerContact1" />
+          <ScalarProperty Name="CustomerContact2" ColumnName="CustomerContact2" />
+          <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+          <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+          <ScalarProperty Name="Customerlogo" ColumnName="Customerlogo" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerCompanies">
+      <EntityTypeMapping TypeName="LCMModel.CustomerCompany">
+        <MappingFragment StoreEntitySet="CustomerCompany">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="ContactOther" ColumnName="ContactOther" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+          <ScalarProperty Name="NTN" ColumnName="NTN" />
+          <ScalarProperty Name="STN" ColumnName="STN" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerGroups">
+      <EntityTypeMapping TypeName="LMSModel.CustomerGroup">
+    <EntitySetMapping Name="CustomerDepartments">
+      <EntityTypeMapping TypeName="LCMModel.CustomerDepartment">
+        <MappingFragment StoreEntitySet="CustomerDepartment">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="ContactOther" ColumnName="ContactOther" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="CustomerCompanyID" ColumnName="CustomerCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerGroups">
+      <EntityTypeMapping TypeName="LCMModel.CustomerGroup">
+        <MappingFragment StoreEntitySet="CustomerGroup">
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="ContactOther" ColumnName="ContactOther" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="LMSModel.customer">
+        <MappingFragment StoreEntitySet="customers">
+          <ScalarProperty Name="customers_department" ColumnName="customers_department" />
+          <ScalarProperty Name="customers_group" ColumnName="customers_group" />
+          <ScalarProperty Name="customerTypeId" ColumnName="customerTypeId" />
+    <EntitySetMapping Name="CustomerProfiles">
+      <EntityTypeMapping TypeName="LCMModel.CustomerProfile">
+        <MappingFragment StoreEntitySet="CustomerProfile">
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+          <ScalarProperty Name="PaymentTerm" ColumnName="PaymentTerm" />
+          <ScalarProperty Name="CreditTerm" ColumnName="CreditTerm" />
+          <ScalarProperty Name="InvoiceFormat" ColumnName="InvoiceFormat" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="isHide" ColumnName="isHide" />
+          <ScalarProperty Name="IsAdditionalCharges" ColumnName="IsAdditionalCharges" />
+          <ScalarProperty Name="IsLaborCharges" ColumnName="IsLaborCharges" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerProfileDetails">
+      <EntityTypeMapping TypeName="LCMModel.CustomerProfileDetail">
+        <MappingFragment StoreEntitySet="CustomerProfileDetail">
+          <ScalarProperty Name="ProfileDetail" ColumnName="ProfileDetail" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="LocationFrom" ColumnName="LocationFrom" />
+          <ScalarProperty Name="LocationTo" ColumnName="LocationTo" />
+          <ScalarProperty Name="RateType" ColumnName="RateType" />
+          <ScalarProperty Name="DoorStepRate" ColumnName="DoorStepRate" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="WeightPerUnit" ColumnName="WeightPerUnit" />
+          <ScalarProperty Name="AdditionCharges" ColumnName="AdditionCharges" />
+          <ScalarProperty Name="LabourCharges" ColumnName="LabourCharges" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerProfileLMS">
+      <EntityTypeMapping TypeName="LCMModel.CustomerProfileLM">
+        <MappingFragment StoreEntitySet="CustomerProfileLMS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CustomerGroupID" ColumnName="CustomerGroupID" />
+          <ScalarProperty Name="CustomerDepartmentID" ColumnName="CustomerDepartmentID" />
+          <ScalarProperty Name="CustomerCompanyID" ColumnName="CustomerCompanyID" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers1">
+      <EntityTypeMapping TypeName="LCMModel.customer1">
+        <MappingFragment StoreEntitySet="customers">
+          <ScalarProperty Name="customers_id" ColumnName="customers_id" />
+          <ScalarProperty Name="customers_code" ColumnName="customers_code" />
+          <ScalarProperty Name="customers_firstname" ColumnName="customers_firstname" />
+          <ScalarProperty Name="customers_lastname" ColumnName="customers_lastname" />
+          <ScalarProperty Name="customers_address" ColumnName="customers_address" />
+          <ScalarProperty Name="customers_tel" ColumnName="customers_tel" />
+          <ScalarProperty Name="customers_area" ColumnName="customers_area" />
+          <ScalarProperty Name="customers_city" ColumnName="customers_city" />
+          <ScalarProperty Name="customers_country" ColumnName="customers_country" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DateTypes">
+      <EntityTypeMapping TypeName="LMSModel.DateType">
+        <MappingFragment StoreEntitySet="DateType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DateType1" ColumnName="DateType" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GM_ACC">
+      <EntityTypeMapping TypeName="LMSModel.GM_ACC">
+        <MappingFragment StoreEntitySet="GM_ACC">
+          <ScalarProperty Name="LEVEL" ColumnName="LEVEL" />
+          <ScalarProperty Name="CODE" ColumnName="CODE" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_FLAG">
+      <EntityTypeMapping TypeName="LMSModel.M_FLAG">
+        <MappingFragment StoreEntitySet="M_FLAG">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+          <ScalarProperty Name="flagType" ColumnName="flagType" />
+          <ScalarProperty Name="flagDesc" ColumnName="flagDesc" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menus">
+      <EntityTypeMapping TypeName="LMSModel.Menu">
+        <MappingFragment StoreEntitySet="Menu">
+          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SequenceOrder" ColumnName="SequenceOrder" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="customerTypeId" ColumnName="customerTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Damages">
+      <EntityTypeMapping TypeName="LCMModel.Damage">
+        <MappingFragment StoreEntitySet="Damage">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DamageTypeID" ColumnName="DamageTypeID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DamageTypes">
+      <EntityTypeMapping TypeName="LCMModel.DamageType">
+        <MappingFragment StoreEntitySet="DamageType">
+          <ScalarProperty Name="DamageTypeID" ColumnName="DamageTypeID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="ModifiedByID" ColumnName="ModifiedByID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DateTypes">
+      <EntityTypeMapping TypeName="LCMModel.DateType">
+        <MappingFragment StoreEntitySet="DateType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DateType1" ColumnName="DateType" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="LCMModel.Department">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="DepartID" ColumnName="DepartID" />
+          <ScalarProperty Name="DepartCode" ColumnName="DepartCode" />
+          <ScalarProperty Name="DepartName" ColumnName="DepartName" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="ContactOther" ColumnName="ContactOther" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DepartmentPersons">
+      <EntityTypeMapping TypeName="LCMModel.DepartmentPerson">
+        <MappingFragment StoreEntitySet="DepartmentPerson">
+          <ScalarProperty Name="PersonalID" ColumnName="PersonalID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="BusinessEmail" ColumnName="BusinessEmail" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="Cell" ColumnName="Cell" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="OtherContact" ColumnName="OtherContact" />
+          <ScalarProperty Name="AddressOffice" ColumnName="AddressOffice" />
+          <ScalarProperty Name="AddressOther" ColumnName="AddressOther" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsIndividual" ColumnName="IsIndividual" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NavMenus">
+      <EntityTypeMapping TypeName="LMSModel.NavMenu">
+        <MappingFragment StoreEntitySet="NavMenu">
+          <ScalarProperty Name="FormID" ColumnName="FormID" />
+          <ScalarProperty Name="FormName" ColumnName="FormName" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="icon" ColumnName="icon" />
+          <ScalarProperty Name="SequenceOrder" ColumnName="SequenceOrder" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="SecondLevelMenuID" ColumnName="SecondLevelMenuID" />
+          <ScalarProperty Name="formTarget" ColumnName="formTarget" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NoTypes">
+      <EntityTypeMapping TypeName="LMSModel.NoType">
+        <MappingFragment StoreEntitySet="NoType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NoType1" ColumnName="NoType" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="LMSModel.order">
+        <MappingFragment StoreEntitySet="orders">
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="orders_id" ColumnName="orders_id" />
+          <ScalarProperty Name="date_purchased" ColumnName="date_purchased" />
+          <ScalarProperty Name="customers_id" ColumnName="customers_id" />
+          <ScalarProperty Name="customers_name" ColumnName="customers_name" />
+          <ScalarProperty Name="customers_address" ColumnName="customers_address" />
+          <ScalarProperty Name="customers_tel" ColumnName="customers_tel" />
+          <ScalarProperty Name="customers_area" ColumnName="customers_area" />
+          <ScalarProperty Name="customers_city" ColumnName="customers_city" />
+          <ScalarProperty Name="customers_country" ColumnName="customers_country" />
+          <ScalarProperty Name="total_amt" ColumnName="total_amt" />
+          <ScalarProperty Name="totalItems" ColumnName="totalItems" />
+          <ScalarProperty Name="docTypeId" ColumnName="docTypeId" />
+          <ScalarProperty Name="orderStatus" ColumnName="orderStatus" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders_products">
+      <EntityTypeMapping TypeName="LMSModel.orders_products">
+        <MappingFragment StoreEntitySet="orders_products">
+          <ScalarProperty Name="orders_products_id" ColumnName="orders_products_id" />
+          <ScalarProperty Name="orders_id" ColumnName="orders_id" />
+          <ScalarProperty Name="products_id" ColumnName="products_id" />
+          <ScalarProperty Name="products_name" ColumnName="products_name" />
+          <ScalarProperty Name="products_quantity" ColumnName="products_quantity" />
+          <ScalarProperty Name="products_price" ColumnName="products_price" />
+          <ScalarProperty Name="scheme" ColumnName="scheme" />
+          <ScalarProperty Name="bonus" ColumnName="bonus" />
+          <ScalarProperty Name="discPer" ColumnName="discPer" />
+          <ScalarProperty Name="discAmt" ColumnName="discAmt" />
+          <ScalarProperty Name="lineAmount" ColumnName="lineAmount" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OwnCompanies">
+      <EntityTypeMapping TypeName="LMSModel.OwnCompany">
+        <MappingFragment StoreEntitySet="OwnCompany">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SubcriptionID" ColumnName="SubcriptionID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="ContactOther" ColumnName="ContactOther" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="NTN" ColumnName="NTN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OwnGroups">
+      <EntityTypeMapping TypeName="LMSModel.OwnGroup">
+        <MappingFragment StoreEntitySet="OwnGroups">
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="ContactOther" ColumnName="ContactOther" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="CompanyAccess" ColumnName="CompanyAccess" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="LMSModel.product">
+        <MappingFragment StoreEntitySet="products">
+          <ScalarProperty Name="products_id" ColumnName="products_id" />
+          <ScalarProperty Name="products_model" ColumnName="products_model" />
+          <ScalarProperty Name="productDescription" ColumnName="productDescription" />
+          <ScalarProperty Name="products_name" ColumnName="products_name" />
+          <ScalarProperty Name="products_msrp" ColumnName="products_msrp" />
+          <ScalarProperty Name="products_tp" ColumnName="products_tp" />
+          <ScalarProperty Name="products_scheme" ColumnName="products_scheme" />
+          <ScalarProperty Name="products_bonus" ColumnName="products_bonus" />
+          <ScalarProperty Name="products_discPer" ColumnName="products_discPer" />
+          <ScalarProperty Name="products_discAmt" ColumnName="products_discAmt" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RolePermissions">
+      <EntityTypeMapping TypeName="LMSModel.RolePermission">
+        <MappingFragment StoreEntitySet="RolePermission">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="FormID" ColumnName="FormID" />
+          <ScalarProperty Name="Parameter" ColumnName="Parameter" />
+    <EntitySetMapping Name="Designations">
+      <EntityTypeMapping TypeName="LCMModel.Designation">
+        <MappingFragment StoreEntitySet="Designation">
+          <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+          <ScalarProperty Name="DesignationName" ColumnName="DesignationName" />
+          <ScalarProperty Name="DesignationCode" ColumnName="DesignationCode" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Diesels">
+      <EntityTypeMapping TypeName="LCMModel.Diesel">
+        <MappingFragment StoreEntitySet="Diesel">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DieselDate" ColumnName="DieselDate" />
+          <ScalarProperty Name="DieselRate" ColumnName="DieselRate" />
+          <ScalarProperty Name="OilRate" ColumnName="OilRate" />
+          <ScalarProperty Name="PetrolPump" ColumnName="PetrolPump" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="DieselTotalLiter" ColumnName="DieselTotalLiter" />
+          <ScalarProperty Name="DieselTotalRate" ColumnName="DieselTotalRate" />
+          <ScalarProperty Name="DieselTotalAmount" ColumnName="DieselTotalAmount" />
+          <ScalarProperty Name="OilTotalLiter" ColumnName="OilTotalLiter" />
+          <ScalarProperty Name="OilTotalRate" ColumnName="OilTotalRate" />
+          <ScalarProperty Name="OilTotalAmount" ColumnName="OilTotalAmount" />
+          <ScalarProperty Name="TotalOtherAmount" ColumnName="TotalOtherAmount" />
+          <ScalarProperty Name="TotalNetAmount" ColumnName="TotalNetAmount" />
+          <ScalarProperty Name="TotalCashReceived" ColumnName="TotalCashReceived" />
+          <ScalarProperty Name="TotalCashPaid" ColumnName="TotalCashPaid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DieselExpenses">
+      <EntityTypeMapping TypeName="LCMModel.DieselExpense">
+        <MappingFragment StoreEntitySet="DieselExpense">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DieselID" ColumnName="DieselID" />
+          <ScalarProperty Name="DieselLiter" ColumnName="DieselLiter" />
+          <ScalarProperty Name="DieselAmount" ColumnName="DieselAmount" />
+          <ScalarProperty Name="OtherAmount" ColumnName="OtherAmount" />
+          <ScalarProperty Name="OilLiter" ColumnName="OilLiter" />
+          <ScalarProperty Name="OilAmount" ColumnName="OilAmount" />
+          <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+          <ScalarProperty Name="CashReceived" ColumnName="CashReceived" />
+          <ScalarProperty Name="CashPaid" ColumnName="CashPaid" />
+          <ScalarProperty Name="RegNo" ColumnName="RegNo" />
+          <ScalarProperty Name="DieselRate" ColumnName="DieselRate" />
+          <ScalarProperty Name="OilRate" ColumnName="OilRate" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Documents">
+      <EntityTypeMapping TypeName="LCMModel.Document">
+        <MappingFragment StoreEntitySet="Documents">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DocumentTypeID" ColumnName="DocumentTypeID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocumentTypes">
+      <EntityTypeMapping TypeName="LCMModel.DocumentType">
+        <MappingFragment StoreEntitySet="DocumentType">
+          <ScalarProperty Name="DocumentTypeID" ColumnName="DocumentTypeID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Drivers">
+      <EntityTypeMapping TypeName="LCMModel.Driver">
+        <MappingFragment StoreEntitySet="Driver">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+          <ScalarProperty Name="CellNo" ColumnName="CellNo" />
+          <ScalarProperty Name="OtherContact" ColumnName="OtherContact" />
+          <ScalarProperty Name="HomeNo" ColumnName="HomeNo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="NIC" ColumnName="NIC" />
+          <ScalarProperty Name="IdentityMark" ColumnName="IdentityMark" />
+          <ScalarProperty Name="NICIssueDate" ColumnName="NICIssueDate" />
+          <ScalarProperty Name="NICExpiryDate" ColumnName="NICExpiryDate" />
+          <ScalarProperty Name="LicenseNo" ColumnName="LicenseNo" />
+          <ScalarProperty Name="LicenseCategory" ColumnName="LicenseCategory" />
+          <ScalarProperty Name="LicenseIssueDate" ColumnName="LicenseIssueDate" />
+          <ScalarProperty Name="LicenseExpiryDate" ColumnName="LicenseExpiryDate" />
+          <ScalarProperty Name="LicenseIssuingAuthority" ColumnName="LicenseIssuingAuthority" />
+          <ScalarProperty Name="LicenseStatus" ColumnName="LicenseStatus" />
+          <ScalarProperty Name="EmergencyContactName" ColumnName="EmergencyContactName" />
+          <ScalarProperty Name="EmergencyContactNo" ColumnName="EmergencyContactNo" />
+          <ScalarProperty Name="ContactRelation" ColumnName="ContactRelation" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="DriverImageID" ColumnName="DriverImageID" />
+          <ScalarProperty Name="Document" ColumnName="Document" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DriverMedicals">
+      <EntityTypeMapping TypeName="LCMModel.DriverMedical">
+        <MappingFragment StoreEntitySet="DriverMedical">
+          <ScalarProperty Name="TestID" ColumnName="TestID" />
+          <ScalarProperty Name="TestName" ColumnName="TestName" />
+          <ScalarProperty Name="TestNo" ColumnName="TestNo" />
+          <ScalarProperty Name="TestDate" ColumnName="TestDate" />
+          <ScalarProperty Name="TestExpiry" ColumnName="TestExpiry" />
+          <ScalarProperty Name="TestPic" ColumnName="TestPic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DriverTypes">
+      <EntityTypeMapping TypeName="LCMModel.DriverType">
+        <MappingFragment StoreEntitySet="DriverType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="LCMModel.Employee">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="UploadDocument" ColumnName="UploadDocument" />
+          <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+          <ScalarProperty Name="CNICImagePath" ColumnName="CNICImagePath" />
+          <ScalarProperty Name="OwnGroupID" ColumnName="OwnGroupID" />
+          <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="IdentityMark" ColumnName="IdentityMark" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="NICIssueDate" ColumnName="NICIssueDate" />
+          <ScalarProperty Name="NICExpiryDate" ColumnName="NICExpiryDate" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="OtherContactNo" ColumnName="OtherContactNo" />
+          <ScalarProperty Name="HomeContactNo" ColumnName="HomeContactNo" />
+          <ScalarProperty Name="EmergencyContactNo" ColumnName="EmergencyContactNo" />
+          <ScalarProperty Name="ContactRelation" ColumnName="ContactRelation" />
+          <ScalarProperty Name="EmergencyContactName" ColumnName="EmergencyContactName" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Expenses">
+      <EntityTypeMapping TypeName="LCMModel.Expense">
+        <MappingFragment StoreEntitySet="Expense">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ExpenseTypeID" ColumnName="ExpenseTypeID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExpensesTypes">
+      <EntityTypeMapping TypeName="LCMModel.ExpensesType">
+        <MappingFragment StoreEntitySet="ExpensesType">
+          <ScalarProperty Name="ExpensesTypeID" ColumnName="ExpensesTypeID" />
+          <ScalarProperty Name="ExpensesTypeName" ColumnName="ExpensesTypeName" />
+          <ScalarProperty Name="ExpensesTypeCode" ColumnName="ExpensesTypeCode" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FillingStations">
+      <EntityTypeMapping TypeName="LCMModel.FillingStation">
+        <MappingFragment StoreEntitySet="FillingStation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="OwnerContactName" ColumnName="OwnerContactName" />
+          <ScalarProperty Name="OwnerContactNo" ColumnName="OwnerContactNo" />
+          <ScalarProperty Name="PrimaryContactPerson" ColumnName="PrimaryContactPerson" />
+          <ScalarProperty Name="PrimaryContactNo" ColumnName="PrimaryContactNo" />
+          <ScalarProperty Name="SecContactPerson" ColumnName="SecContactPerson" />
+          <ScalarProperty Name="SecContactNo" ColumnName="SecContactNo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PTCLNo" ColumnName="PTCLNo" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="AccountTitle" ColumnName="AccountTitle" />
+          <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Geners">
+      <EntityTypeMapping TypeName="LCMModel.Gener">
+        <MappingFragment StoreEntitySet="Gener">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GM_ACC">
+      <EntityTypeMapping TypeName="LCMModel.GM_ACC">
+        <MappingFragment StoreEntitySet="GM_ACC">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="CODE" ColumnName="CODE" />
+          <ScalarProperty Name="LEVEL" ColumnName="LEVEL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="LCMModel.Group">
+        <MappingFragment StoreEntitySet="Groups">
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="ContactOther" ColumnName="ContactOther" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CompanyAccess" ColumnName="CompanyAccess" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LocalDropProducts">
+      <EntityTypeMapping TypeName="LCMModel.LocalDropProduct">
+        <MappingFragment StoreEntitySet="LocalDropProduct">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LocalDropID" ColumnName="LocalDropID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Item" ColumnName="Item" />
+          <ScalarProperty Name="TotalItemQty" ColumnName="TotalItemQty" />
+          <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LocalDropUniversalBilties">
+      <EntityTypeMapping TypeName="LCMModel.LocalDropUniversalBilty">
+        <MappingFragment StoreEntitySet="LocalDropUniversalBilty">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ConsignerSender" ColumnName="ConsignerSender" />
+          <ScalarProperty Name="ConsignerReceiver" ColumnName="ConsignerReceiver" />
+          <ScalarProperty Name="BillTo" ColumnName="BillTo" />
+          <ScalarProperty Name="LocalPickDate" ColumnName="LocalPickDate" />
+          <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+          <ScalarProperty Name="FreightExpense" ColumnName="FreightExpense" />
+          <ScalarProperty Name="FreightCharged" ColumnName="FreightCharged" />
+          <ScalarProperty Name="PickLocationID" ColumnName="PickLocationID" />
+          <ScalarProperty Name="DropLocationID" ColumnName="DropLocationID" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UniversalBiltyID" ColumnName="UniversalBiltyID" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LocalPickProducts">
+      <EntityTypeMapping TypeName="LCMModel.LocalPickProduct">
+        <MappingFragment StoreEntitySet="LocalPickProduct">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LocalPickID" ColumnName="LocalPickID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Item" ColumnName="Item" />
+          <ScalarProperty Name="TotalItemQty" ColumnName="TotalItemQty" />
+          <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LocalPickUniversalBilties">
+      <EntityTypeMapping TypeName="LCMModel.LocalPickUniversalBilty">
+        <MappingFragment StoreEntitySet="LocalPickUniversalBilty">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ConsignerSender" ColumnName="ConsignerSender" />
+          <ScalarProperty Name="ConsignerReceiver" ColumnName="ConsignerReceiver" />
+          <ScalarProperty Name="BillTo" ColumnName="BillTo" />
+          <ScalarProperty Name="LocalPickDate" ColumnName="LocalPickDate" />
+          <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+          <ScalarProperty Name="FreightExpense" ColumnName="FreightExpense" />
+          <ScalarProperty Name="FreightCharged" ColumnName="FreightCharged" />
+          <ScalarProperty Name="PickLocationID" ColumnName="PickLocationID" />
+          <ScalarProperty Name="DropLocationID" ColumnName="DropLocationID" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UniversalBiltyID" ColumnName="UniversalBiltyID" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LocationTypes">
+      <EntityTypeMapping TypeName="LCMModel.LocationType">
+        <MappingFragment StoreEntitySet="LocationType">
+          <ScalarProperty Name="LocationTypeID" ColumnName="LocationTypeID" />
+          <ScalarProperty Name="LocationTypeName" ColumnName="LocationTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_FLAG">
+      <EntityTypeMapping TypeName="LCMModel.M_FLAG">
+        <MappingFragment StoreEntitySet="M_FLAG">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+          <ScalarProperty Name="flagType" ColumnName="flagType" />
+          <ScalarProperty Name="flagDesc" ColumnName="flagDesc" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaintenanceTypes">
+      <EntityTypeMapping TypeName="LCMModel.MaintenanceType">
+        <MappingFragment StoreEntitySet="MaintenanceType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menus">
+      <EntityTypeMapping TypeName="LCMModel.Menu">
+        <MappingFragment StoreEntitySet="Menu">
+          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SequenceOrder" ColumnName="SequenceOrder" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Natures">
+      <EntityTypeMapping TypeName="LCMModel.Nature">
+        <MappingFragment StoreEntitySet="Nature">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NavMenus">
+      <EntityTypeMapping TypeName="LCMModel.NavMenu">
+        <MappingFragment StoreEntitySet="NavMenu">
+          <ScalarProperty Name="FormID" ColumnName="FormID" />
+          <ScalarProperty Name="FormName" ColumnName="FormName" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="icon" ColumnName="icon" />
+          <ScalarProperty Name="SequenceOrder" ColumnName="SequenceOrder" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="SecondLevelMenuID" ColumnName="SecondLevelMenuID" />
+          <ScalarProperty Name="formTarget" ColumnName="formTarget" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notifications">
+      <EntityTypeMapping TypeName="LCMModel.Notification">
+        <MappingFragment StoreEntitySet="Notifications">
+          <ScalarProperty Name="NotificationID" ColumnName="NotificationID" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="NotifiedTo" ColumnName="NotifiedTo" />
+          <ScalarProperty Name="NotifiedDate" ColumnName="NotifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NoTypes">
+      <EntityTypeMapping TypeName="LCMModel.NoType">
+        <MappingFragment StoreEntitySet="NoType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NoType1" ColumnName="NoType" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="LCMModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetail">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="WorkOrderID" ColumnName="WorkOrderID" />
+          <ScalarProperty Name="Reciever" ColumnName="Reciever" />
+          <ScalarProperty Name="Productbroker" ColumnName="Productbroker" />
+          <ScalarProperty Name="PackageType" ColumnName="PackageType" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="unit" ColumnName="unit" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="LCMModel.order">
+        <MappingFragment StoreEntitySet="orders">
+          <ScalarProperty Name="orders_id" ColumnName="orders_id" />
+          <ScalarProperty Name="date_purchased" ColumnName="date_purchased" />
+          <ScalarProperty Name="customers_id" ColumnName="customers_id" />
+          <ScalarProperty Name="customers_name" ColumnName="customers_name" />
+          <ScalarProperty Name="customers_address" ColumnName="customers_address" />
+          <ScalarProperty Name="customers_tel" ColumnName="customers_tel" />
+          <ScalarProperty Name="customers_area" ColumnName="customers_area" />
+          <ScalarProperty Name="customers_city" ColumnName="customers_city" />
+          <ScalarProperty Name="customers_country" ColumnName="customers_country" />
+          <ScalarProperty Name="total_amt" ColumnName="total_amt" />
+          <ScalarProperty Name="totalItems" ColumnName="totalItems" />
+          <ScalarProperty Name="docTypeId" ColumnName="docTypeId" />
+          <ScalarProperty Name="orderStatus" ColumnName="orderStatus" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders_products">
+      <EntityTypeMapping TypeName="LCMModel.orders_products">
+        <MappingFragment StoreEntitySet="orders_products">
+          <ScalarProperty Name="orders_products_id" ColumnName="orders_products_id" />
+          <ScalarProperty Name="orders_id" ColumnName="orders_id" />
+          <ScalarProperty Name="products_id" ColumnName="products_id" />
+          <ScalarProperty Name="products_name" ColumnName="products_name" />
+          <ScalarProperty Name="products_quantity" ColumnName="products_quantity" />
+          <ScalarProperty Name="products_price" ColumnName="products_price" />
+          <ScalarProperty Name="scheme" ColumnName="scheme" />
+          <ScalarProperty Name="bonus" ColumnName="bonus" />
+          <ScalarProperty Name="discPer" ColumnName="discPer" />
+          <ScalarProperty Name="discAmt" ColumnName="discAmt" />
+          <ScalarProperty Name="lineAmount" ColumnName="lineAmount" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Organizations">
+      <EntityTypeMapping TypeName="LCMModel.Organization">
+        <MappingFragment StoreEntitySet="Organization">
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Modifiedby" ColumnName="Modifiedby" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OwnCompanies">
+      <EntityTypeMapping TypeName="LCMModel.OwnCompany">
+        <MappingFragment StoreEntitySet="OwnCompany">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SubcriptionID" ColumnName="SubcriptionID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="ContactOther" ColumnName="ContactOther" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="NTN" ColumnName="NTN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OwnGroups">
+      <EntityTypeMapping TypeName="LCMModel.OwnGroup">
+        <MappingFragment StoreEntitySet="OwnGroups">
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="ContactOther" ColumnName="ContactOther" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="CompanyAccess" ColumnName="CompanyAccess" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PackageTypes">
+      <EntityTypeMapping TypeName="LCMModel.PackageType">
+        <MappingFragment StoreEntitySet="PackageType">
+          <ScalarProperty Name="PackageTypeID" ColumnName="PackageTypeID" />
+          <ScalarProperty Name="PackageTypeCode" ColumnName="PackageTypeCode" />
+          <ScalarProperty Name="PackageTypeName" ColumnName="PackageTypeName" />
+          <ScalarProperty Name="Length" ColumnName="Length" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="DimensionUnit" ColumnName="DimensionUnit" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="WeightUnit" ColumnName="WeightUnit" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsMaster" ColumnName="IsMaster" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParchoonBills">
+      <EntityTypeMapping TypeName="LCMModel.ParchoonBill">
+        <MappingFragment StoreEntitySet="ParchoonBill">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+          <ScalarProperty Name="ReferenceNo" ColumnName="ReferenceNo" />
+          <ScalarProperty Name="BillingDate" ColumnName="BillingDate" />
+          <ScalarProperty Name="ReportType" ColumnName="ReportType" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParchoonBiltyChallans">
+      <EntityTypeMapping TypeName="LCMModel.ParchoonBiltyChallan">
+        <MappingFragment StoreEntitySet="ParchoonBiltyChallan">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ChallanDate" ColumnName="ChallanDate" />
+          <ScalarProperty Name="ChallanNo" ColumnName="ChallanNo" />
+          <ScalarProperty Name="ChallanManualNo" ColumnName="ChallanManualNo" />
+          <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+          <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+          <ScalarProperty Name="ExternalVehicleNo" ColumnName="ExternalVehicleNo" />
+          <ScalarProperty Name="PickLocationID" ColumnName="PickLocationID" />
+          <ScalarProperty Name="DropLocationID" ColumnName="DropLocationID" />
+          <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParchoonBiltyChecks">
+      <EntityTypeMapping TypeName="LCMModel.ParchoonBiltyCheck">
+        <MappingFragment StoreEntitySet="ParchoonBiltyCheck">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ParchoonChallanID" ColumnName="ParchoonChallanID" />
+          <ScalarProperty Name="ParchoonBiltyID" ColumnName="ParchoonBiltyID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParchoonCheckBills">
+      <EntityTypeMapping TypeName="LCMModel.ParchoonCheckBill">
+        <MappingFragment StoreEntitySet="ParchoonCheckBill">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ParchoonBillID" ColumnName="ParchoonBillID" />
+          <ScalarProperty Name="ParchoonBiltyID" ColumnName="ParchoonBiltyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartialBilties">
+      <EntityTypeMapping TypeName="LCMModel.PartialBilty">
+        <MappingFragment StoreEntitySet="PartialBilty">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="Reciever" ColumnName="Reciever" />
+          <ScalarProperty Name="BillTo" ColumnName="BillTo" />
+          <ScalarProperty Name="ExternalVno" ColumnName="ExternalVno" />
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+          <ScalarProperty Name="OwnCompany" ColumnName="OwnCompany" />
+          <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+          <ScalarProperty Name="PickLocation" ColumnName="PickLocation" />
+          <ScalarProperty Name="WeightQTYTotal" ColumnName="WeightQTYTotal" />
+          <ScalarProperty Name="TotalFreight" ColumnName="TotalFreight" />
+          <ScalarProperty Name="OrderDetailsTotalQTY" ColumnName="OrderDetailsTotalQTY" />
+          <ScalarProperty Name="OrderDetailsTotalWeight" ColumnName="OrderDetailsTotalWeight" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="ExternalVehicleNo" ColumnName="ExternalVehicleNo" />
+          <ScalarProperty Name="TotalAdditionalFreight" ColumnName="TotalAdditionalFreight" />
+          <ScalarProperty Name="TotalWeighbridge" ColumnName="TotalWeighbridge" />
+          <ScalarProperty Name="Labour" ColumnName="Labour" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="PartialNo" ColumnName="PartialNo" />
+          <ScalarProperty Name="BiltyID" ColumnName="BiltyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartialBiltyDetails">
+      <EntityTypeMapping TypeName="LCMModel.PartialBiltyDetail">
+        <MappingFragment StoreEntitySet="PartialBiltyDetails">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PartialBiltyID" ColumnName="PartialBiltyID" />
+          <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+          <ScalarProperty Name="ProductBrokerID" ColumnName="ProductBrokerID" />
+          <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
+          <ScalarProperty Name="Freight" ColumnName="Freight" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PickDropLocations">
+      <EntityTypeMapping TypeName="LCMModel.PickDropLocation">
+        <MappingFragment StoreEntitySet="PickDropLocation">
+          <ScalarProperty Name="PickDropID" ColumnName="PickDropID" />
+          <ScalarProperty Name="PickDropCode" ColumnName="PickDropCode" />
+          <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="LocationTypeID" ColumnName="LocationTypeID" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PickDropLocationName" ColumnName="PickDropLocationName" />
+          <ScalarProperty Name="IsPort" ColumnName="IsPort" />
+          <ScalarProperty Name="LAT" ColumnName="LAT" />
+          <ScalarProperty Name="LON" ColumnName="LON" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PickLocations">
+      <EntityTypeMapping TypeName="LCMModel.PickLocation">
+        <MappingFragment StoreEntitySet="PickLocation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+          <ScalarProperty Name="LocationCode" ColumnName="LocationCode" />
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+          <ScalarProperty Name="LocationType" ColumnName="LocationType" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ShipmentTypeID" ColumnName="ShipmentTypeID" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrincipleCompanies">
+      <EntityTypeMapping TypeName="LCMModel.PrincipleCompany">
+        <MappingFragment StoreEntitySet="PrincipleCompany">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="LCMModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="Length" ColumnName="Length" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+          <ScalarProperty Name="PackageTypeID" ColumnName="PackageTypeID" />
+          <ScalarProperty Name="ProductNatureID" ColumnName="ProductNatureID" />
+          <ScalarProperty Name="Gener" ColumnName="Gener" />
+          <ScalarProperty Name="DimensionUnit" ColumnName="DimensionUnit" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductBrokers">
+      <EntityTypeMapping TypeName="LCMModel.ProductBroker">
+        <MappingFragment StoreEntitySet="ProductBroker">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products1">
+      <EntityTypeMapping TypeName="LCMModel.product1">
+        <MappingFragment StoreEntitySet="products">
+          <ScalarProperty Name="products_id" ColumnName="products_id" />
+          <ScalarProperty Name="products_model" ColumnName="products_model" />
+          <ScalarProperty Name="productDescription" ColumnName="productDescription" />
+          <ScalarProperty Name="products_name" ColumnName="products_name" />
+          <ScalarProperty Name="products_msrp" ColumnName="products_msrp" />
+          <ScalarProperty Name="products_tp" ColumnName="products_tp" />
+          <ScalarProperty Name="products_scheme" ColumnName="products_scheme" />
+          <ScalarProperty Name="products_bonus" ColumnName="products_bonus" />
+          <ScalarProperty Name="products_discPer" ColumnName="products_discPer" />
+          <ScalarProperty Name="products_discAmt" ColumnName="products_discAmt" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Provinces">
+      <EntityTypeMapping TypeName="LCMModel.Province">
+        <MappingFragment StoreEntitySet="Province">
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RateLists">
+      <EntityTypeMapping TypeName="LCMModel.RateList">
+        <MappingFragment StoreEntitySet="RateList">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DateFrom" ColumnName="DateFrom" />
+          <ScalarProperty Name="DateTo" ColumnName="DateTo" />
+          <ScalarProperty Name="Loading" ColumnName="Loading" />
+          <ScalarProperty Name="Destination" ColumnName="Destination" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="Freight" ColumnName="Freight" />
+          <ScalarProperty Name="Shortage" ColumnName="Shortage" />
+          <ScalarProperty Name="Km" ColumnName="Km" />
+          <ScalarProperty Name="ShippmentTypeID" ColumnName="ShippmentTypeID" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Receivers">
+      <EntityTypeMapping TypeName="LCMModel.Receiver">
+        <MappingFragment StoreEntitySet="Receiver">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Regions">
+      <EntityTypeMapping TypeName="LCMModel.Region">
+        <MappingFragment StoreEntitySet="Region">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedByID" ColumnName="ModifiedByID" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Revenues">
+      <EntityTypeMapping TypeName="LCMModel.Revenue">
+        <MappingFragment StoreEntitySet="Revenue">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RevenueTypeID" ColumnName="RevenueTypeID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RevenueTypes">
+      <EntityTypeMapping TypeName="LCMModel.RevenueType">
+        <MappingFragment StoreEntitySet="RevenueType">
+          <ScalarProperty Name="RevenueTypeID" ColumnName="RevenueTypeID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="CreatedById" ColumnName="CreatedById" />
+          <ScalarProperty Name="ModifiedByID" ColumnName="ModifiedByID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RolePermissions">
+      <EntityTypeMapping TypeName="LCMModel.RolePermission">
+        <MappingFragment StoreEntitySet="RolePermission">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="FormID" ColumnName="FormID" />
+          <ScalarProperty Name="Parameter" ColumnName="Parameter" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="LCMModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SaleOrdeDestinations">
+      <EntityTypeMapping TypeName="LCMModel.SaleOrdeDestination">
+        <MappingFragment StoreEntitySet="SaleOrdeDestination">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
+          <ScalarProperty Name="DestinationCode" ColumnName="DestinationCode" />
+          <ScalarProperty Name="DestinationLocation" ColumnName="DestinationLocation" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="GSTType" ColumnName="GSTType" />
+          <ScalarProperty Name="TaxRateTransportationID" ColumnName="TaxRateTransportationID" />
+          <ScalarProperty Name="TaxRateRegistrationID" ColumnName="TaxRateRegistrationID" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="ProductQty" ColumnName="ProductQty" />
+          <ScalarProperty Name="Frieght" ColumnName="Frieght" />
+          <ScalarProperty Name="ShortageQty" ColumnName="ShortageQty" />
+          <ScalarProperty Name="Shortage" ColumnName="Shortage" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SaleOrders">
+      <EntityTypeMapping TypeName="LCMModel.SaleOrder">
+        <MappingFragment StoreEntitySet="SaleOrder">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CustomerCompanyId" ColumnName="CustomerCompanyId" />
+          <ScalarProperty Name="SaleOrderNo" ColumnName="SaleOrderNo" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="QueNo" ColumnName="QueNo" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+          <ScalarProperty Name="ShipmentTypeId" ColumnName="ShipmentTypeId" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+          <ScalarProperty Name="AreaIdForLoadingPoint" ColumnName="AreaIdForLoadingPoint" />
+          <ScalarProperty Name="AreaIdForDestinationPoint" ColumnName="AreaIdForDestinationPoint" />
+          <ScalarProperty Name="LoadingDate" ColumnName="LoadingDate" />
+          <ScalarProperty Name="DecantationDate" ColumnName="DecantationDate" />
+          <ScalarProperty Name="TokenNumber" ColumnName="TokenNumber" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+          <ScalarProperty Name="LoadingCode" ColumnName="LoadingCode" />
+          <ScalarProperty Name="LoadingLocationId" ColumnName="LoadingLocationId" />
+          <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="GSTType" ColumnName="GSTType" />
+          <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+          <ScalarProperty Name="ManualNo" ColumnName="ManualNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SaleOrderChilds">
+      <EntityTypeMapping TypeName="LCMModel.SaleOrderChild">
+        <MappingFragment StoreEntitySet="SaleOrderChild">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
+          <ScalarProperty Name="CustomerCompanyId" ColumnName="CustomerCompanyId" />
+          <ScalarProperty Name="SaleOrderNo" ColumnName="SaleOrderNo" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="QueNo" ColumnName="QueNo" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="Freight" ColumnName="Freight" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+          <ScalarProperty Name="ShipmentTypeId" ColumnName="ShipmentTypeId" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+          <ScalarProperty Name="AreaIdForLoadingPoint" ColumnName="AreaIdForLoadingPoint" />
+          <ScalarProperty Name="AreaIdForDestinationPoint" ColumnName="AreaIdForDestinationPoint" />
+          <ScalarProperty Name="LoadingDate" ColumnName="LoadingDate" />
+          <ScalarProperty Name="DecantationDate" ColumnName="DecantationDate" />
+          <ScalarProperty Name="TokenNumber" ColumnName="TokenNumber" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+          <ScalarProperty Name="LoadingCode" ColumnName="LoadingCode" />
+          <ScalarProperty Name="LoadingLocationId" ColumnName="LoadingLocationId" />
+          <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="GSTType" ColumnName="GSTType" />
+          <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+          <ScalarProperty Name="ManualNo" ColumnName="ManualNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SaleOrderDieselExpenses">
+      <EntityTypeMapping TypeName="LCMModel.SaleOrderDieselExpense">
+        <MappingFragment StoreEntitySet="SaleOrderDieselExpense">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+          <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
+          <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+          <ScalarProperty Name="Liter" ColumnName="Liter" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SaleOrderExpenses">
+      <EntityTypeMapping TypeName="LCMModel.SaleOrderExpens">
+        <MappingFragment StoreEntitySet="SaleOrderExpenses">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+          <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
+          <ScalarProperty Name="Instrument" ColumnName="Instrument" />
+          <ScalarProperty Name="ExpenseTypeId" ColumnName="ExpenseTypeId" />
+          <ScalarProperty Name="RecievedBy" ColumnName="RecievedBy" />
+          <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+          <ScalarProperty Name="BankBranchId" ColumnName="BankBranchId" />
+          <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+          <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesOrderChildDestinations">
+      <EntityTypeMapping TypeName="LCMModel.SalesOrderChildDestination">
+        <MappingFragment StoreEntitySet="SalesOrderChildDestinations">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SaleOrderChildID" ColumnName="SaleOrderChildID" />
+          <ScalarProperty Name="DestinationCode" ColumnName="DestinationCode" />
+          <ScalarProperty Name="DestinationLocation" ColumnName="DestinationLocation" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="GSTType" ColumnName="GSTType" />
+          <ScalarProperty Name="TaxRateTransportationID" ColumnName="TaxRateTransportationID" />
+          <ScalarProperty Name="TaxRateRegistrationID" ColumnName="TaxRateRegistrationID" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="ProductQty" ColumnName="ProductQty" />
+          <ScalarProperty Name="Frieght" ColumnName="Frieght" />
+          <ScalarProperty Name="ShortageQty" ColumnName="ShortageQty" />
+          <ScalarProperty Name="Shortage" ColumnName="Shortage" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesOrderChildDieselExpenses">
+      <EntityTypeMapping TypeName="LCMModel.SalesOrderChildDieselExpens">
+        <MappingFragment StoreEntitySet="SalesOrderChildDieselExpenses">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+          <ScalarProperty Name="SaleOrderChildID" ColumnName="SaleOrderChildID" />
+          <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+          <ScalarProperty Name="Liter" ColumnName="Liter" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesOrderChildExpenses">
+      <EntityTypeMapping TypeName="LCMModel.SalesOrderChildExpens">
+        <MappingFragment StoreEntitySet="SalesOrderChildExpenses">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+          <ScalarProperty Name="SaleOrderChildID" ColumnName="SaleOrderChildID" />
+          <ScalarProperty Name="Instrument" ColumnName="Instrument" />
+          <ScalarProperty Name="ExpenseTypeId" ColumnName="ExpenseTypeId" />
+          <ScalarProperty Name="RecievedBy" ColumnName="RecievedBy" />
+          <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+          <ScalarProperty Name="BankBranchId" ColumnName="BankBranchId" />
+          <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+          <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SecondLevelMenus">
+      <EntityTypeMapping TypeName="LCMModel.SecondLevelMenu">
+        <MappingFragment StoreEntitySet="SecondLevelMenu">
+          <ScalarProperty Name="SecLevelID" ColumnName="SecLevelID" />
+          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+          <ScalarProperty Name="SecLevelMenu" ColumnName="SecLevelMenu" />
+          <ScalarProperty Name="SequenceOrder" ColumnName="SequenceOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sections">
+      <EntityTypeMapping TypeName="LCMModel.Section">
+        <MappingFragment StoreEntitySet="Section">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+          <ScalarProperty Name="Group" ColumnName="Group" />
+          <ScalarProperty Name="Dept" ColumnName="Dept" />
+          <ScalarProperty Name="ListofPerson" ColumnName="ListofPerson" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShipmentTypes">
+      <EntityTypeMapping TypeName="LCMModel.ShipmentType">
+        <MappingFragment StoreEntitySet="ShipmentType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShippingLines">
+      <EntityTypeMapping TypeName="LCMModel.ShippingLine">
+        <MappingFragment StoreEntitySet="ShippingLine">
+          <ScalarProperty Name="ShippingLineID" ColumnName="ShippingLineID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="PrimaryContact" ColumnName="PrimaryContact" />
+          <ScalarProperty Name="SecondaryContact" ColumnName="SecondaryContact" />
+          <ScalarProperty Name="LandLine" ColumnName="LandLine" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedById" ColumnName="CreatedById" />
+          <ScalarProperty Name="ModifiedByID" ColumnName="ModifiedByID" />
+          <ScalarProperty Name="LiftOffLiftOnCharges" ColumnName="LiftOffLiftOnCharges" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShippingTypes">
+      <EntityTypeMapping TypeName="LCMModel.ShippingType">
+        <MappingFragment StoreEntitySet="ShippingType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SoftwareSetups">
+      <EntityTypeMapping TypeName="LCMModel.SoftwareSetup">
+        <MappingFragment StoreEntitySet="SoftwareSetup">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CurrencyTypeID" ColumnName="CurrencyTypeID" />
+          <ScalarProperty Name="DateTypeID" ColumnName="DateTypeID" />
+          <ScalarProperty Name="ContactNoTypeID" ColumnName="ContactNoTypeID" />
+          <ScalarProperty Name="NoTypeID" ColumnName="NoTypeID" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StandardVehicles">
+      <EntityTypeMapping TypeName="LCMModel.StandardVehicle">
+        <MappingFragment StoreEntitySet="StandardVehicle">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubcriptionModules">
+      <EntityTypeMapping TypeName="LCMModel.SubcriptionModule">
+        <MappingFragment StoreEntitySet="SubcriptionModules">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SubcriptionID" ColumnName="SubcriptionID" />
+          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subcriptions">
+      <EntityTypeMapping TypeName="LCMModel.Subcription">
+        <MappingFragment StoreEntitySet="Subcriptions">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="NumberOfMonths" ColumnName="NumberOfMonths" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaxRateRegistrations">
+      <EntityTypeMapping TypeName="LCMModel.TaxRateRegistration">
+        <MappingFragment StoreEntitySet="TaxRateRegistration">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TaxRateName" ColumnName="TaxRateName" />
+          <ScalarProperty Name="TaxRatePercent" ColumnName="TaxRatePercent" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaxRateTransportations">
+      <EntityTypeMapping TypeName="LCMModel.TaxRateTransportation">
+        <MappingFragment StoreEntitySet="TaxRateTransportation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="OriginProvince" ColumnName="OriginProvince" />
+          <ScalarProperty Name="TaxRatePercentOrigin" ColumnName="TaxRatePercentOrigin" />
+          <ScalarProperty Name="DestinationProvince" ColumnName="DestinationProvince" />
+          <ScalarProperty Name="TaxRatePercentDestination" ColumnName="TaxRatePercentDestination" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaxTypes">
+      <EntityTypeMapping TypeName="LCMModel.TaxType">
+        <MappingFragment StoreEntitySet="TaxTypes">
+          <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBrands">
+      <EntityTypeMapping TypeName="LCMModel.tblBrand">
+        <MappingFragment StoreEntitySet="tblBrand">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trailers">
+      <EntityTypeMapping TypeName="LCMModel.Trailer">
+        <MappingFragment StoreEntitySet="Trailer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TrailerTypeID" ColumnName="TrailerTypeID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrailerTypes">
+      <EntityTypeMapping TypeName="LCMModel.TrailerType">
+        <MappingFragment StoreEntitySet="TrailerType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transporters">
+      <EntityTypeMapping TypeName="LCMModel.Transporter">
+        <MappingFragment StoreEntitySet="Transporter">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="SecondaryContactNo" ColumnName="SecondaryContactNo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniversalBills">
+      <EntityTypeMapping TypeName="LCMModel.UniversalBill">
+        <MappingFragment StoreEntitySet="UniversalBill">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+          <ScalarProperty Name="ReferenceNo" ColumnName="ReferenceNo" />
+          <ScalarProperty Name="BillingDate" ColumnName="BillingDate" />
+          <ScalarProperty Name="ReportType" ColumnName="ReportType" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="LMSModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniversalBilties">
+      <EntityTypeMapping TypeName="LCMModel.UniversalBilty">
+        <MappingFragment StoreEntitySet="UniversalBilty">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AutoBiltyNo" ColumnName="AutoBiltyNo" />
+          <ScalarProperty Name="ManualBiltyNo" ColumnName="ManualBiltyNo" />
+          <ScalarProperty Name="BiltyDate" ColumnName="BiltyDate" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SecondLevelMenus">
+      <EntityTypeMapping TypeName="LMSModel.SecondLevelMenu">
+        <MappingFragment StoreEntitySet="SecondLevelMenu">
+          <ScalarProperty Name="SecLevelID" ColumnName="SecLevelID" />
+          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+          <ScalarProperty Name="SecLevelMenu" ColumnName="SecLevelMenu" />
+          <ScalarProperty Name="SequenceOrder" ColumnName="SequenceOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="settings">
+      <EntityTypeMapping TypeName="LMSModel.setting">
+        <MappingFragment StoreEntitySet="settings">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="txtKey" ColumnName="txtKey" />
+          <ScalarProperty Name="txtValue" ColumnName="txtValue" />
+          <ScalarProperty Name="desc" ColumnName="desc" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SoftwareSetups">
+      <EntityTypeMapping TypeName="LMSModel.SoftwareSetup">
+        <MappingFragment StoreEntitySet="SoftwareSetup">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CurrencyTypeID" ColumnName="CurrencyTypeID" />
+          <ScalarProperty Name="DateTypeID" ColumnName="DateTypeID" />
+          <ScalarProperty Name="ContactNoTypeID" ColumnName="ContactNoTypeID" />
+          <ScalarProperty Name="NoTypeID" ColumnName="NoTypeID" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubcriptionModules">
+      <EntityTypeMapping TypeName="LMSModel.SubcriptionModule">
+        <MappingFragment StoreEntitySet="SubcriptionModules">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SubcriptionID" ColumnName="SubcriptionID" />
+          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subcriptions">
+      <EntityTypeMapping TypeName="LMSModel.Subcription">
+        <MappingFragment StoreEntitySet="Subcriptions">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="NumberOfMonths" ColumnName="NumberOfMonths" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="ContainerQty" ColumnName="ContainerQty" />
+          <ScalarProperty Name="ContainerWeight" ColumnName="ContainerWeight" />
+          <ScalarProperty Name="ContainerTotalWeight" ColumnName="ContainerTotalWeight" />
+          <ScalarProperty Name="ProductQty" ColumnName="ProductQty" />
+          <ScalarProperty Name="ProductWeight" ColumnName="ProductWeight" />
+          <ScalarProperty Name="ProductTotalWeight" ColumnName="ProductTotalWeight" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="TotalAdditionalFreight" ColumnName="TotalAdditionalFreight" />
+          <ScalarProperty Name="TotalLabour" ColumnName="TotalLabour" />
+          <ScalarProperty Name="TotalWeighbridge" ColumnName="TotalWeighbridge" />
+          <ScalarProperty Name="TotalFreight" ColumnName="TotalFreight" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniversalBiltyContainerInformations">
+      <EntityTypeMapping TypeName="LCMModel.UniversalBiltyContainerInformation">
+        <MappingFragment StoreEntitySet="UniversalBiltyContainerInformation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ContainerID" ColumnName="ContainerID" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="UniversalBiltyID" ColumnName="UniversalBiltyID" />
+          <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
+          <ScalarProperty Name="TotalQty" ColumnName="TotalQty" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniversalBiltyCustomerInformations">
+      <EntityTypeMapping TypeName="LCMModel.UniversalBiltyCustomerInformation">
+        <MappingFragment StoreEntitySet="UniversalBiltyCustomerInformation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ConsignerSenderCustomerCode" ColumnName="ConsignerSenderCustomerCode" />
+          <ScalarProperty Name="ConsignerReceiverCustomerCode" ColumnName="ConsignerReceiverCustomerCode" />
+          <ScalarProperty Name="ClientBillTo" ColumnName="ClientBillTo" />
+          <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+          <ScalarProperty Name="BillingType" ColumnName="BillingType" />
+          <ScalarProperty Name="ShipmentType" ColumnName="ShipmentType" />
+          <ScalarProperty Name="UniversalBiltyID" ColumnName="UniversalBiltyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniversalBiltyDamageDetails">
+      <EntityTypeMapping TypeName="LCMModel.UniversalBiltyDamageDetail">
+        <MappingFragment StoreEntitySet="UniversalBiltyDamageDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProductItemID" ColumnName="ProductItemID" />
+          <ScalarProperty Name="DamageTypeID" ColumnName="DamageTypeID" />
+          <ScalarProperty Name="DocumentTypeID" ColumnName="DocumentTypeID" />
+          <ScalarProperty Name="ClaimDamageCost" ColumnName="ClaimDamageCost" />
+          <ScalarProperty Name="CauseOfDamage" ColumnName="CauseOfDamage" />
+          <ScalarProperty Name="UniversalBiltyID" ColumnName="UniversalBiltyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniversalBiltyDispatchDocuments">
+      <EntityTypeMapping TypeName="LCMModel.UniversalBiltyDispatchDocument">
+        <MappingFragment StoreEntitySet="UniversalBiltyDispatchDocument">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="DocumentNo" ColumnName="DocumentNo" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="UniversalBiltyID" ColumnName="UniversalBiltyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniversalBiltyExpenseDetails">
+      <EntityTypeMapping TypeName="LCMModel.UniversalBiltyExpenseDetail">
+        <MappingFragment StoreEntitySet="UniversalBiltyExpenseDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ExpenseID" ColumnName="ExpenseID" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="UniversalBiltyID" ColumnName="UniversalBiltyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniversalBiltyFreightDetails">
+      <EntityTypeMapping TypeName="LCMModel.UniversalBiltyFreightDetail">
+        <MappingFragment StoreEntitySet="UniversalBiltyFreightDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AdditionalFrieght" ColumnName="AdditionalFrieght" />
+          <ScalarProperty Name="Labour" ColumnName="Labour" />
+          <ScalarProperty Name="Weighbridge" ColumnName="Weighbridge" />
+          <ScalarProperty Name="Freight" ColumnName="Freight" />
+          <ScalarProperty Name="UniversalBiltyID" ColumnName="UniversalBiltyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniversalBiltyLocationInformations">
+      <EntityTypeMapping TypeName="LCMModel.UniversalBiltyLocationInformation">
+        <MappingFragment StoreEntitySet="UniversalBiltyLocationInformation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LocationCode" ColumnName="LocationCode" />
+          <ScalarProperty Name="DropLocationCode" ColumnName="DropLocationCode" />
+          <ScalarProperty Name="LocalPickStatus" ColumnName="LocalPickStatus" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UniversalBiltyID" ColumnName="UniversalBiltyID" />
+          <ScalarProperty Name="LocalDropStatus" ColumnName="LocalDropStatus" />
+          <ScalarProperty Name="LocalPickCity" ColumnName="LocalPickCity" />
+          <ScalarProperty Name="LocalPickArea" ColumnName="LocalPickArea" />
+          <ScalarProperty Name="LocalPickAddress" ColumnName="LocalPickAddress" />
+          <ScalarProperty Name="LocalDropCity" ColumnName="LocalDropCity" />
+          <ScalarProperty Name="LocalDropArea" ColumnName="LocalDropArea" />
+          <ScalarProperty Name="LocalDropAddress" ColumnName="LocalDropAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniversalBiltyProductInformations">
+      <EntityTypeMapping TypeName="LCMModel.UniversalBiltyProductInformation">
+        <MappingFragment StoreEntitySet="UniversalBiltyProductInformation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="UniversalBiltyID" ColumnName="UniversalBiltyID" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="WeightQtyTotal" ColumnName="WeightQtyTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniversalBiltyReceivingDocumentDetails">
+      <EntityTypeMapping TypeName="LCMModel.UniversalBiltyReceivingDocumentDetail">
+        <MappingFragment StoreEntitySet="UniversalBiltyReceivingDocumentDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="DocumentNo" ColumnName="DocumentNo" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="UniversalBiltyID" ColumnName="UniversalBiltyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniversalBiltyReceivingInformations">
+      <EntityTypeMapping TypeName="LCMModel.UniversalBiltyReceivingInformation">
+        <MappingFragment StoreEntitySet="UniversalBiltyReceivingInformation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="UniversalBiltyID" ColumnName="UniversalBiltyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniversalBiltyVehicleInformations">
+      <EntityTypeMapping TypeName="LCMModel.UniversalBiltyVehicleInformation">
+        <MappingFragment StoreEntitySet="UniversalBiltyVehicleInformation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+          <ScalarProperty Name="UniversalBiltyID" ColumnName="UniversalBiltyID" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniversalBiltyVehicleLoadingReportings">
+      <EntityTypeMapping TypeName="LCMModel.UniversalBiltyVehicleLoadingReporting">
+        <MappingFragment StoreEntitySet="UniversalBiltyVehicleLoadingReporting">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LoadingDate" ColumnName="LoadingDate" />
+          <ScalarProperty Name="LoadingTime" ColumnName="LoadingTime" />
+          <ScalarProperty Name="LoadingGateInDate" ColumnName="LoadingGateInDate" />
+          <ScalarProperty Name="LoadingGateInTime" ColumnName="LoadingGateInTime" />
+          <ScalarProperty Name="LoadingGateOutDate" ColumnName="LoadingGateOutDate" />
+          <ScalarProperty Name="LoadingGateOutTime" ColumnName="LoadingGateOutTime" />
+          <ScalarProperty Name="LoadingTotalDays" ColumnName="LoadingTotalDays" />
+          <ScalarProperty Name="LoadingTotalTime" ColumnName="LoadingTotalTime" />
+          <ScalarProperty Name="UniversalBiltyID" ColumnName="UniversalBiltyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniversalBiltyVehicleUnLoadingReportings">
+      <EntityTypeMapping TypeName="LCMModel.UniversalBiltyVehicleUnLoadingReporting">
+        <MappingFragment StoreEntitySet="UniversalBiltyVehicleUnLoadingReporting">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UnLoadingDate" ColumnName="UnLoadingDate" />
+          <ScalarProperty Name="UnLoadingTime" ColumnName="UnLoadingTime" />
+          <ScalarProperty Name="UnLoadingGateInDate" ColumnName="UnLoadingGateInDate" />
+          <ScalarProperty Name="UnLoadingGateInTime" ColumnName="UnLoadingGateInTime" />
+          <ScalarProperty Name="UnLoadingGateOutDate" ColumnName="UnLoadingGateOutDate" />
+          <ScalarProperty Name="UnLoadingGateOutTime" ColumnName="UnLoadingGateOutTime" />
+          <ScalarProperty Name="UnLoadingTotalDays" ColumnName="UnLoadingTotalDays" />
+          <ScalarProperty Name="UnLoadingTotalTime" ColumnName="UnLoadingTotalTime" />
+          <ScalarProperty Name="UniversalBiltyID" ColumnName="UniversalBiltyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniversalChallans">
+      <EntityTypeMapping TypeName="LCMModel.UniversalChallan">
+        <MappingFragment StoreEntitySet="UniversalChallan">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ChallanDate" ColumnName="ChallanDate" />
+          <ScalarProperty Name="ChallanNo" ColumnName="ChallanNo" />
+          <ScalarProperty Name="ChallanManualNo" ColumnName="ChallanManualNo" />
+          <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+          <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+          <ScalarProperty Name="ExternalVehicleNo" ColumnName="ExternalVehicleNo" />
+          <ScalarProperty Name="PickLocationID" ColumnName="PickLocationID" />
+          <ScalarProperty Name="DropLocationID" ColumnName="DropLocationID" />
+          <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TESTs">
+      <EntityTypeMapping TypeName="LMSModel.TEST">
+        <MappingFragment StoreEntitySet="TEST">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="UniversalBiltyID" ColumnName="UniversalBiltyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniversalCheckBills">
+      <EntityTypeMapping TypeName="LCMModel.UniversalCheckBill">
+        <MappingFragment StoreEntitySet="UniversalCheckBill">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UniversalBillID" ColumnName="UniversalBillID" />
+          <ScalarProperty Name="UniversalBiltyID" ColumnName="UniversalBiltyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniversalCheckBilties">
+      <EntityTypeMapping TypeName="LCMModel.UniversalCheckBilty">
+        <MappingFragment StoreEntitySet="UniversalCheckBilty">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UniversalBiltyID" ColumnName="UniversalBiltyID" />
+          <ScalarProperty Name="UniversalChallanID" ColumnName="UniversalChallanID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniversalContainerDetails">
+      <EntityTypeMapping TypeName="LCMModel.UniversalContainerDetail">
+        <MappingFragment StoreEntitySet="UniversalContainerDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ContainerNo" ColumnName="ContainerNo" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="ContainerPick" ColumnName="ContainerPick" />
+          <ScalarProperty Name="ContainerDrop" ColumnName="ContainerDrop" />
+          <ScalarProperty Name="Vessel" ColumnName="Vessel" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="ContainerTypeID" ColumnName="ContainerTypeID" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="UniversalBiltyID" ColumnName="UniversalBiltyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniversalVehicleDetails">
+      <EntityTypeMapping TypeName="LCMModel.UniversalVehicleDetail">
+        <MappingFragment StoreEntitySet="UniversalVehicleDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+          <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+          <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+          <ScalarProperty Name="Cell" ColumnName="Cell" />
+          <ScalarProperty Name="NIC" ColumnName="NIC" />
+          <ScalarProperty Name="License" ColumnName="License" />
+          <ScalarProperty Name="Broker" ColumnName="Broker" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="UniversalBiltyID" ColumnName="UniversalBiltyID" />
+          <ScalarProperty Name="RegNo" ColumnName="RegNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAccounts">
+      <EntityTypeMapping TypeName="LMSModel.UserAccount">
+      <EntityTypeMapping TypeName="LCMModel.UserAccount">
+        <MappingFragment StoreEntitySet="UserAccounts">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAssignedCompanies">
+      <EntityTypeMapping TypeName="LMSModel.UserAssignedCompany">
+      <EntityTypeMapping TypeName="LCMModel.UserAssignedCompany">
+        <MappingFragment StoreEntitySet="UserAssignedCompanies">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendors">
+      <EntityTypeMapping TypeName="LMSModel.Vendor">
+    <EntitySetMapping Name="Vehicles">
+      <EntityTypeMapping TypeName="LCMModel.Vehicle">
+        <MappingFragment StoreEntitySet="Vehicle">
+          <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="RegNo" ColumnName="RegNo" />
+          <ScalarProperty Name="ChasisNo" ColumnName="ChasisNo" />
+          <ScalarProperty Name="EngineNo" ColumnName="EngineNo" />
+          <ScalarProperty Name="Length" ColumnName="Length" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="DimensionUnitType" ColumnName="DimensionUnitType" />
+          <ScalarProperty Name="VehicleTypeID" ColumnName="VehicleTypeID" />
+          <ScalarProperty Name="VehicleModel" ColumnName="VehicleModel" />
+          <ScalarProperty Name="VehicleColor" ColumnName="VehicleColor" />
+          <ScalarProperty Name="BodyType" ColumnName="BodyType" />
+          <ScalarProperty Name="ManufacturingYear" ColumnName="ManufacturingYear" />
+          <ScalarProperty Name="ManufacturerName" ColumnName="ManufacturerName" />
+          <ScalarProperty Name="PurchasingDate" ColumnName="PurchasingDate" />
+          <ScalarProperty Name="PurchasingAmount" ColumnName="PurchasingAmount" />
+          <ScalarProperty Name="PurchaseFromName" ColumnName="PurchaseFromName" />
+          <ScalarProperty Name="PurchaseFromDetail" ColumnName="PurchaseFromDetail" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="OwnerContact" ColumnName="OwnerContact" />
+          <ScalarProperty Name="OwnerNIC" ColumnName="OwnerNIC" />
+          <ScalarProperty Name="PrincipleCompanyId" ColumnName="PrincipleCompanyId" />
+          <ScalarProperty Name="Comission" ColumnName="Comission" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Amount2" ColumnName="Amount2" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsOwnVehicle" ColumnName="IsOwnVehicle" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="MaximumLoadingCapacity" ColumnName="MaximumLoadingCapacity" />
+          <ScalarProperty Name="OwnershipStatus" ColumnName="OwnershipStatus" />
+          <ScalarProperty Name="Documents" ColumnName="Documents" />
+          <ScalarProperty Name="LoadingLimitNHA" ColumnName="LoadingLimitNHA" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+          <ScalarProperty Name="StandardVehicleID" ColumnName="StandardVehicleID" />
+          <ScalarProperty Name="VehicleCharges" ColumnName="VehicleCharges" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VehicleDocuments">
+      <EntityTypeMapping TypeName="LCMModel.VehicleDocument">
+        <MappingFragment StoreEntitySet="VehicleDocuments">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="VehicleRegNo" ColumnName="VehicleRegNo" />
+          <ScalarProperty Name="VehicleType" ColumnName="VehicleType" />
+          <ScalarProperty Name="VehicleOwnership" ColumnName="VehicleOwnership" />
+          <ScalarProperty Name="PrincipleCompany" ColumnName="PrincipleCompany" />
+          <ScalarProperty Name="SMSAlert" ColumnName="SMSAlert" />
+          <ScalarProperty Name="EmailAlert" ColumnName="EmailAlert" />
+          <ScalarProperty Name="EmailCCAlert" ColumnName="EmailCCAlert" />
+          <ScalarProperty Name="VehicleDocumentType" ColumnName="VehicleDocumentType" />
+          <ScalarProperty Name="VehicleDocuments" ColumnName="VehicleDocuments" />
+          <ScalarProperty Name="RenewalDate" ColumnName="RenewalDate" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="AlertType" ColumnName="AlertType" />
+          <ScalarProperty Name="AlertBefore" ColumnName="AlertBefore" />
+          <ScalarProperty Name="AlertFrequency" ColumnName="AlertFrequency" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="DocumentUpload" ColumnName="DocumentUpload" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VehicleExpenses">
+      <EntityTypeMapping TypeName="LCMModel.VehicleExpens">
+        <MappingFragment StoreEntitySet="VehicleExpenses">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BiltyID" ColumnName="BiltyID" />
+          <ScalarProperty Name="ExpenseTypeId" ColumnName="ExpenseTypeId" />
+          <ScalarProperty Name="BankBranch" ColumnName="BankBranch" />
+          <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+          <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+          <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VehicleMaintenances">
+      <EntityTypeMapping TypeName="LCMModel.VehicleMaintenance">
+        <MappingFragment StoreEntitySet="VehicleMaintenance">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="VehicleRegNo" ColumnName="VehicleRegNo" />
+          <ScalarProperty Name="VehicleType" ColumnName="VehicleType" />
+          <ScalarProperty Name="OwnerShip" ColumnName="OwnerShip" />
+          <ScalarProperty Name="PrincipleCompany" ColumnName="PrincipleCompany" />
+          <ScalarProperty Name="MaintenanceTypeID" ColumnName="MaintenanceTypeID" />
+          <ScalarProperty Name="StartFrom" ColumnName="StartFrom" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="AlertType" ColumnName="AlertType" />
+          <ScalarProperty Name="SMSNo" ColumnName="SMSNo" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="AlertFrequency" ColumnName="AlertFrequency" />
+          <ScalarProperty Name="AlertBefore" ColumnName="AlertBefore" />
+          <ScalarProperty Name="GracePeriod" ColumnName="GracePeriod" />
+          <ScalarProperty Name="CurrentOdoMeter" ColumnName="CurrentOdoMeter" />
+          <ScalarProperty Name="DueKMs" ColumnName="DueKMs" />
+          <ScalarProperty Name="GraceDueKMs" ColumnName="GraceDueKMs" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VehicleTypes">
+      <EntityTypeMapping TypeName="LCMModel.VehicleType">
+        <MappingFragment StoreEntitySet="VehicleType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendors">
+      <EntityTypeMapping TypeName="LCMModel.Vendor">
+        <MappingFragment StoreEntitySet="Vendor">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="VendorTypeID" ColumnName="VendorTypeID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="OwnerContactName" ColumnName="OwnerContactName" />
+          <ScalarProperty Name="OwnerContactNo" ColumnName="OwnerContactNo" />
+          <ScalarProperty Name="PrimaryContactPerson" ColumnName="PrimaryContactPerson" />
+          <ScalarProperty Name="PrimaryContactNo" ColumnName="PrimaryContactNo" />
+          <ScalarProperty Name="SecContactPerson" ColumnName="SecContactPerson" />
+          <ScalarProperty Name="SecContactNo" ColumnName="SecContactNo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PTCLNo" ColumnName="PTCLNo" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+          <ScalarProperty Name="AccountTitle" ColumnName="AccountTitle" />
+          <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VendorTypes">
+      <EntityTypeMapping TypeName="LMSModel.VendorType">
+      <EntityTypeMapping TypeName="LCMModel.VendorType">
+        <MappingFragment StoreEntitySet="VendorType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetAccountBalance" FunctionName="LMSModel.Store.GetAccountBalance">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LMSModel.GetAccountBalance_Result">
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="AmountToPay" ColumnName="AmountToPay" />
+          <ScalarProperty Name="DueAmount" ColumnName="DueAmount" />
+          <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+          <ScalarProperty Name="accountId" ColumnName="accountId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetCustomersByAcc" FunctionName="LMSModel.Store.GetCustomersByAcc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LMSModel.GetCustomersByAcc_Result">
+          <ScalarProperty Name="accountId" ColumnName="accountId" />
+          <ScalarProperty Name="customers_id" ColumnName="customers_id" />
+          <ScalarProperty Name="customerName" ColumnName="customerName" />
+          <ScalarProperty Name="docDate" ColumnName="docDate" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+          <ScalarProperty Name="AmountToPay" ColumnName="AmountToPay" />
+          <ScalarProperty Name="DueAmount" ColumnName="DueAmount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CUST_LEDGER" FunctionName="LMSModel.Store.CUST_LEDGER">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LMSModel.CUST_LEDGER_Result">
+          <ScalarProperty Name="customers_id" ColumnName="customers_id" />
+          <ScalarProperty Name="customers_firstname" ColumnName="customers_firstname" />
+          <ScalarProperty Name="customerTypeId" ColumnName="customerTypeId" />
+          <ScalarProperty Name="InvDate" ColumnName="InvDate" />
+          <ScalarProperty Name="InvNo" ColumnName="InvNo" />
+          <ScalarProperty Name="InvTotal" ColumnName="InvTotal" />
+          <ScalarProperty Name="InvRemarks" ColumnName="InvRemarks" />
+          <ScalarProperty Name="InvType" ColumnName="InvType" />
+          <ScalarProperty Name="VchrNo" ColumnName="VchrNo" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+          <ScalarProperty Name="accountTitle" ColumnName="accountTitle" />
+          <ScalarProperty Name="VchrTotal" ColumnName="VchrTotal" />
+          <ScalarProperty Name="VchrDate" ColumnName="VchrDate" />
+          <ScalarProperty Name="VchrType" ColumnName="VchrType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="WorkOrders">
+      <EntityTypeMapping TypeName="LCMModel.WorkOrder">
+        <MappingFragment StoreEntitySet="WorkOrder">
+          <ScalarProperty Name="WorkorderId" ColumnName="WorkorderId" />
+          <ScalarProperty Name="WorkOrderNo" ColumnName="WorkOrderNo" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="billto" ColumnName="billto" />
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="totalquantity" ColumnName="totalquantity" />
+          <ScalarProperty Name="totalweight" ColumnName="totalweight" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerProfileDetail_Audit">
+      <EntityTypeMapping TypeName="LCMModel.CustomerProfileDetail_Audit">
+        <MappingFragment StoreEntitySet="CustomerProfileDetail_Audit">
+          <ScalarProperty Name="ProfileDetail_AuditID" ColumnName="ProfileDetail_AuditID" />
+          <ScalarProperty Name="ProfileDetail" ColumnName="ProfileDetail" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="LocationFrom" ColumnName="LocationFrom" />
+          <ScalarProperty Name="LocationTo" ColumnName="LocationTo" />
+          <ScalarProperty Name="RateType" ColumnName="RateType" />
+          <ScalarProperty Name="DoorStepRate" ColumnName="DoorStepRate" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="WeightPerUnit" ColumnName="WeightPerUnit" />
+          <ScalarProperty Name="AdditionCharges" ColumnName="AdditionCharges" />
+          <ScalarProperty Name="LabourCharges" ColumnName="LabourCharges" />
+          <ScalarProperty Name="AuditDataState" ColumnName="AuditDataState" />
+          <ScalarProperty Name="AuditDMLAction" ColumnName="AuditDMLAction" />
+          <ScalarProperty Name="AuditUser" ColumnName="AuditUser" />
+          <ScalarProperty Name="AuditDateTime" ColumnName="AuditDateTime" />
+          <ScalarProperty Name="UpdateColumns" ColumnName="UpdateColumns" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParchoonBilties">
+      <EntityTypeMapping TypeName="LCMModel.ParchoonBilty">
+        <MappingFragment StoreEntitySet="ParchoonBilty">
+          <ScalarProperty Name="ReceiverID" ColumnName="ReceiverID" />
+          <ScalarProperty Name="DropAddress" ColumnName="DropAddress" />
+          <ScalarProperty Name="PickAddress" ColumnName="PickAddress" />
+          <ScalarProperty Name="DropStationID" ColumnName="DropStationID" />
+          <ScalarProperty Name="PickStationID" ColumnName="PickStationID" />
+          <ScalarProperty Name="DropLocationID" ColumnName="DropLocationID" />
+          <ScalarProperty Name="PickLocationID" ColumnName="PickLocationID" />
+          <ScalarProperty Name="DeliverType" ColumnName="DeliverType" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="FreightRs" ColumnName="FreightRs" />
+          <ScalarProperty Name="LocalFreight" ColumnName="LocalFreight" />
+          <ScalarProperty Name="TotalExpense" ColumnName="TotalExpense" />
+          <ScalarProperty Name="TotalGrossWeight" ColumnName="TotalGrossWeight" />
+          <ScalarProperty Name="AdditionalWeight" ColumnName="AdditionalWeight" />
+          <ScalarProperty Name="NetWeight" ColumnName="NetWeight" />
+          <ScalarProperty Name="TotalFreight" ColumnName="TotalFreight" />
+          <ScalarProperty Name="AdditionalFreight" ColumnName="AdditionalFreight" />
+          <ScalarProperty Name="TotalQty" ColumnName="TotalQty" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CellNo" ColumnName="CellNo" />
+          <ScalarProperty Name="BrokerID" ColumnName="BrokerID" />
+          <ScalarProperty Name="VehicleTypeID" ColumnName="VehicleTypeID" />
+          <ScalarProperty Name="CustomerCompanyID" ColumnName="CustomerCompanyID" />
+          <ScalarProperty Name="DNNo" ColumnName="DNNo" />
+          <ScalarProperty Name="ManualBiltyNo" ColumnName="ManualBiltyNo" />
+          <ScalarProperty Name="BiltyNo" ColumnName="BiltyNo" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="ShipmentTypeID" ColumnName="ShipmentTypeID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParchoonBiltyDocumentTypes">
+      <EntityTypeMapping TypeName="LCMModel.ParchoonBiltyDocumentType">
+        <MappingFragment StoreEntitySet="ParchoonBiltyDocumentType">
+          <ScalarProperty Name="UploadDocument" ColumnName="UploadDocument" />
+          <ScalarProperty Name="DocumentNo" ColumnName="DocumentNo" />
+          <ScalarProperty Name="DocumentTypeID" ColumnName="DocumentTypeID" />
+          <ScalarProperty Name="ParchoonBiltyID" ColumnName="ParchoonBiltyID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParchoonBiltyExpenses">
+      <EntityTypeMapping TypeName="LCMModel.ParchoonBiltyExpense">
+        <MappingFragment StoreEntitySet="ParchoonBiltyExpense">
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ExpenseTypeID" ColumnName="ExpenseTypeID" />
+          <ScalarProperty Name="ParchoonBiltyID" ColumnName="ParchoonBiltyID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParchoonBiltyProducts">
+      <EntityTypeMapping TypeName="LCMModel.ParchoonBiltyProduct">
+        <MappingFragment StoreEntitySet="ParchoonBiltyProduct">
+          <ScalarProperty Name="DCNo" ColumnName="DCNo" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Freight" ColumnName="Freight" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ParchoonBiltyID" ColumnName="ParchoonBiltyID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,52 @@
+﻿@using LiquadCargoManagment.Models;
+@model IEnumerable<LiquadCargoManagment.Models.ParchoonBiltyExpense>
+
+<div>
+    <table class="table" id="Expense">
+        <thead>
+            <tr>
+                <td>Expense Type</td>
+                <td>Amount</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count() > 0)
+            {
+                int j = 0;
+                foreach (var item in Model)
+                { 
+                    <tr>
+                        <td width="30%">
+                            @Html.DropDownList("[" + @j + "].ExpenseTypeID", ViewBag.ExpenseTypes as SelectList, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessage("[" + @j + "].ExpenseTypeID", "", new { @class = "text-danger" })
+                        </td>
+                        <td width="15%">
+                            @Html.TextBox("[" + @j + "].Amount", "", new { @class = "form-control" })
+
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" onclick="AddExpense(this)"><i class="fa fa-plus"></i></button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                int j = 0;
+                <tr>
+                    <td width="30%">
+                        @Html.DropDownList("[" + @j + "].ExpenseTypeID", ViewBag.ExpenseTypes as SelectList, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessage("[" + @j + "].ExpenseTypeID", "", new { @class = "text-danger" })
+                    </td>
+                    <td width="15%">
+                        @Html.TextBox("[" + @j + "].Amount", "", new { @class = "form-control" })
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" onclick="AddExpense(this)"><i class="fa fa-plus"></i></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

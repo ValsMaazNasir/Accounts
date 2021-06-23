@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0fb2a88dc1c44a5ebdb328001376211a" Name="Diagram1" ZoomLevel="93">
+        <EntityTypeShape EntityType="LMSModel.account" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.accounts_transaction" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.BiltyRole" Width="1.5" PointX="7.5" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.ContactNoType" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.CurrencyType" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.CustomerCompany" Width="1.5" PointX="7.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.CustomerGroup" Width="1.5" PointX="5.25" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.customer" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.DateType" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.GM_ACC" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.M_FLAG" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.Menu" Width="1.5" PointX="2.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.NavMenu" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.NoType" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.order" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.orders_products" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.OwnCompany" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.OwnGroup" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.product" Width="1.5" PointX="11.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.RolePermission" Width="1.5" PointX="6.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.Role" Width="1.5" PointX="11.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.SecondLevelMenu" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.setting" Width="1.5" PointX="13.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.SoftwareSetup" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.SubcriptionModule" Width="1.5" PointX="5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.Subcription" Width="1.5" PointX="2.75" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.TEST" Width="1.5" PointX="13.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.UserAccount" Width="1.5" PointX="5.25" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.UserAssignedCompany" Width="1.5" PointX="10.5" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.Vendor" Width="1.5" PointX="10.5" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.VendorType" Width="1.5" PointX="5.25" PointY="35.25" IsExpanded="true" />
+        <AssociationConnector Association="LMSModel.FK_BiltyRole_UserAccounts" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK_SoftwareSetup_ContactNoType" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK_SoftwareSetup_CurrencyType" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__CustomerC__OwnCo__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__CustomerC__OwnCo__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__CustomerC__OwnCo__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__CustomerC__OwnCo__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__CustomerC__OwnCo__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__CustomerC__OwnCo__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__CustomerC__OwnCo__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__CustomerC__OwnCo__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__CustomerC__OwnCo__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK_CustomerCompany_CustomerGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__CustomerG__OwnCo__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__CustomerG__OwnCo__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__CustomerG__OwnCo__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__CustomerG__OwnCo__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__CustomerG__OwnCo__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__CustomerG__OwnCo__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__CustomerG__OwnCo__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__CustomerG__OwnCo__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__CustomerG__OwnCo__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK_SoftwareSetup_DateType" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK_SubcriptionModules_Menu" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK_SoftwareSetup_NoType" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__Vendor__OwnCompa__7755B73D" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__VendorTyp__OwnCo__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__VendorTyp__OwnCo__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__VendorTyp__OwnCo__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__VendorTyp__OwnCo__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__VendorTyp__OwnCo__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__VendorTyp__OwnCo__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__VendorTyp__OwnCo__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__VendorTyp__OwnCo__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK__VendorTyp__OwnCo__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK_OwnCompany_OwnGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK_UserAccounts_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK_UserAssignedCompanies_OwnCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK_SubcriptionModules_SubcriptionModules" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK_UserAssignedCompanies_UserAccounts" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK_Vendor_VendorType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

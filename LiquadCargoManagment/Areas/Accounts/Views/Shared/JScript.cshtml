@@ -1,0 +1,144 @@
+﻿@using LiquadCargoManagment.Areas.Accounts.Helpers;;
+<script type="text/javascript">
+    $(document).ready(function ($) {
+        let groupColumn = 3;
+        if ($('.record-table').length > 0) {
+            var oTable = $('.record-table').dataTable({
+                "bServerSide": true,
+                "bProcessing": true,
+                "paging": true,
+                "responsive": true,
+                "language": {
+                    "paginate": {
+                        "previous": '<i class="demo-psi-arrow-left"></i>',
+                        "next": '<i class="demo-psi-arrow-right"></i>'
+                    }
+                },
+                "cache": false,
+                "aLengthMenu": @(ViewBag.DataTableLengthMenu != null ? ViewBag.DataTableLengthMenu : "[[10, 20, 50, 100, 500, 1000], [10, 20, 50, 100, 500, 1000]]"),
+                "iDisplayLength": @(ViewBag.DataTableDisplayLength != null ? ViewBag.DataTableDisplayLength : "10"),
+                "ajax": {
+                    "type": "POST",
+                    "url": "@ViewBag.PageURL/listener",
+                    "contentType": 'application/json; charset=utf-8',
+                    "data": function (data) { data.ID = '@ViewBag.COAId' ;return data = JSON.stringify(data); }
+                },
+                @(ViewBag.DataTableScrollX != null ? @Html.Raw(ViewBag.DataTableScrollX) : "")
+                @(ViewBag.DataTableScrollY != null ? @Html.Raw(ViewBag.DataTableScrollY) : "")
+                "order": [0, "@(ViewBag.DataTableOrderType != null ? ViewBag.DataTableOrderType : "desc")"],
+                "columns": [
+                    @Html.Raw(ViewBag.DataTableColumns)
+
+                ],
+
+                @if(ViewBag.Grouping == true)
+                { 
+                        <text>
+
+                "columnDefs": [
+                    { "visible": false, "targets": groupColumn }
+                ],
+                "order": [[groupColumn, 'asc']],
+                "displayLength": 25,
+                "drawCallback": function (settings) {
+                    var api = this.api();
+                    var rows = api.rows({ page: 'current' }).nodes();
+                    var last = null;
+
+                    api.column(groupColumn, { page: 'current' }).data().each(function (group, i) {
+                        if (last !== group) {
+                            $(rows).eq(i).before(
+                                '<tr class="group" style="background-color:#ffe8d9"><td colspan="6">' + group + '</td></tr>'
+                            );
+
+                            last = group;
+                        }
+                    });
+                },
+                    </text>
+                }
+
+               
+                @if (ViewBag.StatusColor != null)
+                {
+                    <text>
+                    'rowCallback': function(row, data, index) {
+
+                        if (data.Status == "Paid" || data.Status == "Done") {
+                        $(row).find('td:eq(3)').css({ 'background-color': 'green', "color": "white" });
+
+                        }
+                        else if (data.Status == "Pending" || data.Status == "Unpaid" ) {
+                            $(row).find('td:eq(3)').css({ 'background-color': 'yellow', "color": "black" });
+
+                        }
+                        else if (data.Status == "Hold") {
+                            $(row).find('td:eq(3)').css({ 'background-color': 'blue', "color": "white" });
+
+                        }
+                        else {
+                        $(row).find('td:eq(3)').css({ 'background-color' : 'red',"color":"white"});
+                        }
+
+                },
+
+                    </text>
+                }
+                @if (ViewBag.Ledger != null)
+                {
+                    <text>
+                    'rowCallback': function(row, data, index) {
+
+                        $(row).find('td:eq(1)').css("color", "green" );
+                        $(row).find('td:eq(2)').css("color","red");
+                        $(row).find('td:eq(3)').css("color","black");
+
+                        },
+                    </text>
+                }
+                @if(ViewBag.isImage == true)
+                {
+                    <text>
+                "columnDefs": [{
+                    "targets": @ViewBag.targetCol,
+                    "data": 'Image',
+                    "render": function (data, type, row, meta) {
+                        return '<a href="@ViewBag.ImagePath' + data + '" target="_blank"><img src="@ViewBag.ImagePath' + data + '" alt="' + data + '"height="80" width="150"/></a>';
+                    }
+                }],
+
+                    </text>
+                }
+
+                "fnCreatedRow": function (nRow, aData, iDataIndex) {
+                    @if (ViewBag.DataTableActionColumn != null)
+                    {
+                        @:var ActionHTML = "<div class='demo-nifty-btn'>";
+                        @:ActionHTML += "<a href='@ViewBag.WebsiteURL/accountsledger?id=" + aData.ID + "' class='btn btn-warning btn-xs btn-icon'><i class='fa fa-dollar'></i></a>";
+                        @:ActionHTML += "<a href='@ViewBag.PageURL/views/" + aData.ID + "' class='btn btn-primary btn-xs btn-icon'><i class='fa fa-eye'></i></a>";
+                        if (ViewBag.AllowEditing != null)
+                        {
+                            @:ActionHTML += "<a href='@ViewBag.PageURL/edit/" + aData.ID + "' class='btn btn-primary btn-xs btn-icon'><i class='fa fa-pencil'></i></a>";
+                        }
+                        if(ViewBag.AllowDownloading != null)
+                        {
+                            @:ActionHTML += "<a href='@ViewBag.WebsiteURL/download/downloadfile?filepath=" + aData.DocumentName + "'  class='btn btn-info btn-xs btn-icon'><i class='fa fa-download'></i></a>";
+                        }
+                        else if(ViewBag.AllowDeleting != null) {
+                            @:ActionHTML += "<a href='@ViewBag.PageURL/delete/' data-id='" + aData.ID + "' class='btn btn-danger btn-xs btn-icon remove-row'><i class='fa fa-remove'></i></a>";
+                        }
+                        @:ActionHTML += "</div>";
+                        @:$('td:eq(@ViewBag.DataTableActionColumn)', nRow).html(ActionHTML);
+                    }
+                }
+            }).fnSetFilteringDelay(1000);
+            @if(ViewBag.AllowAdding != null)
+            {
+                @:$("#DataTables_Table_0_length").append('<a class="btn btn-primary" id="btnAdd" style="marViewBagiewBagin-left:12px" href="@ViewBag.PageURL/add">Add New</a>');
+            }
+        }
+    });
+
+
+
+</script>

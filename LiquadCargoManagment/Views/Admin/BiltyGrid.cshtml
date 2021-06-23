@@ -1,0 +1,103 @@
+﻿@model IEnumerable<LiquadCargoManagment.Models.Bilty>
+@{
+    ViewBag.Title = "BiltyGrid";
+}
+<link href="~/css/CustomerLoader.css" rel="stylesheet" />
+
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            <h2>Bilty Grid</h2>
+            <a id="" class="btn btn-primary btn-sm pull-right" href="@Url.Action("Bilty","Admin")" style="margin-left:10px;">Add Bilty | <i class="fa fa-plus"></i></a>
+            <a id="" class="btn btn-primary btn-sm pull-right" onclick="$('#modal-search').modal('show'); ClearItem();" href="#">Search | <i class="fa fa-search"></i></a>
+        </div>
+    </div>
+    <div class="" id="grid">
+        @Html.Partial("_BiltyGrid")
+    </div>
+</div>
+<!-- END Datatables Content -->
+<div id="modal-search" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        @using (Ajax.BeginForm("SearchCompactBilty", "Admin", new AjaxOptions() { HttpMethod = "GET", OnSuccess = "fnSearch" }))
+            {
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header text-center">
+                        <h2 class="modal-title"><i class="fa fa-search"></i> Search Bilty</h2>
+                    </div>
+                    <!-- END Modal Header -->
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                        <div class="loader LoaderTd" style="display:none"></div>
+                        <table class="table table-responsive Search">
+
+                            <tbody>
+                                <tr>
+                                    <td width="50%">
+                                        <label class="control-label">Date From</label>
+                                        <input type="text" id="DateFrom" name="DateFrom" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <label class="control-label">Date To</label>
+                                        <input type="text" id="DateTo" name="DateTo" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="control-label">Delivery Date</label>
+                                        <input type="text" id="DeliveryDate" name="DeliveryDate" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <label class="control-label">Order No</label>
+                                        <input type="text" id="OrderNo" name="OrderNo" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="control-label">Own Company</label>
+                                        @Html.DropDownList("OwnCompany", ViewBag.OwnCompany as SelectList, "-Select-", new { @class = "form-control select-chosen" })
+                                    </td>
+                                    <td>
+                                        <label class="control-label">Vehicle</label>
+                                        @Html.DropDownList("Vehicle", ViewBag.Vehicle as SelectList, "-Select-", new { @class = "form-control select-chosen" })
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="control-label">Bill To</label>
+                                        @Html.DropDownList("BillTo", ViewBag.BillTo as SelectList, "-Select-", new { @class = "form-control select-chosen" })
+                                    </td>
+                                    <td>
+                                        <label class="control-label">Receiver</label>
+                                        @Html.DropDownList("Receiver", ViewBag.Receiver as SelectList, "-Select-", new { @class = "form-control select-chosen" })
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="submit" id="btnSaveEdit" class="btn btn-primary pull-right" onclick="$('.Search').hide(); $('.LoaderTd').show();"><b><i class="fa fa-search"></i> | Search</b></button>
+                    </div>
+                    <!-- END Modal Body -->
+                </div>
+            }
+    </div>
+</div>
+
+
+
+<script src="~/js/Software js/CompactBiltyList.js"></script>
+<script src="~/js/SearchModal.js"></script>
+@section Script{
+    <script>
+        $(document).ready(function () {
+            GetOrders();
+            DateToFrom();
+        });
+    </script>
+}

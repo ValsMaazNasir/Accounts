@@ -1,0 +1,93 @@
+﻿
+@model IEnumerable<Bilty.Data.usp_MCBBranches>
+@using System.Text;
+@{ int count = 0;}
+<table class="table display table-striped example" id="tblUserAccount">
+    <thead>
+        <tr>
+
+            <td>S.NO</td>
+            <td>Code</td>
+            <td>Name</td>
+            <td>Contact No</td>
+            <td>Email</td>
+            <td>Actve</td>
+            <td>Operation</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            count++;
+            StringBuilder jsonStringUserInfo = new StringBuilder();
+            jsonStringUserInfo.Append(" { ");
+            jsonStringUserInfo.Append("\"ID\": \"" + @item.ID + "\",");
+            jsonStringUserInfo.Append("\"BR_CODE\": \"" + @item.BR_CODE + "\",");
+            jsonStringUserInfo.Append("\"BranchName\": \"" + @item.BranchName + "\",");
+            jsonStringUserInfo.Append("\"ContactNo\": \"" + @item.ContactNo + "\",");
+            jsonStringUserInfo.Append("\"EmailId\": \"" + @item.EmailId + "\",");
+            jsonStringUserInfo.Append("\"Active\": \"" + @item.Active + "\"");
+            jsonStringUserInfo.Append("}");
+<tr>
+    <td align="center">@count</td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BR_CODE)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.BranchName)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.ContactNo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EmailId)
+    </td>
+
+
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Active)
+    </td>
+
+
+    <td>
+        <a href="javascript:EditBranches('@item.ID');" class="btn btn-primary btn-xs edit"><i class="fa fa-edit"></i></a><input id="branches-@item.ID" type="hidden" value="@jsonStringUserInfo.ToString()" />
+        @*@Ajax.ActionLink("Delete", // <-- Text to display
+
+            "UserAccount", // <-- Action Method Name
+            new { FormID = Utility.Base64Encode(item.UserID.ToString()) },
+            new AjaxOptions
+
+            {
+                Confirm= "Are you sure you wish to delete this User?",
+                HttpMethod = "POST",
+                OnSuccess = "ResponseSuccess",
+                OnFailure = "ResponseFailure"
+
+            },new { @onclick= "" })*@
+    </td>
+</tr>}
+    </tbody>
+</table>
+
+<script>$(function () {
+
+        $('#tblUserAccount').DataTable({
+            'paging': true,
+            'lengthChange': false,
+            'searching': true,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false,
+
+            'processing': true
+
+        })
+
+
+
+    });</script>
+

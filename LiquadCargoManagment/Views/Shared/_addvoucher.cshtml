@@ -1,0 +1,77 @@
+﻿@using Newtonsoft.Json;
+@model LiquadCargoManagment.ViewModels.AccountsViewModel
+@using LiquadCargoManagment.Models;
+
+<div class="table-responsive">
+    <table class="table display table-striped" id="example">
+        <thead>
+            <tr>
+                <td>id</td>
+                <td>Account Title</td>
+                <td>Doc Date</td>
+                <td>Amount</td>
+                <td>Narrations</td>
+                <td>Creation Date</td>
+                <td>Operation</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.accounts)
+            {
+                string jsonData = "{";
+                jsonData += " 'id' : '" + item.id + "', ";
+                jsonData += " 'accountId' : '" + item.accountId + "', ";
+                jsonData += " 'accountTitle' : '" + item.accountTitle + "', ";
+                jsonData += " 'docDate' : '" + item.docDate.GetValueOrDefault().ToString("yyyy-MM-dd") + "', ";
+                jsonData += " 'amount' : '" + item.amount + "', ";
+                jsonData += " 'createdDate' : '" + item.created + "', ";
+                jsonData += " 'createdBy' : '" + item.createdBy + "', ";
+                jsonData += " 'modified' : '" + item.modified + "', ";
+                jsonData += " 'modifiedBy' : '" + item.modifiedBy + "',";
+                jsonData += " 'narration' : '" + item.narration + "',";
+                jsonData += " 'accounts_transaction' : [";
+                foreach (accounts_transaction transaction in Model.accounts_transactions)
+                {
+                    if (transaction.refId == item.id)
+                    {
+                    jsonData += "{";
+                    jsonData += $" 'accounts_transaction_id' : {transaction.accounts_transaction_id},";
+                    jsonData += $" 'refId' : {transaction.refId},";
+                    jsonData += $" 'orders_id' : {transaction.orders_id},";
+                    jsonData += $" 'customers_id' : {transaction.customers_id},";
+                    jsonData += $" 'details' : '{transaction.details}',";
+                    jsonData += $" 'trans_db' : {transaction.trans_db},";
+                    jsonData += $" 'trans_cr' : {transaction.trans_cr},";
+                    jsonData += $" 'chqNo' : '{transaction.chqNo}',";
+                    jsonData += $" 'created' : '{transaction.created}',";
+                    jsonData += $" 'modified' : '{transaction.modified}',";
+                    jsonData += $" 'modifiedBy' : '{transaction.modifiedBy}',";
+                    jsonData += $" 'createdBy' : '{transaction.createdBy}'";
+                    jsonData += "},";
+                    }
+                }
+                jsonData += "]";
+                jsonData += "}";
+                <tr>
+                    <td>@item.id</td>
+                    <td>@Html.DisplayName((String.IsNullOrEmpty(item.accountTitle) ? " - " : item.accountTitle))</td>
+                    <td>@item.docDate</td>
+                    <td>@item.amount </td>
+                    <td>@item.narration</td>
+                    @if (item.created != null)
+                    {
+                        <td>@Convert.ToDateTime(item.created).ToString(SoftwareFormatting.DateFormat)</td>
+                    }
+                    else
+                    {
+                        <td>@Convert.ToDateTime(item.modified).ToString(SoftwareFormatting.DateFormat)</td>
+                    }
+                    <td>
+                        <button type="button" onclick="update(@jsonData,this)" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></button>
+                        <button type="button" onclick="Delete(@item.id)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

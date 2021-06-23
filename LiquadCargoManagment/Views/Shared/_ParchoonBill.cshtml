@@ -1,0 +1,62 @@
+﻿@model IEnumerable<LiquadCargoManagment.Models.ParchoonBill>
+
+@using LiquadCargoManagment.Models;
+
+<div class="table-responsive">
+    <table class="table display table-striped" id="example">
+        <thead>
+            <tr>
+                <td>Created Date</td>
+                <td>Updated Date</td>
+                <td>Bill No</td>
+                <td>Reference No</td>
+                <td>Report Type</td>
+                <td>Billing Date</td>
+                <td>Operation</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @if (item.CreatedDate != null)
+                        {
+                            <text>@Convert.ToDateTime(item.CreatedDate).ToString(SoftwareFormatting.DateFormat)</text>
+                        }
+                        else
+                        {
+                            <text></text>
+                        }
+                    </td>
+                    <td>
+                        @if (item.ModifiedDate != null)
+                        {
+                            <text>@Convert.ToDateTime(item.ModifiedDate).ToString(SoftwareFormatting.DateFormat)</text>
+                        }
+                        else
+                        {
+                            <text></text>
+                        }
+                    </td>
+                    <td>@item.BillNo</td>
+                    <td>@item.ReferenceNo</td>
+                    <td>@item.ReportType</td>
+                    <td>@Convert.ToDateTime(item.BillingDate).ToString(SoftwareFormatting.DateFormat)</td>
+                    <td width="10%">
+                        <div class="btn-group btn-group-xs">
+                            <a class="btn btn-alt btn-danger btn-sm" data-toggle="tooltip" title="Cancel Record" onclick="DeleteModel(@item.ID)"><i class="fa fa-window-close"></i></a>
+                            <a href="~/rpASPX/Report.aspx?reportname=@item.ReportType&id=@item.ID" target="_blank" class="btn btn-alt btn-warning btn-sm" data-toggle="tooltip" title="Report"><i class="fa fa-print"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                            <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+                                <li><a href="#" onclick="EditChallan(@item.ID)"><i class="fa fa-eye pull-right"></i>Edit</a></li>
+                                <li class="divider"></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

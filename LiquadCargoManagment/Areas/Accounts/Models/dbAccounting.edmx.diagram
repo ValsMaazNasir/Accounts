@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9616725c565c42a0866d384bd93db75f" Name="Diagram1">
+        <EntityTypeShape EntityType="AccountingModel.AccountsHead" Width="1.5" PointX="2.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountingModel.AccountsLedger" Width="1.5" PointX="11.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountingModel.ARInvoice" Width="1.5" PointX="8.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountingModel.ARInvoiceDetail" Width="1.5" PointX="11" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountingModel.ChartOfAccount" Width="1.5" PointX="9.5" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountingModel.GLType" Width="1.5" PointX="5" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountingModel.MenuPermission" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountingModel.Menu" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountingModel.RolePermission" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountingModel.Role" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountingModel.Setting" Width="1.5" PointX="2.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountingModel.SubAccount" Width="1.5" PointX="7.25" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountingModel.User" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="AccountingModel.FK_ChartOfAccounts_AccountsHead" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingModel.FK_GLType_AccountsHead" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingModel.FK_AccountsLedger_ChartOfAccounts" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingModel.FK_ARInvoiceDetails_ARInvoice" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingModel.FK_ChartOfAccounts_GLType" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingModel.FK_ChartOfAccounts_SubAccounts" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingModel.FK_SubAccounts_GLType" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingModel.FK_MenuPermissions_Menus" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingModel.FK_MenuPermissions_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingModel.FK_Menus_Menus" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingModel.FK_RolePermissions_Menus" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingModel.FK_RolePermissions_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingModel.FK_Users_Roles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AccountingModel.CustomerLedger" Width="1.5" PointX="5.375" PointY="0.75" />
+        <AssociationConnector Association="AccountingModel.FK_CustomerLedger_CustomerLedger" />
+        <EntityTypeShape EntityType="AccountingModel.VendorLedger" Width="1.5" PointX="5.375" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

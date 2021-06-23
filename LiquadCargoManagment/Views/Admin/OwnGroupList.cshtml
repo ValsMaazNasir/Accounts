@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "OwnGroupList";
+}
+
+<div class="block full">
+    <div class="block-title row">
+        <h3>Own Group</h3>
+        <a id="" class="btn btn-primary btn-sm pull-right" onclick="MessageShow(this)" href="#">Add New | <i class="fa fa-plus"></i></a>
+    </div>
+    <div class="" id="Subgrid">
+        @Html.Partial("_OwnGroupList")
+    </div>
+</div>
+
+@section Script
+{
+    <script>
+        $(document).ready(function () {
+            GetOrders();
+        });
+        function GetOrders() {
+            $('#example').DataTable({
+                "lengthMenu": [[100, 200, 300, 400 - 1], [100, 200, 300, 400, "All"]],
+                dom: 'Bfrtip',
+                buttons: [
+                    //'copyHtml5',
+                    {
+                        extend: 'copyHtml5',
+                        text: '<i class="fa fa-copy"></i> | COPY',
+                        titleAttr: 'COPY'
+                    },
+                    //'excelHtml5',
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fa fa-file-o"></i> | EXCEL',
+                        titleAttr: 'Excel'
+                    },
+                    //'csvHtml5',
+                    {
+                        extend: 'csvHtml5',
+                        text: '<i class="fa fa-file-o"></i> | CSV',
+                        titleAttr: 'CSV'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        text: '<i class="fa fa-file-pdf-o"></i> | PDF',
+                        titleAttr: 'PDF'
+                    },
+                    'pageLength'
+                ]
+            }).order([1, 'des'])
+                .draw();
+        }
+        function MessageShow() {
+            Message("Info", "you can't create owngroup because you have to buy a new subcription", "info");
+        }
+    </script>
+}
+

@@ -1,0 +1,137 @@
+﻿@model LiquadCargoManagment.Areas.Accounts.Models.ChartOfAccountsModel
+@using LiquadCargoManagment.Areas.Accounts.Helpers;
+@{ 
+Layout = "~/Areas/Accounts/Views/Shared/_Layout1.cshtml";
+
+}
+@section LinkStyleSection{
+    @Styles.Render("~/assets/cache/datepickerstyle")
+    @Styles.Render("~/assets/cache/select2style")
+}
+@section LinkScriptSection{
+    @Scripts.Render("~/assets/cache/datepickerscript")
+    @Scripts.Render("~/assets/cache/select2script")
+}
+@section InLineScriptSection{
+    <script>
+    @if (ViewBag.PageType == "View")
+    {
+       @:DisableView();
+    }
+    </script>
+}
+
+<!--Page content-->
+<!--===================================================-->
+<div id="page-content">
+    @{Html.RenderPartial("BreadCrumb");}
+    <div class="panel">
+        <!--Block Styled Form -->
+        <!--===================================================-->
+        @using (Ajax.BeginForm("Save", "chartofaccounts", null, new AjaxOptions { HttpMethod = "POST", OnBegin = "OnFormBegin", OnComplete = "OnFormComplete", OnSuccess = "OnFormSuccess", OnFailure = "OnFormFailure" }, new { @id = "FormMember", @autocomplete = "off" }))
+        {
+@Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.ID)
+                                <div class="panel-body">
+                                    <div class="row">
+
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Series<span class="text-danger">*</span></label>
+                                                <input type="number" class="form-control" id="DocNum" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Posting Date<span class="text-danger">*</span></label>
+                                                <input type="date" class="form-control" id="DocDate" />
+                                            </div>
+                                        </div>
+
+                                        <br clear="all" />
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Due Date<span class="text-danger">*</span></label>
+                                                <input type="date" class="form-control" id="DueDate" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Document Date <span class="text-danger">*</span></label>
+                                                <input type="date" class="form-control" id="DocumentDate" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Item Code <span class="text-danger">*</span></label>
+                                                @*@Html.DropDownList("payment", ViewBag.ProductType as SelectList, "selected", new { @class = "form-control" })*@
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Item Name <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="ItemName" id="ItemName" />
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Quantity <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="Quantity" id="Quantity" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Price <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="Price" id="Price" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Discount% <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="Discount" id="Discount" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="control-label">DiscAmount <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="DiscAmount" id="DiscAmount" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="control-label">PriceAfterDisc <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="PriceAfterDisc" id="PriceAfterDisc" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Tax Rate<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="Tax Rate" id="Tax Rate" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Line Total<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="LineTotal" id="LineTotal" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                                <div class="panel-footer text-right">
+                                                    <a class="btn btn-info" href="@ViewBag.PageURL" tabindex="8">Back</a>
+                                                    <button class="btn btn-success" type="submit" tabindex="9">Save</button>
+                                                </div>}
+
+        <!--===================================================-->
+        <!--End Block Styled Form -->
+    </div>
+</div>
+<!--===================================================-->
+<!--End page content-->

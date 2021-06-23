@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="mydb" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="mydb (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.mydb.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="rpt_CompactbiltyTableAdapter" GeneratorDataComponentClassName="rpt_CompactbiltyTableAdapter" Name="rpt_Compactbilty" UserDataComponentName="rpt_CompactbiltyTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="mydb (Web.config)" DbObjectName="SASHAH_DEVELOPERS.dbo.rpt_Compactbilty" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        biltyid, OrderNo, OrderDate, CustomerType, Owncompanyname, OwnCompanyAddress, Totalweight, weightt, Freight, QTY, Productbroker, product, Billto, sendername, senderaddress, Recievername, Recieveraddress, 
+                         VehicleReg, packagetype
+FROM            rpt_Compactbilty</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="biltyid" DataSetColumn="biltyid" />
+              <Mapping SourceColumn="OrderNo" DataSetColumn="OrderNo" />
+              <Mapping SourceColumn="OrderDate" DataSetColumn="OrderDate" />
+              <Mapping SourceColumn="CustomerType" DataSetColumn="CustomerType" />
+              <Mapping SourceColumn="Owncompanyname" DataSetColumn="Owncompanyname" />
+              <Mapping SourceColumn="OwnCompanyAddress" DataSetColumn="OwnCompanyAddress" />
+              <Mapping SourceColumn="Totalweight" DataSetColumn="Totalweight" />
+              <Mapping SourceColumn="weightt" DataSetColumn="weightt" />
+              <Mapping SourceColumn="Freight" DataSetColumn="Freight" />
+              <Mapping SourceColumn="QTY" DataSetColumn="QTY" />
+              <Mapping SourceColumn="Productbroker" DataSetColumn="Productbroker" />
+              <Mapping SourceColumn="product" DataSetColumn="product" />
+              <Mapping SourceColumn="Billto" DataSetColumn="Billto" />
+              <Mapping SourceColumn="sendername" DataSetColumn="sendername" />
+              <Mapping SourceColumn="senderaddress" DataSetColumn="senderaddress" />
+              <Mapping SourceColumn="Recievername" DataSetColumn="Recievername" />
+              <Mapping SourceColumn="Recieveraddress" DataSetColumn="Recieveraddress" />
+              <Mapping SourceColumn="VehicleReg" DataSetColumn="VehicleReg" />
+              <Mapping SourceColumn="packagetype" DataSetColumn="packagetype" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="rpt_CompactBilllistTableAdapter" GeneratorDataComponentClassName="rpt_CompactBilllistTableAdapter" Name="rpt_CompactBilllist" UserDataComponentName="rpt_CompactBilllistTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="mydb (Web.config)" DbObjectName="SASHAH_DEVELOPERS.dbo.rpt_CompactBilllist" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        biltyid, BiltyNo, BiltyDate, TOTALQTY, VehicleReg, Reciever, customeraddess, cutomername, OwnCompanyaddress, Qty, Products, logo, Area, OwncompanyName, TOTALFREIGHT, TOTALWEIGHT
+FROM            rpt_CompactBilllist</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="biltyid" DataSetColumn="biltyid" />
+              <Mapping SourceColumn="BiltyNo" DataSetColumn="BiltyNo" />
+              <Mapping SourceColumn="BiltyDate" DataSetColumn="BiltyDate" />
+              <Mapping SourceColumn="TOTALQTY" DataSetColumn="TOTALQTY" />
+              <Mapping SourceColumn="VehicleReg" DataSetColumn="VehicleReg" />
+              <Mapping SourceColumn="Reciever" DataSetColumn="Reciever" />
+              <Mapping SourceColumn="customeraddess" DataSetColumn="customeraddess" />
+              <Mapping SourceColumn="cutomername" DataSetColumn="cutomername" />
+              <Mapping SourceColumn="OwnCompanyaddress" DataSetColumn="OwnCompanyaddress" />
+              <Mapping SourceColumn="Qty" DataSetColumn="Qty" />
+              <Mapping SourceColumn="Products" DataSetColumn="Products" />
+              <Mapping SourceColumn="logo" DataSetColumn="logo" />
+              <Mapping SourceColumn="Area" DataSetColumn="Area" />
+              <Mapping SourceColumn="OwncompanyName" DataSetColumn="OwncompanyName" />
+              <Mapping SourceColumn="TOTALFREIGHT" DataSetColumn="TOTALFREIGHT" />
+              <Mapping SourceColumn="TOTALWEIGHT" DataSetColumn="TOTALWEIGHT" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="rpt_UniversalBiltyTableAdapter" GeneratorDataComponentClassName="rpt_UniversalBiltyTableAdapter" Name="rpt_UniversalBilty" UserDataComponentName="rpt_UniversalBiltyTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="mydb (Web.config)" DbObjectName="SASHAH_DEVELOPERS.dbo.rpt_UniversalBilty" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ID, BiltyDate, biltyno, owncompany, Products, Total, Area, VehicleNo, RAddress, TotalWeighbridge, TotalLabour, TotalFreight, TotalAdditionalFreight, Weight, qty, owncompanyAddress
+FROM            rpt_UniversalBilty</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="BiltyDate" DataSetColumn="BiltyDate" />
+              <Mapping SourceColumn="biltyno" DataSetColumn="biltyno" />
+              <Mapping SourceColumn="owncompany" DataSetColumn="owncompany" />
+              <Mapping SourceColumn="Products" DataSetColumn="Products" />
+              <Mapping SourceColumn="Total" DataSetColumn="Total" />
+              <Mapping SourceColumn="Area" DataSetColumn="Area" />
+              <Mapping SourceColumn="VehicleNo" DataSetColumn="VehicleNo" />
+              <Mapping SourceColumn="RAddress" DataSetColumn="RAddress" />
+              <Mapping SourceColumn="TotalWeighbridge" DataSetColumn="TotalWeighbridge" />
+              <Mapping SourceColumn="TotalLabour" DataSetColumn="TotalLabour" />
+              <Mapping SourceColumn="TotalFreight" DataSetColumn="TotalFreight" />
+              <Mapping SourceColumn="TotalAdditionalFreight" DataSetColumn="TotalAdditionalFreight" />
+              <Mapping SourceColumn="Weight" DataSetColumn="Weight" />
+              <Mapping SourceColumn="qty" DataSetColumn="qty" />
+              <Mapping SourceColumn="owncompanyAddress" DataSetColumn="owncompanyAddress" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="rpt_ParchoonBiltyTableAdapter" GeneratorDataComponentClassName="rpt_ParchoonBiltyTableAdapter" Name="rpt_ParchoonBilty" UserDataComponentName="rpt_ParchoonBiltyTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="mydb (Web.config)" DbObjectName="SASHAH_DEVELOPERS.dbo.rpt_ParchoonBilty" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ID, biltyno, BiltyDate, DNNO, owncompany, owncompanyAddress, CustomerCompany, Customeraddress, stationname, stationaddress, VehicleReg, TotalQty, NetWeight
+FROM            rpt_ParchoonBilty</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="biltyno" DataSetColumn="biltyno" />
+              <Mapping SourceColumn="BiltyDate" DataSetColumn="BiltyDate" />
+              <Mapping SourceColumn="DNNO" DataSetColumn="DNNO" />
+              <Mapping SourceColumn="owncompany" DataSetColumn="owncompany" />
+              <Mapping SourceColumn="owncompanyAddress" DataSetColumn="owncompanyAddress" />
+              <Mapping SourceColumn="CustomerCompany" DataSetColumn="CustomerCompany" />
+              <Mapping SourceColumn="Customeraddress" DataSetColumn="Customeraddress" />
+              <Mapping SourceColumn="stationname" DataSetColumn="stationname" />
+              <Mapping SourceColumn="stationaddress" DataSetColumn="stationaddress" />
+              <Mapping SourceColumn="VehicleReg" DataSetColumn="VehicleReg" />
+              <Mapping SourceColumn="TotalQty" DataSetColumn="TotalQty" />
+              <Mapping SourceColumn="NetWeight" DataSetColumn="NetWeight" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="rpt_Compactbilty" msprop:Generator_TableClassName="rpt_CompactbiltyDataTable" msprop:Generator_TableVarName="tablerpt_Compactbilty" msprop:Generator_RowChangedName="rpt_CompactbiltyRowChanged" msprop:Generator_TablePropName="rpt_Compactbilty" msprop:Generator_RowDeletingName="rpt_CompactbiltyRowDeleting" msprop:Generator_RowChangingName="rpt_CompactbiltyRowChanging" msprop:Generator_RowEvHandlerName="rpt_CompactbiltyRowChangeEventHandler" msprop:Generator_RowDeletedName="rpt_CompactbiltyRowDeleted" msprop:Generator_RowClassName="rpt_CompactbiltyRow" msprop:Generator_UserTableName="rpt_Compactbilty" msprop:Generator_RowEvArgName="rpt_CompactbiltyRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="biltyid" msprop:Generator_ColumnVarNameInTable="columnbiltyid" msprop:Generator_ColumnPropNameInRow="biltyid" msprop:Generator_ColumnPropNameInTable="biltyidColumn" msprop:Generator_UserColumnName="biltyid" type="xs:long" />
+              <xs:element name="OrderNo" msprop:Generator_ColumnVarNameInTable="columnOrderNo" msprop:Generator_ColumnPropNameInRow="OrderNo" msprop:Generator_ColumnPropNameInTable="OrderNoColumn" msprop:Generator_UserColumnName="OrderNo" type="xs:long" />
+              <xs:element name="OrderDate" msprop:Generator_ColumnVarNameInTable="columnOrderDate" msprop:Generator_ColumnPropNameInRow="OrderDate" msprop:Generator_ColumnPropNameInTable="OrderDateColumn" msprop:Generator_UserColumnName="OrderDate" type="xs:dateTime" />
+              <xs:element name="CustomerType" msprop:Generator_ColumnVarNameInTable="columnCustomerType" msprop:Generator_ColumnPropNameInRow="CustomerType" msprop:Generator_ColumnPropNameInTable="CustomerTypeColumn" msprop:Generator_UserColumnName="CustomerType">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Owncompanyname" msprop:Generator_ColumnVarNameInTable="columnOwncompanyname" msprop:Generator_ColumnPropNameInRow="Owncompanyname" msprop:Generator_ColumnPropNameInTable="OwncompanynameColumn" msprop:Generator_UserColumnName="Owncompanyname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OwnCompanyAddress" msprop:Generator_ColumnVarNameInTable="columnOwnCompanyAddress" msprop:Generator_ColumnPropNameInRow="OwnCompanyAddress" msprop:Generator_ColumnPropNameInTable="OwnCompanyAddressColumn" msprop:Generator_UserColumnName="OwnCompanyAddress" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Totalweight" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTotalweight" msprop:Generator_ColumnPropNameInRow="Totalweight" msprop:Generator_ColumnPropNameInTable="TotalweightColumn" msprop:Generator_UserColumnName="Totalweight" type="xs:double" minOccurs="0" />
+              <xs:element name="weightt" msprop:Generator_ColumnVarNameInTable="columnweightt" msprop:Generator_ColumnPropNameInRow="weightt" msprop:Generator_ColumnPropNameInTable="weighttColumn" msprop:Generator_UserColumnName="weightt" type="xs:double" minOccurs="0" />
+              <xs:element name="Freight" msprop:Generator_ColumnVarNameInTable="columnFreight" msprop:Generator_ColumnPropNameInRow="Freight" msprop:Generator_ColumnPropNameInTable="FreightColumn" msprop:Generator_UserColumnName="Freight" type="xs:double" minOccurs="0" />
+              <xs:element name="QTY" msprop:Generator_ColumnVarNameInTable="columnQTY" msprop:Generator_ColumnPropNameInRow="QTY" msprop:Generator_ColumnPropNameInTable="QTYColumn" msprop:Generator_UserColumnName="QTY" type="xs:double" minOccurs="0" />
+              <xs:element name="Productbroker" msprop:Generator_ColumnVarNameInTable="columnProductbroker" msprop:Generator_ColumnPropNameInRow="Productbroker" msprop:Generator_ColumnPropNameInTable="ProductbrokerColumn" msprop:Generator_UserColumnName="Productbroker" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="product" msprop:Generator_ColumnVarNameInTable="columnproduct" msprop:Generator_ColumnPropNameInRow="product" msprop:Generator_ColumnPropNameInTable="productColumn" msprop:Generator_UserColumnName="product" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Billto" msprop:Generator_ColumnVarNameInTable="columnBillto" msprop:Generator_ColumnPropNameInRow="Billto" msprop:Generator_ColumnPropNameInTable="BilltoColumn" msprop:Generator_UserColumnName="Billto" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="sendername" msprop:Generator_ColumnVarNameInTable="columnsendername" msprop:Generator_ColumnPropNameInRow="sendername" msprop:Generator_ColumnPropNameInTable="sendernameColumn" msprop:Generator_UserColumnName="sendername" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="senderaddress" msprop:Generator_ColumnVarNameInTable="columnsenderaddress" msprop:Generator_ColumnPropNameInRow="senderaddress" msprop:Generator_ColumnPropNameInTable="senderaddressColumn" msprop:Generator_UserColumnName="senderaddress" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Recievername" msprop:Generator_ColumnVarNameInTable="columnRecievername" msprop:Generator_ColumnPropNameInRow="Recievername" msprop:Generator_ColumnPropNameInTable="RecievernameColumn" msprop:Generator_UserColumnName="Recievername" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Recieveraddress" msprop:Generator_ColumnVarNameInTable="columnRecieveraddress" msprop:Generator_ColumnPropNameInRow="Recieveraddress" msprop:Generator_ColumnPropNameInTable="RecieveraddressColumn" msprop:Generator_UserColumnName="Recieveraddress" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VehicleReg" msprop:Generator_ColumnVarNameInTable="columnVehicleReg" msprop:Generator_ColumnPropNameInRow="VehicleReg" msprop:Generator_ColumnPropNameInTable="VehicleRegColumn" msprop:Generator_UserColumnName="VehicleReg" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="packagetype" msprop:Generator_ColumnVarNameInTable="columnpackagetype" msprop:Generator_ColumnPropNameInRow="packagetype" msprop:Generator_ColumnPropNameInTable="packagetypeColumn" msprop:Generator_UserColumnName="packagetype" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="rpt_CompactBilllist" msprop:Generator_TableClassName="rpt_CompactBilllistDataTable" msprop:Generator_TableVarName="tablerpt_CompactBilllist" msprop:Generator_TablePropName="rpt_CompactBilllist" msprop:Generator_RowDeletingName="rpt_CompactBilllistRowDeleting" msprop:Generator_RowChangingName="rpt_CompactBilllistRowChanging" msprop:Generator_RowEvHandlerName="rpt_CompactBilllistRowChangeEventHandler" msprop:Generator_RowDeletedName="rpt_CompactBilllistRowDeleted" msprop:Generator_UserTableName="rpt_CompactBilllist" msprop:Generator_RowChangedName="rpt_CompactBilllistRowChanged" msprop:Generator_RowEvArgName="rpt_CompactBilllistRowChangeEvent" msprop:Generator_RowClassName="rpt_CompactBilllistRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="biltyid" msprop:Generator_ColumnVarNameInTable="columnbiltyid" msprop:Generator_ColumnPropNameInRow="biltyid" msprop:Generator_ColumnPropNameInTable="biltyidColumn" msprop:Generator_UserColumnName="biltyid" type="xs:long" />
+              <xs:element name="BiltyNo" msprop:Generator_ColumnVarNameInTable="columnBiltyNo" msprop:Generator_ColumnPropNameInRow="BiltyNo" msprop:Generator_ColumnPropNameInTable="BiltyNoColumn" msprop:Generator_UserColumnName="BiltyNo" type="xs:long" />
+              <xs:element name="BiltyDate" msprop:Generator_ColumnVarNameInTable="columnBiltyDate" msprop:Generator_ColumnPropNameInRow="BiltyDate" msprop:Generator_ColumnPropNameInTable="BiltyDateColumn" msprop:Generator_UserColumnName="BiltyDate" type="xs:dateTime" />
+              <xs:element name="TOTALQTY" msprop:Generator_ColumnVarNameInTable="columnTOTALQTY" msprop:Generator_ColumnPropNameInRow="TOTALQTY" msprop:Generator_ColumnPropNameInTable="TOTALQTYColumn" msprop:Generator_UserColumnName="TOTALQTY" type="xs:double" minOccurs="0" />
+              <xs:element name="VehicleReg" msprop:Generator_ColumnVarNameInTable="columnVehicleReg" msprop:Generator_ColumnPropNameInRow="VehicleReg" msprop:Generator_ColumnPropNameInTable="VehicleRegColumn" msprop:Generator_UserColumnName="VehicleReg" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Reciever" msprop:Generator_ColumnVarNameInTable="columnReciever" msprop:Generator_ColumnPropNameInRow="Reciever" msprop:Generator_ColumnPropNameInTable="RecieverColumn" msprop:Generator_UserColumnName="Reciever" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="customeraddess" msprop:Generator_ColumnVarNameInTable="columncustomeraddess" msprop:Generator_ColumnPropNameInRow="customeraddess" msprop:Generator_ColumnPropNameInTable="customeraddessColumn" msprop:Generator_UserColumnName="customeraddess" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cutomername" msprop:Generator_ColumnVarNameInTable="columncutomername" msprop:Generator_ColumnPropNameInRow="cutomername" msprop:Generator_ColumnPropNameInTable="cutomernameColumn" msprop:Generator_UserColumnName="cutomername" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OwnCompanyaddress" msprop:Generator_ColumnVarNameInTable="columnOwnCompanyaddress" msprop:Generator_ColumnPropNameInRow="OwnCompanyaddress" msprop:Generator_ColumnPropNameInTable="OwnCompanyaddressColumn" msprop:Generator_UserColumnName="OwnCompanyaddress" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Qty" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnQty" msprop:Generator_ColumnPropNameInRow="Qty" msprop:Generator_ColumnPropNameInTable="QtyColumn" msprop:Generator_UserColumnName="Qty" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Products" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnProducts" msprop:Generator_ColumnPropNameInRow="Products" msprop:Generator_ColumnPropNameInTable="ProductsColumn" msprop:Generator_UserColumnName="Products" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="logo" msprop:Generator_ColumnVarNameInTable="columnlogo" msprop:Generator_ColumnPropNameInRow="logo" msprop:Generator_ColumnPropNameInTable="logoColumn" msprop:Generator_UserColumnName="logo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Area" msprop:Generator_ColumnVarNameInTable="columnArea" msprop:Generator_ColumnPropNameInRow="Area" msprop:Generator_ColumnPropNameInTable="AreaColumn" msprop:Generator_UserColumnName="Area" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OwncompanyName" msprop:Generator_ColumnVarNameInTable="columnOwncompanyName" msprop:Generator_ColumnPropNameInRow="OwncompanyName" msprop:Generator_ColumnPropNameInTable="OwncompanyNameColumn" msprop:Generator_UserColumnName="OwncompanyName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TOTALFREIGHT" msprop:Generator_ColumnVarNameInTable="columnTOTALFREIGHT" msprop:Generator_ColumnPropNameInRow="TOTALFREIGHT" msprop:Generator_ColumnPropNameInTable="TOTALFREIGHTColumn" msprop:Generator_UserColumnName="TOTALFREIGHT" type="xs:double" minOccurs="0" />
+              <xs:element name="TOTALWEIGHT" msprop:Generator_ColumnVarNameInTable="columnTOTALWEIGHT" msprop:Generator_ColumnPropNameInRow="TOTALWEIGHT" msprop:Generator_ColumnPropNameInTable="TOTALWEIGHTColumn" msprop:Generator_UserColumnName="TOTALWEIGHT" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="rpt_UniversalBilty" msprop:Generator_TableClassName="rpt_UniversalBiltyDataTable" msprop:Generator_TableVarName="tablerpt_UniversalBilty" msprop:Generator_RowChangedName="rpt_UniversalBiltyRowChanged" msprop:Generator_TablePropName="rpt_UniversalBilty" msprop:Generator_RowDeletingName="rpt_UniversalBiltyRowDeleting" msprop:Generator_RowChangingName="rpt_UniversalBiltyRowChanging" msprop:Generator_RowEvHandlerName="rpt_UniversalBiltyRowChangeEventHandler" msprop:Generator_RowDeletedName="rpt_UniversalBiltyRowDeleted" msprop:Generator_RowClassName="rpt_UniversalBiltyRow" msprop:Generator_UserTableName="rpt_UniversalBilty" msprop:Generator_RowEvArgName="rpt_UniversalBiltyRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="BiltyDate" msprop:Generator_ColumnVarNameInTable="columnBiltyDate" msprop:Generator_ColumnPropNameInRow="BiltyDate" msprop:Generator_ColumnPropNameInTable="BiltyDateColumn" msprop:Generator_UserColumnName="BiltyDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="biltyno" msprop:Generator_ColumnVarNameInTable="columnbiltyno" msprop:Generator_ColumnPropNameInRow="biltyno" msprop:Generator_ColumnPropNameInTable="biltynoColumn" msprop:Generator_UserColumnName="biltyno" type="xs:long" minOccurs="0" />
+              <xs:element name="owncompany" msprop:Generator_ColumnVarNameInTable="columnowncompany" msprop:Generator_ColumnPropNameInRow="owncompany" msprop:Generator_ColumnPropNameInTable="owncompanyColumn" msprop:Generator_UserColumnName="owncompany" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Products" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnProducts" msprop:Generator_ColumnPropNameInRow="Products" msprop:Generator_ColumnPropNameInTable="ProductsColumn" msprop:Generator_UserColumnName="Products" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Total" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:double" minOccurs="0" />
+              <xs:element name="Area" msprop:Generator_ColumnVarNameInTable="columnArea" msprop:Generator_ColumnPropNameInRow="Area" msprop:Generator_ColumnPropNameInTable="AreaColumn" msprop:Generator_UserColumnName="Area" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VehicleNo" msprop:Generator_ColumnVarNameInTable="columnVehicleNo" msprop:Generator_ColumnPropNameInRow="VehicleNo" msprop:Generator_ColumnPropNameInTable="VehicleNoColumn" msprop:Generator_UserColumnName="VehicleNo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RAddress" msprop:Generator_ColumnVarNameInTable="columnRAddress" msprop:Generator_ColumnPropNameInRow="RAddress" msprop:Generator_ColumnPropNameInTable="RAddressColumn" msprop:Generator_UserColumnName="RAddress" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TotalWeighbridge" msprop:Generator_ColumnVarNameInTable="columnTotalWeighbridge" msprop:Generator_ColumnPropNameInRow="TotalWeighbridge" msprop:Generator_ColumnPropNameInTable="TotalWeighbridgeColumn" msprop:Generator_UserColumnName="TotalWeighbridge" type="xs:double" minOccurs="0" />
+              <xs:element name="TotalLabour" msprop:Generator_ColumnVarNameInTable="columnTotalLabour" msprop:Generator_ColumnPropNameInRow="TotalLabour" msprop:Generator_ColumnPropNameInTable="TotalLabourColumn" msprop:Generator_UserColumnName="TotalLabour" type="xs:double" minOccurs="0" />
+              <xs:element name="TotalFreight" msprop:Generator_ColumnVarNameInTable="columnTotalFreight" msprop:Generator_ColumnPropNameInRow="TotalFreight" msprop:Generator_ColumnPropNameInTable="TotalFreightColumn" msprop:Generator_UserColumnName="TotalFreight" type="xs:double" minOccurs="0" />
+              <xs:element name="TotalAdditionalFreight" msprop:Generator_ColumnVarNameInTable="columnTotalAdditionalFreight" msprop:Generator_ColumnPropNameInRow="TotalAdditionalFreight" msprop:Generator_ColumnPropNameInTable="TotalAdditionalFreightColumn" msprop:Generator_UserColumnName="TotalAdditionalFreight" type="xs:double" minOccurs="0" />
+              <xs:element name="Weight" msprop:Generator_ColumnVarNameInTable="columnWeight" msprop:Generator_ColumnPropNameInRow="Weight" msprop:Generator_ColumnPropNameInTable="WeightColumn" msprop:Generator_UserColumnName="Weight" type="xs:double" minOccurs="0" />
+              <xs:element name="qty" msprop:Generator_ColumnVarNameInTable="columnqty" msprop:Generator_ColumnPropNameInRow="qty" msprop:Generator_ColumnPropNameInTable="qtyColumn" msprop:Generator_UserColumnName="qty" type="xs:double" minOccurs="0" />
+              <xs:element name="owncompanyAddress" msprop:Generator_ColumnVarNameInTable="columnowncompanyAddress" msprop:Generator_ColumnPropNameInRow="owncompanyAddress" msprop:Generator_ColumnPropNameInTable="owncompanyAddressColumn" msprop:Generator_UserColumnName="owncompanyAddress" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="rpt_ParchoonBilty" msprop:Generator_TableClassName="rpt_ParchoonBiltyDataTable" msprop:Generator_TableVarName="tablerpt_ParchoonBilty" msprop:Generator_TablePropName="rpt_ParchoonBilty" msprop:Generator_RowDeletingName="rpt_ParchoonBiltyRowDeleting" msprop:Generator_RowChangingName="rpt_ParchoonBiltyRowChanging" msprop:Generator_RowEvHandlerName="rpt_ParchoonBiltyRowChangeEventHandler" msprop:Generator_RowDeletedName="rpt_ParchoonBiltyRowDeleted" msprop:Generator_UserTableName="rpt_ParchoonBilty" msprop:Generator_RowChangedName="rpt_ParchoonBiltyRowChanged" msprop:Generator_RowEvArgName="rpt_ParchoonBiltyRowChangeEvent" msprop:Generator_RowClassName="rpt_ParchoonBiltyRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="biltyno" msprop:Generator_ColumnVarNameInTable="columnbiltyno" msprop:Generator_ColumnPropNameInRow="biltyno" msprop:Generator_ColumnPropNameInTable="biltynoColumn" msprop:Generator_UserColumnName="biltyno" type="xs:long" minOccurs="0" />
+              <xs:element name="BiltyDate" msprop:Generator_ColumnVarNameInTable="columnBiltyDate" msprop:Generator_ColumnPropNameInRow="BiltyDate" msprop:Generator_ColumnPropNameInTable="BiltyDateColumn" msprop:Generator_UserColumnName="BiltyDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DNNO" msprop:Generator_ColumnVarNameInTable="columnDNNO" msprop:Generator_ColumnPropNameInRow="DNNO" msprop:Generator_ColumnPropNameInTable="DNNOColumn" msprop:Generator_UserColumnName="DNNO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="owncompany" msprop:Generator_ColumnVarNameInTable="columnowncompany" msprop:Generator_ColumnPropNameInRow="owncompany" msprop:Generator_ColumnPropNameInTable="owncompanyColumn" msprop:Generator_UserColumnName="owncompany" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="owncompanyAddress" msprop:Generator_ColumnVarNameInTable="columnowncompanyAddress" msprop:Generator_ColumnPropNameInRow="owncompanyAddress" msprop:Generator_ColumnPropNameInTable="owncompanyAddressColumn" msprop:Generator_UserColumnName="owncompanyAddress" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustomerCompany" msprop:Generator_ColumnVarNameInTable="columnCustomerCompany" msprop:Generator_ColumnPropNameInRow="CustomerCompany" msprop:Generator_ColumnPropNameInTable="CustomerCompanyColumn" msprop:Generator_UserColumnName="CustomerCompany" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Customeraddress" msprop:Generator_ColumnVarNameInTable="columnCustomeraddress" msprop:Generator_ColumnPropNameInRow="Customeraddress" msprop:Generator_ColumnPropNameInTable="CustomeraddressColumn" msprop:Generator_UserColumnName="Customeraddress" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="stationname" msprop:Generator_ColumnVarNameInTable="columnstationname" msprop:Generator_ColumnPropNameInRow="stationname" msprop:Generator_ColumnPropNameInTable="stationnameColumn" msprop:Generator_UserColumnName="stationname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="stationaddress" msprop:Generator_ColumnVarNameInTable="columnstationaddress" msprop:Generator_ColumnPropNameInRow="stationaddress" msprop:Generator_ColumnPropNameInTable="stationaddressColumn" msprop:Generator_UserColumnName="stationaddress" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VehicleReg" msprop:Generator_ColumnVarNameInTable="columnVehicleReg" msprop:Generator_ColumnPropNameInRow="VehicleReg" msprop:Generator_ColumnPropNameInTable="VehicleRegColumn" msprop:Generator_UserColumnName="VehicleReg" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TotalQty" msprop:Generator_ColumnVarNameInTable="columnTotalQty" msprop:Generator_ColumnPropNameInRow="TotalQty" msprop:Generator_ColumnPropNameInTable="TotalQtyColumn" msprop:Generator_UserColumnName="TotalQty" type="xs:double" minOccurs="0" />
+              <xs:element name="NetWeight" msprop:Generator_ColumnVarNameInTable="columnNetWeight" msprop:Generator_ColumnPropNameInRow="NetWeight" msprop:Generator_ColumnPropNameInTable="NetWeightColumn" msprop:Generator_UserColumnName="NetWeight" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:rpt_Compactbilty" />
+      <xs:field xpath="mstns:biltyid" />
+    </xs:unique>
+    <xs:unique name="rpt_CompactBilllist_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:rpt_CompactBilllist" />
+      <xs:field xpath="mstns:biltyid" />
+    </xs:unique>
+    <xs:unique name="rpt_UniversalBilty_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:rpt_UniversalBilty" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="rpt_ParchoonBilty_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:rpt_ParchoonBilty" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,886 @@
+﻿@model LiquadCargoManagment.Models.OrderViewModel
+@using LiquadCargoManagment.Models
+@using LiquadCargoManagment.Helpers
+
+@{ Layout = "";
+    double CountTotalWeight = 0;
+    double CountTotalWeights = 0;
+    double CountTotalExpense = 0;
+    int otherCharge = 0; }
+<!DOCTYPE html>
+<html>
+<head>
+
+
+    <link href="~/css/A4.css" rel="stylesheet" />
+
+    <link href="~/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/js/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/js/bootstrap.wysihtml5/lib/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .div {
+            border-style: groove;
+            border-width: 1px;
+            border-color: black;
+            font-weight: bold;
+            width: 120px;
+        }
+
+        body {
+            padding-left: 0;
+            padding-right: 0;
+            background-color: #FFFFFF;
+        }
+
+        .tblCustomer td, th {
+            border: 0.5px solid grey;
+        }
+
+        /*.tblCustomer table {
+            border: 1px solid black;
+        }*/
+
+        /* table .tr {
+            margin-top: 4px;
+        }*/
+
+        table .th {
+            text-align: center;
+        }
+
+        table .td {
+        }
+
+        table .label {
+            text-align: center;
+        }
+    </style>
+</head>
+<body style="font-size:11px; height:600px !important; vertical-align:central;">
+    <table style="width:100%;">
+        <tr style="margin-left:25px;">
+            <td width="15%"></td>
+            @if (Model.listBilty.OwnCompany != null)
+            {
+
+<td>
+    <div class="text-center" style="font-size:20px !important;font-weight:bold;font-family:Arial Black !important">@Model.listBilty.OwnCompany1.Name</div>
+    <p class="text-center" style="word-break:break-word; margin-left:10%; margin-right:10%;"> @Model.listBilty.OwnCompany1.Address<br /></p>
+</td>
+ }
+else
+{
+<td>
+    <div class="text-center" style="font-size:17px !important;font-weight:bold;font-family:Arial Black !important"></div>
+</td>
+       }
+            <td width="10%" align="center">
+                <img src="~/assets/OwnCompanyLogo/@Model.listBilty.OwnCompany1.CompanyLogo" width="110" height="110" style="padding-bottom:10px" />
+            </td>
+        </tr>
+        <tr>
+            <td><div><br /></div></td>
+        </tr>
+        <tr>
+            @if (Model.listBilty.OwnCompany != null)
+            {
+<td width="15%" valign="top">
+    @if (Model.listBilty.OrderDate != null)
+    {
+<div style="font-weight:bold;font-size:11px !important" class="text-center div">
+    Bilty Date<br />@Convert.ToDateTime(Model.listBilty.OrderDate).ToString(SoftwareFormatting.DateFormat)
+</div> }
+else
+{
+<div style="font-weight:bold;font-size:11px !important" class="text-center div">
+    Bilty Date<br />
+</div>          }
+
+    @*<div style="font-weight:bold;font-size:11px !important; margin-top:5px;" class="text-center div">
+            Bilty Inquiry<br />@Model.listBilty.OwnCompany1.Contact
+        </div>*@
+</td>
+ }
+else
+{
+<td width="20%" valign="top">
+    @if (Model.listBilty.OrderDate != null)
+    {
+<div style="font-weight:bold;font-size:11px !important" class="text-center div">
+    Bilty Date<br />@Convert.ToDateTime(Model.listBilty.OrderDate).ToString(SoftwareFormatting.DateFormat)
+</div> }
+else
+{
+<div style="font-weight:bold;font-size:11px !important" class="text-center div">
+    Bilty Date<br />
+</div>}
+    @*<div style="font-weight:bold;font-size:13px !important" class="text-center div">
+            Bilty Inquiry<br /> { }
+        </div>*@
+</td>
+       }
+            <td>
+                <div class="text-center" style="font-size:18px !important;font-weight:bold;text-decoration:underline;">
+                    TRANSIT RECEIPT
+                </div>
+            </td>
+
+            <td align="center">
+                <div style="font-weight:bold;font-size:11px !important; " class="text-center div">
+                    Customer Copy<br />BiltyNo: 000 @Model.listBilty.OrderNo
+                </div>
+
+            </td>
+        </tr>
+
+        <tr>
+            <td><div><br /></div></td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div>
+                    <table width="100%">
+
+
+                        <tr>
+                            <td style="font-weight:900">Transit from</td>
+                            <td style="font-weight:900">Transit To</td>
+                            @if (Model.listBilty.OrderNo != 0)
+                            {
+                <td><strong>Manual Bilty#:</strong>&nbsp;&nbsp;@Model.listBilty.OrderNo</td>
+ }
+            else
+            {
+<td><strong>Manual Bilty#:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+}
+                        </tr>
+                        <tr>
+                            <td><div><br /></div></td>
+                        </tr>
+                        <tr>
+                            @*<td style="font-weight:bold; width:13%;"></td>*@
+                            @if (Model.listBilty.PickLocation == null)
+                            {
+                <td><strong>Sender Name:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ }
+            else
+            {
+<td style="word-break: break-word;"><strong>Sender Name:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.listBilty.PickLocation1.LocationName</td>
+}
+                            @*<td style="font-weight:bold">Receiver Name:</td>*@
+                            @if (Model.listBilty.Reciever != null)
+                            {
+                <td><strong>Receiver Name:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.listBilty.PickLocation2.LocationName</td>
+ }
+            else
+            {
+<td><strong>Receiver Name:</strong></td>
+}
+                            @*<td style="font-weight:bold">Vehicle #:</td>*@
+                            @if (Model.listBilty.VehicleID != null)
+                            {
+                <td>
+                    @*<strong>Vehicle #:</strong> @item.Vehicle.RegNo*@
+                    <strong> Vehicle #</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Model.listBilty.Vehicle.RegNo
+                </td>
+ }
+            else
+            {
+<td><strong>Vehicle #</strong></td>
+}
+
+
+                        </tr>
+                        <tr>
+
+                            @if (Model.listBilty.PickLocation == null)
+                            {
+                <td width="40%"><strong>Sender Address</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ }
+            else
+            {
+<td width="40%" style="word-break: break-word; padding-right:5px;"><strong>Sender Address:</strong>&nbsp;@Model.listBilty.PickLocation1.Address </td>
+}
+
+
+                            @if (Model.listBilty.Reciever != null)
+                            {
+                <td width="40%" style="word-break: break-word;  padding-right:5px;"><strong>Receiver Address:</strong>&nbsp;&nbsp;@Model.listBilty.PickLocation2.Address</td>
+ }
+            else
+            {
+<td width="40%" style="word-break: break-word;"><strong>Receiver Address:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+}
+
+                            @if (Model.listBilty.ExternalVehicleNo != null)
+                            {
+                <td style="width:18%;"><strong>Ext.Vehicle # :</strong>&nbsp;&nbsp; @Model.listBilty.ExternalVehicleNo</td> }
+                            else
+                            {
+                <td style="width:18%;"><strong>Ext.Vehicle # :</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+}
+
+                        </tr>
+                        <tr>
+                            <td><div><br /></div></td>
+                        </tr>
+
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div style="margin-left:0;">
+                    <table class="tblCustomer" style="border: 1px solid #454441" width="100%" height="170px">
+                        <thead>
+                            <tr style="text-align: center;">
+                                <th width="4%" class="text-center">Qty</th>
+                                <th width="17%" class="text-center" style="word-wrap:break-word;" align="center">Package Type</th>
+                                <th class="text-center" width="17%">Product</th>
+                                <th class="text-center" width="17%">Product Broker</th>
+                                <th width="7%" class="text-center" align="center">Unit Wg</th>
+                                <th width="7%" class="text-center" align="center">Total Wg</th>
+                                <th width="7%" class="text-center" align="center">Weight bridge</th>
+                                <th width="7%" class="text-center" align="center">Labour</th>
+                                <th width="9%" class="text-center" align="center">Add. Freight</th>
+                                <th width="11%" class="text-center"> Total Frieght</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ double? qtyCount = 0;
+                                double? weightCount = 0;
+                                double? freightcount = 0; }
+                            <tr style="height:15px; border-bottom:none;">
+                                <td align="center">
+                                    @foreach (var item in Model.listBiltyDetail)
+                                    {
+                                        if (item.QTY != null)
+                                        {
+                        <span>@item.QTY</span><br /> }
+                    else
+                    {
+    <span></span>}
+}
+                                </td>
+                                <td>
+                                    @foreach (var item in Model.listBiltyDetail)
+                                    {
+                                        if (item.ProductId != null)
+                                        {
+
+                                            if (item.Product.PackageType != null)
+                                            {
+                        <span>&nbsp;@item.Product.PackageType.PackageTypeName</span><br /> }
+                    else
+                    {
+<span></span> }
+                }
+                else
+                {
+<span></span>}
+            }
+                                </td>
+                                <td>
+                                    @foreach (var item in Model.listBiltyDetail)
+                                    {
+                                        if (item.ProductId != null)
+                                        {
+                        <span> &nbsp;@item.Product.Name</span><br /> }
+                                        else
+                                        {
+                        <span></span>}
+                                    }
+                                </td>
+                                <td>
+                                    @foreach (var item in Model.listBiltyDetail)
+                                    {
+                                        if (item.ProductBrokerID != null)
+                                        {
+                        <span>&nbsp;@item.ProductBroker.Name</span><br /> }
+                                        else
+                                        {
+                        <span></span>}
+                                    }
+                                </td>
+
+                                <td align="right">
+                                    @foreach (var item in Model.listBiltyDetail)
+                                    {
+                                        CountTotalWeights = CountTotalWeights + Convert.ToDouble(item.QTY * item.Weight);
+                                        if (item.Weight != null)
+                                        {
+                        <span>@string.Format(SoftwareFormatting.NumberFormat, item.Weight)&nbsp;</span><br /> }
+                    else
+                    {
+    <span></span><br />}
+
+                    qtyCount += item.QTY;
+                    weightCount += item.Weight;
+                    freightcount += item.Freight;
+                }
+                                </td>
+
+                                <td align="right">
+                                    @foreach (var item in Model.listBiltyDetail)
+                                    {
+                        <span>@string.Format(SoftwareFormatting.NumberFormat, item.QTY * item.Weight)&nbsp;</span><br />}
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td></td>
+                                @if (Model.listBilty.CustomerType != null)
+                                {
+                                    if (Model.listBilty.CustomerType == "To Pay")
+                                    {
+                    <td align="right">
+                        @foreach (var bilty in Model.listBiltyDetail)
+                        {
+    <span>@string.Format(SoftwareFormatting.NumberFormat, bilty.Freight)&nbsp;</span><br />}
+                    </td>
+ }
+                                    else if (Model.listBilty.CustomerType == "Paid")
+                                    {
+                    <td align="center"><span style="padding-bottom:60px">@Model.listBilty.CustomerType &nbsp;</span> </td> }
+                                    else
+                                    {
+                    <td></td>
+ }
+                                }
+                                else
+                                {
+                    <td></td>}
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr style="height:5px;">
+
+                                <td></td>
+                                <td colspan="3" align="center"><label> Additional Weight</label> </td>
+                                <td align="right"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center" style="font-weight:600;">@qtyCount&nbsp;</td>
+                                <td colspan="3" align="left" class="text-center"><label> Grand Total</label>  </td>
+                                <td align="right" style="font-weight:600;">
+                                    @string.Format(SoftwareFormatting.NumberFormat, Model.listBiltyDetail.Sum(x => x.Weight), 0)&nbsp;
+                                </td>
+                                <td align="right" style="font-weight:600;">@string.Format(SoftwareFormatting.NumberFormat, CountTotalWeights) &nbsp;</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                @if (Model.listBilty.CustomerType != null)
+                                {
+                                    if (Model.listBilty.CustomerType == "To Pay")
+                                    {
+                    <td align="right" style="font-weight:600;">@string.Format(SoftwareFormatting.NumberFormat, freightcount)&nbsp;</td>
+ }
+                else if (Model.listBilty.CustomerType == "Paid")
+                {
+<td align="center" style="font-weight:600;">@Model.listBilty.CustomerType &nbsp;</td>
+ }
+else
+{
+<td></td> }
+            }
+            else
+            {
+<td></td>}
+                            </tr>
+                            <tr>
+                                <td colspan="10" style="font-weight:600; height:18px;">
+                                    &nbsp;&nbsp;Remarks:&nbsp;&nbsp;
+                                    @foreach (var item in Model.listBiltyDetail)
+                                    {
+                                        if (item.Remarks != null)
+                                        {
+                        <span>@Model.listBiltyDetail[0].Remarks /</span> }
+                                        else
+                                        {
+                        <span></span>}
+                                    }
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div>
+
+                    <table width="100%" style="margin-top:4px;">
+                        <tr>
+                            <td width="70%" align="left"> <p style="margin-bottom: 0rem;">*&nbsp;&nbsp;Insure your goods by yourself, goods will not be delivered without bilty.</p></td>
+                            <td width="30%" align="left">UserId:&nbsp; @ApplicationHelper.Username</td>
+                        </tr>
+                        <tr>
+                            <td width="80%" align="left">  <p style="margin-bottom: 0rem;">*&nbsp;&nbsp;This is a system generated bilty and It does not require any signature.</p></td>
+                            @if (Model.lstbiltydetail != null)
+                            {
+
+                <td width="20%" align="left">@Model.lstbiltydetail.ID</td>
+ }
+            else
+            {
+<td width="20%" align="left">Document#</td>
+}
+                        </tr>
+                        <tr>
+                            <td width="80%" align="left">*&nbsp;&nbsp;Reciever needs to stamp and sign this document.</td>
+                        </tr>
+                        <tr>
+                            <td><div><br /></div></td>
+                        </tr>
+                        <tr class="text-center">
+                            <td colspan="2"><p>Powered by Vals ERP | www.valstechnologies.com | UAN: 0304 111 66 88 </p></td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <p style="page-break-after:always"></p>
+
+    <table style="width:100%;">
+        <tr style="margin-left:25px;">
+            <td width="15%"></td>
+            @if (Model.listBilty.OwnCompany != null)
+            {
+
+<td>
+    <div class="text-center" style="font-size:20px !important;font-weight:bold;font-family:Arial Black !important">@Model.listBilty.OwnCompany1.Name</div>
+    <p class="text-center" style="word-break:break-word; margin-left:10%; margin-right:10%;"> @Model.listBilty.OwnCompany1.Address</p>
+</td> }
+            else
+            {
+<td>
+    <div class="text-center" style="font-size:17px !important;font-weight:bold;font-family:Arial Black !important"></div>
+</td>}
+            <td width="10%" align="center">
+                <img src="~/assets/OwnCompanyLogo/@Model.listBilty.OwnCompany1.CompanyLogo" width="110" height="110" style="padding-bottom:10px" />
+            </td>
+        </tr>
+        <tr>
+            <td><div><br /></div></td>
+        </tr>
+        <tr>
+            @if (Model.listBilty.OwnCompany != null)
+            {
+<td width="15%" valign="top">
+    @if (Model.listBilty.OrderDate != null)
+    {
+<div style="font-weight:bold;font-size:11px !important" class="text-center div">
+    Bilty Date<br />@Convert.ToDateTime(Model.listBilty.OrderDate).ToString(SoftwareFormatting.DateFormat)
+</div> }
+else
+{
+<div style="font-weight:bold;font-size:11px !important" class="text-center div">
+    Bilty Date<br />
+</div>}
+
+    @*<div style="font-weight:bold;font-size:11px !important; margin-top:5px;" class="text-center div">
+            Bilty Inquiry<br />@Model.listBilty.OwnCompany1.Contact
+        </div>*@
+</td> }
+            else
+            {
+<td width="20%" valign="top">
+    @if (Model.listBilty.OrderDate != null)
+    {
+<div style="font-weight:bold;font-size:11px !important" class="text-center div">
+    Bilty Date<br />@Convert.ToDateTime(Model.listBilty.OrderDate).ToString(SoftwareFormatting.DateFormat)
+</div> }
+else
+{
+<div style="font-weight:bold;font-size:11px !important" class="text-center div">
+    Bilty Date<br />
+</div>}
+    @*<div style="font-weight:bold;font-size:13px !important" class="text-center div">
+            Bilty Inquiry<br /> { }
+        </div>*@
+</td>}
+            <td>
+                <div class="text-center" style="font-size:18px !important;font-weight:bold;text-decoration:underline;">
+                    TRANSIT RECEIPT
+                </div>
+            </td>
+
+            <td align="center">
+                <div style="font-weight:bold;font-size:11px !important; " class="text-center div">
+                    Office Copy<br />BiltyNo: 000 @Model.listBilty.OrderNo
+                </div>
+
+            </td>
+        </tr>
+
+        <tr>
+            <td><div><br /></div></td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div>
+                    <table width="100%">
+
+
+                        <tr>
+                            <td style="font-weight:900">Transit from</td>
+                            <td style="font-weight:900">Transit To</td>
+                            @if (Model.listBilty.OrderNo != 0)
+                            {
+                <td><strong>Manual Bilty#:</strong>&nbsp;&nbsp;@Model.listBilty.OrderNo</td> }
+                            else
+                            {
+                <td><strong>Manual Bilty#:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>}
+                        </tr>
+                        <tr>
+                            <td><div><br /></div></td>
+                        </tr>
+                        <tr>
+                            @*<td style="font-weight:bold; width:13%;"></td>*@
+                            @if (Model.listBilty.PickLocation == null)
+                            {
+                <td><strong>Sender Name:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> }
+                            else
+                            {
+                <td style="word-break: break-word;"><strong>Sender Name:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.listBilty.PickLocation1.LocationName</td>}
+                            @*<td style="font-weight:bold">Receiver Name:</td>*@
+                            @if (Model.listBilty.Reciever != null)
+                            {
+                <td><strong>Receiver Name:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.listBilty.PickLocation2.LocationName</td> }
+                            else
+                            {
+                <td><strong>Receiver Name:</strong></td>}
+                            @*<td style="font-weight:bold">Vehicle #:</td>*@
+                            @if (Model.listBilty.VehicleID != null)
+                            {
+                <td>
+                    @*<strong>Vehicle #:</strong> @item.Vehicle.RegNo*@
+                    <strong> Vehicle #</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Model.listBilty.Vehicle.RegNo
+                </td> }
+                            else
+                            {
+                <td><strong>Vehicle #</strong></td>}
+
+
+                        </tr>
+                        <tr>
+
+                            @if (Model.listBilty.PickLocation == null)
+                            {
+                <td width="40%"><strong>Sender Address</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> }
+                            else
+                            {
+                <td width="40%" style="word-break: break-word; padding-right:5px;"><strong>Sender Address:</strong>&nbsp;@Model.listBilty.PickLocation1.Address </td>}
+
+
+                            @if (Model.listBilty.Reciever != null)
+                            {
+                <td width="40%" style="word-break: break-word;  padding-right:5px;"><strong>Receiver Address:</strong>&nbsp;&nbsp;@Model.listBilty.PickLocation2.Address</td> }
+                            else
+                            {
+                <td width="40%" style="word-break: break-word;"><strong>Receiver Address:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>}
+
+                            @if (Model.listBilty.ExternalVehicleNo != null)
+                            {
+                <td style="width:18%;"><strong>Ext.Vehicle # :</strong>&nbsp;&nbsp; @Model.listBilty.ExternalVehicleNo</td>
+ }
+            else
+            {
+<td style="width:18%;"><strong>Ext.Vehicle # :</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>}
+
+                        </tr>
+                        <tr>
+                            <td><div><br /></div></td>
+                        </tr>
+
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div style="margin-left:0;">
+                    <table class="tblCustomer" style="border: 1px solid #454441" width="100%" height="170px">
+                        <thead>
+                            <tr style="text-align: center;">
+                                <th width="4%" class="text-center">Qty</th>
+                                <th width="17%" class="text-center" style="word-wrap:break-word;" align="center">Package Type</th>
+                                <th class="text-center" width="17%">Product</th>
+                                <th class="text-center" width="17%">Product Broker</th>
+                                <th width="7%" class="text-center" align="center">Unit Wg</th>
+                                <th width="7%" class="text-center" align="center">Total Wg</th>
+                                <th width="7%" class="text-center" align="center">Weight bridge</th>
+                                <th width="7%" class="text-center" align="center">Labour</th>
+                                <th width="9%" class="text-center" align="center">Add. Freight</th>
+                                <th width="11%" class="text-center"> Total Frieght</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ double? qty = 0;
+                                double? weight = 0;
+                                double? freight = 0; }
+
+
+
+
+                            <tr style="height:18px;">
+                                <td align="center">
+                                    @foreach (var item in Model.listBiltyDetail)
+                                    {
+                                        CountTotalWeight = CountTotalWeight + Convert.ToDouble(item.QTY * item.Weight);
+                                        if (item.QTY != null)
+                                        {
+                        <span>@item.QTY</span><br /> }
+                    else
+                    {
+    <span></span>}
+
+}
+                                </td>
+                                <td>
+                                    @foreach (var item in Model.listBiltyDetail)
+                                    {
+                                        if (item.ProductId != null)
+                                        {
+
+                                            if (item.Product.PackageType != null)
+                                            {
+                        <span>&nbsp;@item.Product.PackageType.PackageTypeName</span><br /> }
+                    else
+                    {
+<span></span> }
+
+}
+else
+{
+<span></span>}
+}
+                                </td>
+                                <td>
+                                    @foreach (var item in Model.listBiltyDetail)
+                                    {
+                                        if (item.ProductId != null)
+                                        {
+                        <span> &nbsp;@item.Product.Name</span><br /> }
+                    else
+                    {
+    <span></span>}
+}
+                                </td>
+                                <td>
+                                    @foreach (var item in Model.listBiltyDetail)
+                                    {
+                                        if (item.ProductBrokerID != null)
+                                        {
+                        <span>&nbsp;@item.ProductBroker.Name</span><br /> }
+                    else
+                    {
+    <span></span>}
+}
+                                </td>
+                                <td align="right">
+                                    @foreach (var item in Model.listBiltyDetail)
+                                    {
+
+                                        if (item.Weight != null)
+                                        {
+                        <span>@string.Format(SoftwareFormatting.NumberFormat, item.Weight)&nbsp;</span><br /> }
+                    else
+                    {
+    <span></span><br />}
+
+qty += item.QTY;
+weight += item.Weight;
+freight += item.Freight;
+}
+                                </td>
+                                <td align="right">
+                                    @foreach (var item in Model.listBiltyDetail)
+                                    {
+                        <span>@string.Format(SoftwareFormatting.NumberFormat, item.QTY * item.Weight)&nbsp;</span><br />}
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+
+                                @if (Model.listBilty.CustomerType != null)
+                                {
+                                    if (Model.listBilty.CustomerType == "To Pay")
+                                    {
+                    <td align="right">
+                        @foreach (var bilty in Model.listBiltyDetail)
+                        {
+    <span>@string.Format(SoftwareFormatting.NumberFormat, bilty.Freight)&nbsp;</span><br />}
+                    </td>
+ }
+                else if (Model.listBilty.CustomerType == "Paid")
+                {
+<td align="center"><span style="padding-bottom:60px">@Model.listBilty.CustomerType &nbsp;</span> </td>
+ }
+else
+{
+<td></td>
+ }
+}
+else
+{
+<td></td>
+}
+
+
+
+                            </tr>
+
+
+
+
+                        </tbody>
+                        <tfoot>
+                            <tr style="height:5px;">
+
+                                <td></td>
+                                <td colspan="3" align="center"><label> Additional Weight</label> </td>
+                                <td align="right"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center" style="font-weight:600;">@qtyCount&nbsp;</td>
+                                <td colspan="3" align="left" class="text-center"><label> Grand Total</label>  </td>
+                                <td align="right" style="font-weight:600;">
+                                    @string.Format(SoftwareFormatting.NumberFormat, Model.listBiltyDetail.Sum(x => x.Weight), 0) &nbsp;
+                                </td>
+                                <td align="right" style="font-weight:600;">@string.Format(SoftwareFormatting.NumberFormat, CountTotalWeight) </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                @if (Model.listBilty.CustomerType != null)
+                                {
+                                    if (Model.listBilty.CustomerType == "To Pay")
+                                    {
+                    <td align="right" style="font-weight:600;">@string.Format(SoftwareFormatting.NumberFormat, freightcount) &nbsp;</td>
+ }
+                else if (Model.listBilty.CustomerType == "Paid")
+                {
+<td align="center" style="font-weight:600;">@Model.listBilty.CustomerType &nbsp;</td>
+ }
+else
+{
+<td></td>
+ }
+}
+else
+{
+<td></td>
+}
+
+                            </tr>
+                            <tr>
+                                <td colspan="10" style="font-weight:600; height:18px;">
+                                    &nbsp;&nbsp;Remarks:&nbsp;&nbsp;
+                                    @foreach (var item in Model.listBiltyDetail)
+                                    {
+                                        if (item.Remarks != null)
+                                        {
+                        <span>@Model.listBiltyDetail[0].Remarks</span> }
+                    else
+                    {
+    <span></span>}
+
+}
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div>
+
+                    <table width="100%" style="margin-top:4px;">
+                        <tr>
+                            <td width="70%" align="left"> <p style="margin-bottom: 0rem;">*&nbsp;&nbsp;Insure your goods by yourself, goods will not be delivered without bilty.</p></td>
+                            <td width="30%" align="left">UserId:&nbsp; @ApplicationHelper.Username</td>
+                        </tr>
+                        <tr>
+                            <td width="80%" align="left">  <p style="margin-bottom: 0rem;">*&nbsp;&nbsp;This is a system generated bilty and It does not require any signature.</p></td>
+                            @if (Model.lstbiltydetail != null)
+                            {
+
+                <td width="20%" align="left" id="class">Document#: </td> }
+                            else
+                            {
+                <td width="20%" align="left">Document#</td>}
+                        </tr>
+                        <tr>
+                            <td width="80%" align="left">*&nbsp;&nbsp;Reciever needs to stamp and sign this document.</td>
+                        </tr>
+                        <tr>
+                            <td><div><br /></div></td>
+                        </tr>
+                        <tr class="text-center">
+                            <td colspan="2"><p>Powered by Vals ERP | www.valstechnologies.com | UAN: 0304 111 66 88 </p></td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    @*<a class="btn" href="../rpASPX/Report.aspx?reportname=rptBillCharges">Generate Report</a>*@
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    @if (ViewBag.isOnePage == true)
+    {
+<script>
+
+            $(document).ready(function () {
+                //var pdf = new jsPDF("letter");
+                var pdf = new jsPDF('p', 'mm', [297, 210]);
+                pdf.setFillColor(17, 22, 22, 1);
+                //pdf.canvas.height = 72 * 11;
+                //pdf.canvas.width = 72 * 8.5;
+                pdf.addHTML(document.body, function () {
+                    window.close
+                    @*pdf.save('@.OrderNo' + '.pdf');*@
+                });
+            });
+
+</script>
+ }
+else
+{
+<script type="text/javascript">
+    window.print();
+    var count_elements = $('#class').length;
+</script>
+}
+</body>
+</html>
+

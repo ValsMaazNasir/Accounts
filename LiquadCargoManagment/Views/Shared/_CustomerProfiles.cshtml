@@ -1,0 +1,154 @@
+﻿@model IEnumerable<LiquadCargoManagment.Models.CustomerProfileDetail>
+
+
+
+<table id="add" class="table" style="font-size:10px">
+    <thead>
+        <tr>
+            <td><label>Product</label></td>
+            <td><label>Location From</label></td>
+            <td><label>Location To</label></td>
+            <td><label>Rate Type</label></td>
+            <td><label>Rate Rs</label></td>
+            <td><label>Weight Per Unit</label></td>
+            <td><label>Door Step Rs</label></td>
+            <td><label>Additional Charges</label></td>
+            <td><label>Local Charges</label></td>
+            <td></td>
+        </tr>
+    </thead>
+    @using (Html.BeginForm("CreateDetail", "CustomerProfile", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <tbody>
+
+            @if (Model.Count() > 0)
+            {
+                int j = 0;
+                foreach (var item in Model)
+                {
+                    j = j + 1;
+                    @Html.Hidden("[" + @j + "].ProfileId")
+                 <tr>
+                <td>
+                    @Html.DropDownList("[" + @j + "].ProductId", new SelectList(ViewBag.Product,"ID","Name" ,item.ProductId), "--Select--", new { @class = "form-control" })
+                </td>
+                <td>
+                    @Html.DropDownList("[" + @j + "].LocationFrom", new SelectList(ViewBag.Location,"ID","LocationName", item.LocationFrom), "--Select--", new { @class = "form-control" })
+                </td>
+                <td>
+                    @Html.DropDownList("[" + @j + "].LocationTo", new SelectList(ViewBag.Location, "ID", "LocationName", item.LocationTo), "--Select--", new { @class = "form-control" })
+                </td>
+                <td width="80">
+                    @{var listItems = new List<SelectListItem>
+                        {
+                            new SelectListItem { Text = "KG", Value="KG" },
+                            new SelectListItem { Text = "Unit", Value="Unit" },
+                            new SelectListItem { Text = "Lumpsum", Value="Lumpsum" },
+                            new SelectListItem { Text = "Carton", Value="Carton" }
+                        };
+                    }
+                       
+                    @Html.DropDownList("[" + @j + "].RateType", new SelectList(listItems,"Value","Text", item.RateType), "--Select--", new {@class= "form-control" })
+                </td>
+                <td>
+                    
+                    @Html.TextBox("[" + @j + "].Rate",item.Rate,new { @class="form-control" } )
+                </td>
+                <td>
+                   
+                    @Html.TextBox("[" + @j + "].WeightPerUnit", item.WeightPerUnit, new { @class = "form-control" })
+                </td>
+                <td>
+                   
+                    @Html.TextBox("[" + @j + "].DoorStepRate", item.DoorStepRate, new { @class = "form-control" })
+
+                </td>
+                <td>
+                  
+                    @Html.TextBox("[" + @j + "].AdditionCharges", item.AdditionCharges, new { @class = "form-control" })
+
+                </td>
+                <td>
+                    
+                    @Html.TextBox("[" + @j + "].LabourCharges", item.LabourCharges, new { @class = "form-control" })
+
+                </td>
+                <td>
+
+                    <button type="button" class="btn btn-primary" onclick="AddRow(this)"><i class="fa fa-plus"></i></button>
+                </td>
+            </tr>
+                }
+                }
+            else
+            {
+                int j = 0;
+        <tr>
+             
+            <td>
+                <input type="hidden" value="@ViewBag.ProfileId" />
+                @Html.DropDownList("[" + @j + "].ProductId", new SelectList(ViewBag.Product,"ID","Name"), "--Select--", new { @class = "form-control" })
+            </td>
+            <td>
+                @Html.DropDownList("[" + @j + "].LocationFrom", new SelectList(ViewBag.Location,"ID","LocationName"), "--Select--", new { @class = "form-control" })
+            </td>
+            <td>
+                @Html.DropDownList("[" + @j + "].LocationTo", new SelectList(ViewBag.Location,"ID","LocationName"), "--Select--", new { @class = "form-control" })
+            </td>
+            <td>
+                <select name="[@j]RateType" class="form-control">
+                    <option>--Select--</option>
+                    <option>KG</option>
+                    <option>Unit</option>
+                    <option>Lumsum</option>
+                    <option>Carton</option>
+                </select>
+            </td>
+            <td>
+
+                @Html.TextBox("[" + @j + "].Rate", "", new { @class = "form-control" })
+            </td>
+            <td>
+
+                @Html.TextBox("[" + @j + "].WeightPerUnit", "", new { @class = "form-control" })
+            </td>
+            <td>
+
+                @Html.TextBox("[" + @j + "].DoorStepRate", "", new { @class = "form-control" })
+
+            </td>
+            <td>
+
+                @Html.TextBox("[" + @j + "].AdditionCharges", "", new { @class = "form-control" })
+
+            </td>
+            <td>
+
+                @Html.TextBox("[" + @j + "].LabourCharges", "", new { @class = "form-control" })
+
+            </td>
+            <td>
+
+                <button type="button" class="btn btn-primary" onclick="AddRow(this)"><i class="fa fa-plus"></i></button>
+            </td>
+        </tr>
+            }
+            
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="9">
+
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-primary pull-right">Update</button>
+                    <div>
+    @Html.ActionLink("Back to List", "Index")
+            </div>
+                </td>
+            </tr>
+        </tfoot>
+     }
+    </table>

@@ -1,0 +1,113 @@
+﻿@model IEnumerable<Bilty.Data.usp_CustomerProfile>
+@using System.Text;
+@using LiquadCargoManagment.DataAccessLayer;
+@using LiquadCargoManagment.Helpers;
+@{ int count = 0; }
+
+
+<table id="tblCompany" class="table table-striped">
+    <thead class="th-color">
+        <tr>
+            <td width="2%"><div style="text-align:center;">S.NO</div></td>
+            <td>Is Hide</td>
+            <td>
+                Own Company
+            </td>
+            <td>
+                Customer Name
+            </td>
+            <td>
+                Payment Type
+            </td>
+            <td>
+                Credit Term
+            </td>
+
+            <td>
+                Company Code
+            </td>
+            <td>
+                Created Date
+            </td>
+            <td>
+                Modified Date
+            </td>
+            <td>
+                Opertaion
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+                count++;
+
+<tr>
+    <td align="center">@count</td>
+    <td>
+        @Html.DisplayFor(modelItem => item.isHide)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.OwnCompany)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CustomerName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PaymentTerm)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.CreditTerm)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.CompanyCode)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CreatedDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ModifiedDate)
+    </td>
+
+
+
+
+
+    <td>
+
+
+        <a href="@Url.Action("CustomerProfile", "Admin", new RouteValueDictionary(new { GuidOrderId = Utility.Base64Encode(item.ProfileId.ToString()) }))" target="_blank">View</a>
+    </td>
+
+</tr>
+ }
+}
+else
+{
+<tr>
+    <td colspan="11">No Record Found.</td>
+</tr>}
+    </tbody>
+
+
+
+</table>
+
+<script>
+    $(function () {
+
+        $('#tblCompany').DataTable({
+            'paging': false,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false
+        })
+    })</script>
+

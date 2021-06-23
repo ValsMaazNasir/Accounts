@@ -1,0 +1,59 @@
+﻿@model IEnumerable<LiquadCargoManagment.Models.SaleOrder>
+
+<table class="table display table-striped" id="example">
+    <thead>
+        <tr>
+            <td>Select</td>
+            <td>Date</td>
+            <td>Order No.</td>
+            <td>Vehicle No.</td>
+            <td>Loading Point</td>
+            <td>Destination Point</td>
+            <td>GST Type</td>
+            <td>GST %</td>
+            <td>Product</td>
+            <td>Freight</td>
+            <td>Shortage Qty</td>
+            <td>Shortage Amount</td>
+            <td>Status</td>
+            <td>Created by</td>
+            <td>Operation</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><input type="checkbox" /></td>
+                @if (item.OrderDate != null)
+                {
+                    <td>
+                        @Convert.ToDateTime(item.OrderDate).ToString(LiquadCargoManagment.Models.SoftwareFormatting.DateFormat)
+                    </td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                <td>@item.SaleOrderNo</td>
+                <td>@item.Vehicle.RegNo</td>
+                <td>@item.SaleOrderNo</td>
+                <td>@item.SaleOrderNo</td>
+                <td>@item.SaleOrderNo</td>
+                <td>@item.Vehicle.Code</td>
+                <td>@item.Vehicle.Code</td>
+                <td>@item.Vehicle.Code</td>
+                <td>@item.Vehicle.Code</td>
+                <td>@item.Vehicle.Code</td>
+                <td>@item.Vehicle.Code</td>
+                <td>@string.Format(LiquadCargoManagment.Models.SoftwareFormatting.NumberFormat, item.GrandTotal)</td>
+                <td>
+                    <button type="button" onclick="viewRecord(@item.ID)" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></button>
+                    <button type="button" onclick="viewRecord(@item.ID)" class="btn btn-secondary btn-xs"><i class="fa fa-edit"></i></button>
+                    <button type="button" onclick="DeleteModel(@item.ID)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

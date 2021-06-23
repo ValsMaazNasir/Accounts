@@ -1,0 +1,73 @@
+﻿
+@using Newtonsoft.Json;
+@model IEnumerable<LiquadCargoManagment.Models.DocumentType>
+@using LiquadCargoManagment.Models
+
+    <div class="table-responsive">
+        <table class="table display table-striped" id="example">
+            <thead>
+                <tr>
+
+                    <td>Created Date</td>
+                    <td>Code</td>
+                    <td>Name</td>
+                    <td>Description</td>
+                    <td>IsActive</td>
+                    <td>Operation</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    //string jsonData = JsonConvert.SerializeObject(item);
+                    string jsonData = "{";
+                    jsonData += " 'DocumentTypeID' : '" + item.DocumentTypeID + "', ";
+                    jsonData += " 'CreatedDate' : '" + item.CreatedDate + "', ";
+                    jsonData += " 'Code' : '" + item.Code + "', ";
+                    jsonData += " 'Name' : '" + item.Name + "', ";
+                    jsonData += " 'Description' : '" + item.Description + "' ";
+                    jsonData += "}";
+                <tr>
+                    @if (item.CreatedDate != null)
+                    {
+                        <td>@Convert.ToDateTime(item.CreatedDate).ToString(SoftwareFormatting.DateFormat)</td>
+                    }
+                    else
+                    {
+                        <td>@Convert.ToDateTime(item.ModifiedDate).ToString(SoftwareFormatting.DateFormat)</td>
+                    }
+                    <td>@item.Code</td>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    @if (item.isActive == true)
+                    {
+                        <td>
+                            <a onclick="ChangeStatus(@item.DocumentTypeID,false)"><i class="fa fa-toggle-on text-primary" style="font-size:25px;"></i></a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <a onclick="ChangeStatus(@item.DocumentTypeID,true)"><i class="fa fa-toggle-off text-danger" style="font-size:25px;"></i></a>
+                        </td>
+                    }
+                    <td>
+
+                        <button type="button" onclick="viewRecordRead(@jsonData,this)" class="btn btn-primary btn-xs">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                        <button type="button" onclick="viewRecord(@jsonData,this)" class="btn btn-default btn-xs">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button type="button" onclick="DeleteModel(@item.DocumentTypeID)" class="btn btn-danger btn-xs">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+

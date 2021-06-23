@@ -1,0 +1,182 @@
+﻿@model LiquadCargoManagment.Models.BillsMeta
+@{
+    ViewBag.Title = "GenerateBill";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-header">
+
+    <div class="header-section">
+        <h1>
+            Bills
+        </h1>
+    </div>
+
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>Admin</li>
+    <li><a href="javascript:;">Search Bills</a></li>
+</ul>
+
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            @*<a id="" class="btn btn-primary btn-sm pull-right" href="#" style="margin-left:5px">Search <i class="fa fa-plus"></i></a>*@
+            <a id="" class="btn btn-primary btn-sm pull-right" onclick="$('#modal-search').modal('show'); $('#thead').show()" href="#">Search Sales Order | <i class="fa fa-search"></i></a>
+        </div>
+    </div>
+
+    @Html.Partial("_Bill",Model.lstBills)
+
+</div>
+
+<div>
+    <div id="modal-search" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header text-center">
+                    <h2 class="modal-title"><i class="fa fa-search"></i> Search Bills</h2>
+                </div>
+                <!-- END Modal Header -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    @using (Html.BeginForm("GenerateBill", "admin", FormMethod.Get))
+                    {
+                        <table class="table table-responsive">
+
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <label class="control-label">Date From</label>
+                                        <input type="date" id="DateFrom" name="searchFrom" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <label class="control-label">Date To</label>
+                                        <input type="date" id="DateTo" name="searchTo" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="control-label lblOrderno">GST Type.</label>
+                                        <input type="text" id="GSTType" name="GSTType" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <label class="control-label">Vehicle Reg No.</label>
+                                        @Html.DropDownList("vehicleId", new SelectList(ViewBag.VehicleRegNo, "Value", "Text"), "--Select--", new { @class = "form-control select-chosen" })
+                                    </td>
+                                </tr>
+                                @*<tr>
+                                        <td>
+                                            <label class="control-label">Loading Point</label>
+                                            @Html.DropDownList("LoadingPoint", new SelectList(ViewBag.LoadingLocation, "Value", "Text"), "--Select--", new { @class = "form-control" })
+                                        </td>
+                                        <td>
+                                            <label class="control-label">Destination Point</label>
+                                            @Html.DropDownList("DestinationPoint", new SelectList(ViewBag.LoadingLocation, "Value", "Text"), "--Select--", new { @class = "form-control" })
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="control-label">Shipment Type</label>
+                                            @Html.DropDownList("ShipmentTypeId", new SelectList(ViewBag.ShipmentType, "Value", "Text"), "--Select--", new { @class = "form-control" })
+                                        </td>
+                                        <td>
+                                            <label class="control-label">Loading Date</label>
+                                            <input type="text" id="LoadingDate" name="LoadingDate" class="form-control" />
+                                        </td>
+                                    </tr>*@
+                            </tbody>
+
+                        </table>
+                        <button type="submit" id="btnSaveEdit" class="btn btn-primary pull-right"><b><i class="fa fa-search"></i> Search</b></button>
+                    }
+                    @Html.Partial("_SearchBills", Model.SearchBills)
+
+                    <table class="table" id="CheckBilty">
+                        <thead id="Head" style="display:none">
+                            <tr>
+                                <td>Order Date</td>
+                                <td>SaleOrder No</td>
+                                <td>Vehicle</td>
+                                <td>Loading Point</td>
+                                <td>GST Type</td>
+                                <td>Freigt</td>
+                                <td>Operation</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="modal-footer">
+
+
+                </div>
+                <!-- END Modal Body -->
+            </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+@section Script{
+    <script>
+        $("#modal-search").modal('show');
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetOrders();
+        });
+        function GetOrders() {
+            $("#example").DataTable();
+        }
+        //Assign Click event to Plus Image.
+        $("body").on("click", "img[src*='plus.png']", function () {
+            $(this).closest("tr").after("<tr><td></td><td colspan = '999'>" + $(this).next().html() + "</td></tr>");
+            $(this).attr("src", "../assets/images/Minus.jpg");
+        });
+        //Assign Click event to Minus Image.
+        $("body").on("click", "img[src*='Minus.jpg']", function () {
+            $(this).attr("src", "/assets/images/plus.png");
+            $(this).closest("tr").next().remove();
+        });
+
+        function EditChallan(Id) {
+            $("#Head").show();
+            $("#thead").hide();
+            debugger;
+            $.ajax({
+                url: `../Admin/EditLcmBill`,
+                type: 'GET',
+                data: { ID: Id },
+                success: function (res) {
+                    console.log(res.Check);
+                    for (var i = 0; i < res.Check.length; i++) {
+                        console.log(res.Check[i]);
+                        var row = `<tr class='Check'><td hidden><input type='hidden' value='${res.Check[i].ID}' name='ID'></td>
+    <td>${res.Check[i].OrderDate}</td>
+    <td>${res.Check[i].OrderNo}</td>
+    <td>${res.Check[i].Vehicle}</td>
+    <td>${res.Check[i].Loading}</td>
+    <td>${res.Check[i].GST}</td>
+    <td>${res.Check[i].Shipment}</td>
+    <td>${res.Check[i].Freight}</td>
+    <td><button type='button' class='btn btn-danger btn-xs' onclick="remove(this)"><i class='fa fa-trash'></i></button></td>
+    <tr>`;
+                        $("#CheckBilty tbody").append(row);
+                    }
+                    $('#modal-search').modal('show');
+                }
+            });
+            $("#CheckBilty tbody").empty();
+        }
+    </script>
+
+}
+

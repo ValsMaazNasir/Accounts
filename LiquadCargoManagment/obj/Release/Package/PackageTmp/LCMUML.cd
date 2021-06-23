@@ -1,0 +1,568 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="LiquadCargoManagment.Models.BiltyGrid" Collapsed="true">
+    <Position X="110.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GAACCABAQYABgACAJCAAAAAABigkhAQAEoAAIQAIgAM=</HashCode>
+      <FileName>Models\BiltyGrid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.ModelDML" Collapsed="true">
+    <Position X="135.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Models\ModelDML.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.SoftwareFormatting" Collapsed="true">
+    <Position X="196.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAABAAAAAAAAAAAAAAIAAAIAAAAACAAAAAAAA=</HashCode>
+      <FileName>Models\SoftwareFormatting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.ViewModel" Collapsed="true">
+    <Position X="180.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.WorkOrderViewModel" Collapsed="true">
+    <Position X="58.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAACAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Models\ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="17.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LiquadCargoManagment.BundleConfig" Collapsed="true">
+    <Position X="182.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.FilterConfig" Collapsed="true">
+    <Position X="184.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\FilterConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.RouteConfig" Collapsed="true">
+    <Position X="187" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.DataTransferObject.VendorDTO" Collapsed="true">
+    <Position X="189.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQADAAEACAgoBAAAAAgAIAAAoAAAAACAgAgEAAAAAE=</HashCode>
+      <FileName>DataTransferObject\VendorDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Helpers.SecurityTokenIdentifier" Collapsed="true">
+    <Position X="191.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\SecurityTokenIdentifier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Helpers.SideBarExtracter" Collapsed="true">
+    <Position X="193.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiAAAAABAAAgAAAAAAAAAAAAAAEAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Helpers\SideBarExtracter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.LCMEntities" Collapsed="true">
+    <Position X="21" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FoMCwUgGDREgwEBABbQAAQIIHgTjFgFggGgIDgwCAAY=</HashCode>
+      <FileName>Models\Model1.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Area" Collapsed="true">
+    <Position X="20.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAFgAAggAAIEQAgAAQAAAAAABAAAAAEAAAAAAE=</HashCode>
+      <FileName>Models\Area.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.AssignDriver" Collapsed="true">
+    <Position X="40.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAgAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AssignDriver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Bank" Collapsed="true">
+    <Position X="61" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQACAAIACAggAAAFAAgAASAAwAAIAACAiAggQAAAAE=</HashCode>
+      <FileName>Models\Bank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Bilty" Collapsed="true">
+    <Position X="79" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAACABAQAAAgACABCAAAAAABggghAQAAgAAIAAIAAM=</HashCode>
+      <FileName>Models\Bilty.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.BiltyDetail" Collapsed="true">
+    <Position X="94.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACAAAAAYABgAAAJAAAAAAAACAEAAAAEIAAAQAAgAA=</HashCode>
+      <FileName>Models\BiltyDetail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Broker" Collapsed="true">
+    <Position X="128.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAwgAAAAAAgABQAAgAAAAACAgAAIQAAAAM=</HashCode>
+      <FileName>Models\Broker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Category" Collapsed="true">
+    <Position X="146.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAEgAAggAAAAAAgAAQAAgAAABAAAgAAAAAAAAU=</HashCode>
+      <FileName>Models\Category.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.City" Collapsed="true">
+    <Position X="164.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAABoAAgAAAAEAgAAAAAAgCAABgAAgAAAwAAAAE=</HashCode>
+      <FileName>Models\City.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Company" Collapsed="true">
+    <Position X="22.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AwQCSAAEgAIgAAAAGAAAAAAAIgAAABACAgAQAYAAIAE=</HashCode>
+      <FileName>Models\Company.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.ContactNoType" Collapsed="true">
+    <Position X="43" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAABAAAAAAAAAAgBAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ContactNoType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Container" Collapsed="true">
+    <Position X="63.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACACAAAAggAAABAAgIBAAAgAAAAAEAwAAAQACAAE=</HashCode>
+      <FileName>Models\Container.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.ContainerType" Collapsed="true">
+    <Position X="81.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UAAgAgAwSAAghAQAUAggIARAqAAAIAARCA8EQ4AQAIA=</HashCode>
+      <FileName>Models\ContainerType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Country" Collapsed="true">
+    <Position X="97" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Country.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.CurrencyType" Collapsed="true">
+    <Position X="112.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAABAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Models\CurrencyType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Customer" Collapsed="true">
+    <Position X="130.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAyEABAAgAAAAEABAAAQAUAAAAAAAAAgEAgAAAAA=</HashCode>
+      <FileName>Models\Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.CustomerCompany" Collapsed="true">
+    <Position X="148.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACQACAAAgAAggAAQGCAgAAQAAgAAABACAgAAggAAAAM=</HashCode>
+      <FileName>Models\CustomerCompany.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.CustomerGroup" Collapsed="true">
+    <Position X="166.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACQACAAAgAAgAAAAGCAgAAQAAgAAABACAgAIAgAAAAE=</HashCode>
+      <FileName>Models\CustomerGroup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.DamageType" Collapsed="true">
+    <Position X="25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAQAgAAAAAAAgABQAAEAAAAAAAAAEAQAAAAA=</HashCode>
+      <FileName>Models\DamageType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.DateType" Collapsed="true">
+    <Position X="45.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAgBAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DateType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Department" Collapsed="true">
+    <Position X="65.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAACAAAgAAAAGCAAAAQEEAAIAAACAAgEAwAAgAA=</HashCode>
+      <FileName>Models\Department.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.DepartmentPerson" Collapsed="true">
+    <Position X="83.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQACAAAACMggAAAEABtAAQAAgAQAgAAAgAAAYAAAAE=</HashCode>
+      <FileName>Models\DepartmentPerson.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Designation" Collapsed="true">
+    <Position X="99.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAEAAIAAAAAgAAAAAAAgCAAQAAAAE=</HashCode>
+      <FileName>Models\Designation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.DieselExpense" Collapsed="true">
+    <Position X="115" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAABgAABAAAAAACAAAAAAABAAAAAAAAIAAA=</HashCode>
+      <FileName>Models\DieselExpense.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.DocumentType" Collapsed="true">
+    <Position X="133" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAgAAAAgAAAAAAAgABQAAEAAAAAAAAAEAQAAAAA=</HashCode>
+      <FileName>Models\DocumentType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Driver" Collapsed="true">
+    <Position X="151" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAGAAAgQAwgECAAgBggAUwAoEREAAiAwAAAIAEAAM=</HashCode>
+      <FileName>Models\Driver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Employee" Collapsed="true">
+    <Position X="169" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIICBAUACIggAgAEAACEMAAApAABBAAEgCQAQAAgAE=</HashCode>
+      <FileName>Models\Employee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.ExpensesType" Collapsed="true">
+    <Position X="27.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAgIAAAAAAEAAAAEQAEAQAABACAAgEAQAAAAA=</HashCode>
+      <FileName>Models\ExpensesType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Gener" Collapsed="true">
+    <Position X="47.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAEAAAggAAAAAAgAAQAAgAAAAAAAgAAAAAAAAE=</HashCode>
+      <FileName>Models\Gener.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Group" Collapsed="true">
+    <Position X="67.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACQAAwAAAACgAAAAGCAAAAQAQAAAAAACAAgEAwAAAAE=</HashCode>
+      <FileName>Models\Group.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.LocationType" Collapsed="true">
+    <Position X="101.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\LocationType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Menu" Collapsed="true">
+    <Position X="117.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAACgAAAAEAAAAAAAAgQABAAAAgAQAAEAAAE=</HashCode>
+      <FileName>Models\Menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Nature" Collapsed="true">
+    <Position X="153.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAEAAAggAAAAAAgAAQAAgAAAAAAAgAAAAAAAAE=</HashCode>
+      <FileName>Models\Nature.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.NavMenu" Collapsed="true">
+    <Position X="171.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAACAAAAAAEAAAAAAAAiAAAAAICwAQAQAAAAE=</HashCode>
+      <FileName>Models\NavMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Notification" Collapsed="true">
+    <Position X="29.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAABYQAABAA=</HashCode>
+      <FileName>Models\Notification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.NoType" Collapsed="true">
+    <Position X="49.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAIAAAAAAAAAgBAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\NoType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.OrderDetail" Collapsed="true">
+    <Position X="70" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACAAAABIAgAAAACAAAEAAAACAAABABUAACgAAAAAA=</HashCode>
+      <FileName>Models\OrderDetail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Organization" Collapsed="true">
+    <Position X="85.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAgAAAAAAAAAAgAAQAAgAAAAAiAoABgAAAAAE=</HashCode>
+      <FileName>Models\Organization.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.OwnCompany" Collapsed="true">
+    <Position X="103.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ECQACAAAAAEgwAAgWLAgAAYIAgDgFABCAgAIAgACAAU=</HashCode>
+      <FileName>Models\OwnCompany.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.OwnDepartment" Collapsed="true">
+    <Position X="119.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAACAAAgAAAAGCAAAAQEEAAIBAACgAgEAgAAgAA=</HashCode>
+      <FileName>Models\OwnDepartment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.OwnGroup" Collapsed="true">
+    <Position X="137.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACQACAAAAAAgAAAAGCAgAAQAAgAAAAACAiAAAgAAAAE=</HashCode>
+      <FileName>Models\OwnGroup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.PackageType" Collapsed="true">
+    <Position X="155.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAgAABAAgEAAAEBAAAERACCAAAAACIAgEAQAABAA=</HashCode>
+      <FileName>Models\PackageType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.PickDropLocation" Collapsed="true">
+    <Position X="173.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAkgBAAggCAAAEAggAAQAAAAABAACIAgEAQAAiAA=</HashCode>
+      <FileName>Models\PickDropLocation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.PrincipleCompany" Collapsed="true">
+    <Position X="31.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAgAAggAAAAAAgAAQAAgAAAAAAAgAAAAAAAAE=</HashCode>
+      <FileName>Models\PrincipleCompany.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Product" Collapsed="true">
+    <Position X="52" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAEhAAggAAAMRAgAERAAiAAABAAAgIAAQAACAE=</HashCode>
+      <FileName>Models\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.ProductBroker" Collapsed="true">
+    <Position X="72.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAARAAAAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ProductBroker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Province" Collapsed="true">
+    <Position X="88" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EIAAAAAAAAAAAAAAAAgAAACAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Province.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Region" Collapsed="true">
+    <Position X="106" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgBAAAggAAAEAggAAQAAkAAAAAAAgAAAQAAAAA=</HashCode>
+      <FileName>Models\Region.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.RevenueType" Collapsed="true">
+    <Position X="121.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgCAgAAAAAAAgABQAAEAAABAAAAAEQQAAAAA=</HashCode>
+      <FileName>Models\RevenueType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Role" Collapsed="true">
+    <Position X="139.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAIAAAAAAAAAAAAAAAAAAgAAAAABAgAAEAAAAAE=</HashCode>
+      <FileName>Models\Role.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.RolePermission" Collapsed="true">
+    <Position X="157.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAIAAAAAgAAAAAAAAAAAAiAQAAABAgAAAAAAAAE=</HashCode>
+      <FileName>Models\RolePermission.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.SecondLevelMenu" Collapsed="true">
+    <Position X="175.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAABQAAAAAQAAAAAAA=</HashCode>
+      <FileName>Models\SecondLevelMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Section" Collapsed="true">
+    <Position X="34" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACEAAAAAAiAAAEAAgAAAAAgAAAAAAAggAAAAIAAE=</HashCode>
+      <FileName>Models\Section.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.ShipmentType" Collapsed="true">
+    <Position X="54.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAABAAEAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ShipmentType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.ShippingLine" Collapsed="true">
+    <Position X="74.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAACAgACAABIAgABQQAFAAAQACAAAEAwAAAAA=</HashCode>
+      <FileName>Models\ShippingLine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.ShippingType" Collapsed="true">
+    <Position X="90.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACCAAAAAAgAAAAAAAgABQAAgAAAAABAgAAAAAAAAE=</HashCode>
+      <FileName>Models\ShippingType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.SoftwareSetup" Collapsed="true">
+    <Position X="124" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAgBAAAAACAIAAAAABAAAgQAAAoAAAAAA=</HashCode>
+      <FileName>Models\SoftwareSetup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Subcription" Collapsed="true">
+    <Position X="142" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAEAAAAgAAAAAAAAgQgAgQAAAAAAgAAAUAAAAE=</HashCode>
+      <FileName>Models\Subcription.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.SubcriptionModule" Collapsed="true">
+    <Position X="160" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAQAAAAAAAAAAIBAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Models\SubcriptionModule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.TaxRateRegistration" Collapsed="true">
+    <Position X="178" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAACAAEAFAAgAAAEAgAAAAACgAAAAAAAgAAAAAAAAE=</HashCode>
+      <FileName>Models\TaxRateRegistration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.TaxType" Collapsed="true">
+    <Position X="36.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAABQAAggAAQABAgAAAAAAAAE=</HashCode>
+      <FileName>Models\TaxType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.tblBrand" Collapsed="true">
+    <Position X="56.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAggAAAAAAgABQAAgAAAAABAgAAAAAAAAE=</HashCode>
+      <FileName>Models\tblBrand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.UserAccount" Collapsed="true">
+    <Position X="76.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAIAgCAAAIAAAAAAAAgAAgAAABAgAwAAAAIAAAE=</HashCode>
+      <FileName>Models\UserAccount.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Vehicle" Collapsed="true">
+    <Position X="92.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEACSAABhAAgBAASFAAgCELAIgAAoBACEgiUDQICAAM=</HashCode>
+      <FileName>Models\Vehicle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.VehicleExpens" Collapsed="true">
+    <Position X="108.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ASARAAAACAABgAAAAAIAAACAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Models\VehicleExpens.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.VehicleType" Collapsed="true">
+    <Position X="126.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAgAAggAAAEAAgAAQAAgAAABAAAgAAAAAAAAE=</HashCode>
+      <FileName>Models\VehicleType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.Vendor" Collapsed="true">
+    <Position X="144.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQADAAEiCAgoBAAAAAgAIQAAoAAABACAgAwAAAAAAE=</HashCode>
+      <FileName>Models\Vendor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.VendorType" Collapsed="true">
+    <Position X="162.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAEgAAggAAAAIAgAAQAAgAAABAAAgAAAAAAAAE=</HashCode>
+      <FileName>Models\VendorType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LiquadCargoManagment.Models.WorkOrder" Collapsed="true">
+    <Position X="38.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAACAAAAEACAAAAABAAAAABQgAAABAAAgAEABgIAAE=</HashCode>
+      <FileName>Models\WorkOrder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

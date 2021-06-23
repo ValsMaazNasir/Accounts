@@ -1,0 +1,564 @@
+﻿@model LiquadCargoManagment.Models.Meta
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            <h2>Sales Order</h2>
+        </div>
+    </div>
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-3">
+                <label>Customer Comany</label>
+                @Html.DropDownListFor(m => m.SaleOrder.CustomerCompanyId, new SelectList(ViewBag.customerCompany, "Value", "Text"), new { @class = "form-control", @tabindex = "1" })
+            </div>
+            <div class="col-md-3">
+                <label>Order Date</label>
+                @Html.EditorFor(model => model.SaleOrder.OrderDate, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="col-md-3">
+                <label>Que No.</label>
+                @Html.EditorFor(model => model.SaleOrder.QueNo, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-3">
+                <label>Shipment Type</label>
+                @Html.DropDownListFor(m => m.SaleOrder.ShipmentTypeId, new SelectList(ViewBag.ShipmentType, "Value", "Text"), new { @class = "form-control", @tabindex = "1" })
+            </div>
+            <div class="col-md-3">
+                @if (Model.SaleOrder.ShipmentType != null)
+                {
+                    if (Model.SaleOrder.ShipmentType.Name.Contains("local"))
+                    {<label class="lblOrderno"> Sales Order No.</label>}
+                    else
+                    {<label class="lblOrderno"> Invoice No.</label>}
+                }
+                else
+                {
+                    <label class="lblOrderno">Sale Order No.</label>
+                }
+                @Html.EditorFor(model => model.SaleOrder.SaleOrderNo, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-3">
+                <label>Loading Date</label>
+                @Html.EditorFor(model => model.SaleOrder.LoadingDate, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="col-md-3">
+                <label>Vehicle Reg No.</label>
+                @Html.DropDownListFor(m => m.SaleOrder.VehicleId, new SelectList(ViewBag.VehicleRegNo, "Value", "Text"), new { @class = "form-control", @tabindex = "1" })
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-md-3">
+                <label>Delivery/Token No.</label>
+                @Html.EditorFor(model => model.SaleOrder.TokenNumber, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="col-md-3">
+                <label>Delivery Date.</label>
+                @Html.EditorFor(model => model.SaleOrder.DeliveryDate, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            <h2>Loading Information</h2>
+        </div>
+    </div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>
+                    <label>Loading Location</label>
+                    @Html.DropDownListFor(m => m.SaleOrder.LoadingLocationId, new SelectList(ViewBag.LoadingLocation, "Value", "Text"), new { @class = "form-control select-chosen", @tabindex = "1" })
+                </td>
+                <td>
+                    <label>Province</label>
+                    @Html.TextBox("Province", "", new { @class = "form-control" })
+                </td>
+                <td>
+                    <label>City</label>
+                    @Html.TextBox("City", "", new { @class = "form-control" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table Loading_Information" id="Loading_Information">
+        <thead>
+            <tr>
+
+                <td><label>Destination Location</label></td>
+                <td><label>Province</label></td>
+                <td><label>City</label></td>
+                <td><label style="display:none">GST</label></td>
+                <td><label style="display:none">Tax</label></td>
+                <td><label>Product</label></td>
+                <td><label>Product Qty</label></td>
+                <td><label style="display:none">Freight</label></td>
+                <td><label style="display:none">Shortage</label></td>
+                <td><label style="display:none">Shortage Rp</label></td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Destinations != null && Model.Destinations.Count > 0)
+            {
+                foreach (var item in Model.Destinations)
+                {
+                    <tr>
+
+                        <td>
+                            @Html.DropDownList("DestinationLocation", new SelectList(ViewBag.LoadingLocation, "Value", "Text", item.DestinationLocation), new { @class = "form-control select-chosen", @tabindex = "1" })
+                        </td>
+                        <td>
+                            @Html.TextBox("Province", "", new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.TextBox("City", "", new { @class = "form-control" })
+                        </td>
+                        <td width="100">
+                            @Html.DropDownList("GSTType", new SelectList(ViewBag.GST), new { @class = "form-control", @tabindex = "1", @style = "display:none" })
+                        </td>
+                        <td>
+                            @Html.DropDownList("Tax", new SelectList(ViewBag.Taxs, "Value", "Text"), new { @class = "form-control", @tabindex = "1", @style = "display:none" })
+                        </td>
+                        <td>
+                            @Html.DropDownList("Product", new SelectList(ViewBag.Products, "Value", "Text", item.Product), new { @class = "form-control select-chosen", @tabindex = "1" })
+                        </td>
+                        <td>
+                            @Html.TextBox("ProductQty", "", new { @class = "form-control text-right", @value = item.ProductQty })
+                        </td>
+                        <td>
+                            @Html.TextBox("Freight", "", new { @class = "form-control", @style = "display:none" })
+                        </td>
+                        <td>
+                            @Html.TextBox("ShortageQty", "", new { @class = "form-control", @style = "display:none" })
+                        </td>
+                        <td>
+                            @Html.TextBox("ShortageRp", "", new { @class = "form-control", @style = "display:none" })
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger" onclick="remove(this)"><i class="fa fa-plus"></i></button>
+                        </td>
+                    </tr>
+                }
+
+            }
+            else
+            {
+                <tr>
+
+                    <td>
+                        @Html.DropDownList("DestinationLocation", new SelectList(ViewBag.LoadingLocation, "Value", "Text"), new { @class = "form-control select-chosen", @tabindex = "1" })
+                    </td>
+                    <td>
+                        @Html.TextBox("Province", "", new { @class = "form-control" })
+                    </td>
+                    <td>
+                        @Html.TextBox("City", "", new { @class = "form-control" })
+                    </td>
+                    <td width="100">
+                        @Html.DropDownList("GSTType", new SelectList(ViewBag.GST), new { @class = "form-control", @tabindex = "1", @style = "display:none" })
+                    </td>
+                    <td>
+                        @Html.DropDownList("Tax", new SelectList(ViewBag.Taxs, "Value", "Text"), new { @class = "form-control", @tabindex = "1", @style = "display:none" })
+                    </td>
+                    <td>
+                        @Html.DropDownList("Product", new SelectList(ViewBag.Products, "Value", "Text"), new { @class = "form-control select-chosen", @tabindex = "1" })
+                    </td>
+                    <td>
+                        @Html.TextBox("ProductQty", "", new { @class = "form-control text-right", @onkeyup = "Grandtotal('#Loading_Information',4,'Qty')" })
+                    </td>
+                    <td>
+                        @Html.TextBox("Freight", "", new { @class = "form-control", @style = "display:none" })
+                    </td>
+                    <td>
+                        @Html.TextBox("ShortageQty", "", new { @class = "form-control", @style = "display:none" })
+                    </td>
+                    <td>
+                        @Html.TextBox("ShortageRp", "", new { @class = "form-control", @style = "display:none" })
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" onclick="AddLoading(this)"><i class="fa fa-plus"></i></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr class="grand_total" style="font-weight:bold;">
+                <td colspan="9">
+                    Grand Total :
+                </td>
+                <td colspan="2" class="text-right" style="padding-right:70px"></td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <button type="submit" onclick="Save()" class="btn btn-primary pull-right"><i class="fa fa-save"></i> | Save</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>
+
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            <h2>Vehicle Expenses</h2>
+        </div>
+    </div>
+
+    <table class="table VehicleExpense" id="Expense_Information">
+        <thead>
+            <tr>
+                <td><label>Expense Type</label></td>
+                <td><label>Payment Method</label></td>
+                <td><label>Bank Br</label></td>
+                <td><label>Instrument #</label></td>
+                <td><label>Cheque Date</label></td>
+                <td><label>Amount Rs.</label></td>
+                <td><label>Received By</label></td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Expenses != null && Model.Expenses.Count > 0)
+            {
+                foreach (var item in Model.Expenses)
+                {
+                    <tr>
+                        <td>
+                            @Html.DropDownList("ExpenseTypeId", new SelectList(ViewBag.Payment,"Value","Text",item.ExpenseTypeId), htmlAttributes: new { @class = "form-control" })
+
+                        </td>
+                        <td>
+                            @Html.DropDownList("PaymentMethod", new SelectList(ViewBag.Payment), htmlAttributes: new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.DropDownList("BankBranchId", new SelectList(ViewBag.BankBranchId, "Value", "Text", item.BankBranchId), htmlAttributes: new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.TextBox("Instrument", "", new { @class = "form-control",@value = item.Instrument })
+                        </td>
+                        <td>
+                            @Html.TextBox("ChequeDate", "", new { @class = "form-control",@value = item.ChequeDate })
+                        </td>
+                        <td>
+                            @Html.TextBox("Amount", "", new { @class = "form-control text-right", @onkeyup = "Grandtotal('.VehicleExpense',5,'Amount')",@value = item.Amount })
+                        </td>
+                        <td>
+                            @Html.TextBox("RecievedBy", "", new { @class = "form-control",@value = item.RecievedBy })
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger" onclick="remove(this)"><i class="fa fa-plus"></i></button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td>
+                        @Html.Editor("ExpenseTypeId", new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                    <td>
+                        @Html.DropDownList("PaymentMethod", new SelectList(ViewBag.Payment), htmlAttributes: new { @class = "form-control" })
+                    </td>
+                    <td>
+                        @Html.TextBox("BankBranchId", "", new { @class = "form-control" })
+                    </td>
+                    <td>
+                        @Html.TextBox("Instrument", "", new { @class = "form-control" })
+                    </td>
+                    <td>
+                        @Html.TextBox("ChequeDate", "", new { @class = "form-control" })
+                    </td>
+                    <td>
+                        @Html.TextBox("Amount", "", new { @class = "form-control text-right", @onkeyup = "Grandtotal('.VehicleExpense',5,'Amount')" })
+                    </td>
+                    <td>
+                        @Html.TextBox("RecievedBy", "", new { @class = "form-control" })
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" onclick="AddVehicleExpense(this)"><i class="fa fa-plus"></i></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr class="grand_total_Vehicle" style="font-weight:bold">
+                <td colspan="5">
+                    Grand Total
+                </td>
+                <td colspan="3" class="text-right" style="padding-right:222px"></td>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>
+
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            <h2>Diesel Issuance</h2>
+        </div>
+    </div>
+
+    <table class="table Diesel" id="Diesal_Information">
+        <thead>
+            <tr>
+
+                <td><label>Code</label></td>
+                <td><label>Filling Stations</label></td>
+                <td><label>Diesel Receipt No</label></td>
+                <td><label>Diesel (L)</label></td>
+                <td><label>Rate</label></td>
+                <td><label>Amount Rs.</label></td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.DiesalExpense != null && Model.DiesalExpense.Count > 0)
+            {
+                foreach (var item in Model.DiesalExpense)
+                {
+                    <tr>
+                        <td>
+                            @Html.TextBox("code", "", new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.DropDownList("Vendors", new SelectList(ViewBag.Vendors, "Value", "Text", item.VendorID), new { @class = "form-control", @tabindex = "1" })
+                        </td>
+                        @*<td>
+                        @Html.TextBox("DieselReceiptNo", "", new { @class = "form-control" })
+                    </td>*@
+                        <td>
+                            @Html.TextBox("Liter", "", new { @class = "form-control text-right", @onkeyup = "Grandtotal('.Diesel',2,'DieselLiter')", @value = item.Liter })
+                        </td>
+                        <td>
+                            @Html.TextBox("Liter", "", new { @class = "form-control text-right", @onkeyup = "Grandtotal('.Diesel',3,'Rate')", @value = item.Rate })
+                        </td>
+                        <td>
+                            @Html.TextBox("Liter", "", new { @class = "form-control text-right", @onkeyup = "Grandtotal('.Diesel',4,'AmountRs')", item.Amount })
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger" onclick="remove(this)"><i class="fa fa-plus"></i></button>
+                        </td>
+                    </tr>
+                }
+
+            }
+            else
+            {
+                <tr>
+                    <td>
+                        @Html.TextBox("code", "", new { @class = "form-control" })
+                    </td>
+                    <td>
+                        @Html.DropDownList("Vendors", new SelectList(ViewBag.Vendors, "Value", "Text"), new { @class = "form-control", @tabindex = "1" })
+                    </td>
+                    @*<td>
+                    @Html.TextBox("DieselReceiptNo", "", new { @class = "form-control" })
+                </td>*@
+                    <td>
+                        @Html.TextBox("Liter", "", new { @class = "form-control text-right", @onkeyup = "Grandtotal('.Diesel',2,'DieselLiter')"})
+                    </td>
+                    <td>
+                        @Html.TextBox("Liter", "", new { @class = "form-control text-right", @onkeyup = "Grandtotal('.Diesel',3,'Rate')" })
+                    </td>
+                    <td>
+                        @Html.TextBox("Liter", "", new { @class = "form-control text-right", @onkeyup = "Grandtotal('.Diesel',4,'AmountRs')"})
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" onclick="AddDiesel(this)"><i class="fa fa-plus"></i></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr style="font-weight:bold;" class="grand_total_Diesel">
+                <td colspan="3">
+                    Grand Total
+                </td>
+                <td class="text-right" style="padding-right:16px"></td>
+                <td class="text-right" style="padding-right:16px"></td>
+                <td colspan="2" class="text-right" style="padding-right:70px"></td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <button type="submit" onclick="Save()"  class="btn btn-primary pull-right"><i class="fa fa-save"></i> | Save</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>
+
+
+
+
+@section Script
+{
+    <script>
+
+        $(document).ready(function () {
+            $("#ChequeDate").datepicker({
+                altField: "#ChequeDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#OrderDate").datepicker({
+                altField: "#OrderDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#LoadingDate").datepicker({
+                altField: "#LoadingDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+        });
+
+        function AddVehicleExpense(A) {
+            $(".select-chosen").chosen('destroy');
+            var parent = $(A).parent("td").parent("tr").html();
+            parent = parent.replace("btn-primary", "btn-danger").replace("fa-plus", "fa-trash").replace("AddVehicleExpense", "remove");
+            $(".VehicleExpense").find("tbody").append(`<tr>${parent}</tr>`);
+            $(".select-chosen").chosen();
+
+        }
+        function AddDiesel(A) {
+            debugger;
+            $(".select-chosen").chosen('destroy');
+            var parent = $(A).parent("td").parent("tr").html();
+            parent = parent.replace("btn-primary", "btn-danger").replace("fa-plus", "fa-trash").replace("AddDiesel", "remove");
+            $(".Diesel").find("tbody").append(`<tr>${parent}</tr>`);
+            $(".select-chosen").chosen();
+
+        }
+        function AddLoading(A) {
+
+            $(".select-chosen").chosen('destroy');
+            var parent = $(A).parent("td").parent("tr").html();
+            parent = parent.replace("btn-primary", "btn-danger").replace("fa-plus", "fa-trash").replace("AddLoading", "remove");
+            $(".Loading_Information").find("tbody").append(`<tr>${parent}</tr>`);
+            $(".select-chosen").chosen();
+
+        }
+        function remove(e) {
+            $(e).parent("td").parent("tr").fadeOut(100, function () { $(this).remove(); });
+        }
+        function Grandtotal(q, totalColumnIndex, type) {
+            debugger;
+            let grTotal = 0;
+            for (var i = 0; i < $(q).find("tbody tr").length; i++) {
+
+                grTotal += parseFloat($(q).find(`tbody tr:eq(${i}) td:eq(${totalColumnIndex}) input`).val().trim() == "" ? 0 : $(q).find(`tbody tr:eq(${i}) td:eq(${totalColumnIndex}) input`).val().trim());
+            }
+            if (type == "Qty") {
+                $(q).find("tfoot tr.grand_total td:eq(1)").text(grTotal);
+            }
+            else if (type == "DieselLiter") {
+                $(q).find("tfoot tr.grand_total_Diesel td:eq(1)").text(grTotal);
+            }
+            else if (type == "Rate") {
+                $(q).find("tfoot tr.grand_total_Diesel td:eq(2)").text(grTotal);
+            }
+            else if (type == "AmountRs") {
+                $(q).find("tfoot tr.grand_total_Diesel td:eq(3)").text(grTotal);
+            }
+            if (type == "Amount") {
+                $(q).find("tfoot tr.grand_total_Vehicle td:eq(1)").text(grTotal);
+            }
+        }
+        $("table").on("change", "input", function () {
+            var tableRow = $(this).closest("tr");
+            var one = Number(tableRow.find("#DieselLiter").val());
+            var two = Number(tableRow.find("#Rate").val());
+            var total = one * two;
+            tableRow.find("#Amount").val(total);
+        });
+
+        function Save() {
+            let cci = $("#SaleOrder_CustomerCompanyId").val();
+            let od = $("#SaleOrder_OrderDate").val();
+            let qn = $("#SaleOrder_QueNo").val();
+            let si = $("#SaleOrder_ShipmentTypeId").val();
+            let sn = $("#SaleOrder_SaleOrderNo").val();
+            let ld = $("#SaleOrder_LoadingDate").val();
+            let vi = $("#SaleOrder_VehicleId").val();
+            let tn = $("#SaleOrder_TokenNumber").val();
+            let dd = $("#SaleOrder_DeliveryDate").val();
+            let lli = $("#SaleOrder_LoadingLocationId").val();
+            var singleObject = { CustomerCompanyId: cci, OrderDate: od, QueNo: qn, ShipmentTypeId: si, SaleOrderNo: sn, LoadingDate: ld, LoadingDate: ld, VehicleId: vi, TokenNumber: tn, DeliveryDate: dd, LoadingLocationId: lli };
+            var loadingInfoArray = [];
+            let loadingTable = $("#Loading_Information tbody tr");
+            for (var i = 0; i < loadingTable.length; i++) {
+                let loc = loadingTable.eq(i).find("td:eq(0) select").val();
+                let gst = loadingTable.eq(i).find("td:eq(3) select").val();
+                let tax = loadingTable.eq(i).find("td:eq(4) select").val();
+                let prod = loadingTable.eq(i).find("td:eq(5) select").val();
+                let qty = loadingTable.eq(i).find("td:eq(6) input").val();
+                let freight = loadingTable.eq(i).find("td:eq(7) input").val();
+                let shQty = loadingTable.eq(i).find("td:eq(7) input").val();
+                let shqAmount = loadingTable.eq(i).find("td:eq(7) input").val();
+                loadingInfoArray.push({ DestinationLocation: loc, GSTType: gst, Tax: tax, Product: prod, ProductQty: qty, Freight: freight, ShortageQty: shQty, Shortage: shqAmount });
+            }
+            var VehicleExpenseArray = [];
+            let ExpenseTable = $("#Expense_Information tbody tr");
+            for (var i = 0; i < ExpenseTable.length; i++) {
+                let exp = ExpenseTable.eq(i).find("td:eq(0) select").val();
+                let pm = ExpenseTable.eq(i).find("td:eq(3) select").val();
+                let bbi = ExpenseTable.eq(i).find("td:eq(4) input").val();
+                let ins = ExpenseTable.eq(i).find("td:eq(5) input").val();
+                let cd = ExpenseTable.eq(i).find("td:eq(6) input").val();
+                let am = ExpenseTable.eq(i).find("td:eq(7) input").val();
+                let rb = ExpenseTable.eq(i).find("td:eq(7) input").val();
+                VehicleExpenseArray.push({ ExpenseTypeId: exp, PaymentMethod: pm, BankBranchId: bbi, Instrument: ins, ChequeDate: cd, Amount: am, RecievedBy: rb });
+            }
+
+            var DiesalExpenseArray = [];
+            let DiesalTable = $("#Diesal_Information tbody tr");
+            for (var i = 0; i < DiesalTable.length; i++) {
+                let vi = DiesalTable.eq(i).find("td:eq(1) select").val();
+                let liter = DiesalTable.eq(i).find("td:eq(2) input").val();
+                let rate = DiesalTable.eq(i).find("td:eq(3) input").val();
+                let amount = DiesalTable.eq(i).find("td:eq(4) input").val();
+                DiesalExpenseArray.push({ VendorID: vi, Liter: liter, Rate: rate, Amount: amount });
+            }
+
+            $.ajax({
+                url: "../admin/save",
+                type: "post",
+                data: { saleOrder: singleObject, Destination: loadingInfoArray, Diesal: DiesalExpenseArray, Expenses: VehicleExpenseArray, type: "single" },
+                success: function (response) {
+                    if (response == "OK") {
+                        Message("success", "Record Updated", "success");
+                        setTimeout(function () { window.location.reload() }, 3);
+                    }
+                    else {
+                        Message("Error", response, "error");
+
+                    }
+                }
+            })
+
+        }
+
+    </script>
+}

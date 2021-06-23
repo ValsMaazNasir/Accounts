@@ -1,0 +1,177 @@
+﻿@model LiquadCargoManagment.Models.AdminModel
+@{ ViewBag.Title = "Transporter"; }
+
+<div class="content-header">
+    <div class="header-section">
+        <h1>
+            Transporter <br><small>Create Read Update Delete Transporter</small>
+        </h1>
+    </div>
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>Admin</li>
+    <li><a href="javascript:;">Transporter</a></li>
+</ul>
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            @*<input type="button" style="float:right" class="btn btn-primary" data-target="#AddTransporter" value="Add Transporter" data-toggle="modal" />*@
+            <button type="button" class="btn btn-primary pull-right" data-target="#AddTransporter" data-toggle="modal"><i class="fa fa-plus"></i> | Add Transporter</button>
+        </div>
+    </div>
+    <div id="lstStation">
+        @Html.Partial("Admin/_Transporter", Model.lstStation)
+    </div>
+</div>
+@*<br />
+    <div class="col-lg-12"><div><input type="button" style="float:right" class="btn btn-primary" data-target="#AddTransporter" value="Add Transporter" data-toggle="modal" /></div></div>
+    <hr />*@
+<div id="AddTransporter" class="modal fade clearControl" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add Transporter</h4>
+            </div>
+            <div class="modal-body">
+
+                @using (Ajax.BeginForm("Transporter", "Admin", new AjaxOptions { HttpMethod = "POST", LoadingElementId = "page_loader", OnSuccess = "SuccessResponse", OnFailure = "FailureResponse" }))
+                {
+                    <div class="modal-body form">
+                        @Html.AntiForgeryToken()
+
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        @Html.Hidden("ID", "0", new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.Label("Code", htmlAttributes: new { @class = "control-label" })
+                                        <input type="text" id="Code" name="Code" class="form-control" />
+                                    </td>
+                                    <td>
+                                        @Html.Label("Name", htmlAttributes: new { @class = "control-label" })
+                                        <input type="text" id="Name" name="Name" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.Label("City", htmlAttributes: new { @class = "control-label" })
+                                        @Html.DropDownList("ddlCity", ViewBag.City as SelectList, new { @class = "form-control" })
+                                        @Html.Hidden("CityID", "0")
+                                    </td>
+                                    <td>
+                                        @Html.Label("Contact Person", htmlAttributes: new { @class = "control-label" })
+                                        <input type="text" id="ContactPerson" name="ContactPerson" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.Label("Contact No", htmlAttributes: new { @class = "control-label" })
+                                        <input type="text" id="ContactNo" name="ContactNo" class="form-control" />
+                                    </td>
+                                    <td>
+                                        @Html.Label("Secondary Contact Person", htmlAttributes: new { @class = "control-label" })
+                                        <input type="text" id="SecondaryContactPerson" name="SecondaryContactPerson" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.Label("Secondary Contact", htmlAttributes: new { @class = "control-label" })
+                                        <input type="text" id="SecondaryContactNo" name="SecondaryContactNo" class="form-control" />
+                                    </td>
+                                    <td>
+                                        @Html.Label("Is Active?", htmlAttributes: new { @class = "control-label" })
+                                        <input type="checkbox" id="IsActive" name="IsActive" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.Label("Address", htmlAttributes: new { @class = "control-label" })
+                                        <textarea class="form-control" id="Address" name="Address" rows="3"></textarea>
+                                    </td>
+                                    <td>
+                                        @Html.Label("Description", htmlAttributes: new { @class = "control-label" })
+                                        <textarea class="form-control" id="Description" name="Description" rows="3"></textarea>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button id="btnSubmit" type="submit" value="Save" class="btn btn-primary"><i class="fa fa-save"></i> | Save</button>
+                    </div>
+                    }
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+@section Script
+{
+    <script type="text/javascript">
+        function SuccessResponse(data) {
+            if (data.Status == "OK") {
+                if (data.Form == "Station") {
+
+                    $("#lstStation").html(data.html);
+                    alert(data.Message);
+                    if (data.Message !== "Record deleted Successfully!.")
+                        $('#AddTransporter').modal('toggle');
+                    clearFirst();
+                    $('#IsActive').attr('checked', true);
+                    $('#IsActive').val("True");
+                    $("#ddlCity").val(0);
+
+                }
+                $("#btnSubmit").html("Save");
+            }
+            else {
+                alert(data.Message);
+            }
+
+        }
+        $("#ddlCity").change(function () {
+            $("#CityID").val(this.value);
+        });
+        function EditStation(id) {
+            var Json = jQuery.parseJSON($("#station-" + id).val());
+            $("#Code").val(Json.Code);
+            $("#ID").val(Json.ID);
+            $("#Name").val(Json.Name);
+            $("#ddlCity").val(Json.CityID);
+            $("#CityID").val(Json.CityID);
+            $("#SecondaryContactPerson").val(Json.SecondaryContactPerson);
+            $("#ContactNo").val(Json.ContactNo);
+            $("#SecondaryContactNo").val(Json.SecondaryContactNo);
+            $("#Address").val(Json.Address);
+
+            $("#Description").val(Json.Description);
+            $("#ContactPerson").val(Json.ContactPerson);
+            if (Json.IsActive == "True") {
+                $('#IsActive').attr('checked', true);
+                $('#IsActive').val("True");
+            }
+            else
+                $('#IsActive').attr('checked', false);
+            $('#AddTransporter').modal('toggle');
+        }
+
+        $(document).ready(function () {
+            $("#tblUserAccount").DataTable();
+        });
+        function GetOrders() {
+            $('#tblUserAccount').DataTable();
+        }
+
+    </script>
+}

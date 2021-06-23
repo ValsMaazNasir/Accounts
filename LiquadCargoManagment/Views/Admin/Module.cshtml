@@ -1,0 +1,32 @@
+﻿@model IEnumerable<LiquadCargoManagment.Models.Menu>
+@{
+    ViewBag.Title = "Module";
+    Layout = "";
+}
+<link href="~/Module/Module-min.css" rel="stylesheet" />
+<link href="~/Module/Module.css" rel="stylesheet" />
+<script src="~/js/Module.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<div class="container-fluid mb-5">
+    <div class="text-center mt-5">
+        <h1>Modules</h1>
+    </div>
+    <div class="row" id="Div_MainModule">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="box">
+                    <a href="../Admin/Dashboard" style="text-decoration:none">
+                        <div class="our-services settings">
+                            <div class="icon"> <img src="https://i.imgur.com/6NKPrhO.png"></div>
+                            <h4>@item.MenuName</h4>
+                            <p>@item.Description</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

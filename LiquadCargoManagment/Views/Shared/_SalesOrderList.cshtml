@@ -1,0 +1,67 @@
+﻿@model IEnumerable<LiquadCargoManagment.Models.SaleOrder>
+
+<table class="table display table-striped" id="example">
+    <thead>
+        <tr>
+            <td>Date</td>
+            <td>Order #</td>
+            <td>Own Company</td>
+            <td>Vehicle No</td>
+            <td>Loading Point</td>
+            <td>Destination Point</td>
+            <td>Total Advance</td>
+            <td>Status</td>
+            <td>Created by</td>
+            <td>Operation</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (item.OrderDate != null)
+                {
+                    <td>
+                        @Convert.ToDateTime(item.OrderDate).ToString(LiquadCargoManagment.Models.SoftwareFormatting.DateFormat)
+                    </td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                <td>@item.SaleOrderNo</td>
+                <td>@item.OwnCompany.Name</td>
+                <td>@item.Vehicle.RegNo</td>
+                <td>@item.Area.Name</td>
+                <td>@item.Area1.Name</td>
+                <td>@string.Format(LiquadCargoManagment.Models.SoftwareFormatting.NumberFormat, item.GrandTotal)</td>
+                @if (item.Status == true)
+                {
+                    <td style="background-color:lightgreen;color:black;font-weight:bold">Invoice Generated</td>
+                }
+                else
+                {
+                    <td style="background-color:red;color:white;font-weight:bold">Invoice Not Generated</td>
+                }
+                <td>@item.UserAccount.FullName (@item.UserAccount.UserName)</td>
+                <td>
+                    @if (item.Status == true)
+                    {
+                        <button type="button" class="btn btn-warning btn-xs" disabled>
+                            <i class="fa fa-dollar"></i> Invoice
+                        </button>
+
+                    }
+                    else
+                    {
+                        <a href="../admin/SalesOrder?id=@item.ID" class="btn btn-warning btn-xs">
+                            <i class="fa fa-dollar"></i> Invoice
+                        </a>
+                    }
+
+                    <button type="button" onclick="DeleteModel(@item.ID)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

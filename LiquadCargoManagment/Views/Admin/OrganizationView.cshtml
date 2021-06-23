@@ -1,0 +1,146 @@
+﻿@model LiquadCargoManagment.Models.Organization
+
+@{ }
+
+
+<div class="content-header">
+
+    <div class="header-section">
+        <h1>
+            Organization <br><small>Create Read Update Delete Organization</small>
+        </h1>
+    </div>
+
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>Admin</li>
+    <li><a href="javascript:;">Organization</a></li>
+</ul>
+
+
+<div class="block full">
+
+    <div class="block-title row">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-primary pull-right" data-target="#AddOrganization" data-toggle="modal">Add Organization | <i class="fa fa-plus"></i></button>
+        </div>
+    </div>
+</div>
+
+
+    <div id="AddOrganization" class="modal fade clearControl" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Organization</h4>
+                </div>
+                <div class="modal-body">
+                    @using (Ajax.BeginForm("OrganizationInsert", "Admin", new AjaxOptions { HttpMethod = "POST", LoadingElementId = "page_loader", OnSuccess = "ResponseSuccess", OnFailure = "ResponseFailure" }))
+                    {
+        @Html.AntiForgeryToken()
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="hidden" id="OrganizationID" name="OrganizationID" value="0" />
+                                        <label>UserName</label>
+                                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td>
+                                        <label>Password</label>
+                                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Code</label>
+                                        @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                        @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td>
+                                        <label>Address</label>
+                                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Is Active</label>
+                                        <input type="checkbox" id="Active" name="Active" value="false" onclick="$(this).attr('value', this.checked ? true : false)" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>}
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    @*<input type="submit" id="btnSave" value="Save" class="btn btn-primary" />*@
+                    <button type="submit" id="btnSave" class="btn btn-primary pull-right"><i class="fa fa-save"></i> | Save</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div>
+        <div class="col-lg-12" id="OrgView">
+            Loading....
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#AddOrganization').on('hidden.bs.modal', function () {
+
+                if ($("#OrganizationID").val() != "0") {
+                    clearFirst();
+
+                }
+
+            });
+            GetOrganizationRecord();
+        });
+
+
+        function GetOrganizationRecord() {
+
+            try {
+                $.ajax({
+                    type: 'POST',
+                    url: 'Organization-List',
+                    //  data: JSON.stringify(requestData),
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        if (data.Status === "OK") {
+                            $("#OrgView").html(data.html);
+                            $("#title").html("Organization");
+                        }
+                        else {
+                            alert(data.Message);
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        //if error
+
+                        //alert('Error : ' + xhr.message);
+                        //  HideLoader();
+                    },
+                    complete: function (data) {
+                        // if completed
+                        //   HideLoader();
+                        HideLoader();
+                    },
+                    async: true,
+                    processData: false
+                });
+
+            } catch (e) {
+
+            }
+        }</script>

@@ -1,0 +1,151 @@
+﻿
+@model IEnumerable<Bilty.Data.usp_CustomerProfileDetail>
+@using System.Text;
+@using LiquadCargoManagment.DataAccessLayer;
+@{ int count = 0; }
+
+
+<table id="tblCompany" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <td width="2%"><div style="text-align:center;">S.NO</div></td>
+            <td>
+                Product
+            </td>
+            <td>
+                Package Type
+            </td>
+            <td>
+                Code
+            </td>
+
+            <td>
+                LocationFrom
+            </td>
+            <td>
+                Location To
+            </td>
+            <td>
+                Labour Charges
+            </td>
+            <td>
+                Additional Charges
+            </td>
+            <td>
+                Rate Type
+            </td>
+            <td>
+                Rate Rs
+            </td>
+            <td>
+                Weight Per Unit
+            </td>
+
+            <td>
+                Door Rate
+            </td>
+            <td>
+                Total
+            </td>
+            <td>
+                Created Date
+            </td>
+            <td>
+                Modified Date
+            </td>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+                count++;
+                StringBuilder jsonStringUserInfo = new StringBuilder();
+                jsonStringUserInfo.Append(" { ");
+                jsonStringUserInfo.Append("\"CustomerId\": \"" + @item.CustomerId + "\",");
+                jsonStringUserInfo.Append("\"LocationFromName\": \"" + @item.LocationFromName + "\",");
+                jsonStringUserInfo.Append("\"AdditionCharges\": \"" + @item.AdditionCharges + "\",");
+                jsonStringUserInfo.Append("\"LabourCharges\": \"" + @item.LabourCharges + "\",");
+                jsonStringUserInfo.Append("\"LocationToName\": \"" + @item.LocationToName + "\",");
+                jsonStringUserInfo.Append("\"LocationFrom\": \"" + @item.LocationFrom + "\",");
+                jsonStringUserInfo.Append("\"LocationTo\": \"" + @item.LocationTo + "\",");
+                jsonStringUserInfo.Append("\"ProductName\": \"" + @item.ProductName.Replace("\"", "\\\"") + "\",");
+                jsonStringUserInfo.Append("\"WeightPerUnit\": \"" + @item.WeightPerUnit + "\",");
+                jsonStringUserInfo.Append("\"Code\": \"" + @item.Code + "\",");
+                jsonStringUserInfo.Append("\"ProfileDetail\": \"" + @item.ProfileDetail + "\",");
+
+                jsonStringUserInfo.Append("\"ProductId\": \"" + @item.ProductId + "\",");
+                jsonStringUserInfo.Append("\"ProductCode\": \"" + @item.ProductCode + "\",");
+                jsonStringUserInfo.Append("\"RateType\": \"" + @item.RateType + "\",");
+                jsonStringUserInfo.Append("\"DoorStepRate\": \"" + @item.DoorStepRate + "\",");
+                jsonStringUserInfo.Append("\"Rate\": \"" + @item.Rate + "\"");
+
+                jsonStringUserInfo.Append("}");
+
+                <tr>
+                    <td align="center">@count</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PackageTypeName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Code)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LocationFromName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LocationToName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LabourCharges)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AdditionCharges)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RateType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WeightPerUnit)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DoorStepRate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Total)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModifiedDate)
+                    </td>
+
+                    <td>
+                        <a href="javascript:EditInfo('@item.ProfileDetail');" class="edit">Edit</a><input id="Company-@item.ProfileDetail" type="hidden" value="@jsonStringUserInfo.ToString()" />|
+                        <a href="@Url.Action("CustomerProfileListAudit", "Admin", new RouteValueDictionary(new { guidID = Utility.Base64Encode(item.ProfileDetail.ToString()) }))" target="_blank">Log</a>
+                    </td>
+
+                </tr>
+
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="11">No Record Found.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

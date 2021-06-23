@@ -1,0 +1,341 @@
+﻿@model LiquadCargoManagment.Models.ParchoonBilty
+@{
+    ViewBag.Title = "BiltySystem";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="block full">
+
+        <div class="block-title row">
+            <div class="col-md-12">
+                <h2><i class="fa fa-pencil"></i> | Parchoon Bilty</h2>
+            </div>
+        </div>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>
+                        <label>Shipment Type</label>
+                        @Html.DropDownListFor(x => x.ShipmentTypeID, ViewBag.ShipmentTypes as SelectList, "--Select--", htmlAttributes: new { @class = "form-control select-chosen" })
+                        @Html.ValidationMessageFor(model => model.ShipmentTypeID, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        <label>Payment Type</label>
+                        @Html.DropDownListFor(x => x.PaymentType, ViewBag.PaymentTypes as SelectList, "--Select--", htmlAttributes: new { @class = "form-control select-chosen" })
+                        @Html.ValidationMessageFor(model => model.PaymentType, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        <label>Date</label>
+                        @Html.TextBoxFor(x => x.Date, "", new { @class = "form-control", @id = "Date" })
+                    </td>
+                    <td>
+                        <label>Bilty No </label>
+                        @Html.TextBoxFor(x => x.BiltyNo, "", new { @class = "form-control" })
+                    </td>
+                    <td>
+                        <label>Customer</label>
+                        @Html.DropDownListFor(x => x.CustomerCompanyID, ViewBag.CustomerCompany as SelectList, "--Select--", htmlAttributes: new { @class = "form-control select-chosen" })
+                        @Html.ValidationMessageFor(model => model.CustomerCompanyID, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Manual Bilty No</label>
+                        @Html.TextBoxFor(x => x.ManualBiltyNo, "", new { @class = "form-control" })
+                    </td>
+                    <td>
+                        <label>DN No</label>
+                        @Html.TextBoxFor(x => x.DNNo, "", new { @class = "form-control" })
+                    </td>
+                    <td>
+                        <label>Vehicle Type</label>
+                        @Html.DropDownListFor(x => x.VehicleTypeID, ViewBag.VehicleTypes as SelectList, "--Select--", htmlAttributes: new { @class = "form-control select-chosen" })
+                        @Html.ValidationMessageFor(model => model.VehicleTypeID, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        <label>Broker Name</label>
+                        @Html.DropDownListFor(x => x.BrokerID, ViewBag.Brokers as SelectList, "--Select--", htmlAttributes: new { @class = "form-control select-chosen" })
+                        @Html.ValidationMessageFor(model => model.BrokerID, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        <label>Cell#</label>
+                        @Html.TextBoxFor(x => x.CellNo, "", new { @class = "form-control" })
+                    </td>
+                </tr>
+            </tbody>
+
+            <tbody>
+                <tr>
+                    <td>
+                        <label>Delivery Type</label>
+                        @Html.DropDownListFor(x => x.DeliverType, ViewBag.DeliveryTypes as SelectList, "--Select--", htmlAttributes: new { @class = "form-control select-chosen DeliveryType", @onchange = "Stations(this)" })
+                        @Html.ValidationMessageFor(model => model.DeliverType, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        <label>Pick Location</label>
+                        @Html.DropDownListFor(x => x.PickLocationID, ViewBag.Cities as SelectList, "--Select--", htmlAttributes: new { @class = "form-control select-chosen" })
+                        @Html.ValidationMessageFor(model => model.PickLocationID, "", new { @class = "text-danger" })
+                    </td>
+                    <td hidden class="PickStation">
+                        <label>Pick Station</label>
+                        @Html.DropDownListFor(x => x.PickStationID, ViewBag.Stations as SelectList, "--Select--", htmlAttributes: new { @class = "form-control select-chosen" })
+                        @Html.ValidationMessageFor(model => model.PickStationID, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="PickAddress">
+                        <label>Pick Address</label>
+                        @Html.TextBoxFor(x => x.PickAddress, "", new { @class = "form-control" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Receiver</label>
+                        @Html.DropDownListFor(x => x.ReceiverID, ViewBag.Receivers as SelectList, "--Select--", htmlAttributes: new { @class = "form-control select-chosen" })
+                        @Html.ValidationMessageFor(model => model.Receiver, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        <label>Drop Location</label>
+                        @Html.DropDownListFor(x => x.DropLocationID, ViewBag.Cities as SelectList, "--Select--", htmlAttributes: new { @class = "form-control select-chosen" })
+                        @Html.ValidationMessageFor(model => model.DropLocationID, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="DropAddress">
+                        <label>Drop Address</label>
+                        @Html.TextBoxFor(x => x.DropAddress, "", new { @class = "form-control" })
+                    </td>
+                    <td hidden class="DropStation">
+                        <label>Drop Station</label>
+                        @Html.DropDownListFor(x => x.DropStationID, ViewBag.Stations as SelectList, htmlAttributes: new { @class = "form-control select-chosen" })
+                        @Html.ValidationMessageFor(model => model.DropStationID, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div>
+            <table class="table" id="Document">
+                <thead>
+                    <tr>
+                        <td>Document Type</td>
+                        <td>Document#</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{int j = 0;}
+                    <tr>
+                        <td width="30%">
+                            @Html.DropDownList("[" + @j + "].DocumentTypeID", ViewBag.DocumentTypes as SelectList, "--Select--", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessage("[" + @j + "].DocumentTypeID", "", new { @class = "text-danger" })
+                        </td>
+                        <td width="20%">
+                            @Html.TextBox("[" + @j + "].DocumentNo", "", new { @class = "form-control" })
+                        </td>
+                        <td width="20%">
+                            <input type="file" class="form-control" />
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" onclick="AddDocument(this);"><i class="fa fa-plus"></i></button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <table class="table" id="Package">
+                <thead>
+                    <tr>
+                        <td>Product</td>
+                        <td>Qty</td>
+                        <td>Freight</td>
+                        <td>Weight</td>
+                        <td>DC No</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{int m = 0; }
+                    <tr>
+                        <td>
+                            @Html.DropDownList("[" + @m + "].ProductID", ViewBag.Products as SelectList, "--Select--", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessage("ProductID", "", new { @class = "text-danger" })
+                        </td>
+                        <td>
+                            @Html.TextBox("[" + @m + "].Qty", "", new { @class = "form-control text-right", @onkeyup = "ProductCal('#Package',1,'Qty')" })
+
+                        </td>
+                        <td>
+                            @Html.TextBox("[" + @m + "].Freight", "", new { @class = "form-control text-right", @onkeyup = "ProductCal('#Package',2,'Freight')" })
+                        </td>
+                        <td>
+                            @Html.TextBox("[" + @m + "].Weight", "", new { @class = "form-control text-right", @onkeyup = "ProductCal('#Package',3,'Weight')" })
+
+                        </td>
+                        <td>
+                            @Html.TextBox("[" + @m + "].DCNo", "", new { @class = "form-control" })
+
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" onclick="AddPackage(this)"><i class="fa fa-plus"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot style="display:none">
+                    <tr class="footer_Product" style="font-weight:bold">
+                        <td>Grand Total:</td>
+                        <td>@Html.TextBoxFor(x => x.TotalQty, "", new { @class = "form-control text-right",@readonly="true" })</td>
+                        <td>@Html.TextBoxFor(x => x.TotalFreight, "", new { @class = "form-control text-right", @readonly = "true" })</td>
+                        <td>@Html.TextBoxFor(x => x.NetWeight, "", new { @class = "form-control text-right", @readonly = "true" })</td>
+                        <td colspan="2"></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div>
+            <table class="table" id="Expense">
+                <thead>
+                    <tr>
+                        <td>Expense Type</td>
+                        <td>Amount</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{int f = 0; }
+                    <tr>
+                        <td width="30%">
+                            @Html.DropDownList("[" + @f + "].ExpenseTypeID", ViewBag.ExpenseTypes as SelectList, "--Select--", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessage("[" + @f + "].ExpenseTypeID", "", new { @class = "text-danger" })
+                        </td>
+                        <td width="15%">
+                            @Html.TextBox("[" + @f + "].Amount", "", new { @class = "form-control" })
+
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" onclick="AddExpense(this)"><i class="fa fa-plus"></i></button>
+                        </td>
+                    </tr>
+            </table>
+        </div>
+
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Local Freight</td>
+                        <td>Freight Rs</td>
+                        <td>Remarks</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td width="30%">
+                            @Html.TextBoxFor(x => x.LocalFreight, "", new { @class = "form-control" })
+
+                        </td>
+                        <td width="15%">
+                            @Html.TextBoxFor(x => x.FreightRs, "", new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(x => x.Remarks, "", new { @class = "form-control" })
+                        </td>
+                    </tr>
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">
+                            <button type="submit" id="SaveBtn" class="btn btn-primary pull-right" onclick="SaveData(this)"><i class="fa fa-save"></i> | Save Bilty</button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+}
+
+    @section Script
+{
+        <script>
+            function ProductCal(q, totalColumnIndex, type) {
+                $("#Package tfoot").show();
+                let grTotal = 0;
+                for (var i = 0; i < $(q).find("tbody tr").length; i++) {
+
+                    grTotal += parseFloat($(q).find(`tbody tr:eq(${i}) td:eq(${totalColumnIndex}) input`).val().trim() == "" ? 0 : $(q).find(`tbody tr:eq(${i}) td:eq(${totalColumnIndex}) input`).val().trim());
+                }
+                if (type == "Qty") {
+                    $(q).find("tr.footer_Product td:eq(1) input").val(grTotal);
+                }
+                else if (type == "Freight") {
+                    $(q).find("tr.footer_Product td:eq(2) input").val(grTotal);
+                }
+                else if (type == "Weight") {
+                    $(q).find("tr.footer_Product td:eq(3) input").val(grTotal);
+                }
+            }
+            $(document).ready(function () {
+                $("#Date").datepicker({
+                    altField: "#Date",
+                    altFormat: "d-M-y",
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: "1947:5000"
+                });
+            });
+            function AddDocument(A) {
+                debugger;
+                var parent = $(A).parent("td").parent("tr").html();
+                parent = parent.replace("btn-primary", "btn-danger").replace("fa-plus", "fa-trash").replace("AddDocument", "remove");
+                $("#Document").find("tbody").append(`<tr>${parent}</tr>`);
+            }
+            function AddPackage(A) {
+                debugger;
+                var parent = $(A).parent("td").parent("tr").html();
+                parent = parent.replace("btn-primary", "btn-danger").replace("fa-plus", "fa-trash").replace("AddPackage", "remove");
+                $("#Package").find("tbody").append(`<tr>${parent}</tr>`);
+            }
+            function AddExpense(A) {
+                debugger;
+                var parent = $(A).parent("td").parent("tr").html();
+                parent = parent.replace("btn-primary", "btn-danger").replace("fa-plus", "fa-trash").replace("AddExpense", "remove");
+                $("#Expense").find("tbody").append(`<tr>${parent}</tr>`);
+            }
+            function remove(e) {
+                $(e).parent("td").parent("tr").fadeOut(100, function () { $(this).remove(); });
+            }
+            
+            function Stations() {
+                debugger;
+                var DeliveryType = $(".DeliveryType").val();
+                if (DeliveryType == "Direct") {
+                    $(".PickStation").show();
+                    $(".DropAddress").show();
+                    $(".PickAddress").hide();
+                    $(".DropStation").hide();
+                }
+                else if (DeliveryType == "InDirect") {
+                    $(".PickStation").show();
+                    $(".DropStation").show();
+                    $(".PickAddress").hide();
+                    $(".DropAddress").hide();
+                }
+                else {
+                    $(".PickStation").hide();
+                    $(".DropStation").hide();
+                    $(".PickAddress").show();
+                    $(".DropAddress").show();
+                }
+            }
+
+        </script>
+    }

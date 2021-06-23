@@ -1,0 +1,119 @@
+﻿@model List<Bilty.Data.usp_MCBBranches>
+@{ ViewBag.Title = "ReceiverIndex";
+    int count = 0; }
+<script>
+    function EditReceiver(id) {
+        var Json = jQuery.parseJSON($("#Receiver-" + id).val());
+        $("#ID").val(Json.ID);
+        $("#BR_CODE").val(Json.BR_CODE);
+        $("#BranchName").val(Json.BranchName);
+        $("#ContactNo").val(Json.ContactNo);
+        $("#EmailId").val(Json.EmailId);
+        if (Json.Active == "True") {
+            $('#Active').attr('checked', true);
+            $("#Active").val("True");
+        }
+        else
+            $('#Active').attr('checked', false);
+        $("#AddReceiver").modal('toggle');
+    }
+
+</script>
+@*<div class="col-lg-12"><div><input type="button" style="float:right" class="btn btn-primary" data-target="#AddReceiver" value="Add Receiver" data-toggle="modal" /></div></div>
+<hr />
+<div id="lstReceiver" style="margin-top:12px;">
+    @Html.Partial("Admin/_receiverList", Model)
+
+</div>*@
+
+<div class="content-header">
+
+    <div class="header-section">
+        <h1>
+            Receiver<br><small>Create Read Update Delete Receiver</small>
+        </h1>
+    </div>
+
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>Admin</li>
+    <li><a href="javascript:;">Receiver</a></li>
+</ul>
+
+<!-- END Datatables Header -->
+<!-- Datatables Content -->
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            <a id="" class="btn btn-primary btn-sm pull-right" data-target="#AddReceiver" data-toggle="modal" href="#">Add Receiver | <i class="fa fa-plus"></i></a>
+        </div>
+    </div>
+
+    <div class="" id="lstReceiver">
+        @Html.Partial("Admin/_receiverList", Model)
+    </div>
+</div>
+
+<div id="AddReceiver" class="modal fade clearControl" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add Receiver</h4>
+            </div>
+            <div class="modal-body">
+
+                @using (Ajax.BeginForm("UpdateReceiver", "Admin", new AjaxOptions { HttpMethod = "POST", LoadingElementId = "page_loader", OnSuccess = "ResponseSuccess", OnFailure = "ResponseFailure" }))
+                {
+    <div class="modal-body form">
+        @Html.AntiForgeryToken()
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.Hidden("ID", "0", new { htmlAttributes = new { @class = "form-control" } })
+
+                        @Html.Label("Code", htmlAttributes: new { @class = "control-label" })
+                        @Html.Editor("BR_CODE", new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                    <td>
+                        @Html.Label("Branch Name", htmlAttributes: new { @class = "control-label" })
+                        @Html.Editor("BranchName", new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Contact No", htmlAttributes: new { @class = "control-label" })
+                        @Html.Editor("ContactNo", new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                    <td>
+                        @Html.Label("Email", htmlAttributes: new { @class = "control-label" })
+                        @Html.Editor("EmailId", new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Active", htmlAttributes: new { @class = "control-label" })
+                        <input type="checkbox" id="Active" name="Active" value="false" onclick="$(this).attr('value', this.checked ? true : false)" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <button id="btnSubmit" type="submit" value="Save" class="btn btn-primary"><i class="fa fa-save"></i> | Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+    }
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

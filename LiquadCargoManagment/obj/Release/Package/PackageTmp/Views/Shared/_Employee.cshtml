@@ -1,0 +1,97 @@
+﻿@model IEnumerable<LiquadCargoManagment.Models.Employee>
+@using Newtonsoft.Json;
+@using LiquadCargoManagment.Models
+
+    <div class="table-responsive">
+        <table class="table display table-striped" id="example">
+            <thead>
+                <tr>
+
+                    <td>Created Date</td>
+                    <td>Code</td>
+                    <td>Name</td>
+                    <td>Father Name</td>
+                    <td>Gender</td>
+                    <td>CNIC</td>
+                    <td>Contact</td>
+                    <td>Other Contact</td>
+                    <td>IsActive</td>
+                    <td>Operation</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    // string jsonData = JsonConvert.SerializeObject(item);
+                    string jsonData = "{";
+                    jsonData += " 'EmployeeID' : '" + item.EmployeeID + "', ";
+                    jsonData += " 'CreatedDate' : '" + item.CreatedDate + "', ";
+                    jsonData += " 'EmployeeCode' : '" + item.EmployeeCode + "', ";
+                    jsonData += " 'EmployeeName' : '" + item.EmployeeName + "', ";
+                    jsonData += " 'FatherName' : '" + item.FatherName + "', ";
+                    jsonData += " 'CNIC' : '" + item.CNIC + "',";
+                    jsonData += " 'CompanyID' : '" + item.CompanyID + "', ";
+                    jsonData += " 'DesignationID' : '" + item.DesignationID + "', ";
+                    jsonData += " 'DepartmentID' : '" + item.DepartmentID + "',";
+                    jsonData += " 'Email' : '" + item.Email + "',";
+                    //jsonData += " 'JoiningDate' : '" + item.JoiningDate + "',";
+                    jsonData += " 'Description' : '" + item.Description + "', ";
+                    jsonData += " 'Address' : '" + item.Address + "', ";
+                    jsonData += " 'Gender' : '" + item.Gender + "', ";
+                    jsonData += " 'OwnGroupID' : '" + item.OwnGroupID + "', ";
+                    jsonData += " 'BloodGroup' : '" + item.BloodGroup + "', ";
+                    jsonData += " 'CNIC' : '" + item.CNIC + "',";
+                    jsonData += " 'CNICImagePath' : '" + item.CNICImagePath + "',";
+                    jsonData += " 'UploadDocument' : '" + item.UploadDocument + "',";
+                    jsonData += " 'IdentityMark' : '" + item.IdentityMark + "', ";
+                    jsonData += " 'DateOfBirth' : '" + item.DateOfBirth + "', ";
+                    jsonData += " 'NICIssueDate' : '" + item.NICIssueDate + "',";
+                    jsonData += " 'NICExpiryDate' : '" + item.NICExpiryDate + "',";
+                    jsonData += " 'ContactNo' : '" + item.ContactNo + "',";
+                    jsonData += " 'OtherContactNo' : '" + item.OtherContactNo + "', ";
+                    jsonData += " 'HomeContactNo' : '" + item.HomeContactNo + "', ";
+                    jsonData += " 'EmergencyContactNo' : '" + item.EmergencyContactNo + "', ";
+                    jsonData += " 'ContactRelation' : '" + item.ContactRelation + "', ";
+                    jsonData += " 'EmergencyContactName' : '" + item.EmergencyContactName + "' ";
+                    jsonData += "}";
+                <tr>
+                    @if (item.CreatedDate != null)
+                    {
+                        <td>@Convert.ToDateTime(item.CreatedDate).ToString(SoftwareFormatting.DateFormat)</td>
+                    }
+                    else
+                    {
+                        <td>@Convert.ToDateTime(item.ModifiedDate).ToString(SoftwareFormatting.DateFormat)</td>
+                    }
+                    <td>@item.EmployeeCode</td>
+                    <td>@item.EmployeeName</td>
+                    <td>@item.FatherName</td>
+                    <td>@item.Gender</td>
+                    <td>@item.CNIC</td>
+                    <td>@item.ContactNo</td>
+                    <td>@item.OtherContactNo</td>
+                    @if (item.IsActive == true)
+                    {
+                        <td>
+                            <a onclick="ChangeStatus(@item.EmployeeID,false)"><i class="fa fa-toggle-on text-primary" style="font-size:25px;"></i></a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <a onclick="ChangeStatus(@item.EmployeeID,true)"><i class="fa fa-toggle-off text-danger" style="font-size:25px;"></i></a>
+                        </td>
+                    }
+                    <td>
+                        <button type="button" onclick="viewRecordRead(@jsonData,this)" class="btn btn-primary btn-xs">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                        <button type="button" onclick="viewRecord(@jsonData,this)" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></button>
+                        <button type="button" onclick="DeleteModel(@item.EmployeeID)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>

@@ -1,0 +1,167 @@
+﻿
+@model IEnumerable<Bilty.Data.usp_DepartmentPerson>
+@using System.Text;
+
+@{ int count = 0; }
+<table id="tblPerson" class="table table-bordered table-striped">
+    <thead class="th-color">
+        <tr>
+            <td width="2%"><div style="text-align:center;">S.NO</div></td>
+            <td>
+                Person Code
+            </td>
+            <td>
+                Person Name
+            </td>
+            <td>
+                Email
+            </td>
+
+
+            <td>
+                Designation
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Cell)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.PhoneNo)
+            </td>
+
+            <td>
+                Group
+            </td>
+            <td>
+                Company
+            </td>
+            <td>
+                Department
+            </td>
+
+
+            <td>
+                @Html.DisplayNameFor(model => model.IsIndividual)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Active)
+            </td>
+
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+                count++;
+
+                StringBuilder jsonStringUserInfo = new StringBuilder();
+                jsonStringUserInfo.Append("{ ");
+                jsonStringUserInfo.Append("\"GroupID\": \"" + @item.GroupID + "\",");
+                jsonStringUserInfo.Append("\"CompanyID\": \"" + @item.CompanyID + "\",");
+                jsonStringUserInfo.Append("\"DepartmentID\": \"" + @item.DepartmentID + "\",");
+                jsonStringUserInfo.Append("\"PersonalID\": \"" + @item.PersonalID + "\",");
+                jsonStringUserInfo.Append("\"Code\": \"" + @item.Code + "\",");
+                jsonStringUserInfo.Append("\"Name\": \"" + @item.Name + "\",");
+                jsonStringUserInfo.Append("\"Email\": \"" + @item.Email + "\",");
+                jsonStringUserInfo.Append("\"BusinessEmail\": \"" + @item.BusinessEmail + "\",");
+
+                jsonStringUserInfo.Append("\"Designation\": \"" + @item.Designation + "\",");
+                jsonStringUserInfo.Append("\"Cell\": \"" + @item.Cell + "\",");
+                jsonStringUserInfo.Append("\"PhoneNo\": \"" + @item.PhoneNo + "\",");
+                jsonStringUserInfo.Append("\"OtherContact\": \"" + @item.OtherContact + "\",");
+
+                jsonStringUserInfo.Append("\"AddressOffice\": \"" + @item.AddressOffice + "\",");
+                jsonStringUserInfo.Append("\"AddressOther\": \"" + @item.AddressOther + "\",");
+                jsonStringUserInfo.Append("\"IsIndividual\": \"" + @item.IsIndividual + "\",");
+                jsonStringUserInfo.Append("\"Active\": \"" + @item.Active + "\"");
+                jsonStringUserInfo.Append("}");
+<tr>
+    <td align="center">@count</td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Code)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Designation)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cell)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PhoneNo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.GroupName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CompanyName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DepartName)
+    </td>
+
+
+    @if (item.IsIndividual == true)
+    {
+<td>True</td> }
+                    else
+                    {
+<td>False</td>                    }
+    @if (item.Active == true)
+    {
+<td>True</td> }
+                    else
+                    {
+<td>False</td>                    }
+
+    <td>
+
+        <a href="javascript:EditDeptPerson('@item.PersonalID');" class="edit">Edit</a><input id="DepartmentPerson-@item.PersonalID" type="hidden" value="@jsonStringUserInfo.ToString()" />
+        @*&nbsp;&nbsp;&nbsp;
+            @Ajax.ActionLink("Delete", // <-- Text to display
+
+               "PersonDelete", // <-- Action Method Name
+               new { ID = item.PersonalID },
+               new AjaxOptions
+
+               {
+
+                   HttpMethod = "POST",
+                   OnSuccess = "ResponseSuccess",
+                   OnFailure = "ResponseFailure"
+
+               },new { @onclick= "return confirm('Are you sure you wish to delete this Person?');" })*@
+    </td>
+</tr> }
+            }
+            else
+            {
+<tr>
+    <td colspan="17">No Record Found.</td>
+</tr>}
+    </tbody>
+
+
+</table>
+
+
+<script>$(function () {
+
+        $('#tblPerson').DataTable({
+            'paging': true,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false
+        })
+    })</script>

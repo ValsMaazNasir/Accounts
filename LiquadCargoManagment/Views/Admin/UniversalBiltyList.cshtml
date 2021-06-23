@@ -1,0 +1,203 @@
+﻿
+@{
+    ViewBag.Title = "UniversalBiltyList";
+}
+<link href="~/css/CustomerLoader.css" rel="stylesheet" />
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            <h2>Universal Bilty List</h2>
+            <a id="" class="btn btn-primary btn-sm pull-right" href="@Url.Action("CreateUniversalBilty","Admin")" style="margin-left:10px;">Add Universal Bilty | <i class="fa fa-plus"></i></a>
+            <a id="" class="btn btn-primary btn-sm pull-right" onclick="$('#modal-search').modal('show'); ClearItem();" href="#">Search | <i class="fa fa-search"></i></a>
+        </div>
+    </div>
+    <div id="grid">
+        @Html.Partial("_UniversalBiltyList")
+    </div>
+</div>
+<div id="modal-search" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        @using (Ajax.BeginForm("SearchUniversalBilty", "Admin", new AjaxOptions() { HttpMethod = "GET", OnSuccess = "fnSearch" }))
+        {
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <h2 class="modal-title"><i class="fa fa-search"></i> Search Bilty</h2>
+            </div>
+            <!-- END Modal Header -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <div class="loader LoaderTd" style="display:none"></div>
+                <table class="table table-responsive Search">
+
+                    <tbody>
+                        <tr>
+                            <td width="50%">
+                                <label class="control-label">Date From</label>
+                                <input type="text" id="DateFrom" name="DateFrom" class="form-control" />
+                            </td>
+                            <td>
+                                <label class="control-label">Date To</label>
+                                <input type="text" id="DateTo" name="DateTo" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="control-label">Delivery Date</label>
+                                <input type="text" id="DeliveryDate" name="DeliveryDate" class="form-control" />
+                            </td>
+                            <td>
+                                <label class="control-label">Order No</label>
+                                <input type="text" id="OrderNo" name="OrderNo" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="control-label">Own Company</label>
+                                @Html.DropDownList("OwnCompany", ViewBag.OwnCompany as SelectList, "-Select-", new { @class = "form-control select-chosen" })
+                            </td>
+                            <td>
+                                <label class="control-label">Vehicle</label>
+                                @Html.DropDownList("Vehicle", ViewBag.Vehicle as SelectList, "-Select-", new { @class = "form-control select-chosen" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="control-label">Bill To</label>
+                                @Html.DropDownList("BillTo", ViewBag.BillTo as SelectList, "-Select-", new { @class = "form-control select-chosen" })
+                            </td>
+                            <td>
+                                <label class="control-label">Receiver</label>
+                                @Html.DropDownList("Receiver", ViewBag.BillTo as SelectList, "-Select-", new { @class = "form-control select-chosen" })
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="submit" id="btnSaveEdit" class="btn btn-primary pull-right" onclick="$('.Search').hide(); $('.LoaderTd').show();"><b><i class="fa fa-search"></i> | Search</b></button>
+            </div>
+            <!-- END Modal Body -->
+        </div>
+        }
+    </div>
+</div>
+
+
+@section Script
+{
+    <script>
+        $(document).ready(function () {
+            GetOrders();
+            $("#DateFrom").datepicker({
+                altField: "#DateFrom",
+                altFormat: "d-M-yy"
+            });
+            $("#DeliveryDate").datepicker({
+                altField: "#DeliveryDate",
+                altFormat: "d-M-yy"
+            });
+            $("#DateTo").datepicker({
+                altField: "#DateTo",
+                altFormat: "d-M-yy"
+            });
+        });
+        function GetOrders() {
+            $('#example').DataTable({
+                "lengthMenu": [[100, 200, 300, 400 - 1], [100, 200, 300, 400, "All"]],
+                dom: 'Bfrtip',
+                buttons: [
+                    //'copyHtml5',
+                    {
+                        extend: 'copyHtml5',
+                        text: '<i class="fa fa-copy"></i> | COPY',
+                        titleAttr: 'COPY'
+                    },
+                    //'excelHtml5',
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fa fa-file-o"></i> | EXCEL',
+                        titleAttr: 'Excel'
+                    },
+                    //'csvHtml5',
+                    {
+                        extend: 'csvHtml5',
+                        text: '<i class="fa fa-file-o"></i> | CSV',
+                        titleAttr: 'CSV'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        text: '<i class="fa fa-file-pdf-o"></i> | PDF',
+                        titleAttr: 'PDF'
+                    },
+                    'pageLength'
+                ]
+            }).order([2, 'des'])
+                .draw();
+        }
+
+
+        function Message(title, text, type) {
+            Swal.fire({
+                title: title + '!',
+                text: text,
+                icon: type,
+                confirmButtonText: 'OK'
+            })
+        }
+
+        function fnSearch(response) {
+            $("select").chosen('destroy');
+            $("select").val('');
+            if (response.Status == "OK") {
+                $("#grid").html(response.html);
+                $("#modal-search").modal('hide');
+                $(".LoaderTd").hide();
+                $('.Search').show();
+                $("select").chosen();
+                GetOrders();
+            }
+        }
+
+        function DeleteModel(Id) {
+            debugger;
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, cancel it!'
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        url: `../Admin/DeleteUniversalBilty`,
+                        type: 'POST',
+                        data: { ID: Id },
+                        success: function (res) {
+                            if (res.Status != "OK") {
+                                Message("Error", res.Message, "error");
+                            }
+                            else {
+                                $("#grid").html(res.html);
+                                GetOrders();
+                                Message("Success", "Record Deleted Success", "success");
+                                window.location.reload();
+                            }
+                        },
+                        error: function () {
+                            Message("Error", "An Error Occured", "error")
+                        }
+                    });
+
+                }
+            })
+
+        }
+    </script>    
+}

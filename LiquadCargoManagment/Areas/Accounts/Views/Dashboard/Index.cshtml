@@ -1,0 +1,386 @@
+﻿
+@using LiquadCargoManagment.Areas.Accounts.Models;
+@using LiquadCargoManagment.Areas.Accounts.Helpers;;
+@using System.Data.Entity;
+
+<div id="page-head">
+    <div class="pad-all text-center">
+        <h3 style="color:white">Welcome back to the Dashboard.</h3>
+    </div>
+</div>
+
+
+<!--Page content-->
+<!--===================================================-->
+<div id="page-content">
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="row demo-nifty-panel">
+                <div class="col-sm-12">
+                    <div class="panel panel-bordered panel-dark">
+                        @*@{ var Ledgerlist = (List<Ledger>)ViewBag.lstLedger;}*@
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Current Balance</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <!--Tile-->
+                                    <!--===================================================-->
+                                    <div class="panel panel-primary panel-colorful">
+                                        <div class="pad-all media">
+                                            <div class="media-left">
+                                                <i class="demo-pli-yes icon-3x icon-fw"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="text-2x mar-no media-heading">Rs.@ViewBag.balance</p>
+                                                <span>Total Balance</span>
+                                            </div>
+                                        </div>
+                                        <div class="progress progress-xs progress-success mar-no">
+                                            <div role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-light" style="width: 30%">Rs.@ViewBag.toRecievedIncome</div>
+                                        </div>
+
+                                    </div>
+                                    <!--===================================================-->
+                                </div>
+                                <div class="col-md-3">
+                                    <!--Tile-->
+                                    <!--===================================================-->
+                                    <div class="panel panel-success panel-colorful">
+                                        <div class="pad-all media">
+                                            <div class="media-left">
+                                                <i class="demo-pli-yes icon-3x icon-fw"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="text-2x mar-no media-heading">Rs.@*@{int meezan = Ledgerlist.Where(x => x.Description.ToLower().Contains("meezan bank")).Sum(i => i.CashIn) - Ledgerlist.Where(x => x.Description.ToLower().Contains("meezan bank")).Sum(i => i.CashOut);} @meezan*@
+                                                </p>
+                                                <span>Meezan Bank</span>
+                                            </div>
+                                        </div>
+                                        <div class="progress progress-xs progress-success mar-no">
+                                            <div role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-light" style="width: 30%">Rs.@ViewBag.toRecievedIncome</div>
+                                        </div>
+
+                                    </div>
+                                    <!--===================================================-->
+                                </div>
+                                <div class="col-md-3">
+                                    <!--Tile-->
+                                    <!--===================================================-->
+                                    <div class="panel panel-success panel-colorful">
+                                        <div class="pad-all media">
+                                            <div class="media-left">
+                                                <i class="demo-pli-yes icon-3x icon-fw"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="text-2x mar-no media-heading">Rs.@*@{int mcb = Ledgerlist.Where(x => x.Description.ToLower().Contains("mcb bank")).Sum(i => i.CashIn) - Ledgerlist.Where(x => x.Description.ToLower().Contains("mcb bank")).Sum(i => i.CashOut);} @mcb*@</p>
+                                                <span>MCB Bank</span>
+                                            </div>
+                                        </div>
+                                        <div class="progress progress-xs progress-success mar-no">
+                                            <div role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-light" style="width: 30%"></div>
+                                        </div>
+
+                                    </div>
+                                    <!--===================================================-->
+                                </div>
+                                <div class="col-md-3">
+                                    <!--Tile-->
+                                    <!--===================================================-->
+                                    <div class="panel panel-success panel-colorful">
+                                        <div class="pad-all media">
+                                            <div class="media-left">
+                                                <i class="demo-pli-yes icon-3x icon-fw"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="text-2x mar-no media-heading">Rs.@*@{int cash = Ledgerlist.Where(x => x.Description.ToLower().Contains("cash")).Sum(i => i.CashIn) - Ledgerlist.Where(x => x.Description.ToLower().Contains("cash")).Sum(i => i.CashOut);} @cash*@</p>
+                                                <span>Cash</span>
+                                            </div>
+                                        </div>
+                                        <div class="progress progress-xs progress-success mar-no">
+                                            <div role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-light" style="width: 30%"></div>
+                                        </div>
+
+                                    </div>
+                                    <!--===================================================-->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="panel panel-bordered panel-dark">
+
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Current Month Income</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <!--Tile-->
+                                    <!--===================================================-->
+                                    <div class="panel panel-primary panel-colorful">
+                                        <div class="pad-all media">
+                                            <div class="media-left">
+                                                <i class="demo-pli-yes icon-3x icon-fw"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="text-2x mar-no media-heading">Rs.@ViewBag.balance</p>
+                                                <span>Total Balance</span>
+                                            </div>
+                                        </div>
+                                        <div class="progress progress-xs progress-success mar-no">
+                                            <div role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-light" style="width: 30%">Rs.@ViewBag.toRecievedIncome</div>
+                                        </div>
+
+                                    </div>
+                                    <!--===================================================-->
+                                </div>
+                                <div class="col-md-3">
+                                    <!--Tile-->
+                                    <!--===================================================-->
+                                    <div class="panel panel-success panel-colorful">
+                                        <div class="pad-all media">
+                                            <div class="media-left">
+                                                <i class="demo-pli-yes icon-3x icon-fw"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="text-2x mar-no media-heading">Rs.@ViewBag.MonthlyIncome</p>
+                                                <span>Recieved</span>
+                                            </div>
+                                        </div>
+                                        <div class="progress progress-xs progress-success mar-no">
+                                            <div role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-light" style="width: 30%">Rs.@ViewBag.toRecievedIncome</div>
+                                        </div>
+
+                                    </div>
+                                    <!--===================================================-->
+                                </div>
+                                <div class="col-md-3">
+                                    <!--Tile-->
+                                    <!--===================================================-->
+                                    <div class="panel panel-success panel-colorful">
+                                        <div class="pad-all media">
+                                            <div class="media-left">
+                                                <i class="demo-pli-yes icon-3x icon-fw"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="text-2x mar-no media-heading">Rs.@ViewBag.toRecievedIncome</p>
+                                                <span>To Recieve</span>
+                                            </div>
+                                        </div>
+                                        <div class="progress progress-xs progress-success mar-no">
+                                            <div role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-light" style="width: 30%"></div>
+                                        </div>
+
+                                    </div>
+                                    <!--===================================================-->
+                                </div>
+                                <div class="col-md-3">
+                                    <!--Tile-->
+                                    <!--===================================================-->
+                                    <div class="panel panel-danger panel-colorful">
+                                        <div class="pad-all media">
+                                            <div class="media-left">
+                                                <i class="demo-pli-yes icon-3x icon-fw"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="text-2x mar-no media-heading">Rs.@ViewBag.CancelledIncome</p>
+                                                <span>Cancelled</span>
+                                            </div>
+                                        </div>
+                                        <div class="progress progress-xs progress-success mar-no">
+                                            <div role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-light" style="width: 30%"></div>
+                                        </div>
+
+                                    </div>
+                                    <!--===================================================-->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="panel panel-bordered panel-dark">
+
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Current Month Expenses</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <!--Tile-->
+                                    <!--===================================================-->
+                                    <div class="panel panel-danger panel-colorful">
+                                        <div class="pad-all media">
+                                            <div class="media-left">
+                                                <i class="demo-pli-yes icon-3x icon-fw"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="text-2x mar-no media-heading">Rs.@ViewBag.MonthlyExpense</p>
+                                                <span>Paid</span>
+                                            </div>
+                                        </div>
+                                        <div class="progress progress-xs progress-success mar-no">
+                                            <div role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-light" style="width: 30%">Rs.@ViewBag.toRecievedIncome</div>
+                                        </div>
+
+                                    </div>
+                                    <!--===================================================-->
+                                </div>
+                                <div class="col-md-6">
+                                    <!--Tile-->
+                                    <!--===================================================-->
+                                    <div class="panel panel-danger panel-colorful">
+                                        <div class="pad-all media">
+                                            <div class="media-left">
+                                                <i class="demo-pli-yes icon-3x icon-fw"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="text-2x mar-no media-heading">Rs.@ViewBag.toRecievedExpense</p>
+                                                <span>To Paid</span>
+                                            </div>
+                                        </div>
+                                        <div class="progress progress-xs progress-success mar-no">
+                                            <div role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-light" style="width: 30%"></div>
+                                        </div>
+
+                                    </div>
+                                    <!--===================================================-->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="row demo-nifty-panel">
+                <div class="col-sm-12">
+                    <div class="panel panel-bordered panel-dark">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Wish List</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <!--Tile-->
+                                    <!--===================================================-->
+                                    <div class="panel panel-primary panel-colorful">
+                                        <div class="pad-all media">
+                                            <div class="media-left">
+                                                <i class="demo-pli-data-cloud icon-3x icon-fw"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="text-2x mar-no media-heading">@ViewBag.low</p>
+                                                <span>Low Priority</span>
+                                            </div>
+                                        </div>
+                                        <div class="progress progress-xs progress-success mar-no">
+                                            <div role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-light" style="width: 70%">@*@lstAnn.Where(x => DbFunctions.TruncateTime(x.CreatedDateTime) == DateTime.Now ).ToList().Count*@</div>
+                                        </div>
+
+
+                                    </div>
+                                    <!--===================================================-->
+                                </div>
+                                <div class="col-md-4">
+                                    <!--Tile-->
+                                    <!--===================================================-->
+                                    <div class="panel panel-success panel-colorful">
+                                        <div class="pad-all media">
+                                            <div class="media-left">
+                                                <i class="demo-pli-yes icon-3x icon-fw"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="text-2x mar-no media-heading">@ViewBag.medium</p>
+                                                <span>Medium Priority</span>
+                                            </div>
+                                        </div>
+                                        <div class="progress progress-xs progress-success mar-no">
+                                            <div role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-light" style="width: 30%">@*@lstBanner.Where(x => x.Status == "Enable").ToList().Count*@</div>
+                                        </div>
+
+                                    </div>
+                                    <!--===================================================-->
+                                </div>
+                                <div class="col-md-4">
+                                    <!--Tile-->
+                                    <!--===================================================-->
+                                    <div class="panel panel-danger panel-colorful">
+                                        <div class="pad-all media">
+                                            <div class="media-left">
+                                                <i class="demo-pli-yes icon-3x icon-fw"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="text-2x mar-no media-heading">@ViewBag.high</p>
+                                                <span>High Priority</span>
+                                            </div>
+                                        </div>
+                                        <div class="progress progress-xs progress-success mar-no">
+                                            <div role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-light" style="width: 30%">@*@lstBanner.Where(x => x.Status == "Enable").ToList().Count*@</div>
+                                        </div>
+
+                                    </div>
+                                    <!--===================================================-->
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+    
+
+
+
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+
+
+
+
+
+
+
+        @*@if (ViewBag.VisitingLeads.Count > 0)
+        {
+            <div class="col-lg-4">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Visit Confirmed Showroom</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            @foreach (var item in ViewBag.VisitingLeads)
+                            {
+                                <li class="list-group-item"><a class="badge badge-primary" href="/leads/views/@item.ID">View</a>@item.Name<br /><small><strong>Phone : </strong>@item.PhoneNumber</small><br /><small><strong>Comments : </strong>@item.Description</small></li>
+                            }
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        }*@
+    </div>
+
+  
+
+</div>
+<!--===================================================-->
+<!--End page content-->

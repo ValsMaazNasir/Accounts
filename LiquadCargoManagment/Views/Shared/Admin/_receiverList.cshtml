@@ -1,0 +1,115 @@
+﻿
+@model List<Bilty.Data.usp_MCBBranches>
+@using System.Text
+
+<table id="tblCompany" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <td width="2%"><div style="text-align:center;">S.NO</div></td>
+            <td>
+                Code
+            </td>
+            <td>
+                Name
+            </td>
+
+            <td>
+                Contact No
+            </td>
+            <td>
+                Email
+            </td>
+            <td>
+                Active
+            </td>
+            <td>
+                Created Date
+            </td>
+            <td>
+                Modified Date
+            </td>
+            <td>
+                Operation
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() > 0)
+        {
+            int count = 0;
+            foreach (var item in Model)
+            {
+                count++;
+                StringBuilder jsonStringUserInfo = new StringBuilder();
+                jsonStringUserInfo.Append("{ ");
+                jsonStringUserInfo.Append("\"ID\": \"" + @item.ID + "\",");
+                jsonStringUserInfo.Append("\"BR_CODE\": \"" + @item.BR_CODE + "\",");
+                jsonStringUserInfo.Append("\"BranchName\": \"" + @item.BranchName + "\",");
+                jsonStringUserInfo.Append("\"ContactNo\": \"" + @item.ContactNo + "\",");
+                jsonStringUserInfo.Append("\"EmailId\": \"" + @item.EmailId + "\",");
+                jsonStringUserInfo.Append("\"Active\": \"" + @item.Active + "\"");
+
+                jsonStringUserInfo.Append("}");
+                <tr>
+                    <td align="center">@count</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BR_CODE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BranchName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Active)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModifiedDate)
+                    </td>
+
+                    <td>
+                        <a href="javascript:EditReceiver('@item.ID');" class="edit">Edit</a><input id="Receiver-@item.ID" type="hidden" value="@jsonStringUserInfo.ToString()" />
+                    </td>
+
+                </tr>
+ }
+        }
+        else
+        {
+            <tr>
+                <td colspan="9">No Record Found.</td>
+            </tr>
+        }
+    </tbody>
+
+
+
+</table>
+
+@section Script
+{
+    <script>
+        $(function () {
+            if (@Model.Count() > 0) {
+            $('#tblCompany').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            });
+
+        }
+        })
+
+    </script>
+}

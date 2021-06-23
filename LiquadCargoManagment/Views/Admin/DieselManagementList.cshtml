@@ -1,0 +1,160 @@
+﻿ 
+@{
+    ViewBag.Title = "DieselManagementList";
+}
+
+    <div class="block full">
+        <div class="block-title row">
+            <div class="col-md-12">
+                <h2><i class="fa fa-pencil"></i> | Diesel Management</h2>
+                <a id="" class="btn btn-primary btn-sm pull-right" href="../Admin/DieselManagement" style="margin-left:10px;">Add New | <i class="fa fa-plus"></i></a>
+                <a id="" class="btn btn-primary btn-sm pull-right" onclick="$('#modal-search').modal('show'); ClearItem();" href="#">Search | <i class="fa fa-search"></i></a>
+            </div>
+        </div>
+        <div id="grid">
+            @Html.Partial("_DieselManagement")
+        </div>
+    </div>
+
+    <div id="modal-search" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            @using (Ajax.BeginForm("SearchDiesel", "Admin", new AjaxOptions() { HttpMethod = "GET", OnSuccess = "fnSearch" }))
+            {
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header text-center">
+                        <h2 class="modal-title"><i class="fa fa-search"></i> Search Diesel</h2>
+                    </div>
+                    <!-- END Modal Header -->
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                        <table class="table table-responsive">
+
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <label class="control-label">Date From</label>
+                                        <input type="text" id="DateFrom" name="DateFrom" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <label class="control-label">Date To</label>
+                                        <input type="text" id="DateTo" name="DateTo" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="control-label">Order No</label>
+                                        <input type="text" id="OrderNo" name="OrderNo" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <label class="control-label">Petrol Pump</label>
+                                        <select class="form-control" name="PetrolPump">
+                                            <option>--Select--</option>
+                                            <option value="Awan PSO">Awan PSO</option>
+                                            <option value="Taj Petrolium">Taj Petrolium</option>
+                                            <option value="Shah Hascol">Shah Hascol</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="control-label">Diesel Rate</label>
+                                        <input type="text" id="DieselRate" name="DieselRate" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <label class="control-label">Oil Rate</label>
+                                        <input type="text" id="OilRate" name="OilRate" class="form-control" />
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="submit" id="btnSaveEdit" class="btn btn-primary pull-right"><b><i class="fa fa-search"></i> | Search</b></button>
+                    </div>
+                    <!-- END Modal Body -->
+                </div>
+            }
+        </div>
+    </div>
+@section Script
+{
+    <script>
+        function GetOrders() {
+            $('#example').DataTable();
+        }
+
+        function DeleteModel(Id) {
+            debugger;
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        url: `../Admin/DeleteDieselManagement`,
+                        type: 'POST',
+                        data: { ID: Id },
+                        success: function (res) {
+                            if (res.Status != "OK") {
+                                Message("Error", res.Message, "error");
+                            }
+                            else {
+                                $("#grid").html(res.html);
+                                GetOrders();
+                                Message("Success", "Record Deleted Success", "success");
+                            }
+                        },
+                        error: function () {
+                            alert('error');
+                        }
+                    });
+
+                }
+            })
+
+        }
+
+
+        $(document).ready(function () {
+            $('#example').DataTable();
+            $("#DateTo").datepicker({
+                altField: "#DateTo",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#DateFrom").datepicker({
+                altField: "#DateFrom",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+        });
+        function fnSearch(response) {
+            $("#grid").html(response.html);
+            $("#modal-search").modal('hide');
+            GetOrders();
+        }
+        function ClearItem() {
+            $("input[type='text']").val('');
+            $("input[type='hidden']").val('');
+            $("input[type='number']").val('');
+            $("select").val('');
+        }
+
+    </script>
+}
+
+

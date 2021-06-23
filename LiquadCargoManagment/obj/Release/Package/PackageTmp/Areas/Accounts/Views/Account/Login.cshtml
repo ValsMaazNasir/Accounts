@@ -1,0 +1,49 @@
+﻿@model LiquadCargoManagment.Areas.Accounts.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Areas/Accounts/Views/Shared/_Account.cshtml";
+}
+@section InLineScriptSection{
+    @if (!string.IsNullOrWhiteSpace(Model.EmailAddress))
+    {
+        <script type="text/javascript">
+            $("#RememberMe").prop("checked", true);
+        </script>
+    }
+}
+
+
+
+
+<div id="login-container" class="animation-fadeIn">
+
+        <div class="login-title text-center" style="background-color:skyblue">
+            <h1><i class="gi gi-flash"></i> <strong>Vals ERP</strong><br><small>Please <strong>Login</strong> or <strong>Register</strong></small></h1>
+        </div>
+        <!-- END Login Title -->
+        <!-- Login Block -->
+        <div class="block push-bit" style="padding:50px">
+            <!-- Login Form -->
+            @using (Ajax.BeginForm("Login", "Account", null, new AjaxOptions { HttpMethod = "POST", OnBegin = "OnFormBegin", OnComplete = "OnFormComplete", OnSuccess = "OnFormSuccess", OnFailure = "OnFormFailure" }, new { @id = "FormLogin", @autocomplete = "off" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.EmailAddress, null, new { @class = "form-control", @placeholder = "Email Address *", @tabindex = "1" })
+                    @Html.ValidationMessageFor(m => m.EmailAddress, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.PasswordFor(m => m.Password, new { Value = Model.Password, @class = "form-control", @placeholder = "Password *", @tabindex = "2" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+                
+                    <input id="RememberMe" name="RememberMe" class="magic-checkbox" type="checkbox" tabindex="3">
+                    <label for="RememberMe">Remember me</label>
+              
+                <button class="btn btn-primary btn-lg btn-block msg-area" type="submit" tabindex="4">Sign In</button>
+            }
+            <!-- END Login Form -->
+            <!-- Reminder Form -->
+        </div>
+        <!-- END Login Block -->
+    </div>

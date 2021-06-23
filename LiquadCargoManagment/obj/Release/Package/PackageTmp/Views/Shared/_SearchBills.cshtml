@@ -1,0 +1,92 @@
+﻿@model IEnumerable<LiquadCargoManagment.Models.SaleOrderChild>
+@using (Html.BeginForm("savebill", "admin", FormMethod.Post))
+{
+    <button type="submit" class="btn btn-info">Generate Bill</button>
+    <div style="width:100%">
+        <div class="table-responsive">
+            <table class="table table-striped" id="example" style="width:100%">
+                <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>Customer</td>
+                        <td>OrderDate</td>
+                        <td>Sale Order No.</td>
+                        @*<td>Invoice No.</td>*@
+                        <td>Vehicle No.</td>
+                        <td>Shipment Type</td>
+                        <td>GST Type</td>
+                        <td>Product</td>
+
+                        <td>Operation</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td><input type="checkbox" name="ChildIds[]" value="@item.ID" /></td>
+                        @if (item.CustomerCompany != null)
+                        {
+                            <td>@item.CustomerCompany.Name</td>
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+                        @if (item.OrderDate != null)
+                        {
+                            <td>
+                                @Convert.ToDateTime(item.OrderDate).ToString(LiquadCargoManagment.Models.SoftwareFormatting.DateFormat)
+                            </td>
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+                        <td>@item.SaleOrderNo</td>
+
+                        <td>@item.Vehicle.RegNo</td>
+
+
+
+                        <td>@item.ShipmentType.Name</td>
+                        <td>@item.GSTType</td>
+
+
+                        <td>
+                            @if (item.SalesOrderChildDestinations != null)
+                            {
+                                <ul>
+                                    @foreach (var prod in item.SalesOrderChildDestinations)
+                                    {
+                                        if (prod.Product1 != null)
+                                        {
+
+                                            <li>@prod.Product1.Name</li>
+
+
+
+
+
+                                        }
+                                    }
+                                </ul>
+                            }
+                        </td>
+
+
+
+                        <td>
+                            <a href="@Url.Action("NewSalesOrderUserLast", "admin", new { id = item.ID })" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></a>
+                            <a href="DeleteModel(@item.ID)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    }
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+}

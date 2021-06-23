@@ -1,0 +1,77 @@
+﻿@using LiquadCargoManagment.Models;
+@model IEnumerable<LiquadCargoManagment.Models.ParchoonBiltyProduct>
+
+<div>
+    <table class="table" id="Package">
+        <thead>
+            <tr>
+                <td>Product</td>
+                <td>Qty</td>
+                <td>Freight</td>
+                <td>Weight</td>
+                <td>DC No</td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count() > 0)
+            {
+                int j = 0;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DropDownList("[" + @j + "].ProductID", ViewBag.Products as SelectList, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessage("ProductID", "", new { @class = "text-danger" })
+                        </td>
+                        <td>
+                            @Html.TextBox("[" + @j + "].Qty", "", new { @class = "form-control" })
+
+                        </td>
+                        <td>
+                            @Html.TextBox("[" + @j + "].Freight", "", new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.TextBox("[" + @j + "].Weight", "", new { @class = "form-control" })
+
+                        </td>
+                        <td>
+                            @Html.TextBox("[" + @j + "].DCNo", "", new { @class = "form-control" })
+
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" onclick="AddPackage(this)"><i class="fa fa-plus"></i></button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                int j = 0;
+                <tr>
+                    <td>
+                        @Html.DropDownList("[" + @j + "].ProductID", ViewBag.Products as SelectList, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessage("ProductID", "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.TextBox("[" + @j + "].Qty", "", new { @class = "form-control" })
+
+                    </td>
+                    <td>
+                        @Html.TextBox("[" + @j + "].Freight", "", new { @class = "form-control" })
+                    </td>
+                    <td>
+                        @Html.TextBox("[" + @j + "].Weight", "", new { @class = "form-control" })
+
+                    </td>
+                    <td>
+                        @Html.TextBox("[" + @j + "].DCNo", "", new { @class = "form-control" })
+
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" onclick="AddPackage(this)"><i class="fa fa-plus"></i></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

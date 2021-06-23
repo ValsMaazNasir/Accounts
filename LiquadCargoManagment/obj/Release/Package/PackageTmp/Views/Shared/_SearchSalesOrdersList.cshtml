@@ -1,0 +1,48 @@
+﻿
+@model IEnumerable<LiquadCargoManagment.Models.SaleOrder>
+
+<table class="table display table-striped" id="example">
+    <thead>
+        <tr>
+            <td>OrderDate</td>
+            <td>Order No.</td>
+            <td>Vehicle No.</td>
+            <td>Loading Point</td>
+            <td>Destination Point</td>
+            <td>Shipment Type</td>
+            <td>Product</td>
+            <td>Status</td>
+            <td>Created by</td>
+            <td>Operation</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (item.OrderDate != null)
+                {
+                    <td>
+                        @Convert.ToDateTime(item.OrderDate).ToString(LiquadCargoManagment.Models.SoftwareFormatting.DateFormat)
+                    </td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                <td>@item.SaleOrderNo</td>
+                <td>@item.Vehicle.RegNo</td>
+                <td>@item.Area.Name</td>
+                <td>@item.Area1.Name</td>
+                <td>@item.Area1.Name</td>
+                <td>@item.Vehicle.Code</td>
+                <td>@string.Format(LiquadCargoManagment.Models.SoftwareFormatting.NumberFormat, item.GrandTotal)</td>
+                <td>
+                    <button type="button" onclick="viewRecord(@item.ID)" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></button>
+                    <button type="button" onclick="viewRecord(@item.ID)" class="btn btn-secondary btn-xs"><i class="fa fa-edit"></i></button>
+                    <button type="button" onclick="DeleteModel(@item.ID)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

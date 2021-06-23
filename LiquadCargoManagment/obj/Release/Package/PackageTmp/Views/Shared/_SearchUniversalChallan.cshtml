@@ -1,0 +1,133 @@
+﻿@model IEnumerable<LiquadCargoManagment.Models.UniversalBilty>
+
+@using LiquadCargoManagment.Models;
+
+<div class="table-responsive">
+    <table class="table display table-striped" id="example">
+        <thead>
+            <tr>
+                <td>Select</td>
+                <td>Order No</td>
+                <td>Manual Bilty No</td>
+                <td>Order Date</td>
+                <td>Consigner/Sender</td>
+                <td>Consigner/Receiver</td>
+                <td>Client/Bill To</td>
+                <td>Pick Location</td>
+                <td>Drop Location</td>
+                <td>Billing Type</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    <input type="checkbox" id="ID" value="@item.ID" onchange="AddChallanRow(this)" />
+                </td>
+                <td>@item.AutoBiltyNo</td>
+                <td>@item.ManualBiltyNo</td>
+                <td>@Convert.ToDateTime(item.BiltyDate).ToString(SoftwareFormatting.DateFormat)</td>
+                <td>
+                    @if (item.UniversalBiltyCustomerInformations != null)
+                    {
+                        foreach (var Customer in item.UniversalBiltyCustomerInformations)
+                        {
+                            if (Customer.ConsignerSenderCustomerCode != null)
+                            {
+                                <text><span>@Customer.CustomerDepartment.Name</span></text>
+                            }
+                            else
+                            {
+                                <text><span></span></text>
+                            }
+                        }
+                    }
+                </td>
+                <td>
+                    @if (item.UniversalBiltyCustomerInformations != null)
+                    {
+                        foreach (var Customer in item.UniversalBiltyCustomerInformations)
+                        {
+                            if (Customer.ConsignerReceiverCustomerCode != null)
+                            {
+                                <text><span>@Customer.CustomerDepartment1.Name</span></text>
+                            }
+                            else
+                            {
+                                <text><span></span></text>
+                            }
+                        }
+                    }
+                </td>
+                <td>
+                    @if (item.UniversalBiltyCustomerInformations != null)
+                    {
+                        foreach (var Customer in item.UniversalBiltyCustomerInformations)
+                        {
+                            if (Customer.ClientCode != null)
+                            {
+                                <text><span>@Customer.CustomerDepartment2.Name</span></text>
+                            }
+                            else
+                            {
+                                <text><span></span></text>
+                            }
+                        }
+                    }
+                </td>
+
+                <td>
+                    @if (item.UniversalBiltyLocationInformations != null)
+                    {
+                        foreach (var Customer in item.UniversalBiltyLocationInformations)
+                        {
+                            if (Customer.LocationCode != null)
+                            {
+                                <text><span>@Customer.PickLocation.LocationName</span></text>
+                            }
+                            else
+                            {
+                                <text><span></span></text>
+                            }
+                        }
+                    }
+                </td>
+                <td>
+                    @if (item.UniversalBiltyLocationInformations != null)
+                    {
+                        foreach (var Customer in item.UniversalBiltyLocationInformations)
+                        {
+                            if (Customer.DropLocationCode != null)
+                            {
+                                <text><span>@Customer.PickLocation1.LocationName</span></text>
+                            }
+                            else
+                            {
+                                <text><span></span></text>
+                            }
+                        }
+                    }
+                </td>
+                <td>
+                    @if (item.UniversalBiltyCustomerInformations != null)
+                    {
+                        foreach (var Customer in item.UniversalBiltyCustomerInformations)
+                        {
+                            if (Customer.BillingType != null)
+                            {
+                                <text><span>@Customer.BillingType</span></text>
+                            }
+                            else
+                            {
+                                <text><span></span></text>
+                            }
+                        }
+                    }
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

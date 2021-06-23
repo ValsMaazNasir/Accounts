@@ -1,0 +1,186 @@
+﻿
+@{
+    ViewBag.Title = "ContainerType";
+}
+
+
+<link href="~/css/CustomerLoader.css" rel="stylesheet" />
+<div class="content-header">
+
+    <div class="header-section">
+        <h1>
+            ContainerType<br><small>Create Read Update Delete ContainerType</small>
+        </h1>
+    </div>
+
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>Admin</li>
+    <li><a href="javascript:;">ContainerType</a></li>
+</ul>
+
+<!-- END Datatables Header -->
+<!-- Datatables Content -->
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            <a id="" class="btn btn-primary btn-sm pull-right" onclick="$('#modal-add').modal('show'); ClearItem(); Enable();" href="#">Add New | <i class="fa fa-plus"></i></a>
+            <a id="" class="btn btn-primary btn-sm pull-right" onclick="$('#modal-search').modal('show'); ClearItem();" href="#">Search | <i class="fa fa-search"></i></a>
+        </div>
+    </div>
+
+    <div class="" id="grid">
+        @Html.Partial("_ContainerType")
+    </div>
+</div>
+
+<!-- END Datatables Content -->
+
+
+<div id="modal-search" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        @using (Ajax.BeginForm("SearchContainerType", "Admin", new AjaxOptions() { HttpMethod = "GET", OnSuccess = "fnSearch" }))
+        {
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header text-center">
+                    <h2 class="modal-title"><i class="fa fa-search"></i> Search ContainerType</h2>
+                </div>
+                <!-- END Modal Header -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="loader LoaderTd" style="display:none"></div>
+
+                    <table class="table table-responsive Search">
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label class="control-label">Date From</label>
+                                    <input type="text" id="DateFrom" name="DateFrom" class="form-control" />
+                                </td>
+                                <td>
+                                    <label class="control-label">Date To</label>
+                                    <input type="text" id="DateTo" name="DateTo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="control-label">Name</label>
+                                    <input type="text" id="Name" name="Name" class="form-control" />
+
+
+                                </td>
+                                <td>
+                                    <label class="control-label">Code</label>
+                                    <input type="text" id="Code" name="Code" class="form-control" />
+
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="submit" id="btnSaveEdit" class="btn btn-primary pull-right" onclick="$('.Search').hide(); $('.LoaderTd').show();"><b><i class="fa fa-search"></i> | Search</b></button>
+                </div>
+                <!-- END Modal Body -->
+            </div>
+        }
+    </div>
+</div>
+
+
+
+<div id="modal-add" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title"><i class="fa fa-pencil"></i> ContainerType</h2>
+            </div>
+            <!-- END Modal Header -->
+            <!-- Modal Body -->
+            @using (Ajax.BeginForm("addContainerType", "Admin", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "fnSuccess", OnFailure = "fnFailed" }))
+            {
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="hidden" name="ContainerTypeID" id="hfEditID" />
+                            <label class="control-label">Code</label>
+                            <input type="text" id="Code" name="Code" class="form-control" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Name</label>
+                            <input type="text" id="ContainerTypeName" name="ContainerTypeName" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Description</label>
+                            <textarea class="form-control" id="Description" name="Description"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" id="btnSaveEdit" class="btn btn-primary pull-right"><b><i class="fa fa-save"></i> Save</b></button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+<script src="~/js/Function.js"></script>
+<script src="~/js/Software js/ContainerType.js"></script>
+@section Script
+{
+    <script>
+        $(document).ready(function () {
+            Space();
+            $("#example").DataTable({
+                //dom: 'Bfrtip',
+                //buttons: [
+                //    'copyHtml5',
+                //    'excelHtml5',
+                //    'csvHtml5',
+                //    'pdfHtml5'
+                //]
+            });
+        });
+
+
+
+        function Message(title, text, type) {
+            Swal.fire({
+                title: title + '!',
+                text: text,
+                icon: type,
+                confirmButtonText: 'OK'
+            })
+        }
+        function GetOrders() {
+            $('#example').DataTable();
+        }
+
+        function ClearItem() {
+            $("input[type='text']").val('');
+            $("input[type='hidden']").val('');
+            $("textarea").val('');
+        }
+        function fnSearch(response) {
+            $("#grid").html(response.html);
+            $("#modal-search").modal('hide');
+            $(".LoaderTd").hide();
+            $('.Search').show();
+            GetOrders();
+        }
+    </script>
+}

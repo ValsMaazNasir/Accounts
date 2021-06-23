@@ -1,0 +1,89 @@
+﻿
+@using Newtonsoft.Json;
+@model IEnumerable<LiquadCargoManagment.Models.PickLocation>
+@using LiquadCargoManagment.Models
+
+    <div class="table-responsive">
+        <table class="table display table-striped" id="example">
+            <thead>
+                <tr>
+                    <td>Created Date</td>
+                    <td>Code</td>
+                    <td>Name</td>
+                    <td>Type</td>
+                    <td>Address</td>
+                    <td>City</td>
+                    <td>Area</td>
+                    @*<td>ShipmentType</td>*@
+                    <td>IsActive</td>
+                    <td>Operation</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    //string jsonData = JsonConvert.SerializeObject(item);
+                    string jsonData = "{";
+                    jsonData += " 'ID' : '" + item.ID + "', ";
+                    jsonData += " 'CreatedDate' : '" + item.CreatedDate + "', ";
+                    jsonData += " 'LocationCode' : '" + item.LocationCode + "', ";
+                    jsonData += " 'LocationName' : '" + item.LocationName + "', ";
+                    jsonData += " 'LocationType' : '" + item.LocationType + "', ";
+                    jsonData += " 'Address' : '" + item.Address + "', ";
+                    jsonData += " 'CityID' : '" + item.CityID + "', ";
+                    jsonData += " 'AreaID' : '" + item.AreaID + "', ";
+                    jsonData += " 'ShipmentTypeID' : '" + item.ShipmentTypeID + "' ";
+                    jsonData += "}";
+                <tr>
+                    @if (item.CreatedDate != null)
+                    {
+                        <td>@Convert.ToDateTime(item.CreatedDate).ToString(SoftwareFormatting.DateFormat)</td>
+                    }
+                    else
+                    {
+                        <td>@Convert.ToDateTime(item.ModifiedDate).ToString(SoftwareFormatting.DateFormat)</td>
+                    }
+                    <td>@item.LocationCode</td>
+                    <td>@item.LocationName</td>
+                    <td>@item.LocationType</td>
+                    <td>@item.Address</td>
+                    @if (item.CityID == null)
+                    {
+                        <td></td>
+                    }
+                    else
+                    {
+                        <td>@item.City.CityName</td>
+                    }
+                    @if (item.AreaID == null)
+                    {
+                        <td></td>
+                    }
+                    else
+                    {
+                        <td>@item.Area.Name</td>
+                    }
+                    @if (item.IsActive == true)
+                    {
+                        <td>
+                            <a onclick="ChangeStatus(@item.ID,false)"><i class="fa fa-toggle-on text-primary" style="font-size:25px;"></i></a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <a onclick="ChangeStatus(@item.ID,true)"><i class="fa fa-toggle-off text-danger" style="font-size:25px;"></i></a>
+                        </td>
+                    }
+                    <td>
+                        <button type="button" onclick="viewRecordRead(@jsonData,this)" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></button>
+                        <button type="button" onclick="viewRecord(@jsonData,this)" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></button>
+                        <button type="button" onclick="DeleteModel(@item.ID)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+

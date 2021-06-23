@@ -1,0 +1,91 @@
+﻿@model LiquadCargoManagment.Models.CustomerProfile
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-content" style="min-height: 199px;">
+    <div class="block full">
+        <div class="block-title row">
+            <div class="col-md-12">
+                <h2>Create Customer Profile</h2>
+            </div>
+        </div>
+        <table id="Add" class="table" cellpadding="0" cellspacing="0">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <label>Customers</label>
+                            @Html.DropDownListFor(x => x.CustomerId, ViewBag.Customer as SelectList, "--Select--", new { @class = "form-control select-chosen" })
+                            @Html.ValidationMessageFor(model => model.CustomerId, "", new { @class = "text-danger" })
+                        </td>
+                        <td>
+                            <label>Own Company</label>
+                            @Html.DropDownListFor(x => x.OwnCompanyId, ViewBag.OwnCompany as SelectList, "--Select--", new { @class = "form-control select-chosen" })
+                            @Html.ValidationMessageFor(model => model.OwnCompanyId, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Payment Term</label>
+                            @*@Html.EditorFor(model => model.PaymentTerm, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.DropDownListFor(x => x.PaymentTerm, new SelectList(ViewBag.PaymentTerm), "--Select--", htmlAttributes: new { @class = "form-control select-chosen" })
+                            @Html.ValidationMessageFor(model => model.PaymentTerm, "", new { @class = "text-danger" })
+                        </td>
+                        <td>
+                            <label>Credit Term</label>
+                            @*@Html.EditorFor(model => model.CreditTerm, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.DropDownListFor(x => x.CreditTerm, new SelectList(ViewBag.CreditTerm), "--Select--", htmlAttributes: new { @class = "form-control select-chosen" })
+                            @Html.ValidationMessageFor(model => model.CreditTerm, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Invoice Format</label>
+                            @*@Html.EditorFor(model => model.InvoiceFormat, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.DropDownListFor(x => x.InvoiceFormat, new SelectList(ViewBag.InvoiceFormat), "--Select--", htmlAttributes: new { @class = "form-control select-chosen" })
+                            @Html.ValidationMessageFor(model => model.InvoiceFormat, "", new { @class = "text-danger" })
+                        </td>
+                        <td>
+                            <label>Is Hide</label>
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.isHide)
+                                @Html.ValidationMessageFor(model => model.isHide, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Additional Charges</label>
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.IsAdditionalCharges)
+                                @Html.ValidationMessageFor(model => model.IsAdditionalCharges, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td>
+                            <label>Labour Charges</label>
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.IsLaborCharges)
+                                @Html.ValidationMessageFor(model => model.IsLaborCharges, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="Create" class="btn btn-primary pull-right" />
+                            <div>
+                                @Html.ActionLink("Back to List", "Index")
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            }
+            </table>
+    </div>
+</div>
+

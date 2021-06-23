@@ -1,0 +1,564 @@
+﻿@model LiquadCargoManagment.Models.AdminModel
+@using LiquadCargoManagment.DataAccessLayer
+@{ ViewBag.Title = "CustomerProfile"; }
+
+<div class="page-content">
+    <div class="block full">
+        <div class="block-title row">
+            <div class="col-md-12">
+                <h2>Customer Profile</h2>
+            </div>
+        </div>
+        @using (Ajax.BeginForm("AddCustomerProfile", "Admin", new AjaxOptions { HttpMethod = "POST", OnBegin = "Confirmation", LoadingElementId = "page_loader", OnSuccess = "SuccessResponse", OnFailure = "ResponseFailure" }))
+        {
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="hidden" class="ProfileId" id="ProfileId" name="ProfileId" value="@ViewBag.ProfileId" />
+                    @Html.Label("Customer Name", htmlAttributes: new { @class = "control-label" })
+                    <select id="ddlCustomer" class="form-control">
+                        <option selected value="0">Select</option>
+                        @foreach (var item in Model.CompanyList)
+                        {
+                            if (Model.CustomerProfile.CustomerId == item.CompanyID)
+                            {
+                                <option selected value="@item.CompanyID">@item.CompanyCode-@item.CompanyName</option>
+                            }
+                            else
+                            {
+                                <option value="@item.CompanyID">@item.CompanyCode-@item.CompanyName</option>
+                            }
+                        }
+
+                    </select>
+                    <input type="hidden" name="CustomerId" id="CustomerId" value="@Model.CustomerProfile.CustomerId" />
+                    <input type="hidden" name="CustomerCode" id="CustomerCode" value="@Model.CustomerProfile.CustomerCode" />
+                    <input type="hidden" name="CustomerName" id="CustomerName" value="@Model.CustomerProfile.CustomerName" />
+                </div>
+                <div class="col-md-4">
+                    @Html.Label("Own Company", htmlAttributes: new { @class = "control-label" })
+                    @Html.DropDownList("OwnCompany", Model.lstOwnCompany.ToOwnCompanySelectList(), new { @class = "form-control", style = "", id = "OwnCompany" })
+
+                    <input type="hidden" value="@Model.CustomerProfile.OwnCompanyId" name="OwnCompanyId" id="OwnCompanyId" />
+                </div>
+                <div class="col-md-4">
+                    @Html.Label("Payment Type", htmlAttributes: new { @class = "control-label" })
+                    <select id="ddlPaymentType" class="form-control">
+                        <option selected value="0">Select</option>
+                        <option value="Paid">Paid</option>
+                        <option value="Topay">Topay</option>
+
+                    </select>
+                    <input type="hidden" id="PaymentTerm" name="PaymentTerm" value="" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.Label("Credit Term", htmlAttributes: new { @class = "control-label" })
+                    <select id="ddlCreditTerm" class="form-control">
+                        <option selected value="0">Select</option>
+                        <option value="30 Days">30 Days</option>
+                        <option value="15 Days">15 Days</option>
+
+                    </select>
+                    <input type="hidden" id="CreditTerm" value="@Model.CustomerProfile.CreditTerm" name="CreditTerm" />
+                </div>
+                <div class="col-md-4">
+                    @Html.Label("Invoice Format", htmlAttributes: new { @class = "control-label" })
+                    <select id="ddlInvoiceFormat" class="form-control">
+                        <option selected value="0">Select</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+
+                    </select>
+                    <input type="hidden" value="@Model.CustomerProfile.InvoiceFormat" name="InvoiceFormat" id="InvoiceFormat" />
+                </div>
+                <div class="col-md-4">
+                    <div style="margin-top:40px;">
+                        @if (Model.CustomerProfile.isHide)
+                        {
+                            <input type="checkbox" id="isHide" name="isHide" value="true" checked /><label for="isHide">Hide</label> 
+                        }
+                        else
+                        {
+                            <input type="checkbox" id="isHide" name="isHide" value="true" /><label for="isHide">Hide</label>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:10px;">
+                <div class="col-md-4">
+                    @Html.Label("Addition Charges", htmlAttributes: new { @class = "control-label" })
+                    @if (Model.CustomerProfile.IsAdditionalCharges)
+                    {
+                        <input type="checkbox" id="IsAdditionalCharges" name="IsAdditionalCharges" value="true" checked /> 
+                    }
+                    else
+                    {
+                        <input type="checkbox" id="IsAdditionalCharges" name="IsAdditionalCharges" value="true" />
+                    }
+                </div>
+                <div class="col-md-4">
+                    @Html.Label("Labour Charges", htmlAttributes: new { @class = "control-label" })
+                    @if (Model.CustomerProfile.IsLaborCharges)
+                    {
+                        <input type="checkbox" id="IsLaborCharges" name="IsLaborCharges" value="true" checked /> 
+                    }
+                    else
+                    {
+                        <input type="checkbox" id="IsLaborCharges" name="IsLaborCharges" value="true" />
+                    }
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-primary pull-right">Add Customer</button>
+                </div>
+            </div>
+        }
+
+         <table style="margin-top:20px;" width="60%">
+            <tr>
+                <td>
+                    <label>Searching</label>
+                    @Html.TextBox("search", "", new { @placeholder = "Search Product", @class = "form-control" })
+                </td>
+                <td>
+                    <div><input type="button" id="btnModel" style="float:right;display:none;" class="btn btn-primary" data-target="#ModelCustomer" value="Add Detail" data-toggle="modal" /></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="col-lg-12" id="ShipmentDetail">
+
+        <div id="ModelCustomer" class="modal fade " role="dialog" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Product Detail</h4>
+                    </div>
+                    <div class="modal-body">
+                        @using (Ajax.BeginForm("AddCustomerProfileDetail", "Admin", new AjaxOptions { HttpMethod = "POST", LoadingElementId = "page_loader", OnSuccess = "SuccessResponse", OnFailure = "FailResponse" }))
+                        {
+
+            <input type="hidden" class="ProfileId" name="ProfileId" id="ProfileId" value="@ViewBag.ProfileId" />
+                            <input type="hidden" class="Customer" name="CustomerId" id="CustomerId" value="@ViewBag.CustomerId" />
+
+
+                                            <div class="modal-body form clearControl">
+
+                                                <input type="hidden" name="ProfileDetail" id="ProfileDetail" value="0" />
+
+                                                <div class="form-horizontal">
+                                                    <div class="row form-group">
+                                                        <label class="control-label col-md-1">Single</label>
+                                                        <input type="radio" name="type" id="single" checked />
+
+                                                    </div>
+                                                    <div id="divMultiple" class="row form-group">
+                                                        <label for="multiple" class="control-label col-md-1">Multiple</label>
+                                                        <input type="radio" name="type" id="multiple" />
+                                                    </div>
+                                                    <div id="myDiv2">
+                                                        <div class="row form-group">
+                                                            <div class="col-md-4">
+                                                                @Html.Label("Product", htmlAttributes: new { @class = "control-label" })
+                                                                @Html.DropDownList("cmbProduct1", Model.lstPrduct.ToProductModelSelectList(), new { @onChange = "SelectValue(this.id,'ProductId','VehicleType')", @class = "form-control sel cmbProduct2", style = "width:100%", id = "cmbProduct1" })
+
+
+                                                                @*@Html.DropDownList("cmbProduct", Model.lstPrduct.ToProductModelSelectList(), new { @onChange = "SelectPickupLocation();", @class = "form-control", style = "", id = "cmbProduct" })*@
+                                                                <input type="hidden" id="ProductId" name="ProductId" value="0" />
+
+                                                            </div>
+                                                            
+                                                            <div class="col-md-4">
+                                                                @Html.Label("Location From", htmlAttributes: new { @class = "control-label" })
+                                                                @Html.DropDownList("cmbPickupCity", Model.lstCity.ToCityModelSelectList(), new { @class = "form-control", style = "", id = "cmbPickupCity" })
+
+                                                                <input type="hidden" id="LocationFrom" name="LocationFrom" value="0" />
+
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                @Html.Label("Location To", htmlAttributes: new { @class = "control-label" })
+                                                                @Html.DropDownList("cmbDropCity", Model.lstCity.ToCityModelSelectList(), new { @onChange = "SelectPickupLocation();", @class = "form-control", style = "", id = "cmbDropCity" })
+
+                                                                <input type="hidden" id="LocationTo" name="LocationTo" value="0" />
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            
+                                                        </div>
+                                                        <div class="row form-group">
+                                                            
+                                                            <div class="col-md-4">
+                                                                @Html.Label("Rate Type", htmlAttributes: new { @class = "control-label" })
+                                                                <select id="ddlRateType" class="form-control">
+                                                                    <option value="0" selected>Select</option>
+                                                                    <option value="Kg">Kg</option>
+                                                                    <option value="Unit">Unit</option>
+                                                                    <option value="Lumsum">Lumsum</option>
+                                                                    <option value="Carton">Carton</option>
+                                                                </select>
+                                                                <input type="hidden" id="RateType" name="RateType" value="" />
+                                                            </div>
+                                                            
+                                                            <div class="col-md-4">
+                                                                @Html.Label("Rate Rs", htmlAttributes: new { @class = "control-label" })
+                                                                <input type="number" class="form-control" id="Rate" name="Rate" value="0" step="0.01" />
+                                                            </div>
+                                                            
+                                                            <div class="col-md-4">
+                                                                @Html.Label("Weight Per Unit", htmlAttributes: new { @class = "control-label" })
+                                                                <input type="number" class="form-control" id="WeightPerUnit" name="WeightPerUnit" step="0.01" value="0" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="row form-group">
+                                                            
+                                                            <div class="col-md-4">
+                                                                @Html.Label("Door Step Rs", htmlAttributes: new { @class = "control-label" })
+                                                                <input type="number" class="form-control" id="DoorStepRate" name="DoorStepRate" value="0" />
+                                                            </div>
+                                                            
+                                                            <div class="col-md-4">
+                                                                @Html.Label("Additional Charges", htmlAttributes: new { @class = "control-label" })
+                                                                <input type="number" class="form-control" readonly id="AdditionCharges" name="AdditionCharges" value="0" />
+                                                            </div>
+                                                           
+                                                            <div class="col-md-4">
+                                                                @Html.Label("Local Charges", htmlAttributes: new { @class = "control-label" })
+                                                                <input type="number" class="form-control" id="LabourCharges" name="LabourCharges" value="0" />
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div id="myDiv1">
+                                                        @Html.TextBox("searchMultiple", "", new { @placeholder = "Search Product", @class = "form-control" })
+                                                        <div style="height:400px; overflow-y:scroll;" id="divListMultiple">
+                                                            @Html.Partial("Admin/_CustomerProfileDetailMultiple", Model.CustomerProfileDetailList)
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                                            <div class="modal-footer">
+                                                                <input type="button" id="btnMultiple" value="Update Multiple " class="btn btn-success" onclick="UpdateMultipleProduct()" />
+                                                                <button id="btnSave" type="submit" value="Save" class="btn btn-success">Save</button>
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                            </div>}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div id="lstCustomerProfile">
+            <input id="hdnPos" type="hidden" />
+            @Html.Partial("Admin/_CustomerProfileDetail", Model.CustomerProfileDetailList)
+        </div>
+    </div>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+
+    function UpdateMultipleProduct() {
+
+
+        var list = new Array();
+        $("#MultiplyProduct  > tbody  > tr").each(function () {
+            if ($(this).find('input.chk').is(':checked')) {
+                debugger;
+                var ProfileId = $("#ProfileId").val();
+                var CustomerId = $("#CustomerId").val();
+                var ProfileDetail = $(this).find('td:eq(1)').html();
+                var Rate = $(this).find("td:eq(10) input[type='text']").val();
+                var SStudent = {
+                    ProfileId: ProfileId,
+                    CustomerId: CustomerId,
+                    ProfileDetail: ProfileDetail,
+                    Rate: Rate
+                };
+                list.push(SStudent);
+                $("#page_loader").css("display", "block");
+
+            }
+
+        });
+        if (list.length > 0) {
+            //alert(JSON.stringify(list));
+            $.ajax({
+                url: 'Multiple-Update', //
+                dataType: "json",
+                data: JSON.stringify(list),
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                    debugger;
+
+                    //parse json, convert it to object.
+                    if (result.Message == "Records are updated successfully") {
+                        $("#ModelCustomer").modal("toggle");
+                        $("#lstCustomerProfile").html(result.html);
+                        $("#divListMultiple").html(result.html1);
+                        $("#searchMultiple").val("");
+                        $("#page_loader").css("display", "none");
+                        Nofitication(result.Message, "Success");
+                        $("#divMultiple").hide();
+                        $("#btnMultiple").hide();
+                        $("#single").click();
+
+                    }
+                    else {
+
+                        Nofitication(data.Message, "");
+
+                    }
+                },
+                error: function (xhr) {
+                    alert("error");
+                }
+            });
+        }
+        else {
+            alert("Please select atleast on record");
+        }
+
+    }
+
+    $(document).ready(function () {
+        $("#myDiv1").hide();
+        $("#myDiv2").show();
+        $("#btnMultiple").hide();
+        $("#divMultiple").hide();
+
+        $("#single").click(function () {
+            $("#myDiv1").hide();
+            $("#myDiv2").show();
+            $("#btnSave").show();
+            $("#btnMultiple").hide();
+        });
+        $("#multiple").click(function () {
+            $("#myDiv2").hide();
+            $("#myDiv1").show();
+            $("#btnSave").hide();
+            $("#btnMultiple").show();
+            var list = [];
+            $('.cbCities:checked').each(function () {
+                list.push($(this).val());
+            });
+
+        });
+        $("#btnSave").click(function () {
+            $.ajax({
+                url: '/Admin/postCities',
+                type: 'post',
+                data: { data: list },
+                success: function (data) {
+
+                }
+            });
+        });
+
+
+        $("#cmbProduct1").select2();
+        $(".cmbProduct2").select2();
+        var arr = ("#s2id_cmbProduct1,").split(',');
+        for (var i = 0; i < arr.length; i++) {
+            $('#s2id_' + arr[i] + ' > a > span.select2-chosen').html("Select");
+        }
+    });
+    function SuccessResponse(data) {
+        if (data.Status == "OK") {
+
+            if (data.Form == "CustomerProfileList") {
+
+                if (data.Message != "Record Deleted Successfully!.") {
+                    $("#ProfileDetail").val("0");
+                    Nofitication(data.Message, "Success");
+                    $("#ModelCustomer").modal("toggle");
+                    $("#lstCustomerProfile").html("");
+                    $("#lstCustomerProfile").html(data.html);
+                    $("#cmbProduct1").val("0");
+                    $("#cmbProduct1 option:selected").text("select");
+                    $('#s2id_cmbProduct1 > a > span.select2-chosen').html("Select");
+                    var searchtext = $("#search").val();
+                    searchTable(searchtext, "tblCompany");
+
+
+                }
+                else {
+                    $("#ProfileDetail").val("0");
+                    //alert(data.Message);
+                    Nofitication(data.Message, "");
+
+                }
+
+            }
+
+            else {
+                $("#ProfileDetail").val("0");
+                $(".ProfileId").val(data.MasterId);
+                $("#btnModel").css("display", "block");
+            }
+
+            $("#btnSubmit").val("Save");
+        }
+        else if (data.Status == "Found")
+        {
+            alert("Record already exit. Please select other than this");
+        }
+        else {
+            $('#AddImportExportDialoge').modal('toggle');
+            alert(data.Message);
+            Nofitication(data.Message, "Failed");
+        }
+
+    }
+    function FailResponse(data) {
+        alert(data.Status);
+    }
+    function Confirmation() {
+
+            confirm("Are you sure to submit data");
+
+
+    }
+    $("#ddlCustomer").on("change", function () {
+        var CustomerId = $("#ddlCustomer").val();
+        var CustomerName = $("#ddlCustomer option:selected").text();
+        $("#CustomerId").val(CustomerId);
+        $(".Customer").val(CustomerId);
+        $("#CustomerName").val(CustomerName.split("-")[1]);
+        $("#CustomerCode").val(CustomerName.split("-")[0]);
+    });
+    $("#OwnCompany").on("change", function () {
+        $("#OwnCompanyId").val($("#OwnCompany").val());
+
+    });
+    $("#ddlPaymentType").on("change", function () {
+        $("#PaymentTerm").val($("#ddlPaymentType option:selected").text());
+    });
+    $("#ddlCreditTerm").on("change", function () {
+        $("#CreditTerm").val($("#ddlCreditTerm option:selected").text());
+    });
+    $("#ddlInvoiceFormat").on("change", function () {
+        $("#InvoiceFormat").val($("#ddlInvoiceFormat").val());
+    });
+    $("#cmbProduct").on("change", function () {
+        $("#ProductId").val($("#cmbProduct").val());
+    });
+    $("#cmbPickupCity").on("change", function () {
+        $("#LocationFrom").val($("#cmbPickupCity").val());
+    });
+    $("#cmbDropCity").on("change", function () {
+        $("#LocationTo").val($("#cmbDropCity").val());
+    });
+    $("#ddlRateType").on("change", function () {
+        $("#RateType").val($("#ddlRateType").val());
+    });
+    function EditInfo(id) {
+        $("#divMultiple").show();
+        $("#btnSubmit").val("Update");
+        var Json = jQuery.parseJSON($("#Company-" + id).val());
+        // alert(Json.IBCCode);
+        $("#CustomerId").val(Json.CustomerId);
+        $("#LocationFrom").val(Json.LocationFrom);
+         $("#AdditionCharges").val(Json.AdditionCharges);
+        $("#LabourCharges").val(Json.LabourCharges);
+        $("#LocationTo").val(Json.LocationTo);
+        $("#ProductName").val(Json.ProductName);
+        $("#ProductCode").val(Json.ProductCode);
+        $("#ProfileDetail").val(Json.ProfileDetail);
+        $("#ProductId").val(Json.ProductId);
+        $("#RateType").val(Json.RateType);
+        $("#Rate").val(Json.Rate);
+        Select2Text1("cmbProduct1", Json.ProductName);
+        $("#cmbProduct1").val(Json.ProductId);
+        $("#cmbProduct1 option:selected").text(Json.ProductName);
+        $("#ddlRateType").val(Json.RateType);
+        $("#DoorStepRate").val(Json.DoorStepRate);
+        $("#cmbPickupCity").val(Json.LocationFrom);
+        $("#cmbDropCity").val(Json.LocationTo);
+        $("#WeightPerUnit").val(Json.WeightPerUnit);
+        $("#btnSave").val("Update");
+        $("#ModelCustomer").modal('toggle');
+    }
+    function Select2Text1(controllID, text) {
+
+        if (text == null) {
+            $('#s2id_' + controllID + ' > a > span.select2-chosen').html("Select");
+            $("#" + controllID).val(0).trigger('change');
+        }
+        else {
+            $('#s2id_' + controllID + ' > a > span.select2-chosen').html(text);
+            $("#" + controllID + " option").each(function () {
+
+                if ($(this).text().trim() == text.trim()) {
+                    $(this).attr('selected', 'selected');
+                    $("#select2-" + controllID + "-container").text(text);
+                    var abc = $("s2id_" + controllID).find('a').find('span').hasClass('select2-chosen');
+                    if ($('#s2id_' + controllID + ' > a > span.select2-chosen').length != 0) {
+
+                        $('#s2id_' + controllID + ' > a > span.select2-chosen').html(text);
+                    }
+                }
+            });
+        }
+    }
+       $(document).ready(function () {
+           $("#OwnCompany").val('@Model.CustomerProfile.OwnCompanyId');
+           $("#ddlPaymentType").val('@Model.CustomerProfile.PaymentTerm');
+           $("#ddlCreditTerm").val('@Model.CustomerProfile.CreditTerm');
+           $("#ddlInvoiceFormat").val('@Model.CustomerProfile.InvoiceFormat');
+           if (@Model.CustomerProfile.ProfileId> 0)
+           $("#btnModel").css("display", "block");
+           $('#ModelCustomer').on('hidden.bs.modal', function () {
+
+                   $("#cmbProduct1").val("0");
+                   $("#cmbProduct1 option:selected").text("select");
+                   $('#s2id_cmbProduct1 > a > span.select2-chosen').html("Select");
+               $("#cmbPickupCity").val(0);
+               $("#cmbDropCity").val(0);
+               $("#ddlRateType").val(0);
+               $("#Rate").val(0);
+               $("#WeightPerUnit").val("");
+               $("#DoorStepRate").val("0");
+               $("#ProfileDetail").val("0");
+
+
+           });
+       });
+
+    $(document).ready(function () {
+        $('#search').keyup(function () {
+            searchTable($(this).val(),"tblCompany");
+        });
+        $('#searchMultiple').keyup(function () {
+            searchTable($(this).val(),"MultiplyProduct");
+        });
+    });
+
+    function searchTable(inputVal,table) {
+        var table = $('#' + table);
+        table.find('tr').each(function (index, row) {
+            var allCells = $(row).find('td');
+            if (allCells.length > 0) {
+                var found = false;
+                allCells.each(function (index, td) {
+                    var regExp = new RegExp(inputVal, 'i');
+                    if (regExp.test($(td).text())) {
+                        found = true;
+                        return false;
+                    }
+                });
+                if (found == true)
+                    $(row).show();
+                else
+                    $(row).hide();
+            }
+        });
+    }
+</script>

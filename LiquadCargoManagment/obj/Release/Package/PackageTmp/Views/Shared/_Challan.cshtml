@@ -1,0 +1,114 @@
+﻿@model IEnumerable<LiquadCargoManagment.Models.Challan>
+
+@using LiquadCargoManagment.Models;
+
+<div class="table-responsive">
+    <table class="table display table-striped" id="example" style="font-size:10px;">
+        <thead>
+            <tr>
+                <td>CreatedDate</td>
+                <td>OrderNo</td>
+                <td>ChallanNo</td>
+                <td>ChallanDate</td>
+                <td>BiltyNo</td>
+                <td>Vehicle</td>
+                <td>Broker</td>
+                <td>Pick Location</td>
+                <td>Drop Location</td>
+                <td>E/Vehicle No</td>
+                <td>Operation</td>
+            </tr>
+        </thead>
+        <tbody>
+                @foreach (var item in Model)
+                {
+            <tr>
+                @if (item.CreatedDate != null)
+                {
+                    <td>@Convert.ToDateTime(item.CreatedDate).ToString(SoftwareFormatting.DateFormat)</td>
+                }
+                else
+                {
+                    <td>@Convert.ToDateTime(item.ModifiedDate).ToString(SoftwareFormatting.DateFormat)</td>
+                }
+                <td>@item.ChallanNo</td>
+                <td>@item.ChallanManualNo</td>
+                <td>@Convert.ToDateTime(item.ChallanDate).ToString(SoftwareFormatting.DateFormat)</td>
+                <td style="width:100px">
+                    @if (item.CompactCheckBilties != null)
+                    {
+                        foreach (var bilty in item.CompactCheckBilties)
+                        {
+                            if (bilty.CompactBiltyID != null)
+                            {
+                                <text><span>@bilty.Bilty.OrderNo , </span></text>
+                            }
+
+                            else
+                            {
+                                <text><span></span></text>
+                            }
+                        }
+                    }
+                </td>
+                @if (item.VehicleID != null)
+                {
+                    <td>@item.Vehicle.Code</td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                @if (item.Vendor != null)
+                {
+                    <td>@item.Vendor.Name</td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                @if (item.PickLocationID != null)
+                {
+                    <td>@item.PickLocation1.LocationName</td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                @if (item.DropLocationID != null)
+                {
+                    <td>@item.PickLocation.LocationName</td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                <td>@item.ExternalVehicleNo</td>
+                @*<td>
+            <a href="../Admin/Challan?id=@item.ID" class="btn btn-primary btn-xs">
+                <i class="fa fa-eye"></i>
+            </a>
+            <button type="button" onclick="EditChallan(@item.ID)" class="btn btn-default btn-xs">
+                <i class="fa fa-edit"></i>
+            </button>
+            <button type="button" onclick="DeleteModel(@item.ID)" class="btn btn-danger btn-xs">
+                <i class="fa fa-trash"></i>
+            </button>
+        </td>*@
+                <td width="10%">
+
+                    <div class="btn-group btn-group-xs">
+                        <a class="btn btn-alt btn-danger btn-sm" data-toggle="tooltip" title="Cancel Record" onclick="DeleteModel(@item.ID)"><i class="fa fa-window-close"></i></a>
+                        <a href="../Report/ChallanPrint?id=@item.ID" target="_blank" class="btn btn-alt btn-warning btn-sm" data-toggle="tooltip" title="Print Bilty"><i class="fa fa-print"></i></a>
+                        <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                        <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+                            <li><a href="#" onclick="EditChallan(@item.ID)"><i class="fa fa-eye pull-right"></i>Edit</a></li>
+                            <li class="divider"></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+                }
+        </tbody>
+    </table>
+</div>

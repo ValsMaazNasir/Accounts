@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<!-- PURCHASED FROM www.themeon.net/nifty/v2.9.1/index.html by COPYRIGHT/3.x [XR&CO'2014], Sat, 13 Jul 2019 12:24:29 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Accounting System</title>
+
+    <!--STYLESHEET-->
+    <!--=================================================-->
+    <!--Open Sans Font [ OPTIONAL ]-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+
+    <!-- Related styles of various icon packs and plugins -->
+    <link rel="stylesheet" href="~/css/plugins.css" />
+
+    <!-- The main stylesheet of this template. All Bootstrap overwrites are defined in here -->
+    <link rel="stylesheet" href="~/css/main.css" />
+    <link rel="stylesheet" href="~/css/themes.css" />
+    <!-- Modernizr (browser feature detection library) -->
+    <script src="~/js/vendor/modernizr.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    @*<link rel="stylesheet" href="~/css/customDataTable.css" />
+        <link rel="stylesheet" href="~/css/DataTableThemeController.css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css" />*@
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    @*<link href="~/Content/bootstrap-chosen.css" rel="stylesheet" />*@
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    @Styles.Render("~/assets/accounts/cache/site")
+    @if (IsSectionDefined("LinkStyleSection"))
+    {
+        @RenderSection("LinkStyleSection");
+    }
+    @if (IsSectionDefined("InLineStyleSection"))
+    {
+        @RenderSection("InLineStyleSection");
+    }
+    <style>
+        #loading {
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            position: fixed;
+            display: block;
+            z-index: 99;
+            opacity: 0.7;
+            background-color: #fff;
+            display: none;
+        }
+
+        #loading-image {
+            position: absolute;
+            top: 20%;
+            left: 40%;
+            z-index: 100
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">
+        <img id="loading-image" src="~/assets/accounts/images/loader.gif" alt="Loading..." />
+    </div>
+
+    <img src="~/assets/accounts/images/banner.jpeg" alt="Login Full Background" class="full-bg animation-pulseSlow">
+    @RenderBody()
+
+
+
+    <script src="~/js/vendor/bootstrap.min.js"></script>
+    <script src="~/js/plugins.js"></script>
+    <script src="~/js/app.js"></script>
+    <script src="~/js/pages/index.js"></script>
+    @Scripts.Render("~/assets/accounts/cache/jquery")
+    @Scripts.Render("~/assets/accounts/cache/core")
+    @if (IsSectionDefined("LinkScriptSection"))
+    {
+        @RenderSection("LinkScriptSection");
+    }
+    @Scripts.Render("~/assets/accounts/cache/function")
+    @if (IsSectionDefined("InLineScriptSection"))
+    {
+        @RenderSection("InLineScriptSection");
+    }
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<LiquadCargoManagment.Models.product1>
+@using Newtonsoft.Json;
+@using LiquadCargoManagment.Models
+<table class="table display table-striped" id="example">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Code</td>
+            <td>Name</td>
+            <td>Description</td>
+            <td>TP</td>
+            <td>Creation Date</td>
+            <td>Operation</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            //string jsonData = JsonConvert.SerializeObject(item);
+            string jsonData = "{";
+            jsonData += " 'products_id' : '" + item.products_id + "', ";
+            jsonData += " 'products_model' : '" + item.products_model + "', ";
+            jsonData += " 'products_name' : '" + item.products_name + "', ";
+            jsonData += " 'productDescription' : '" + item.productDescription + "', ";
+            jsonData += " 'products_msrp' : '" + item.products_msrp + "', ";
+            jsonData += " 'products_tp' : '" + item.products_tp + "', ";
+            jsonData += " 'products_scheme' : '" + item.products_scheme + "', ";
+            jsonData += " 'products_bonus' : '" + item.products_bonus + "', ";
+            jsonData += " 'products_discPer' : '" + item.products_discPer + "', ";
+            jsonData += " 'products_discAmt' : '" + item.products_discAmt + "', ";
+            jsonData += " 'isActive' : '" + item.isActive + "', ";
+            jsonData += " 'created' : '" + item.created + "', ";
+            jsonData += " 'modified' : '" + item.modified + "', ";
+            jsonData += " 'createdBy' : '" + item.createdBy + "', ";
+            jsonData += " 'modifiedBy' : '" + item.modifiedBy + "', ";
+            jsonData += "}";
+        <tr>
+            <td>@item.products_id</td>
+            <td>@item.products_model</td>
+            <td>@Html.DisplayName(item.products_name)</td>
+            <td>@item.productDescription</td>
+            <td>@item.products_tp</td>
+            @if (item.created != null)
+            {
+                <td>@Convert.ToDateTime(item.created).ToString(SoftwareFormatting.DateFormat)</td>
+            }
+            else
+            {
+                <td>@Convert.ToDateTime(item.modified).ToString(SoftwareFormatting.DateFormat)</td>
+            }
+            <td>
+                <button type="button" onclick="update(@jsonData,this)" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></button>
+                <button type="button" onclick="Delete(@item.products_id)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

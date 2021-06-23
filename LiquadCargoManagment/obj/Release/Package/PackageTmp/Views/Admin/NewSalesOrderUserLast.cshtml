@@ -1,0 +1,1064 @@
+﻿@model LiquadCargoManagment.Models.Meta
+@using LiquadCargoManagment.Helpers
+
+@{
+    ViewBag.Title = "SalesOrder";
+}
+
+
+@if (ApplicationHelper.lstBiltyRole.Contains(ApplicationHelper.EnumBiltyRole.User1))
+{
+    <div class="block full">
+        <div class="block-title row">
+            <div class="col-md-12">
+                <h2>Sales Order</h2>
+            </div>
+        </div>
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label>Customer Company</label>
+                    @Html.DropDownListFor(m => m.SaleOrder.CustomerCompanyId, new SelectList(ViewBag.customerCompany, "Value", "Text"), "--Select--", new { @class = "form-control select-chosen", @id = "CustomerCompanyId", @tabindex = "1" })
+                </div>
+                <div class="col-md-3">
+                    <label>Order Date</label>
+                    @Html.EditorFor(model => model.SaleOrder.OrderDate, new { htmlAttributes = new { @class = "form-control", @id = "OrderDate" } })
+                </div>
+                <div class="col-md-3">
+                    <label>Que No.</label>
+                    @Html.EditorFor(model => model.SaleOrder.QueNo, new { htmlAttributes = new { @class = "form-control", @id = "QueNo" } })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label>Shipment Type</label>
+                    @Html.DropDownListFor(m => m.SaleOrder.ShipmentTypeId, new SelectList(ViewBag.ShipmentType, "Value", "Text"), "--Select--", new { @class = "form-control ShipmentType select-chosen", @id = "ShipmentTypeId", @tabindex = "1", @onchange = "GetGst(this);LoadingProvince(this)" })
+                    @*<select class="form-control select-chosen" id="ShipmentTypeId" onchange="GetGst(this);LoadingProvince(this)">
+                        <option value="0">--Select--</option>
+                        <option value="Local">Local</option>
+                        <option value="Depot">Depot</option>
+                        <option value="FOB">FOB</option>
+                    </select>*@
+                </div>
+                <div class="col-md-3">
+
+                    @if (Model.SaleOrder != null)
+                    {
+                        if (Model.SaleOrder.ShipmentType != null)
+                        {
+                            if (Model.SaleOrder.ShipmentType.Name.Contains("local"))
+                            {
+                                <label class="lblOrderno"> Invoice No.</label>
+                            }
+                            else
+                            {
+                                <label class="lblOrderno">Sale Order No.</label>
+                            }
+                        }
+                        else
+                        {
+                            <label class="lblOrderno">Sale Order No.</label>
+                        }
+                    }
+                    else
+                    {
+                        <label class="lblOrderno">Sale Order No.</label>
+                    }
+                    @Html.EditorFor(model => model.SaleOrder.SaleOrderNo, new { htmlAttributes = new { @class = "form-control", @id = "SaleOrderNo" } })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label>Loading Date</label>
+                    @Html.EditorFor(model => model.SaleOrder.LoadingDate, new { htmlAttributes = new { @class = "form-control datepicker", @id = "LoadingDate" } })
+                </div>
+                <div class="col-md-3">
+                    <label>Vehicle Reg No.</label>
+                    @Html.DropDownListFor(m => m.SaleOrder.VehicleId, new SelectList(ViewBag.VehicleRegNo, "Value", "Text"), "--Select--", new { @class = "form-control select-chosen", @tabindex = "1", @id = "VehicleId" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label>Delivery/Token No.</label>
+                    @Html.EditorFor(model => model.SaleOrder.TokenNumber, new { htmlAttributes = new { @class = "form-control", @id = "TokenNumber" } })
+                </div>
+                <div class="col-md-3">
+                    <label>Delivery Date.</label>
+                    @Html.EditorFor(model => model.SaleOrder.DeliveryDate, new { htmlAttributes = new { @class = "form-control datepicker", @id = "DeliveryDate" } })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="block full">
+        <div class="block-title row">
+            <div class="col-md-12">
+                <h2>Loading Information</h2>
+            </div>
+        </div>
+        <!--<table class="table">
+            <thead>
+                <tr>
+                    <td><label>Loading Location</label></td>
+                    <td><label>Province</label></td>
+                    <td><label>City</label></td>
+                    <td><label>GST %</label></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DropDownListFor(m => m.SaleOrder.LoadingLocationId, new SelectList(ViewBag.LoadingLocation, "Value", "Text"), "--Select--", new { @class = "form-control select-chosen", @id = "LoadingLocationId", @tabindex = "1", @onchange = "LoadingProvince(this);GetGst(this);GetProvince(this)" })
+                    </td>
+                    <td>
+                        @Html.TextBox("Province", "", new { @class = "form-control", @disabled = "true" })
+                    </td>
+                    <td>
+                        @Html.TextBox("City", "", new { @class = "form-control", @disabled = "true" })
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" id="GSTPercentLoading" disabled />-->
+                        @*@Html.DropDownList("GSTType", new SelectList(ViewBag.GST, "Value", "Text"), "--Select--", new { @class = "form-control select-chosen" })*@
+                    <!--</td>-->
+                    @*<td>
+                        <label>GST Type</label>
+                        @Html.DropDownList("GSTType", new SelectList(ViewBag.GST, "Value", "Text"), "--Select--", new { @class = "form-control select-chosen" })
+                    </td>*@
+                <!--</tr>
+            </tbody>
+        </table>-->
+    <table class="table table-responsive Loading_Information" id="Loading_Information">
+        <thead>
+            <tr>
+                <td><label>Loading Location</label></td>
+                <td><label>Province</label></td>
+                <td><label>City</label></td>
+                <td><label>GST %</label></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <tr class="Loading">
+                <td>
+                    @Html.DropDownListFor(m => m.SaleOrder.LoadingLocationId, new SelectList(ViewBag.LoadingLocation, "Value", "Text"), "--Select--", new { @class = "form-control select-chosen", @id = "LoadingLocationId", @tabindex = "1", @onchange = "LoadingProvince(this);GetGst(this);GetProvince(this)" })
+                </td>
+                <td>
+                    @Html.TextBox("Province", "", new { @class = "form-control", @disabled = "true" })
+                </td>
+                <td>
+                    @Html.TextBox("City", "", new { @class = "form-control", @disabled = "true" })
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="GSTPercentLoading" disabled />
+                    @*@Html.DropDownList("GSTType", new SelectList(ViewBag.GST, "Value", "Text"), "--Select--", new { @class = "form-control select-chosen" })*@
+                </td>
+                @*<td>
+                    <label>GST Type</label>
+                    @Html.DropDownList("GSTType", new SelectList(ViewBag.GST, "Value", "Text"), "--Select--", new { @class = "form-control select-chosen" })
+                </td>*@
+                    @Html.TextBoxFor(x => x.SaleOrder.PickLocation.City.Province.ProvinceName, "", new { @class = "form-control", @id = "Province", @disabled = "true" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.SaleOrder.PickLocation.City.CityName, "", new { @class = "form-control",@id="City", @disabled = "true" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.SaleOrder.GSTType, new { @class = "form-control", @id="GSTPercentLoading", @disabled = "true" })
+                </td>
+            </tr>
+        </tbody>
+
+        <thead>
+            <tr>
+                <td><label>Destination Location</label></td>
+                <td><label>Province</label></td>
+                <td><label>City</label></td>
+                <td><label>GST %</label></td>
+                <td><label>Product</label></td>
+                <td><label>Qty</label></td>
+                @*<td><label>GST Type</label></td>*@
+                @if (ApplicationHelper.lstBiltyRole.Contains(ApplicationHelper.EnumBiltyRole.User3))
+                {
+                    <td><label>Freight</label></td>
+                    <td><label>Shortage</label></td>
+                    <td><label>Shortage Rp</label></td>
+                    @*<td><label>Total</label></td>*@
+                }
+            </tr>
+        </thead>
+        <tbody>
+                    <td><label>Total</label></td>
+                }
+                <td></td>
+            </tr>
+        </thead>
+        <tbody class="Destin">
+            @if (Model.Destinations != null && Model.Destinations.Count > 0)
+            {
+                int count = 0;
+                foreach (var item in Model.Destinations)
+                {
+            <tr class="Destination">
+
+                <td width="20%">
+                    @Html.DropDownList("DestinationLocation", new SelectList(ViewBag.LoadingLocation, "Value", "Text"), "--Select--", new { @class = "form-control select-chosen", @tabindex = "1", @onchange = "GetGst(this);LoadingProvince(this);GetProvince(this)" })
+                </td>
+                <td width="10%">
+                    @Html.TextBox("Province", "", new { @class = "form-control", @id = "Province", @disabled = "true" })
+                </td>
+                <td width="10%">
+                    @Html.TextBox("City", "", new { @class = "form-control", @id = "City", @disabled = "true" })
+                </td>
+                <td width="20%">
+                    <input type="text" class="form-control" id="GSTPercent" disabled />
+                    @*@Html.DropDownList("Tax", new SelectList(ViewBag.GST, "Value", "Text"), "--Select--", new { @class = "form-control select-chosen", @tabindex = "1" })*@
+                </td>
+                <td width="20%">
+                    @Html.DropDownList("Product", new SelectList(ViewBag.Products, "Value", "Text"), "--Select--", new { @class = "form-control select-chosen", @tabindex = "1" })
+                </td>
+                <td width="5%">
+                    @Html.TextBox("ProductQty", "", new { @class = "form-control text-right", @onkeyup = "Grandtotal('#Loading_Information',2,'Qty')" })
+                    @Html.DropDownList("DestinationLocation", new SelectList(ViewBag.LoadingLocation, "Value", "Text",item.DestinationLocation), "--Select--", new { @class = "form-control select-chosen", @tabindex = "1", @onchange = "GetGst(this);LoadingProvince(this);GetProvince(this)" })
+                </td>
+                <td width="10%">
+                    <input type="text" class="form-control" id="Province" disabled value="@item.PickLocation.City.Province.ProvinceName" />
+                </td>
+                <td width="10%">
+                    <input type="text" class="form-control" id="City" disabled value="@item.PickLocation.City.CityName" />
+                </td>
+                <td width="20%">
+                    <input type="text" class="form-control" id="GSTPercent" disabled value="@item.GSTType" />
+                </td>
+                <td width="20%">
+                    @Html.DropDownList("Product", new SelectList(ViewBag.Products, "Value", "Text",item.Product), "--Select--", new { @class = "form-control select-chosen", @tabindex = "1" })
+                </td>
+                <td width="5%">
+                    <input type="text" class="form-control" value="@item.ProductQty" onkeyup="GrandtotalDes('#Loading_Information',5,'Qty')" />
+                </td>
+                @if (ApplicationHelper.lstBiltyRole.Contains(ApplicationHelper.EnumBiltyRole.User3))
+                {
+                    <td width="10%">
+
+                        <input type="text" class="form-control" value="@item.Frieght" onkeyup="Grandtotal('#Loading_Information',6,'Freight')" />
+                    </td>
+                    <td width="10%">
+
+                        <input type="text" class="form-control" value="@item.ShortageQty" onkeyup="Grandtotal('#Loading_Information',7,'Shortage')" />
+                        <input type="text" class="form-control" value="@item.Frieght" onkeyup="GrandtotalDes('#Loading_Information',6,'Freight')" />
+                    </td>
+                    <td width="10%">
+
+                        <input type="text" class="form-control" value="@item.ShortageQty" onkeyup="GrandtotalDes('#Loading_Information',7,'Shortage')" />
+
+                    </td>
+                    <td width="10%">
+
+                        <input type="text" class="form-control" value="@item.Shortage" onkeyup="Grandtotal('#Loading_Information',8,'ShortageRp')" />
+
+                    </td>
+                        <input type="text" class="form-control" value="@item.Shortage" onkeyup="GrandtotalDes('#Loading_Information',8,'ShortageRp')" />
+
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" value="" onkeyup="GrandtotalDes('#Loading_Information',9,'DestinationTotal')"/>
+                    </td>
+                }
+                @if (count == 0)
+                {
+                    <td>
+                        <button type="button" class="btn btn-primary" onclick="AddLoading(this)"><i class="fa fa-plus"></i></button>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <button type="button" class="btn btn-danger" onclick="remove(this)"><i class="fa fa-trash"></i></button>
+                    </td>
+                }
+                @{count++;}
+            </tr>
+                }
+
+            }
+            else
+            {
+                <tr class="Destination">
+
+                    <td width="20%">
+                        @Html.DropDownList("DestinationLocation", new SelectList(ViewBag.LoadingLocation, "Value", "Text"), "--Select--", new { @class = "form-control select-chosen", @tabindex = "1", @onchange = "GetGst(this);LoadingProvince(this);GetProvince(this)" })
+                    </td>
+                    <td width="10%">
+                        @Html.TextBox("Province", "", new { @class = "form-control", @id = "Province", @disabled = "true" })
+                    </td>
+                    <td width="10%">
+                        @Html.TextBox("City", "", new { @class = "form-control", @id = "City", @disabled = "true" })
+                    </td>
+                    <td width="20%">
+                        <input type="text" class="form-control" id="GSTPercent" disabled />
+                        @*@Html.DropDownList("Tax", new SelectList(ViewBag.GST, "Value", "Text"), "--Select--", new { @class = "form-control select-chosen", @tabindex = "1" })*@
+                    </td>
+                    <td width="20%">
+                        @Html.DropDownList("Product", new SelectList(ViewBag.Products, "Value", "Text"), "--Select--", new { @class = "form-control select-chosen", @tabindex = "1" })
+                    </td>
+                    <td width="5%">
+                        @Html.TextBox("ProductQty", "", new { @class = "form-control text-right", @onkeyup = "Grandtotal('#Loading_Information',2,'Qty')" })
+                    </td>
+                    <!--<td width="100">
+                @*@Html.DropDownList("GSTType", new SelectList(ViewBag.GST), "--Select--", new { @class = "form-control select-chosen", @tabindex = "1" })*@
+                @*@Html.DropDownList("GSTType", new SelectList(ViewBag.GST,"Value","Text"),"--Select--", new { @class="form-control select-chosen"})*@
+                </td>-->
+                    @if (ApplicationHelper.lstBiltyRole.Contains(ApplicationHelper.EnumBiltyRole.User3))
+                    {
+                        <td width="10%">
+                            @Html.TextBox("Freight", "", new { @class = "form-control text-right", @onkeyup = "Grandtotal('#Loading_Information',6,'Freight')" })
+                        </td>
+                        <td width="10%">
+                            @Html.TextBox("ShortageQty", "", new { @class = "form-control text-right", @onkeyup = "Grandtotal('#Loading_Information',7,'Shortage')" })
+                        </td>
+                        <td width="10%">
+                            @Html.TextBox("ShortageRp", "", new { @class = "form-control text-right", @onkeyup = "Grandtotal('#Loading_Information',8,'ShortageRp')" })
+                        </td>
+                    }
+                    @*<td width="10%">
+                        @Html.TextBox("Total", "", new { @class = "form-control text-right", @onkeyup = "Grandtotal('#Loading_Information',9,'Total')" })
+                    </td>*@
+                        @Html.TextBox("ProductQty", "", new { @class = "form-control text-right", @onkeyup= "GrandtotalLocation('#Loading_Information',5,'Qty')" })
+                    </td>
+                    @if (ApplicationHelper.lstBiltyRole.Contains(ApplicationHelper.EnumBiltyRole.User3))
+                    {
+                        <td width="10%">
+                            @Html.TextBox("Freight", "", new { @class = "form-control text-right", @onkeyup = "GrandtotalLocation('#Loading_Information',6,'Freight')" })
+                        </td>
+                        <td width="10%">
+                            @Html.TextBox("ShortageQty", "", new { @class = "form-control text-right", @onkeyup = "GrandtotalLocation('#Loading_Information',7,'ShortageQty')" })
+                        </td>
+                        <td width="10%">
+                            @Html.TextBox("ShortageRp", "", new { @class = "form-control text-right", @onkeyup = "GrandtotalLocation('#Loading_Information',8,'ShortageRp')" })
+                        </td>
+                        <td>
+                            @Html.TextBox("GrandTotalDestination", "", new { @class = "form-control text-right",@readonly="true", @onkeyup = "GrandtotalLocation('#Loading_Information',9,'GrandTotalDestination')" })
+                        </td>
+                    }
+                    <td>
+                        <button type="button" class="btn btn-primary" onclick="AddLoading(this)"><i class="fa fa-plus"></i></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr class="grand_total" style="font-weight:bold;">
+                <td colspan="2">
+                    Grand Total :
+                </td>
+                @*<td colspan="2" class="text-right" style="padding-right:70px"></td>*@
+                <td class="text-right" style="padding-right:15px"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="text-right" style="padding-right:15px"></td>
+                <td class="text-right" style="padding-right:15px"></td>
+                <td class="text-right" style="padding-right:15px"></td>
+                <td colspan="2" class="text-right" style="padding-right:70px"></td>
+            </tr>
+
+            <tr class="grand_total_Des" style="font-weight:bold;">
+                <td colspan="5">
+                    Grand Total :
+                </td>
+                <td class="text-right" style="padding-right:15px"></td>
+                <td class="text-right" style="padding-right:15px"></td>
+                <td class="text-right" style="padding-right:15px"></td>
+                <td class="text-right" style="padding-right:15px"></td>
+                <td class="text-right" style="padding-right:15px"></td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    </div>
+}
+@*Vehicle Expense*@
+@if (ApplicationHelper.lstBiltyRole.Contains(ApplicationHelper.EnumBiltyRole.User2))
+{
+    <div class="block full">
+        <div class="block-title row">
+            <div class="col-md-12">
+                <h2>Vehicle Expenses</h2>
+            </div>
+        </div>
+
+        <table class="table VehicleExpense" id="Expense_Information">
+            <thead>
+                <tr>
+                    <td><label>Expense Type</label></td>
+                    <td><label>Payment Method</label></td>
+                    <td><label>Bank Br</label></td>
+                    <td><label>Instrument #</label></td>
+                    <td><label>Cheque Date</label></td>
+                    <td><label>Amount Rs.</label></td>
+                    <td><label>Received By</label></td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Expenses != null && Model.Expenses.Count > 0)
+                {
+                    int count = 0;
+
+                    foreach (var item in Model.Expenses)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DropDownList("ExpenseTypeId", new SelectList(ViewBag.Expenses, "Value", "Text", item.ExpenseTypeId), "--Select--", new { @class = "form-control select-chosen" })
+
+                            </td>
+                            <td>
+                                @Html.DropDownList("PaymentMethod", new SelectList(ViewBag.Payment, item.PaymentMethod), "--Select--", htmlAttributes: new { @class = "form-control select-chosen", @onchange = "PaymentMethod(this)" })
+                            </td>
+                            @if (item.PaymentMethod == "Cash")
+                            {
+                            <td>
+                                @Html.DropDownList("BankBranchId", new SelectList(ViewBag.BankBranchId, "Value", "Text", item.BankBranchId), "--Select--", htmlAttributes: new { @class = "form-control select-chosen",@disabled="true" })
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" value="@item.Instrument" disabled/>
+
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" id="ChequeDate" value="@item.ChequeDate" disabled/>
+                            </td>
+                            }
+                            else
+                            {
+                            <td>
+                                @Html.DropDownList("BankBranchId", new SelectList(ViewBag.BankBranchId, "Value", "Text", item.BankBranchId), "--Select--", htmlAttributes: new { @class = "form-control select-chosen" })
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" value="@item.Instrument" />
+
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" value="@item.ChequeDate" />
+
+                            </td>
+                                <input type="text" class="form-control" id="ChequeDate" value="@item.ChequeDate" />
+                            </td>
+                            }
+                            <td>
+                                <input type="text" class="form-control" value="@item.Amount" />
+
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" value="@item.RecievedBy" />
+
+                            </td>
+                            @if (count == 0)
+                            {
+                                <td>
+                                    <button type="button" class="btn btn-primary" onclick="AddVehicleExpense(this)"><i class="fa fa-plus"></i></button>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <button type="button" class="btn btn-danger" onclick="remove(this)"><i class="fa fa-trash"></i></button>
+                                </td>
+                            }
+                        </tr>
+                        count++;
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td>
+                            @Html.DropDownList("ExpenseTypeId", new SelectList(ViewBag.Expenses, "Value", "Text"), "--Select--", new { @class = "form-control select-chosen" })
+                        </td>
+                        <td>
+                            @Html.DropDownList("PaymentMethod", new SelectList(ViewBag.Payment), "--Select--", htmlAttributes: new { @class = "form-control select-chosen", @onchange = "PaymentMethod(this)" })
+                        </td>
+                        <td>
+                            @Html.DropDownList("BankBranchId", new SelectList(ViewBag.BankBranchId, "Value", "Text"), "--Select--", new { @class = "form-control select-chosen" })
+                        </td>
+                        <td>
+                            @Html.TextBox("Instrument", "", new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.TextBox("ChequeDate", "", new { @class = "form-control" })
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" />
+                        </td>
+                        <td>
+                            @Html.TextBox("RecievedBy", "", new { @class = "form-control" })
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" onclick="AddVehicleExpense(this)"><i class="fa fa-plus"></i></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr class="grand_total_Vehicle" style="font-weight:bold">
+                    <td colspan="5">
+                        Grand Total
+                    </td>
+                    <td colspan="3" class="text-right" style="padding-right:222px"></td>
+                </tr>
+            </tfoot>
+        </table>
+
+    </div>
+
+    @*Diesal*@
+    <div class="block full">
+        <div class="block-title row">
+            <div class="col-md-12">
+                <h2>Diesel Issuance</h2>
+            </div>
+        </div>
+
+        <table class="table Diesel" id="Diesal_Information">
+            <thead>
+                <tr>
+
+                    <td><label>Code</label></td>
+                    <td><label>Filling Stations</label></td>
+                    <td><label>Diesel Receipt No</label></td>
+                    <td><label>Diesel (L)</label></td>
+                    <td><label>Rate</label></td>
+                    <td><label>Amount Rs.</label></td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.DiesalExpense != null && Model.DiesalExpense.Count > 0)
+                {
+                    int count = 0;
+
+                    foreach (var item in Model.DiesalExpense)
+                    {
+                        <tr>
+                            <td>
+                                <input type="text" class="form-control" value="Filling Stations" disabled />
+                            </td>
+                            <td>
+                                @Html.DropDownList("Vendors", new SelectList(ViewBag.Vendors, "Value", "Text", item.VendorID), "--Select--", new { @class = "form-control select-chosen" })
+                            </td>
+                            @*<td>
+                                    @Html.TextBox("DieselReceiptNo", "", new { @class = "form-control" })
+                                </td>*@
+                            <td>
+                                <input type="text" class="form-control" id="Liter" value="@item.Liter" />
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" id="Rate" value="@item.Rate" />
+
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" id="Amount" value="@item.Amount" />
+                            <td>
+                                @Html.TextBox("DieselReceiptNo", "", new { @class = "form-control" })
+                            </td>
+                            <td>
+                                <input type="text" class="form-control text-right" id="Liter" value="@item.Liter" onkeyup="Grandtotal('.Diesel',3,'Liter')"/>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control text-right" id="Rate" value="@item.Rate" onkeyup="Grandtotal('.Diesel',4,'Rate')"/>
+
+                            </td>
+                            <td>
+                                <input type="text" class="form-control text-right" id="Amount" value="@item.Amount" onkeyup="Grandtotal('.Diesel',5,'Amount')" readonly/>
+
+                            </td>
+                            @if (count == 0)
+                            {
+                                <td>
+                                    <button type="button" class="btn btn-primary" onclick="AddDiesel(this)"><i class="fa fa-plus"></i></button>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <button type="button" class="btn btn-danger" onclick="remove(this)"><i class="fa fa-trash"></i></button>
+                                </td>
+                            }
+
+                        </tr>
+
+                        count++;
+                    }
+
+                }
+                else
+                {
+                    <tr>
+                        <td>
+                            <input type="text" class="form-control" value="Filling Stations" disabled />
+
+                        </td>
+                        <td>
+                            @Html.DropDownList("Vendors", new SelectList(ViewBag.Vendors, "Value", "Text"), "--Select--", new { @class = "form-control select-chosen", @tabindex = "1" })
+                        </td>
+                        @*<td>
+                                @Html.TextBox("DieselReceiptNo", "", new { @class = "form-control" })
+                            </td>*@
+                        <td>
+                            @Html.TextBox("DieselReceiptNo", "", new { @class = "form-control text-right" })
+                        </td>
+                        <td>
+                            @Html.TextBox("Liter", "", new { @class = "form-control text-right", @onkeyup = "Grandtotal('.Diesel',3,'Liter')" })
+                        </td>
+                        <td>
+                            @Html.TextBox("Rate", "", new { @class = "form-control text-right", @onkeyup = "Grandtotal('.Diesel',4,'Rate')" })
+                        </td>
+                        <td>
+                            @Html.TextBox("Amount", "", new { @class = "form-control text-right", @onkeyup = "Grandtotal('.Diesel',5,'Amount')", @readonly = "true" })
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" onclick="AddDiesel(this)"><i class="fa fa-plus"></i></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold;" class="DieselFoot">
+                    <td colspan="3">
+                        Grand Total
+                    </td>
+                    <td class="text-right" style="padding-right:16px"></td>
+                    <td class="text-right" style="padding-right:16px"></td>
+                    <td colspan="2" class="text-right" style="padding-right:70px"></td>
+                </tr>
+                @*<tr>
+                        <td colspan="7">
+                            <button type="submit" onclick="Save()" class="btn btn-primary pull-right"><i class="fa fa-save"></i> | Save</button>
+                        </td>
+                    </tr>*@
+            </tfoot>
+        </table>
+
+    </div>
+}
+
+<div class="block full">
+    <div class="row">
+        <div class="col-md-12">
+            <button type="submit" onclick="Save()" class="btn btn-primary pull-right"><i class="fa fa-save"></i> | Save</button>
+        </div>
+    </div>
+</div>
+
+@section Script
+{
+    <script>
+        function Grandtotal(q, totalColumnIndex, type) {
+            let grTotal = 0;
+            for (var i = 0; i < $(q).find("tbody tr").length; i++) {
+
+                grTotal += parseFloat($(q).find(`tbody tr:eq(${i}) td:eq(${totalColumnIndex}) input`).val().trim() == "" ? 0 : $(q).find(`tbody tr:eq(${i}) td:eq(${totalColumnIndex}) input`).val().trim());
+            }
+            if (type == "Liter") {
+                $(q).find("tr.DieselFoot td:eq(1)").text(grTotal);
+            }
+            else if (type == "Rate") {
+                $(q).find("tr.DieselFoot td:eq(2)").text(grTotal);
+            }
+            else if (type == "Amount") {
+                $(q).find("tr.DieselFoot td:eq(3)").text(grTotal);
+            }
+        }
+        function GrandtotalLocation(q, totalColumnIndex, type) {
+            let grTotal = 0;
+            for (var i = 0; i < $(q).find("tbody.Destin tr").length; i++) {
+
+                grTotal += parseFloat($(q).find(`tbody.Destin tr:eq(${i}) td:eq(${totalColumnIndex}) input`).val().trim() == "" ? 0 : $(q).find(`tbody.Destin tr:eq(${i}) td:eq(${totalColumnIndex}) input`).val().trim());
+            }
+            if (type == "Qty") {
+                $(q).find("tr.grand_total_Des td:eq(1)").text(grTotal);
+            }
+            else if (type == "Freight") {
+                $(q).find("tr.grand_total_Des td:eq(2)").text(grTotal);
+            }
+            else if (type == "ShortageQty") {
+                $(q).find("tr.grand_total_Des td:eq(3)").text(grTotal);
+            }
+            else if (type == "ShortageRp") {
+                $(q).find("tr.grand_total_Des td:eq(4)").text(grTotal);
+            }
+            else if (type == "GrandTotalDestination") {
+                $(q).find("tr.grand_total_Des td:eq(5)").text(grTotal);
+            }
+        }
+
+        $(document).ready(function () {
+            $("#ChequeDate").datepicker({
+                altField: "#ChequeDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#OrderDate").datepicker({
+                altField: "#OrderDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#LoadingDate").datepicker({
+                altField: "#LoadingDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#DeliveryDate").datepicker({
+                altField: "#DeliveryDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+        });
+
+        function AddVehicleExpense(A) {
+            $(".select-chosen").chosen('destroy');
+            var parent = $(A).parent("td").parent("tr").html();
+            parent = parent.replace("btn-primary", "btn-danger").replace("fa-plus", "fa-trash").replace("AddVehicleExpense", "remove");
+            $(".VehicleExpense").find("tbody").append(`<tr>${parent}</tr>`);
+            $(".select-chosen").chosen();
+
+        }
+        function AddDiesel(A) {
+            debugger;
+            $(".select-chosen").chosen('destroy');
+            var parent = $(A).parent("td").parent("tr").html();
+            parent = parent.replace("btn-primary", "btn-danger").replace("fa-plus", "fa-trash").replace("AddDiesel", "remove");
+            $(".Diesel").find("tbody").append(`<tr>${parent}</tr>`);
+            $(".select-chosen").chosen();
+
+        }
+        function AddLoading(A) {
+            $(".select-chosen").chosen('destroy');
+            var parent = $(A).parent("td").parent("tr.Destination").html();
+            parent = parent.replace("btn-primary", "btn-danger").replace("fa-plus", "fa-trash").replace("AddLoading", "remove");
+            $(".Loading_Information").find("tbody.Destin").append(`<tr>${parent}</tr>`);
+            $(".select-chosen").chosen();
+
+        }
+        function remove(e) {
+            $(e).parent("td").parent("tr").fadeOut(100, function () { $(this).remove(); });
+        }
+
+        function PaymentMethod() {
+            debugger;
+            $("#Expense_Information tbody tr").each(function () {
+                let Check = $(this);
+                let Val = Check.find("td:eq(1) select option:selected").text();
+                Check.find("td:eq(2) select").chosen('destroy');
+                if (Val == "Bank") {
+                    Check.find("td:eq(2) select").attr('disabled', false);
+                    Check.find("td:eq(3) input").attr('disabled', false);
+                    Check.find("td:eq(4) input").attr('disabled', false);
+                }
+                else if (Val == "--Select--") {
+                    Check.find("td:eq(2) select").attr('disabled', false);
+                    Check.find("td:eq(3) input").attr('disabled', false);
+                    Check.find("td:eq(4) input").attr('disabled', false);
+                }
+                else {
+                    Check.find("td:eq(2) select").attr('disabled', true);
+                    Check.find("td:eq(3) input").attr('disabled', true);
+                    Check.find("td:eq(4) input").attr('disabled', true);
+                }
+                Check.find("td:eq(2) select").chosen();
+            });
+        }
+
+        $("table").on("change", "input", function () {
+            var tableRow = $(this).closest("tr");
+            var one = Number(tableRow.find("#Liter").val());
+            var two = Number(tableRow.find("#Rate").val());
+            var total = one * two;
+            tableRow.find("#Amount").val(total);
+
+            var one = Number(tableRow.find("#ProductQty").val());
+            var two = Number(tableRow.find("#Freight").val());
+            var three = Number(tableRow.find("#ShortageQty").val());
+            var four = Number(tableRow.find("#ShortageRp").val());
+            var total = one * two * three * four;
+            tableRow.find("#Total").val(total);
+            tableRow.find("#GrandTotalDestination").val(total);
+        });
+
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+        function Save() {
+            debugger;
+            let id = getParameterByName("id");
+
+            let cci = $("#CustomerCompanyId").val();
+            let od = $("#OrderDate").val();
+            let qn = $("#QueNo").val();
+            let si = $("#ShipmentTypeId").val();
+            let sn = $("#SaleOrderNo").val();
+            let ld = $("#LoadingDate").val();
+            let vi = $("#VehicleId").val();
+            let tn = $("#TokenNumber").val();
+            let dd = $("#DeliveryDate").val();
+            let lli = $("#LoadingLocationId").val();
+            if (id == null)
+                id = 0;
+            var singleObject = { ID: id, CustomerCompanyId: cci, OrderDate: od, QueNo: qn, ShipmentTypeId: si, SaleOrderNo: sn, LoadingDate: ld, LoadingDate: ld, VehicleId: vi, TokenNumber: tn, DeliveryDate: dd, LoadingLocationId: lli };
+            var loadingInfoArray = [];
+            let loadingTable = $("#Loading_Information tbody tr");
+            for (var i = 0; i < loadingTable.length; i++) {
+                let loc = loadingTable.eq(i).find("td:eq(0) select").val();
+            let gst = $("#Loading_Information").find("tbody tr.Destination td:eq(3) input").val();
+            if (id == null)
+                id = 0;
+            var singleObject = { ID: id, CustomerCompanyId: cci, OrderDate: od, QueNo: qn, ShipmentTypeId: si, SaleOrderNo: sn, LoadingDate: ld, LoadingDate: ld, VehicleId: vi, TokenNumber: tn, DeliveryDate: dd, LoadingLocationId: lli, GSTType:gst };
+            var loadingInfoArray = [];
+            let loadingTable = $("#Loading_Information tbody tr.Destination");
+            for (var i = 0; i < loadingTable.length; i++) {
+                let loc = loadingTable.eq(i).find("td:eq(0) select").val();
+                let GSTType = loadingTable.eq(i).find("td:eq(3) input").val();
+                let prod = loadingTable.eq(i).find("td:eq(4) select").val();
+                let qty = loadingTable.eq(i).find("td:eq(5) input").val();
+                let gst = loadingTable.eq(i).find("td:eq(4) select").val();
+                let tax = loadingTable.eq(i).find("td:eq(5) select").val();
+                let freight = loadingTable.eq(i).find("td:eq(6) input").val();
+                let shQty = loadingTable.eq(i).find("td:eq(7) input").val();
+                let shqAmount = loadingTable.eq(i).find("td:eq(8) input").val();
+                loadingInfoArray.push({ DestinationLocation: loc, Product: prod, ProductQty: qty, Frieght: freight, ShortageQty: shQty, Shortage: shqAmount });
+                loadingInfoArray.push({ DestinationLocation: loc, Product: prod, ProductQty: qty, Frieght: freight, ShortageQty: shQty, Shortage: shqAmount, GSTType: GSTType });
+            }
+            console.log(loadingInfoArray);
+            var VehicleExpenseArray = [];
+            let ExpenseTable = $("#Expense_Information tbody tr");
+            for (var i = 0; i < ExpenseTable.length; i++) {
+                let exp = ExpenseTable.eq(i).find("td:eq(0) select").val();
+                let pm = ExpenseTable.eq(i).find("td:eq(1) select").val();
+                let bbi = ExpenseTable.eq(i).find("td:eq(2) select").val();
+                let ins = ExpenseTable.eq(i).find("td:eq(3) input").val();
+                let cd = ExpenseTable.eq(i).find("td:eq(4) input").val();
+                let am = ExpenseTable.eq(i).find("td:eq(5) input").val();
+                let rb = ExpenseTable.eq(i).find("td:eq(6) input").val();
+                VehicleExpenseArray.push({ ExpenseTypeId: exp, PaymentMethod: pm, BankBranchId: bbi, Instrument: ins, ChequeDate: cd, Amount: am, RecievedBy: rb });
+            }
+
+            var DiesalExpenseArray = [];
+            let DiesalTable = $("#Diesal_Information tbody tr");
+            for (var i = 0; i < DiesalTable.length; i++) {
+                let vi = DiesalTable.eq(i).find("td:eq(1) select").val();
+                let liter = DiesalTable.eq(i).find("td:eq(3) input").val();
+                let rate = DiesalTable.eq(i).find("td:eq(4) input").val();
+                let amount = DiesalTable.eq(i).find("td:eq(5) input").val();
+                DiesalExpenseArray.push({ VendorID: vi, Liter: liter, Rate: rate, Amount: amount });
+            }
+
+            $.ajax({
+                url: "../../Admin/Save",
+                url: "../Admin/Save",
+                type: "post",
+                data: { saleOrder: singleObject, Destination: loadingInfoArray, Diesal: DiesalExpenseArray, Expenses: VehicleExpenseArray, type: "single" },
+                success: function (response) {
+                    if (response == "OK") {
+                        Message("success", "Record Updated", "success");
+                        setTimeout(function () { window.location.reload() }, 3);
+                        window.location = "../Admin/SalesOrderLastUserList";
+                        //setTimeout(function () { window.location.reload() }, 3);
+                    }
+                    else {
+                        Message("Error", response, "error");
+
+                    }
+                }
+            })
+
+        }
+
+        function Grandtotal(q, totalColumnIndex, type) {
+            let grTotal = 0;
+            for (var i = 0; i < $(q).find("tbody tr").length; i++) {
+
+                grTotal += parseFloat($(q).find(`tbody tr:eq(${i}) td:eq(${totalColumnIndex}) input`).val().trim() == "" ? 0 : $(q).find(`tbody tr:eq(${i}) td:eq(${totalColumnIndex}) input`).val().trim());
+            }
+            if (type == "Liter") {
+                $(q).find("tr.DieselFoot td:eq(1)").text(grTotal);
+            }
+            else if (type == "Rate") {
+                $(q).find("tr.DieselFoot td:eq(2)").text(grTotal);
+            }
+            else if (type == "Amount") {
+                $(q).find("tr.DieselFoot td:eq(3)").text(grTotal);
+            }
+
+            if (type == "Qty") {
+                $(q).find("tr.grand_total td:eq(1)").text(grTotal);
+            }
+            else if (type == "Freight") {
+                $(q).find("tr.grand_total td:eq(5)").text(grTotal);
+            }
+            else if (type == "Shortage") {
+                $(q).find("tr.grand_total td:eq(6)").text(grTotal);
+            }
+            else if (type == "ShortageRp") {
+                $(q).find("tr.grand_total td:eq(7)").text(grTotal);
+            }
+            else if (type == "Total") {
+                $(q).find("tr.grand_total td:eq(8)").text(grTotal);
+            }
+        }
+
+        function GetGst() {
+            debugger;
+            var data = $("#LoadingLocationId").val();
+            var sec = $("#DestinationLocation").val();
+            var Shipment = $("#ShipmentTypeId option:selected").text();
+            $.ajax({
+                url: "../Admin/GetLoadingInformation",
+                type: "POST",
+                data: { Loading: data, Destination: sec },
+                success: function (res) {
+                    console.log(res);
+                    if (res.Status == "Intra") {
+                        if (Shipment == "Depot") {
+                            $("#GSTPercent").val("Inter" + ' ' + "Province" + ' ' + res.Province + ' ' + "Primary" + ' ' + /*res.LoadingCity*/"Zero GST");
+                        }
+                        else {
+                            $("#GSTPercent").val("Inter" + ' ' + "Province" + ' ' + res.Province + ' ' + "Secondory" + ' ' + /*res.LoadingCity*/"Zero GST");
+                        }
+                        //$("#GSTPercentLoading").val("Intra" + '|' + res.Province + '|' + res.LoadingCity);
+                    }
+                    else {
+                        if (Shipment == "Depot") {
+                            $("#GSTPercent").val("Intra" + ' ' + "Province" + ' ' + res.ProvinceDes + ' ' + "Primary" + ' ' + res.DestCity + ' ' + res.Tax + res.Percent + '%');
+                        }
+                        else {
+                            $("#GSTPercent").val("Intra" + ' ' + "Province" + ' ' + res.ProvinceDes + ' ' + "Secondory" + ' ' + res.DestCity + ' ' + res.Tax + res.Percent + '%');
+                        }
+                        //$("#GSTPercentLoading").val("Inter" + '|' + res.ProvinceDes + '|' + res.DestCity);
+                    }
+                }
+            })
+        }
+
+        function LoadingProvince() {
+            debugger;
+            var data = $("#LoadingLocationId").val();
+            var sec = $("#DestinationLocation").val();
+            var Shipment = $("#ShipmentTypeId option:selected").text();
+            $.ajax({
+                url: "../Admin/GetDestinationLoadingInformation",
+                type: "POST",
+                data: { Loading: data, Destination: sec },
+                success: function (res) {
+                    console.log(res);
+                    if (res.Status == "Intra") {
+                        if (Shipment == "Depot") {
+                            $("#GSTPercentLoading").val("Inter" + ' ' + "Province" + ' ' + res.LoadingProvince + ' ' + "Primary" + ' ' + /*res.LoadingCity*/"Zero GST");
+                        }
+                        else {
+                            $("#GSTPercentLoading").val("Inter" + ' ' + "Province" + ' ' + res.LoadingProvince + ' ' + "Secondory" + ' ' + /*res.LoadingCity*/"Zero GST");
+                        }
+                    }
+                    else {
+                        if (Shipment == "Depot") {
+                            $("#GSTPercentLoading").val("Intra" + ' ' + "Province" + ' ' + res.LoadingProvince + ' ' + "Primary" + ' ' + res.LoadingCity + ' ' + res.Tax + res.Percent + '%');
+                        }
+                        else {
+                            $("#GSTPercentLoading").val("Intra" + ' ' + "Province" + ' ' + res.LoadingProvince + ' ' + "Secondory" + ' ' + res.LoadingCity + ' ' + res.Tax + res.Percent + '%');
+                        }
+                    }
+                }
+            })
+        }
+
+        //function GetGst() {
+        //    debugger;
+        //    $(".Loading_Information tbody tr.Loading").each(function () {
+        //        var data = $(this).find("td:eq(0) select").val();
+        //        $(".Loading_Information tbody tr.Destination").each(function () {
+        //            var sec = $(this).find("td:eq(0) select").val();
+        //            var Shipment = $("#ShipmentTypeId option:selected").text();
+        //            $.ajax({
+        //                url: "../Admin/GetLoadingInformation",
+        //                type: "POST",
+        //                data: { Loading: data, Destination: sec },
+        //                success: function (res) {
+        //                    console.log(res);
+        //                    if (res.Status == "Intra") {
+        //                        if (Shipment == "Depot") {
+        //                            $(".Loading_Information tbody tr.Destination").find("td:eq(3) input").val("Inter" + ' ' + "Province" + ' ' + res.Province + ' ' + "Primary" + ' ' + /*res.LoadingCity*/"Zero GST");
+        //                        }
+        //                        else {
+        //                            $(".Loading_Information tbody tr.Destination").find("td:eq(3) input").val("Inter" + ' ' + "Province" + ' ' + res.Province + ' ' + "Secondory" + ' ' + /*res.LoadingCity*/"Zero GST");
+        //                        }
+        //                        //$("#GSTPercentLoading").val("Intra" + '|' + res.Province + '|' + res.LoadingCity);
+        //                    }
+        //                    else {
+        //                        if (Shipment == "Depot") {
+        //                            $(".Loading_Information tbody tr.Destination").find("td:eq(3) input").val("Intra" + ' ' + "Province" + ' ' + res.ProvinceDes + ' ' + "Primary" + ' ' + res.DestCity + ' ' + res.Tax + res.Percent + '%');
+        //                        }
+        //                        else {
+        //                            $(".Loading_Information tbody tr.Destination").find("td:eq(3) input").val("Intra" + ' ' + "Province" + ' ' + res.ProvinceDes + ' ' + "Secondory" + ' ' + res.DestCity + ' ' + res.Tax + res.Percent + '%');
+        //                        }
+        //                        //$("#GSTPercentLoading").val("Inter" + '|' + res.ProvinceDes + '|' + res.DestCity);
+        //                    }
+        //                }
+        //            })
+        //        })
+        //    })
+        //}
+
+        //function LoadingProvince() {
+        //    debugger;
+        //    var data = $(".Loading_Information tbody tr.Loading").find("td:eq(0) select").val();
+        //    var sec = $(".Loading_Information tbody tr.Destination").find("td:eq(0) select").val();
+        //    var Shipment = $("#ShipmentTypeId option:selected").text();
+        //    $.ajax({
+        //        url: "../Admin/GetDestinationLoadingInformation",
+        //        type: "POST",
+        //        data: { Loading: data, Destination: sec },
+        //        success: function (res) {
+        //            console.log(res);
+        //            if (res.Status == "Intra") {
+        //                if (Shipment == "Depot") {
+        //                    $(".Loading_Information tbody tr.Loading").find("td:eq(3) input").val("Inter" + ' ' + "Province" + ' ' + res.LoadingProvince + ' ' + "Primary" + ' ' + /*res.LoadingCity*/"Zero GST");
+        //                }
+        //                else {
+        //                    $(".Loading_Information tbody tr.Loading").find("td:eq(3) input").val("Inter" + ' ' + "Province" + ' ' + res.LoadingProvince + ' ' + "Secondory" + ' ' + /*res.LoadingCity*/"Zero GST");
+        //                }
+        //            }
+        //            else {
+        //                if (Shipment == "Depot") {
+        //                    $(".Loading_Information tbody tr.Loading").find("td:eq(3) input").val("Intra" + ' ' + "Province" + ' ' + res.LoadingProvince + ' ' + "Primary" + ' ' + res.LoadingCity + ' ' + res.Tax + res.Percent + '%');
+        //                }
+        //                else {
+        //                    $(".Loading_Information tbody tr.Loading").find("td:eq(3) input").val("Intra" + ' ' + "Province" + ' ' + res.LoadingProvince + ' ' + "Secondory" + ' ' + res.LoadingCity + ' ' + res.Tax + res.Percent + '%');
+        //                }
+        //            }
+        //        }
+        //    })
+        //}
+
+        function GetProvince(e) {
+            debugger;
+            let row = $(e).parent("td").parent("tr");
+            $.post(`../Admin/GetProvinceCity?id=${$(e).val()}`).done(function (response) {
+                row.find("td:eq(1) input").val(response.Province);
+                row.find("td:eq(2) input").val(response.City);
+            });
+        }
+    </script>
+}

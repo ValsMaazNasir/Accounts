@@ -1,0 +1,3113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="accounts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="docDate" Type="date" />
+          <Property Name="accountTitle" Type="varchar(max)" />
+          <Property Name="accountId" Type="int" Nullable="false" />
+          <Property Name="narration" Type="nvarchar(max)" />
+          <Property Name="amount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TranstypeId" Type="int" Nullable="false" />
+          <Property Name="vchrStatus" Type="int" />
+          <Property Name="created" Type="datetime" Nullable="false" />
+          <Property Name="modified" Type="datetime" Nullable="false" />
+          <Property Name="createdBy" Type="varchar(max)" Nullable="false" />
+          <Property Name="modifiedBy" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="accounts_transaction">
+          <Key>
+            <PropertyRef Name="accounts_transaction_id" />
+          </Key>
+          <Property Name="accounts_transaction_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="refId" Type="int" Nullable="false" />
+          <Property Name="orders_id" Type="int" Nullable="false" />
+          <Property Name="customers_id" Type="int" Nullable="false" />
+          <Property Name="details" Type="nvarchar(max)" />
+          <Property Name="trans_db" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="trans_cr" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="amount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="chqNo" Type="int" />
+          <Property Name="created" Type="datetime" Nullable="false" />
+          <Property Name="modified" Type="datetime" Nullable="false" />
+          <Property Name="createdBy" Type="varchar(max)" Nullable="false" />
+          <Property Name="modifiedBy" Type="varchar(max)" Nullable="false" />
+          <Property Name="chq_ok" Type="date" />
+          <Property Name="chq_date" Type="date" />
+        </EntityType>
+        <EntityType Name="BiltyRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="BiltyRole" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ContactNoType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactNoType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Format" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CurrencyType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CurrencyType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CustomerCompany">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="GroupID" Type="bigint" />
+          <Property Name="Contact" Type="varchar" MaxLength="50" />
+          <Property Name="ContactOther" Type="varchar" MaxLength="50" />
+          <Property Name="EmailAdd" Type="varchar" MaxLength="50" />
+          <Property Name="WebAdd" Type="varchar" MaxLength="200" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="ModifiedBy" Type="bigint" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="OwnCompanyId" Type="bigint" />
+          <Property Name="NTN" Type="nvarchar" MaxLength="50" />
+          <Property Name="STN" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tax" Type="float" />
+          <Property Name="CustomerType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CustomerGroup">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Contact" Type="varchar" MaxLength="50" />
+          <Property Name="ContactOther" Type="varchar" MaxLength="50" />
+          <Property Name="EmailAdd" Type="varchar" MaxLength="50" />
+          <Property Name="WebAdd" Type="varchar" MaxLength="200" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="ModifiedBy" Type="bigint" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="OwnCompanyId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="customers">
+          <Key>
+            <PropertyRef Name="customers_id" />
+          </Key>
+          <Property Name="customers_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customers_code" Type="varchar(max)" />
+          <Property Name="customers_firstname" Type="varchar(max)" Nullable="false" />
+          <Property Name="customers_lastname" Type="varchar(max)" Nullable="false" />
+          <Property Name="customers_address" Type="varchar(max)" />
+          <Property Name="customers_tel" Type="varchar" MaxLength="12" />
+          <Property Name="customers_area" Type="varchar(max)" />
+          <Property Name="customers_city" Type="varchar(max)" />
+          <Property Name="customers_country" Type="varchar(max)" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+          <Property Name="created" Type="datetime" Nullable="false" />
+          <Property Name="modified" Type="datetime" Nullable="false" />
+          <Property Name="createdBy" Type="varchar(max)" Nullable="false" />
+          <Property Name="modifiedBy" Type="varchar(max)" Nullable="false" />
+          <Property Name="customerTypeId" Type="int" />
+          <Property Name="customers_group" Type="int" />
+          <Property Name="customers_department" Type="int" />
+        </EntityType>
+        <EntityType Name="DateType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Format" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="GM_ACC">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="parent_id" Type="int" Nullable="false" />
+          <Property Name="isActive" Type="int" Nullable="false" />
+          <Property Name="created" Type="datetime" Nullable="false" />
+          <Property Name="modified" Type="datetime" Nullable="false" />
+          <Property Name="createdBy" Type="varchar(max)" Nullable="false" />
+          <Property Name="modifiedBy" Type="varchar(max)" Nullable="false" />
+          <Property Name="CODE" Type="varchar" MaxLength="11" />
+          <Property Name="LEVEL" Type="int" />
+        </EntityType>
+        <EntityType Name="M_FLAG">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="flag" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="flagType" Type="varchar" MaxLength="250" />
+          <Property Name="flagDesc" Type="nvarchar(max)" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+          <Property Name="created" Type="datetime" Nullable="false" />
+          <Property Name="modified" Type="datetime" Nullable="false" />
+          <Property Name="createdBy" Type="varchar(max)" Nullable="false" />
+          <Property Name="modifiedBy" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="SequenceOrder" Type="int" />
+          <Property Name="Icon" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="bigint" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="NavMenu">
+          <Key>
+            <PropertyRef Name="FormID" />
+          </Key>
+          <Property Name="FormID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="200" />
+          <Property Name="icon" Type="nvarchar" MaxLength="150" />
+          <Property Name="SequenceOrder" Type="int" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="ModifiedBy" Type="bigint" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="SecondLevelMenuID" Type="bigint" Nullable="false" />
+          <Property Name="formTarget" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="ActionName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NoType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Format" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="orders">
+          <Key>
+            <PropertyRef Name="orders_id" />
+          </Key>
+          <Property Name="orders_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_purchased" Type="date" Nullable="false" />
+          <Property Name="customers_id" Type="int" Nullable="false" />
+          <Property Name="customers_name" Type="varchar(max)" />
+          <Property Name="customers_address" Type="varchar(max)" />
+          <Property Name="customers_tel" Type="varchar" MaxLength="12" />
+          <Property Name="customers_area" Type="varchar(max)" />
+          <Property Name="customers_city" Type="varchar(max)" />
+          <Property Name="customers_country" Type="varchar(max)" />
+          <Property Name="total_amt" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="totalItems" Type="int" />
+          <Property Name="docTypeId" Type="int" />
+          <Property Name="orderStatus" Type="int" />
+          <Property Name="created" Type="datetime" Nullable="false" />
+          <Property Name="modified" Type="datetime" Nullable="false" />
+          <Property Name="createdBy" Type="varchar(max)" Nullable="false" />
+          <Property Name="modifiedBy" Type="varchar(max)" Nullable="false" />
+          <Property Name="remarks" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="orders_products">
+          <Key>
+            <PropertyRef Name="orders_products_id" />
+          </Key>
+          <Property Name="orders_products_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="orders_id" Type="int" Nullable="false" />
+          <Property Name="products_id" Type="int" Nullable="false" />
+          <Property Name="products_name" Type="varchar(max)" />
+          <Property Name="products_quantity" Type="int" />
+          <Property Name="products_price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="scheme" Type="int" />
+          <Property Name="bonus" Type="int" />
+          <Property Name="discPer" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="discAmt" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="lineAmount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="created" Type="datetime" Nullable="false" />
+          <Property Name="modified" Type="datetime" Nullable="false" />
+          <Property Name="createdBy" Type="varchar(max)" Nullable="false" />
+          <Property Name="modifiedBy" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OwnCompany">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubcriptionID" Type="bigint" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="GroupID" Type="bigint" />
+          <Property Name="Contact" Type="varchar" MaxLength="50" />
+          <Property Name="ContactOther" Type="varchar" MaxLength="50" />
+          <Property Name="EmailAdd" Type="varchar" MaxLength="50" />
+          <Property Name="WebAdd" Type="varchar" MaxLength="200" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="ModifiedBy" Type="bigint" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CompanyLogo" Type="nvarchar(max)" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="50" />
+          <Property Name="NTN" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OwnGroups">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Contact" Type="varchar" MaxLength="50" />
+          <Property Name="ContactOther" Type="varchar" MaxLength="50" />
+          <Property Name="EmailAdd" Type="varchar" MaxLength="50" />
+          <Property Name="WebAdd" Type="varchar" MaxLength="200" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="ModifiedBy" Type="bigint" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Logo" Type="image" />
+          <Property Name="CompanyAccess" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="products_id" />
+          </Key>
+          <Property Name="products_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="products_model" Type="varchar(max)" />
+          <Property Name="productDescription" Type="varchar(max)" Nullable="false" />
+          <Property Name="products_name" Type="varchar(max)" Nullable="false" />
+          <Property Name="products_msrp" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="products_tp" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="products_scheme" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="products_bonus" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="products_discPer" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="products_discAmt" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+          <Property Name="created" Type="datetime" Nullable="false" />
+          <Property Name="modified" Type="datetime" Nullable="false" />
+          <Property Name="createdBy" Type="varchar(max)" Nullable="false" />
+          <Property Name="modifiedBy" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RolePermission">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleID" Type="bigint" />
+          <Property Name="FormID" Type="bigint" />
+          <Property Name="Parameter" Type="nchar" MaxLength="10" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="bigint" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="isDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="bigint" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="isDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="SecondLevelMenu">
+          <Key>
+            <PropertyRef Name="SecLevelID" />
+          </Key>
+          <Property Name="SecLevelID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuID" Type="bigint" />
+          <Property Name="SecLevelMenu" Type="nvarchar" MaxLength="50" />
+          <Property Name="SequenceOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="settings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="txtKey" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="txtValue" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="desc" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="created" Type="datetime" Nullable="false" />
+          <Property Name="modified" Type="datetime" Nullable="false" />
+          <Property Name="createdBy" Type="varchar(max)" Nullable="false" />
+          <Property Name="modifiedBy" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftwareSetup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CurrencyTypeID" Type="bigint" />
+          <Property Name="DateTypeID" Type="bigint" />
+          <Property Name="ContactNoTypeID" Type="bigint" />
+          <Property Name="NoTypeID" Type="bigint" />
+          <Property Name="Logo" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="SubcriptionModules">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubcriptionID" Type="bigint" />
+          <Property Name="MenuID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Subcriptions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="NumberOfMonths" Type="int" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="bigint" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="TEST">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserAccounts">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OwnCompanyId" Type="bigint" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="bigint" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="RoleID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="UserAssignedCompanies">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="bigint" />
+          <Property Name="OwnCompanyID" Type="bigint" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="VendorTypeID" Type="bigint" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="OwnerContactName" Type="nvarchar" MaxLength="50" />
+          <Property Name="OwnerContactNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="PrimaryContactPerson" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrimaryContactNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="SecContactPerson" Type="nvarchar" MaxLength="50" />
+          <Property Name="SecContactNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="PTCLNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Website" Type="nvarchar" MaxLength="200" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="ModifiedBy" Type="bigint" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="OwnCompanyId" Type="bigint" />
+          <Property Name="AccountTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="VendorType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="ModifiedBy" Type="bigint" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="OwnCompanyId" Type="bigint" />
+        </EntityType>
+        <Association Name="FK__CustomerC__OwnCo__5070F446">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerCompany" Type="Self.CustomerCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerCompany">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__OwnCo__5165187F">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerCompany" Type="Self.CustomerCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerCompany">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__OwnCo__52593CB8">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerCompany" Type="Self.CustomerCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerCompany">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__OwnCo__534D60F1">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerCompany" Type="Self.CustomerCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerCompany">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__OwnCo__5441852A">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerCompany" Type="Self.CustomerCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerCompany">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__OwnCo__5535A963">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerCompany" Type="Self.CustomerCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerCompany">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__OwnCo__5629CD9C">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerCompany" Type="Self.CustomerCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerCompany">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__OwnCo__571DF1D5">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerCompany" Type="Self.CustomerCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerCompany">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__OwnCo__5812160E">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerCompany" Type="Self.CustomerCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerCompany">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerG__OwnCo__59FA5E80">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerGroup" Type="Self.CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerGroup">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerG__OwnCo__5AEE82B9">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerGroup" Type="Self.CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerGroup">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerG__OwnCo__5BE2A6F2">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerGroup" Type="Self.CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerGroup">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerG__OwnCo__5CD6CB2B">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerGroup" Type="Self.CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerGroup">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerG__OwnCo__5DCAEF64">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerGroup" Type="Self.CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerGroup">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerG__OwnCo__5EBF139D">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerGroup" Type="Self.CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerGroup">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerG__OwnCo__5FB337D6">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerGroup" Type="Self.CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerGroup">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerG__OwnCo__60A75C0F">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerGroup" Type="Self.CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerGroup">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerG__OwnCo__619B8048">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerGroup" Type="Self.CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerGroup">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vendor__OwnCompa__7755B73D">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VendorTyp__OwnCo__6E01572D">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="VendorType" Type="Self.VendorType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorType">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VendorTyp__OwnCo__6EF57B66">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="VendorType" Type="Self.VendorType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorType">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VendorTyp__OwnCo__6FE99F9F">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="VendorType" Type="Self.VendorType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorType">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VendorTyp__OwnCo__70DDC3D8">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="VendorType" Type="Self.VendorType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorType">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VendorTyp__OwnCo__71D1E811">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="VendorType" Type="Self.VendorType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorType">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VendorTyp__OwnCo__72C60C4A">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="VendorType" Type="Self.VendorType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorType">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VendorTyp__OwnCo__73BA3083">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="VendorType" Type="Self.VendorType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorType">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VendorTyp__OwnCo__74AE54BC">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="VendorType" Type="Self.VendorType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorType">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VendorTyp__OwnCo__75A278F5">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="VendorType" Type="Self.VendorType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorType">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BiltyRole_UserAccounts">
+          <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="0..1" />
+          <End Role="BiltyRole" Type="Self.BiltyRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccounts">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="BiltyRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerCompany_CustomerGroup">
+          <End Role="CustomerGroup" Type="Self.CustomerGroup" Multiplicity="0..1" />
+          <End Role="CustomerCompany" Type="Self.CustomerCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerGroup">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="CustomerCompany">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OwnCompany_OwnGroups">
+          <End Role="OwnGroups" Type="Self.OwnGroups" Multiplicity="0..1" />
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnGroups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="OwnCompany">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftwareSetup_ContactNoType">
+          <End Role="ContactNoType" Type="Self.ContactNoType" Multiplicity="0..1" />
+          <End Role="SoftwareSetup" Type="Self.SoftwareSetup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactNoType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SoftwareSetup">
+              <PropertyRef Name="ContactNoTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftwareSetup_CurrencyType">
+          <End Role="CurrencyType" Type="Self.CurrencyType" Multiplicity="0..1" />
+          <End Role="SoftwareSetup" Type="Self.SoftwareSetup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SoftwareSetup">
+              <PropertyRef Name="CurrencyTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftwareSetup_DateType">
+          <End Role="DateType" Type="Self.DateType" Multiplicity="0..1" />
+          <End Role="SoftwareSetup" Type="Self.SoftwareSetup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DateType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SoftwareSetup">
+              <PropertyRef Name="DateTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftwareSetup_NoType">
+          <End Role="NoType" Type="Self.NoType" Multiplicity="0..1" />
+          <End Role="SoftwareSetup" Type="Self.SoftwareSetup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NoType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SoftwareSetup">
+              <PropertyRef Name="NoTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubcriptionModules_Menu">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="SubcriptionModules" Type="Self.SubcriptionModules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="SubcriptionModules">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubcriptionModules_SubcriptionModules">
+          <End Role="Subcriptions" Type="Self.Subcriptions" Multiplicity="0..1" />
+          <End Role="SubcriptionModules" Type="Self.SubcriptionModules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subcriptions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubcriptionModules">
+              <PropertyRef Name="SubcriptionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAccounts_OwnCompany">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserAccounts">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAssignedCompanies_OwnCompany">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="UserAssignedCompanies" Type="Self.UserAssignedCompanies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserAssignedCompanies">
+              <PropertyRef Name="OwnCompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAssignedCompanies_UserAccounts">
+          <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="0..1" />
+          <End Role="UserAssignedCompanies" Type="Self.UserAssignedCompanies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccounts">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserAssignedCompanies">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendor_VendorType">
+          <End Role="VendorType" Type="Self.VendorType" Multiplicity="0..1" />
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="VendorTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CUST_LEDGER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="customerId" Type="int" Mode="In" />
+          <Parameter Name="frmDt" Type="date" Mode="In" />
+          <Parameter Name="toDt" Type="date" Mode="In" />
+          <Parameter Name="typeId" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="customers_id" Type="int" />
+                <Property Name="customers_firstname" Type="varchar(max)" Nullable="false" />
+                <Property Name="customerTypeId" Type="int" />
+                <Property Name="InvDate" Type="date" />
+                <Property Name="InvNo" Type="int" />
+                <Property Name="InvTotal" Type="decimal" Precision="18" Scale="0" />
+                <Property Name="InvRemarks" Type="nvarchar(max)" />
+                <Property Name="InvType" Type="int" />
+                <Property Name="VchrNo" Type="int" />
+                <Property Name="AccountId" Type="int" />
+                <Property Name="accountTitle" Type="nvarchar(max)" />
+                <Property Name="credit" Type="decimal" Precision="18" Scale="0" />
+                <Property Name="debit" Type="decimal" Precision="18" Scale="0" />
+                <Property Name="VchrTotal" Type="decimal" Precision="18" Scale="0" />
+                <Property Name="VchrDate" Type="date" />
+                <Property Name="VchrType" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="GetAccountBalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accountId" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="accountId" Type="int" />
+                <Property Name="customers_id" Type="int" />
+                <Property Name="customerName" Type="varchar(max)" />
+                <Property Name="docDate" Type="date" />
+                <Property Name="TotalAmount" Type="decimal" Precision="38" Scale="0" />
+                <Property Name="PaidAmount" Type="decimal" Precision="38" Scale="2" />
+                <Property Name="AmountToPay" Type="decimal" Precision="38" Scale="2" />
+                <Property Name="DueAmount" Type="decimal" Precision="38" Scale="0" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="GetCustomersByAcc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accountId" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="accountId" Type="int" />
+                <Property Name="customers_id" Type="int" />
+                <Property Name="customerName" Type="varchar(max)" />
+                <Property Name="docDate" Type="date" />
+                <Property Name="TotalAmount" Type="decimal" Precision="38" Scale="0" />
+                <Property Name="PaidAmount" Type="decimal" Precision="38" Scale="2" />
+                <Property Name="AmountToPay" Type="decimal" Precision="38" Scale="2" />
+                <Property Name="DueAmount" Type="decimal" Precision="38" Scale="0" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <EntityContainer Name="LMSModelStoreContainer">
+          <EntitySet Name="accounts" EntityType="Self.accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="accounts_transaction" EntityType="Self.accounts_transaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BiltyRole" EntityType="Self.BiltyRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactNoType" EntityType="Self.ContactNoType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CurrencyType" EntityType="Self.CurrencyType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerCompany" EntityType="Self.CustomerCompany" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerGroup" EntityType="Self.CustomerGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customers" EntityType="Self.customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DateType" EntityType="Self.DateType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GM_ACC" EntityType="Self.GM_ACC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_FLAG" EntityType="Self.M_FLAG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NavMenu" EntityType="Self.NavMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NoType" EntityType="Self.NoType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orders_products" EntityType="Self.orders_products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OwnCompany" EntityType="Self.OwnCompany" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OwnGroups" EntityType="Self.OwnGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RolePermission" EntityType="Self.RolePermission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SecondLevelMenu" EntityType="Self.SecondLevelMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="settings" EntityType="Self.settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftwareSetup" EntityType="Self.SoftwareSetup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubcriptionModules" EntityType="Self.SubcriptionModules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subcriptions" EntityType="Self.Subcriptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TEST" EntityType="Self.TEST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAccounts" EntityType="Self.UserAccounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAssignedCompanies" EntityType="Self.UserAssignedCompanies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VendorType" EntityType="Self.VendorType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CustomerC__OwnCo__5070F446" Association="Self.FK__CustomerC__OwnCo__5070F446">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="CustomerCompany" EntitySet="CustomerCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__OwnCo__5165187F" Association="Self.FK__CustomerC__OwnCo__5165187F">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="CustomerCompany" EntitySet="CustomerCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__OwnCo__52593CB8" Association="Self.FK__CustomerC__OwnCo__52593CB8">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="CustomerCompany" EntitySet="CustomerCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__OwnCo__534D60F1" Association="Self.FK__CustomerC__OwnCo__534D60F1">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="CustomerCompany" EntitySet="CustomerCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__OwnCo__5441852A" Association="Self.FK__CustomerC__OwnCo__5441852A">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="CustomerCompany" EntitySet="CustomerCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__OwnCo__5535A963" Association="Self.FK__CustomerC__OwnCo__5535A963">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="CustomerCompany" EntitySet="CustomerCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__OwnCo__5629CD9C" Association="Self.FK__CustomerC__OwnCo__5629CD9C">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="CustomerCompany" EntitySet="CustomerCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__OwnCo__571DF1D5" Association="Self.FK__CustomerC__OwnCo__571DF1D5">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="CustomerCompany" EntitySet="CustomerCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__OwnCo__5812160E" Association="Self.FK__CustomerC__OwnCo__5812160E">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="CustomerCompany" EntitySet="CustomerCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerG__OwnCo__59FA5E80" Association="Self.FK__CustomerG__OwnCo__59FA5E80">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="CustomerGroup" EntitySet="CustomerGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerG__OwnCo__5AEE82B9" Association="Self.FK__CustomerG__OwnCo__5AEE82B9">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="CustomerGroup" EntitySet="CustomerGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerG__OwnCo__5BE2A6F2" Association="Self.FK__CustomerG__OwnCo__5BE2A6F2">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="CustomerGroup" EntitySet="CustomerGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerG__OwnCo__5CD6CB2B" Association="Self.FK__CustomerG__OwnCo__5CD6CB2B">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="CustomerGroup" EntitySet="CustomerGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerG__OwnCo__5DCAEF64" Association="Self.FK__CustomerG__OwnCo__5DCAEF64">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="CustomerGroup" EntitySet="CustomerGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerG__OwnCo__5EBF139D" Association="Self.FK__CustomerG__OwnCo__5EBF139D">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="CustomerGroup" EntitySet="CustomerGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerG__OwnCo__5FB337D6" Association="Self.FK__CustomerG__OwnCo__5FB337D6">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="CustomerGroup" EntitySet="CustomerGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerG__OwnCo__60A75C0F" Association="Self.FK__CustomerG__OwnCo__60A75C0F">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="CustomerGroup" EntitySet="CustomerGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerG__OwnCo__619B8048" Association="Self.FK__CustomerG__OwnCo__619B8048">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="CustomerGroup" EntitySet="CustomerGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vendor__OwnCompa__7755B73D" Association="Self.FK__Vendor__OwnCompa__7755B73D">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="Vendor" EntitySet="Vendor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VendorTyp__OwnCo__6E01572D" Association="Self.FK__VendorTyp__OwnCo__6E01572D">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="VendorType" EntitySet="VendorType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VendorTyp__OwnCo__6EF57B66" Association="Self.FK__VendorTyp__OwnCo__6EF57B66">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="VendorType" EntitySet="VendorType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VendorTyp__OwnCo__6FE99F9F" Association="Self.FK__VendorTyp__OwnCo__6FE99F9F">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="VendorType" EntitySet="VendorType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VendorTyp__OwnCo__70DDC3D8" Association="Self.FK__VendorTyp__OwnCo__70DDC3D8">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="VendorType" EntitySet="VendorType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VendorTyp__OwnCo__71D1E811" Association="Self.FK__VendorTyp__OwnCo__71D1E811">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="VendorType" EntitySet="VendorType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VendorTyp__OwnCo__72C60C4A" Association="Self.FK__VendorTyp__OwnCo__72C60C4A">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="VendorType" EntitySet="VendorType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VendorTyp__OwnCo__73BA3083" Association="Self.FK__VendorTyp__OwnCo__73BA3083">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="VendorType" EntitySet="VendorType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VendorTyp__OwnCo__74AE54BC" Association="Self.FK__VendorTyp__OwnCo__74AE54BC">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="VendorType" EntitySet="VendorType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VendorTyp__OwnCo__75A278F5" Association="Self.FK__VendorTyp__OwnCo__75A278F5">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="VendorType" EntitySet="VendorType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BiltyRole_UserAccounts" Association="Self.FK_BiltyRole_UserAccounts">
+            <End Role="UserAccounts" EntitySet="UserAccounts" />
+            <End Role="BiltyRole" EntitySet="BiltyRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerCompany_CustomerGroup" Association="Self.FK_CustomerCompany_CustomerGroup">
+            <End Role="CustomerGroup" EntitySet="CustomerGroup" />
+            <End Role="CustomerCompany" EntitySet="CustomerCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OwnCompany_OwnGroups" Association="Self.FK_OwnCompany_OwnGroups">
+            <End Role="OwnGroups" EntitySet="OwnGroups" />
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftwareSetup_ContactNoType" Association="Self.FK_SoftwareSetup_ContactNoType">
+            <End Role="ContactNoType" EntitySet="ContactNoType" />
+            <End Role="SoftwareSetup" EntitySet="SoftwareSetup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftwareSetup_CurrencyType" Association="Self.FK_SoftwareSetup_CurrencyType">
+            <End Role="CurrencyType" EntitySet="CurrencyType" />
+            <End Role="SoftwareSetup" EntitySet="SoftwareSetup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftwareSetup_DateType" Association="Self.FK_SoftwareSetup_DateType">
+            <End Role="DateType" EntitySet="DateType" />
+            <End Role="SoftwareSetup" EntitySet="SoftwareSetup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftwareSetup_NoType" Association="Self.FK_SoftwareSetup_NoType">
+            <End Role="NoType" EntitySet="NoType" />
+            <End Role="SoftwareSetup" EntitySet="SoftwareSetup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubcriptionModules_Menu" Association="Self.FK_SubcriptionModules_Menu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="SubcriptionModules" EntitySet="SubcriptionModules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubcriptionModules_SubcriptionModules" Association="Self.FK_SubcriptionModules_SubcriptionModules">
+            <End Role="Subcriptions" EntitySet="Subcriptions" />
+            <End Role="SubcriptionModules" EntitySet="SubcriptionModules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAccounts_OwnCompany" Association="Self.FK_UserAccounts_OwnCompany">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="UserAccounts" EntitySet="UserAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAssignedCompanies_OwnCompany" Association="Self.FK_UserAssignedCompanies_OwnCompany">
+            <End Role="OwnCompany" EntitySet="OwnCompany" />
+            <End Role="UserAssignedCompanies" EntitySet="UserAssignedCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAssignedCompanies_UserAccounts" Association="Self.FK_UserAssignedCompanies_UserAccounts">
+            <End Role="UserAccounts" EntitySet="UserAccounts" />
+            <End Role="UserAssignedCompanies" EntitySet="UserAssignedCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_VendorType" Association="Self.FK_Vendor_VendorType">
+            <End Role="VendorType" EntitySet="VendorType" />
+            <End Role="Vendor" EntitySet="Vendor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="docDate" Type="DateTime" Precision="0" />
+          <Property Name="accountTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="accountId" Type="Int32" Nullable="false" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="amount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TranstypeId" Type="Int32" Nullable="false" />
+          <Property Name="vchrStatus" Type="Int32" />
+          <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="createdBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="accounts_transaction">
+          <Key>
+            <PropertyRef Name="accounts_transaction_id" />
+          </Key>
+          <Property Name="accounts_transaction_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="refId" Type="Int32" Nullable="false" />
+          <Property Name="orders_id" Type="Int32" Nullable="false" />
+          <Property Name="customers_id" Type="Int32" Nullable="false" />
+          <Property Name="details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="trans_db" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="trans_cr" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="amount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="chqNo" Type="Int32" />
+          <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="createdBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chq_ok" Type="DateTime" Precision="0" />
+          <Property Name="chq_date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="BiltyRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="BiltyRole1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserAccount" Relationship="Self.FK_BiltyRole_UserAccounts" FromRole="BiltyRole" ToRole="UserAccounts" />
+        </EntityType>
+        <EntityType Name="ContactNoType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactNoType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Format" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SoftwareSetups" Relationship="Self.FK_SoftwareSetup_ContactNoType" FromRole="ContactNoType" ToRole="SoftwareSetup" />
+        </EntityType>
+        <EntityType Name="CurrencyType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrencyType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SoftwareSetups" Relationship="Self.FK_SoftwareSetup_CurrencyType" FromRole="CurrencyType" ToRole="SoftwareSetup" />
+        </EntityType>
+        <EntityType Name="CustomerCompany">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GroupID" Type="Int64" />
+          <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactOther" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAdd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WebAdd" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="ModifiedBy" Type="Int64" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="OwnCompanyId" Type="Int64" />
+          <Property Name="NTN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="STN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tax" Type="Double" />
+          <Property Name="CustomerType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OwnCompany" Relationship="Self.FK__CustomerC__OwnCo__3A81B327" FromRole="CustomerCompany" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany1" Relationship="Self.FK__CustomerC__OwnCo__3B75D760" FromRole="CustomerCompany" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany2" Relationship="Self.FK__CustomerC__OwnCo__3C69FB99" FromRole="CustomerCompany" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany3" Relationship="Self.FK__CustomerC__OwnCo__3D5E1FD2" FromRole="CustomerCompany" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany4" Relationship="Self.FK__CustomerC__OwnCo__3E52440B" FromRole="CustomerCompany" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany5" Relationship="Self.FK__CustomerC__OwnCo__3F466844" FromRole="CustomerCompany" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany6" Relationship="Self.FK__CustomerC__OwnCo__403A8C7D" FromRole="CustomerCompany" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany7" Relationship="Self.FK__CustomerC__OwnCo__412EB0B6" FromRole="CustomerCompany" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany8" Relationship="Self.FK__CustomerC__OwnCo__4222D4EF" FromRole="CustomerCompany" ToRole="OwnCompany" />
+          <NavigationProperty Name="CustomerGroup" Relationship="Self.FK_CustomerCompany_CustomerGroup" FromRole="CustomerCompany" ToRole="CustomerGroup" />
+        </EntityType>
+        <EntityType Name="CustomerGroup">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactOther" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAdd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WebAdd" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="ModifiedBy" Type="Int64" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="OwnCompanyId" Type="Int64" />
+          <NavigationProperty Name="CustomerCompanies" Relationship="Self.FK_CustomerCompany_CustomerGroup" FromRole="CustomerGroup" ToRole="CustomerCompany" />
+          <NavigationProperty Name="OwnCompany" Relationship="Self.FK__CustomerG__OwnCo__440B1D61" FromRole="CustomerGroup" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany1" Relationship="Self.FK__CustomerG__OwnCo__44FF419A" FromRole="CustomerGroup" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany2" Relationship="Self.FK__CustomerG__OwnCo__45F365D3" FromRole="CustomerGroup" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany3" Relationship="Self.FK__CustomerG__OwnCo__46E78A0C" FromRole="CustomerGroup" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany4" Relationship="Self.FK__CustomerG__OwnCo__47DBAE45" FromRole="CustomerGroup" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany5" Relationship="Self.FK__CustomerG__OwnCo__48CFD27E" FromRole="CustomerGroup" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany6" Relationship="Self.FK__CustomerG__OwnCo__49C3F6B7" FromRole="CustomerGroup" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany7" Relationship="Self.FK__CustomerG__OwnCo__4AB81AF0" FromRole="CustomerGroup" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany8" Relationship="Self.FK__CustomerG__OwnCo__4BAC3F29" FromRole="CustomerGroup" ToRole="OwnCompany" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customers_id" />
+          </Key>
+          <Property Name="customers_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customers_code" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customers_firstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customers_lastname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customers_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customers_tel" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="customers_area" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customers_city" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customers_country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="createdBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customerTypeId" Type="Int32" />
+          <Property Name="customers_group" Type="Int32" />
+          <Property Name="customers_department" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DateType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Format" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SoftwareSetups" Relationship="Self.FK_SoftwareSetup_DateType" FromRole="DateType" ToRole="SoftwareSetup" />
+        </EntityType>
+        <EntityType Name="GM_ACC">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="parent_id" Type="Int32" Nullable="false" />
+          <Property Name="isActive" Type="Int32" Nullable="false" />
+          <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="createdBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CODE" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="LEVEL" Type="Int32" />
+        </EntityType>
+        <EntityType Name="M_FLAG">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="flag" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="flagType" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="flagDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="createdBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="SequenceOrder" Type="Int32" />
+          <Property Name="Icon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int64" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SubcriptionModules" Relationship="Self.FK_SubcriptionModules_Menu" FromRole="Menu" ToRole="SubcriptionModules" />
+        </EntityType>
+        <EntityType Name="NavMenu">
+          <Key>
+            <PropertyRef Name="FormID" />
+          </Key>
+          <Property Name="FormID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="icon" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SequenceOrder" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="ModifiedBy" Type="Int64" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="SecondLevelMenuID" Type="Int64" Nullable="false" />
+          <Property Name="formTarget" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="ActionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="NoType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Format" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SoftwareSetups" Relationship="Self.FK_SoftwareSetup_NoType" FromRole="NoType" ToRole="SoftwareSetup" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="orders_id" />
+          </Key>
+          <Property Name="orders_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_purchased" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="customers_id" Type="Int32" Nullable="false" />
+          <Property Name="customers_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customers_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customers_tel" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="customers_area" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customers_city" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customers_country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="total_amt" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="totalItems" Type="Int32" />
+          <Property Name="docTypeId" Type="Int32" />
+          <Property Name="orderStatus" Type="Int32" />
+          <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="createdBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="orders_products">
+          <Key>
+            <PropertyRef Name="orders_products_id" />
+          </Key>
+          <Property Name="orders_products_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orders_id" Type="Int32" Nullable="false" />
+          <Property Name="products_id" Type="Int32" Nullable="false" />
+          <Property Name="products_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="products_quantity" Type="Int32" />
+          <Property Name="products_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="scheme" Type="Int32" />
+          <Property Name="bonus" Type="Int32" />
+          <Property Name="discPer" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="discAmt" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="lineAmount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="createdBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OwnCompany">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubcriptionID" Type="Int64" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GroupID" Type="Int64" />
+          <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactOther" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAdd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WebAdd" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="ModifiedBy" Type="Int64" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CompanyLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NTN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CustomerCompanies" Relationship="Self.FK__CustomerC__OwnCo__3A81B327" FromRole="OwnCompany" ToRole="CustomerCompany" />
+          <NavigationProperty Name="CustomerCompanies1" Relationship="Self.FK__CustomerC__OwnCo__3B75D760" FromRole="OwnCompany" ToRole="CustomerCompany" />
+          <NavigationProperty Name="CustomerCompanies2" Relationship="Self.FK__CustomerC__OwnCo__3C69FB99" FromRole="OwnCompany" ToRole="CustomerCompany" />
+          <NavigationProperty Name="CustomerCompanies3" Relationship="Self.FK__CustomerC__OwnCo__3D5E1FD2" FromRole="OwnCompany" ToRole="CustomerCompany" />
+          <NavigationProperty Name="CustomerCompanies4" Relationship="Self.FK__CustomerC__OwnCo__3E52440B" FromRole="OwnCompany" ToRole="CustomerCompany" />
+          <NavigationProperty Name="CustomerCompanies5" Relationship="Self.FK__CustomerC__OwnCo__3F466844" FromRole="OwnCompany" ToRole="CustomerCompany" />
+          <NavigationProperty Name="CustomerCompanies6" Relationship="Self.FK__CustomerC__OwnCo__403A8C7D" FromRole="OwnCompany" ToRole="CustomerCompany" />
+          <NavigationProperty Name="CustomerCompanies7" Relationship="Self.FK__CustomerC__OwnCo__412EB0B6" FromRole="OwnCompany" ToRole="CustomerCompany" />
+          <NavigationProperty Name="CustomerCompanies8" Relationship="Self.FK__CustomerC__OwnCo__4222D4EF" FromRole="OwnCompany" ToRole="CustomerCompany" />
+          <NavigationProperty Name="CustomerGroups" Relationship="Self.FK__CustomerG__OwnCo__440B1D61" FromRole="OwnCompany" ToRole="CustomerGroup" />
+          <NavigationProperty Name="CustomerGroups1" Relationship="Self.FK__CustomerG__OwnCo__44FF419A" FromRole="OwnCompany" ToRole="CustomerGroup" />
+          <NavigationProperty Name="CustomerGroups2" Relationship="Self.FK__CustomerG__OwnCo__45F365D3" FromRole="OwnCompany" ToRole="CustomerGroup" />
+          <NavigationProperty Name="CustomerGroups3" Relationship="Self.FK__CustomerG__OwnCo__46E78A0C" FromRole="OwnCompany" ToRole="CustomerGroup" />
+          <NavigationProperty Name="CustomerGroups4" Relationship="Self.FK__CustomerG__OwnCo__47DBAE45" FromRole="OwnCompany" ToRole="CustomerGroup" />
+          <NavigationProperty Name="CustomerGroups5" Relationship="Self.FK__CustomerG__OwnCo__48CFD27E" FromRole="OwnCompany" ToRole="CustomerGroup" />
+          <NavigationProperty Name="CustomerGroups6" Relationship="Self.FK__CustomerG__OwnCo__49C3F6B7" FromRole="OwnCompany" ToRole="CustomerGroup" />
+          <NavigationProperty Name="CustomerGroups7" Relationship="Self.FK__CustomerG__OwnCo__4AB81AF0" FromRole="OwnCompany" ToRole="CustomerGroup" />
+          <NavigationProperty Name="CustomerGroups8" Relationship="Self.FK__CustomerG__OwnCo__4BAC3F29" FromRole="OwnCompany" ToRole="CustomerGroup" />
+          <NavigationProperty Name="Vendors" Relationship="Self.FK__Vendor__OwnCompa__7755B73D" FromRole="OwnCompany" ToRole="Vendor" />
+          <NavigationProperty Name="VendorTypes" Relationship="Self.FK__VendorTyp__OwnCo__5812160E" FromRole="OwnCompany" ToRole="VendorType" />
+          <NavigationProperty Name="VendorTypes1" Relationship="Self.FK__VendorTyp__OwnCo__59063A47" FromRole="OwnCompany" ToRole="VendorType" />
+          <NavigationProperty Name="VendorTypes2" Relationship="Self.FK__VendorTyp__OwnCo__59FA5E80" FromRole="OwnCompany" ToRole="VendorType" />
+          <NavigationProperty Name="VendorTypes3" Relationship="Self.FK__VendorTyp__OwnCo__5AEE82B9" FromRole="OwnCompany" ToRole="VendorType" />
+          <NavigationProperty Name="VendorTypes4" Relationship="Self.FK__VendorTyp__OwnCo__5BE2A6F2" FromRole="OwnCompany" ToRole="VendorType" />
+          <NavigationProperty Name="VendorTypes5" Relationship="Self.FK__VendorTyp__OwnCo__5CD6CB2B" FromRole="OwnCompany" ToRole="VendorType" />
+          <NavigationProperty Name="VendorTypes6" Relationship="Self.FK__VendorTyp__OwnCo__5DCAEF64" FromRole="OwnCompany" ToRole="VendorType" />
+          <NavigationProperty Name="VendorTypes7" Relationship="Self.FK__VendorTyp__OwnCo__5EBF139D" FromRole="OwnCompany" ToRole="VendorType" />
+          <NavigationProperty Name="VendorTypes8" Relationship="Self.FK__VendorTyp__OwnCo__5FB337D6" FromRole="OwnCompany" ToRole="VendorType" />
+          <NavigationProperty Name="OwnGroup" Relationship="Self.FK_OwnCompany_OwnGroups" FromRole="OwnCompany" ToRole="OwnGroups" />
+          <NavigationProperty Name="UserAccounts" Relationship="Self.FK_UserAccounts_OwnCompany" FromRole="OwnCompany" ToRole="UserAccounts" />
+          <NavigationProperty Name="UserAssignedCompanies" Relationship="Self.FK_UserAssignedCompanies_OwnCompany" FromRole="OwnCompany" ToRole="UserAssignedCompanies" />
+        </EntityType>
+        <EntityType Name="OwnGroup">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactOther" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAdd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WebAdd" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="ModifiedBy" Type="Int64" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CompanyAccess" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OwnCompanies" Relationship="Self.FK_OwnCompany_OwnGroups" FromRole="OwnGroups" ToRole="OwnCompany" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="products_id" />
+          </Key>
+          <Property Name="products_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="products_model" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="productDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="products_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="products_msrp" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="products_tp" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="products_scheme" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="products_bonus" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="products_discPer" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="products_discAmt" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="createdBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RolePermission">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleID" Type="Int64" />
+          <Property Name="FormID" Type="Int64" />
+          <Property Name="Parameter" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int64" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="isDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int64" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="isDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SecondLevelMenu">
+          <Key>
+            <PropertyRef Name="SecLevelID" />
+          </Key>
+          <Property Name="SecLevelID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuID" Type="Int64" />
+          <Property Name="SecLevelMenu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SequenceOrder" Type="Int32" />
+        </EntityType>
+        <EntityType Name="setting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="txtKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="txtValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="createdBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftwareSetup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrencyTypeID" Type="Int64" />
+          <Property Name="DateTypeID" Type="Int64" />
+          <Property Name="ContactNoTypeID" Type="Int64" />
+          <Property Name="NoTypeID" Type="Int64" />
+          <Property Name="Logo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ContactNoType" Relationship="Self.FK_SoftwareSetup_ContactNoType" FromRole="SoftwareSetup" ToRole="ContactNoType" />
+          <NavigationProperty Name="CurrencyType" Relationship="Self.FK_SoftwareSetup_CurrencyType" FromRole="SoftwareSetup" ToRole="CurrencyType" />
+          <NavigationProperty Name="DateType" Relationship="Self.FK_SoftwareSetup_DateType" FromRole="SoftwareSetup" ToRole="DateType" />
+          <NavigationProperty Name="NoType" Relationship="Self.FK_SoftwareSetup_NoType" FromRole="SoftwareSetup" ToRole="NoType" />
+        </EntityType>
+        <EntityType Name="SubcriptionModule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubcriptionID" Type="Int64" />
+          <Property Name="MenuID" Type="Int64" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK_SubcriptionModules_Menu" FromRole="SubcriptionModules" ToRole="Menu" />
+          <NavigationProperty Name="Subcription" Relationship="Self.FK_SubcriptionModules_SubcriptionModules" FromRole="SubcriptionModules" ToRole="Subcriptions" />
+        </EntityType>
+        <EntityType Name="Subcription">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="NumberOfMonths" Type="Int32" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int64" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="SubcriptionModules" Relationship="Self.FK_SubcriptionModules_SubcriptionModules" FromRole="Subcriptions" ToRole="SubcriptionModules" />
+        </EntityType>
+        <EntityType Name="TEST">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OwnCompanyId" Type="Int64" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int64" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="RoleID" Type="Int64" />
+          <NavigationProperty Name="BiltyRoles" Relationship="Self.FK_BiltyRole_UserAccounts" FromRole="UserAccounts" ToRole="BiltyRole" />
+          <NavigationProperty Name="OwnCompany" Relationship="Self.FK_UserAccounts_OwnCompany" FromRole="UserAccounts" ToRole="OwnCompany" />
+          <NavigationProperty Name="UserAssignedCompanies" Relationship="Self.FK_UserAssignedCompanies_UserAccounts" FromRole="UserAccounts" ToRole="UserAssignedCompanies" />
+        </EntityType>
+        <EntityType Name="UserAssignedCompany">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int64" />
+          <Property Name="OwnCompanyID" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="OwnCompany" Relationship="Self.FK_UserAssignedCompanies_OwnCompany" FromRole="UserAssignedCompanies" ToRole="OwnCompany" />
+          <NavigationProperty Name="UserAccount" Relationship="Self.FK_UserAssignedCompanies_UserAccounts" FromRole="UserAssignedCompanies" ToRole="UserAccounts" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VendorTypeID" Type="Int64" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OwnerContactName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OwnerContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SecContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PTCLNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="ModifiedBy" Type="Int64" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="OwnCompanyId" Type="Int64" />
+          <Property Name="AccountTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OwnCompany" Relationship="Self.FK__Vendor__OwnCompa__7755B73D" FromRole="Vendor" ToRole="OwnCompany" />
+          <NavigationProperty Name="VendorType" Relationship="Self.FK_Vendor_VendorType" FromRole="Vendor" ToRole="VendorType" />
+        </EntityType>
+        <EntityType Name="VendorType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="ModifiedBy" Type="Int64" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="OwnCompanyId" Type="Int64" />
+          <NavigationProperty Name="OwnCompany" Relationship="Self.FK__VendorTyp__OwnCo__5812160E" FromRole="VendorType" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany1" Relationship="Self.FK__VendorTyp__OwnCo__59063A47" FromRole="VendorType" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany2" Relationship="Self.FK__VendorTyp__OwnCo__59FA5E80" FromRole="VendorType" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany3" Relationship="Self.FK__VendorTyp__OwnCo__5AEE82B9" FromRole="VendorType" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany4" Relationship="Self.FK__VendorTyp__OwnCo__5BE2A6F2" FromRole="VendorType" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany5" Relationship="Self.FK__VendorTyp__OwnCo__5CD6CB2B" FromRole="VendorType" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany6" Relationship="Self.FK__VendorTyp__OwnCo__5DCAEF64" FromRole="VendorType" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany7" Relationship="Self.FK__VendorTyp__OwnCo__5EBF139D" FromRole="VendorType" ToRole="OwnCompany" />
+          <NavigationProperty Name="OwnCompany8" Relationship="Self.FK__VendorTyp__OwnCo__5FB337D6" FromRole="VendorType" ToRole="OwnCompany" />
+          <NavigationProperty Name="Vendors" Relationship="Self.FK_Vendor_VendorType" FromRole="VendorType" ToRole="Vendor" />
+        </EntityType>
+        <Association Name="FK_BiltyRole_UserAccounts">
+          <End Role="UserAccounts" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="BiltyRole" Type="Self.BiltyRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccounts">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="BiltyRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftwareSetup_ContactNoType">
+          <End Role="ContactNoType" Type="Self.ContactNoType" Multiplicity="0..1" />
+          <End Role="SoftwareSetup" Type="Self.SoftwareSetup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactNoType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SoftwareSetup">
+              <PropertyRef Name="ContactNoTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftwareSetup_CurrencyType">
+          <End Role="CurrencyType" Type="Self.CurrencyType" Multiplicity="0..1" />
+          <End Role="SoftwareSetup" Type="Self.SoftwareSetup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SoftwareSetup">
+              <PropertyRef Name="CurrencyTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__OwnCo__3A81B327">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerCompany" Type="Self.CustomerCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerCompany">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__OwnCo__3B75D760">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerCompany" Type="Self.CustomerCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerCompany">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__OwnCo__3C69FB99">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerCompany" Type="Self.CustomerCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerCompany">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__OwnCo__3D5E1FD2">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerCompany" Type="Self.CustomerCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerCompany">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__OwnCo__3E52440B">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerCompany" Type="Self.CustomerCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerCompany">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__OwnCo__3F466844">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerCompany" Type="Self.CustomerCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerCompany">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__OwnCo__403A8C7D">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerCompany" Type="Self.CustomerCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerCompany">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__OwnCo__412EB0B6">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerCompany" Type="Self.CustomerCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerCompany">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__OwnCo__4222D4EF">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerCompany" Type="Self.CustomerCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerCompany">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerCompany_CustomerGroup">
+          <End Role="CustomerGroup" Type="Self.CustomerGroup" Multiplicity="0..1" />
+          <End Role="CustomerCompany" Type="Self.CustomerCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerGroup">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="CustomerCompany">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerG__OwnCo__440B1D61">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerGroup" Type="Self.CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerGroup">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerG__OwnCo__44FF419A">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerGroup" Type="Self.CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerGroup">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerG__OwnCo__45F365D3">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerGroup" Type="Self.CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerGroup">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerG__OwnCo__46E78A0C">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerGroup" Type="Self.CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerGroup">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerG__OwnCo__47DBAE45">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerGroup" Type="Self.CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerGroup">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerG__OwnCo__48CFD27E">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerGroup" Type="Self.CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerGroup">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerG__OwnCo__49C3F6B7">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerGroup" Type="Self.CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerGroup">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerG__OwnCo__4AB81AF0">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerGroup" Type="Self.CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerGroup">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerG__OwnCo__4BAC3F29">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="CustomerGroup" Type="Self.CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerGroup">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftwareSetup_DateType">
+          <End Role="DateType" Type="Self.DateType" Multiplicity="0..1" />
+          <End Role="SoftwareSetup" Type="Self.SoftwareSetup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DateType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SoftwareSetup">
+              <PropertyRef Name="DateTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubcriptionModules_Menu">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="SubcriptionModules" Type="Self.SubcriptionModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="SubcriptionModules">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftwareSetup_NoType">
+          <End Role="NoType" Type="Self.NoType" Multiplicity="0..1" />
+          <End Role="SoftwareSetup" Type="Self.SoftwareSetup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NoType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SoftwareSetup">
+              <PropertyRef Name="NoTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vendor__OwnCompa__7755B73D">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VendorTyp__OwnCo__5812160E">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="VendorType" Type="Self.VendorType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorType">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VendorTyp__OwnCo__59063A47">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="VendorType" Type="Self.VendorType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorType">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VendorTyp__OwnCo__59FA5E80">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="VendorType" Type="Self.VendorType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorType">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VendorTyp__OwnCo__5AEE82B9">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="VendorType" Type="Self.VendorType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorType">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VendorTyp__OwnCo__5BE2A6F2">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="VendorType" Type="Self.VendorType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorType">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VendorTyp__OwnCo__5CD6CB2B">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="VendorType" Type="Self.VendorType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorType">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VendorTyp__OwnCo__5DCAEF64">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="VendorType" Type="Self.VendorType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorType">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VendorTyp__OwnCo__5EBF139D">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="VendorType" Type="Self.VendorType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorType">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VendorTyp__OwnCo__5FB337D6">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="VendorType" Type="Self.VendorType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorType">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OwnCompany_OwnGroups">
+          <End Role="OwnGroups" Type="Self.OwnGroup" Multiplicity="0..1" />
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnGroups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="OwnCompany">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAccounts_OwnCompany">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserAccounts" Type="Self.UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserAccounts">
+              <PropertyRef Name="OwnCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAssignedCompanies_OwnCompany">
+          <End Role="OwnCompany" Type="Self.OwnCompany" Multiplicity="0..1" />
+          <End Role="UserAssignedCompanies" Type="Self.UserAssignedCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserAssignedCompanies">
+              <PropertyRef Name="OwnCompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubcriptionModules_SubcriptionModules">
+          <End Role="Subcriptions" Type="Self.Subcription" Multiplicity="0..1" />
+          <End Role="SubcriptionModules" Type="Self.SubcriptionModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subcriptions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubcriptionModules">
+              <PropertyRef Name="SubcriptionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAssignedCompanies_UserAccounts">
+          <End Role="UserAccounts" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="UserAssignedCompanies" Type="Self.UserAssignedCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccounts">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserAssignedCompanies">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendor_VendorType">
+          <End Role="VendorType" Type="Self.VendorType" Multiplicity="0..1" />
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="VendorTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LCMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="accounts" EntityType="Self.account" />
+          <EntitySet Name="accounts_transaction" EntityType="Self.accounts_transaction" />
+          <EntitySet Name="BiltyRoles" EntityType="Self.BiltyRole" />
+          <EntitySet Name="ContactNoTypes" EntityType="Self.ContactNoType" />
+          <EntitySet Name="CurrencyTypes" EntityType="Self.CurrencyType" />
+          <EntitySet Name="CustomerCompanies" EntityType="Self.CustomerCompany" />
+          <EntitySet Name="CustomerGroups" EntityType="Self.CustomerGroup" />
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="DateTypes" EntityType="Self.DateType" />
+          <EntitySet Name="GM_ACC" EntityType="Self.GM_ACC" />
+          <EntitySet Name="M_FLAG" EntityType="Self.M_FLAG" />
+          <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="NavMenus" EntityType="Self.NavMenu" />
+          <EntitySet Name="NoTypes" EntityType="Self.NoType" />
+          <EntitySet Name="orders" EntityType="Self.order" />
+          <EntitySet Name="orders_products" EntityType="Self.orders_products" />
+          <EntitySet Name="OwnCompanies" EntityType="Self.OwnCompany" />
+          <EntitySet Name="OwnGroups" EntityType="Self.OwnGroup" />
+          <EntitySet Name="products" EntityType="Self.product" />
+          <EntitySet Name="RolePermissions" EntityType="Self.RolePermission" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="SecondLevelMenus" EntityType="Self.SecondLevelMenu" />
+          <EntitySet Name="settings" EntityType="Self.setting" />
+          <EntitySet Name="SoftwareSetups" EntityType="Self.SoftwareSetup" />
+          <EntitySet Name="SubcriptionModules" EntityType="Self.SubcriptionModule" />
+          <EntitySet Name="Subcriptions" EntityType="Self.Subcription" />
+          <EntitySet Name="TESTs" EntityType="Self.TEST" />
+          <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
+          <EntitySet Name="UserAssignedCompanies" EntityType="Self.UserAssignedCompany" />
+          <EntitySet Name="Vendors" EntityType="Self.Vendor" />
+          <EntitySet Name="VendorTypes" EntityType="Self.VendorType" />
+          <AssociationSet Name="FK_BiltyRole_UserAccounts" Association="Self.FK_BiltyRole_UserAccounts">
+            <End Role="UserAccounts" EntitySet="UserAccounts" />
+            <End Role="BiltyRole" EntitySet="BiltyRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftwareSetup_ContactNoType" Association="Self.FK_SoftwareSetup_ContactNoType">
+            <End Role="ContactNoType" EntitySet="ContactNoTypes" />
+            <End Role="SoftwareSetup" EntitySet="SoftwareSetups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftwareSetup_CurrencyType" Association="Self.FK_SoftwareSetup_CurrencyType">
+            <End Role="CurrencyType" EntitySet="CurrencyTypes" />
+            <End Role="SoftwareSetup" EntitySet="SoftwareSetups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__OwnCo__3A81B327" Association="Self.FK__CustomerC__OwnCo__3A81B327">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="CustomerCompany" EntitySet="CustomerCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__OwnCo__3B75D760" Association="Self.FK__CustomerC__OwnCo__3B75D760">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="CustomerCompany" EntitySet="CustomerCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__OwnCo__3C69FB99" Association="Self.FK__CustomerC__OwnCo__3C69FB99">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="CustomerCompany" EntitySet="CustomerCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__OwnCo__3D5E1FD2" Association="Self.FK__CustomerC__OwnCo__3D5E1FD2">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="CustomerCompany" EntitySet="CustomerCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__OwnCo__3E52440B" Association="Self.FK__CustomerC__OwnCo__3E52440B">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="CustomerCompany" EntitySet="CustomerCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__OwnCo__3F466844" Association="Self.FK__CustomerC__OwnCo__3F466844">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="CustomerCompany" EntitySet="CustomerCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__OwnCo__403A8C7D" Association="Self.FK__CustomerC__OwnCo__403A8C7D">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="CustomerCompany" EntitySet="CustomerCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__OwnCo__412EB0B6" Association="Self.FK__CustomerC__OwnCo__412EB0B6">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="CustomerCompany" EntitySet="CustomerCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__OwnCo__4222D4EF" Association="Self.FK__CustomerC__OwnCo__4222D4EF">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="CustomerCompany" EntitySet="CustomerCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerCompany_CustomerGroup" Association="Self.FK_CustomerCompany_CustomerGroup">
+            <End Role="CustomerGroup" EntitySet="CustomerGroups" />
+            <End Role="CustomerCompany" EntitySet="CustomerCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerG__OwnCo__440B1D61" Association="Self.FK__CustomerG__OwnCo__440B1D61">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="CustomerGroup" EntitySet="CustomerGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerG__OwnCo__44FF419A" Association="Self.FK__CustomerG__OwnCo__44FF419A">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="CustomerGroup" EntitySet="CustomerGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerG__OwnCo__45F365D3" Association="Self.FK__CustomerG__OwnCo__45F365D3">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="CustomerGroup" EntitySet="CustomerGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerG__OwnCo__46E78A0C" Association="Self.FK__CustomerG__OwnCo__46E78A0C">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="CustomerGroup" EntitySet="CustomerGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerG__OwnCo__47DBAE45" Association="Self.FK__CustomerG__OwnCo__47DBAE45">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="CustomerGroup" EntitySet="CustomerGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerG__OwnCo__48CFD27E" Association="Self.FK__CustomerG__OwnCo__48CFD27E">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="CustomerGroup" EntitySet="CustomerGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerG__OwnCo__49C3F6B7" Association="Self.FK__CustomerG__OwnCo__49C3F6B7">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="CustomerGroup" EntitySet="CustomerGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerG__OwnCo__4AB81AF0" Association="Self.FK__CustomerG__OwnCo__4AB81AF0">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="CustomerGroup" EntitySet="CustomerGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerG__OwnCo__4BAC3F29" Association="Self.FK__CustomerG__OwnCo__4BAC3F29">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="CustomerGroup" EntitySet="CustomerGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftwareSetup_DateType" Association="Self.FK_SoftwareSetup_DateType">
+            <End Role="DateType" EntitySet="DateTypes" />
+            <End Role="SoftwareSetup" EntitySet="SoftwareSetups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubcriptionModules_Menu" Association="Self.FK_SubcriptionModules_Menu">
+            <End Role="Menu" EntitySet="Menus" />
+            <End Role="SubcriptionModules" EntitySet="SubcriptionModules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftwareSetup_NoType" Association="Self.FK_SoftwareSetup_NoType">
+            <End Role="NoType" EntitySet="NoTypes" />
+            <End Role="SoftwareSetup" EntitySet="SoftwareSetups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vendor__OwnCompa__7755B73D" Association="Self.FK__Vendor__OwnCompa__7755B73D">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="Vendor" EntitySet="Vendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VendorTyp__OwnCo__5812160E" Association="Self.FK__VendorTyp__OwnCo__5812160E">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="VendorType" EntitySet="VendorTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VendorTyp__OwnCo__59063A47" Association="Self.FK__VendorTyp__OwnCo__59063A47">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="VendorType" EntitySet="VendorTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VendorTyp__OwnCo__59FA5E80" Association="Self.FK__VendorTyp__OwnCo__59FA5E80">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="VendorType" EntitySet="VendorTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VendorTyp__OwnCo__5AEE82B9" Association="Self.FK__VendorTyp__OwnCo__5AEE82B9">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="VendorType" EntitySet="VendorTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VendorTyp__OwnCo__5BE2A6F2" Association="Self.FK__VendorTyp__OwnCo__5BE2A6F2">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="VendorType" EntitySet="VendorTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VendorTyp__OwnCo__5CD6CB2B" Association="Self.FK__VendorTyp__OwnCo__5CD6CB2B">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="VendorType" EntitySet="VendorTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VendorTyp__OwnCo__5DCAEF64" Association="Self.FK__VendorTyp__OwnCo__5DCAEF64">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="VendorType" EntitySet="VendorTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VendorTyp__OwnCo__5EBF139D" Association="Self.FK__VendorTyp__OwnCo__5EBF139D">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="VendorType" EntitySet="VendorTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VendorTyp__OwnCo__5FB337D6" Association="Self.FK__VendorTyp__OwnCo__5FB337D6">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="VendorType" EntitySet="VendorTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OwnCompany_OwnGroups" Association="Self.FK_OwnCompany_OwnGroups">
+            <End Role="OwnGroups" EntitySet="OwnGroups" />
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAccounts_OwnCompany" Association="Self.FK_UserAccounts_OwnCompany">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="UserAccounts" EntitySet="UserAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAssignedCompanies_OwnCompany" Association="Self.FK_UserAssignedCompanies_OwnCompany">
+            <End Role="OwnCompany" EntitySet="OwnCompanies" />
+            <End Role="UserAssignedCompanies" EntitySet="UserAssignedCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubcriptionModules_SubcriptionModules" Association="Self.FK_SubcriptionModules_SubcriptionModules">
+            <End Role="Subcriptions" EntitySet="Subcriptions" />
+            <End Role="SubcriptionModules" EntitySet="SubcriptionModules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAssignedCompanies_UserAccounts" Association="Self.FK_UserAssignedCompanies_UserAccounts">
+            <End Role="UserAccounts" EntitySet="UserAccounts" />
+            <End Role="UserAssignedCompanies" EntitySet="UserAssignedCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_VendorType" Association="Self.FK_Vendor_VendorType">
+            <End Role="VendorType" EntitySet="VendorTypes" />
+            <End Role="Vendor" EntitySet="Vendors" />
+          </AssociationSet>
+          <FunctionImport Name="GetAccountBalance" IsComposable="true" ReturnType="Collection(LMSModel.GetAccountBalance_Result)">
+          <Parameter Name="accountId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetCustomersByAcc" IsComposable="true" ReturnType="Collection(LMSModel.GetCustomersByAcc_Result)">
+          <Parameter Name="accountId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CUST_LEDGER" IsComposable="true" ReturnType="Collection(LMSModel.CUST_LEDGER_Result)">
+            <Parameter Name="customerId" Mode="In" Type="Int32" />
+            <Parameter Name="frmDt" Mode="In" Type="DateTime" />
+            <Parameter Name="toDt" Mode="In" Type="DateTime" />
+            <Parameter Name="typeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetAccountBalance_Result">
+          <Property Type="Decimal" Name="TotalAmount" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="AmountToPay" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="DueAmount" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="PaidAmount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Int32" Name="accountId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetCustomersByAcc_Result">
+          <Property Type="Int32" Name="accountId" Nullable="true" />
+          <Property Type="Int32" Name="customers_id" Nullable="true" />
+          <Property Type="String" Name="customerName" Nullable="true" />
+          <Property Type="DateTime" Name="docDate" Nullable="true" Precision="10" />
+          <Property Type="Decimal" Name="TotalAmount" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="PaidAmount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="AmountToPay" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="DueAmount" Nullable="true" Precision="38" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="CUST_LEDGER_Result">
+          <Property Type="Int32" Name="customers_id" Nullable="false" />
+          <Property Type="String" Name="customers_firstname" Nullable="true" />
+          <Property Type="Int32" Name="customerTypeId" Nullable="true" />
+          <Property Type="DateTime" Name="InvDate" Nullable="false" Precision="10" />
+          <Property Type="Int32" Name="InvNo" Nullable="false" />
+          <Property Type="Decimal" Name="InvTotal" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="InvRemarks" Nullable="true" />
+          <Property Type="Int32" Name="InvType" Nullable="true" />
+          <Property Type="Int32" Name="VchrNo" Nullable="true" />
+          <Property Type="Int32" Name="AccountId" Nullable="true" />
+          <Property Type="String" Name="accountTitle" Nullable="true" />
+          <Property Type="Decimal" Name="VchrTotal" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="VchrDate" Nullable="true" Precision="10" />
+          <Property Type="Int32" Name="VchrType" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LMSModelStoreContainer" CdmEntityContainer="LCMEntities">
+          <EntitySetMapping Name="accounts">
+            <EntityTypeMapping TypeName="LMSModel.account">
+              <MappingFragment StoreEntitySet="accounts">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="docDate" ColumnName="docDate" />
+                <ScalarProperty Name="accountTitle" ColumnName="accountTitle" />
+                <ScalarProperty Name="accountId" ColumnName="accountId" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="TranstypeId" ColumnName="TranstypeId" />
+                <ScalarProperty Name="vchrStatus" ColumnName="vchrStatus" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="accounts_transaction">
+            <EntityTypeMapping TypeName="LMSModel.accounts_transaction">
+              <MappingFragment StoreEntitySet="accounts_transaction">
+                <ScalarProperty Name="chq_date" ColumnName="chq_date" />
+                <ScalarProperty Name="chq_ok" ColumnName="chq_ok" />
+                <ScalarProperty Name="accounts_transaction_id" ColumnName="accounts_transaction_id" />
+                <ScalarProperty Name="refId" ColumnName="refId" />
+                <ScalarProperty Name="orders_id" ColumnName="orders_id" />
+                <ScalarProperty Name="customers_id" ColumnName="customers_id" />
+                <ScalarProperty Name="details" ColumnName="details" />
+                <ScalarProperty Name="trans_db" ColumnName="trans_db" />
+                <ScalarProperty Name="trans_cr" ColumnName="trans_cr" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="chqNo" ColumnName="chqNo" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BiltyRoles">
+            <EntityTypeMapping TypeName="LMSModel.BiltyRole">
+              <MappingFragment StoreEntitySet="BiltyRole">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BiltyRole1" ColumnName="BiltyRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactNoTypes">
+            <EntityTypeMapping TypeName="LMSModel.ContactNoType">
+              <MappingFragment StoreEntitySet="ContactNoType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ContactNoType1" ColumnName="ContactNoType" />
+                <ScalarProperty Name="Format" ColumnName="Format" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CurrencyTypes">
+            <EntityTypeMapping TypeName="LMSModel.CurrencyType">
+              <MappingFragment StoreEntitySet="CurrencyType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CurrencyType1" ColumnName="CurrencyType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerCompanies">
+            <EntityTypeMapping TypeName="LMSModel.CustomerCompany">
+              <MappingFragment StoreEntitySet="CustomerCompany">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="ContactOther" ColumnName="ContactOther" />
+                <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+                <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+                <ScalarProperty Name="NTN" ColumnName="NTN" />
+                <ScalarProperty Name="STN" ColumnName="STN" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerGroups">
+            <EntityTypeMapping TypeName="LMSModel.CustomerGroup">
+              <MappingFragment StoreEntitySet="CustomerGroup">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="ContactOther" ColumnName="ContactOther" />
+                <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+                <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="LMSModel.customer">
+              <MappingFragment StoreEntitySet="customers">
+                <ScalarProperty Name="customers_department" ColumnName="customers_department" />
+                <ScalarProperty Name="customers_group" ColumnName="customers_group" />
+                <ScalarProperty Name="customerTypeId" ColumnName="customerTypeId" />
+                <ScalarProperty Name="customers_id" ColumnName="customers_id" />
+                <ScalarProperty Name="customers_code" ColumnName="customers_code" />
+                <ScalarProperty Name="customers_firstname" ColumnName="customers_firstname" />
+                <ScalarProperty Name="customers_lastname" ColumnName="customers_lastname" />
+                <ScalarProperty Name="customers_address" ColumnName="customers_address" />
+                <ScalarProperty Name="customers_tel" ColumnName="customers_tel" />
+                <ScalarProperty Name="customers_area" ColumnName="customers_area" />
+                <ScalarProperty Name="customers_city" ColumnName="customers_city" />
+                <ScalarProperty Name="customers_country" ColumnName="customers_country" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DateTypes">
+            <EntityTypeMapping TypeName="LMSModel.DateType">
+              <MappingFragment StoreEntitySet="DateType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateType1" ColumnName="DateType" />
+                <ScalarProperty Name="Format" ColumnName="Format" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GM_ACC">
+            <EntityTypeMapping TypeName="LMSModel.GM_ACC">
+              <MappingFragment StoreEntitySet="GM_ACC">
+                <ScalarProperty Name="LEVEL" ColumnName="LEVEL" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_FLAG">
+            <EntityTypeMapping TypeName="LMSModel.M_FLAG">
+              <MappingFragment StoreEntitySet="M_FLAG">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="flag" ColumnName="flag" />
+                <ScalarProperty Name="flagType" ColumnName="flagType" />
+                <ScalarProperty Name="flagDesc" ColumnName="flagDesc" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="LMSModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SequenceOrder" ColumnName="SequenceOrder" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NavMenus">
+            <EntityTypeMapping TypeName="LMSModel.NavMenu">
+              <MappingFragment StoreEntitySet="NavMenu">
+                <ScalarProperty Name="FormID" ColumnName="FormID" />
+                <ScalarProperty Name="FormName" ColumnName="FormName" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="icon" ColumnName="icon" />
+                <ScalarProperty Name="SequenceOrder" ColumnName="SequenceOrder" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="SecondLevelMenuID" ColumnName="SecondLevelMenuID" />
+                <ScalarProperty Name="formTarget" ColumnName="formTarget" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NoTypes">
+            <EntityTypeMapping TypeName="LMSModel.NoType">
+              <MappingFragment StoreEntitySet="NoType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NoType1" ColumnName="NoType" />
+                <ScalarProperty Name="Format" ColumnName="Format" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orders">
+            <EntityTypeMapping TypeName="LMSModel.order">
+              <MappingFragment StoreEntitySet="orders">
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="orders_id" ColumnName="orders_id" />
+                <ScalarProperty Name="date_purchased" ColumnName="date_purchased" />
+                <ScalarProperty Name="customers_id" ColumnName="customers_id" />
+                <ScalarProperty Name="customers_name" ColumnName="customers_name" />
+                <ScalarProperty Name="customers_address" ColumnName="customers_address" />
+                <ScalarProperty Name="customers_tel" ColumnName="customers_tel" />
+                <ScalarProperty Name="customers_area" ColumnName="customers_area" />
+                <ScalarProperty Name="customers_city" ColumnName="customers_city" />
+                <ScalarProperty Name="customers_country" ColumnName="customers_country" />
+                <ScalarProperty Name="total_amt" ColumnName="total_amt" />
+                <ScalarProperty Name="totalItems" ColumnName="totalItems" />
+                <ScalarProperty Name="docTypeId" ColumnName="docTypeId" />
+                <ScalarProperty Name="orderStatus" ColumnName="orderStatus" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orders_products">
+            <EntityTypeMapping TypeName="LMSModel.orders_products">
+              <MappingFragment StoreEntitySet="orders_products">
+                <ScalarProperty Name="orders_products_id" ColumnName="orders_products_id" />
+                <ScalarProperty Name="orders_id" ColumnName="orders_id" />
+                <ScalarProperty Name="products_id" ColumnName="products_id" />
+                <ScalarProperty Name="products_name" ColumnName="products_name" />
+                <ScalarProperty Name="products_quantity" ColumnName="products_quantity" />
+                <ScalarProperty Name="products_price" ColumnName="products_price" />
+                <ScalarProperty Name="scheme" ColumnName="scheme" />
+                <ScalarProperty Name="bonus" ColumnName="bonus" />
+                <ScalarProperty Name="discPer" ColumnName="discPer" />
+                <ScalarProperty Name="discAmt" ColumnName="discAmt" />
+                <ScalarProperty Name="lineAmount" ColumnName="lineAmount" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OwnCompanies">
+            <EntityTypeMapping TypeName="LMSModel.OwnCompany">
+              <MappingFragment StoreEntitySet="OwnCompany">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SubcriptionID" ColumnName="SubcriptionID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="ContactOther" ColumnName="ContactOther" />
+                <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+                <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="NTN" ColumnName="NTN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OwnGroups">
+            <EntityTypeMapping TypeName="LMSModel.OwnGroup">
+              <MappingFragment StoreEntitySet="OwnGroups">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="ContactOther" ColumnName="ContactOther" />
+                <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+                <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="CompanyAccess" ColumnName="CompanyAccess" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="LMSModel.product">
+              <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="products_id" ColumnName="products_id" />
+                <ScalarProperty Name="products_model" ColumnName="products_model" />
+                <ScalarProperty Name="productDescription" ColumnName="productDescription" />
+                <ScalarProperty Name="products_name" ColumnName="products_name" />
+                <ScalarProperty Name="products_msrp" ColumnName="products_msrp" />
+                <ScalarProperty Name="products_tp" ColumnName="products_tp" />
+                <ScalarProperty Name="products_scheme" ColumnName="products_scheme" />
+                <ScalarProperty Name="products_bonus" ColumnName="products_bonus" />
+                <ScalarProperty Name="products_discPer" ColumnName="products_discPer" />
+                <ScalarProperty Name="products_discAmt" ColumnName="products_discAmt" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RolePermissions">
+            <EntityTypeMapping TypeName="LMSModel.RolePermission">
+              <MappingFragment StoreEntitySet="RolePermission">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="FormID" ColumnName="FormID" />
+                <ScalarProperty Name="Parameter" ColumnName="Parameter" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="LMSModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SecondLevelMenus">
+            <EntityTypeMapping TypeName="LMSModel.SecondLevelMenu">
+              <MappingFragment StoreEntitySet="SecondLevelMenu">
+                <ScalarProperty Name="SecLevelID" ColumnName="SecLevelID" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="SecLevelMenu" ColumnName="SecLevelMenu" />
+                <ScalarProperty Name="SequenceOrder" ColumnName="SequenceOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="settings">
+            <EntityTypeMapping TypeName="LMSModel.setting">
+              <MappingFragment StoreEntitySet="settings">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="txtKey" ColumnName="txtKey" />
+                <ScalarProperty Name="txtValue" ColumnName="txtValue" />
+                <ScalarProperty Name="desc" ColumnName="desc" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftwareSetups">
+            <EntityTypeMapping TypeName="LMSModel.SoftwareSetup">
+              <MappingFragment StoreEntitySet="SoftwareSetup">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CurrencyTypeID" ColumnName="CurrencyTypeID" />
+                <ScalarProperty Name="DateTypeID" ColumnName="DateTypeID" />
+                <ScalarProperty Name="ContactNoTypeID" ColumnName="ContactNoTypeID" />
+                <ScalarProperty Name="NoTypeID" ColumnName="NoTypeID" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubcriptionModules">
+            <EntityTypeMapping TypeName="LMSModel.SubcriptionModule">
+              <MappingFragment StoreEntitySet="SubcriptionModules">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SubcriptionID" ColumnName="SubcriptionID" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subcriptions">
+            <EntityTypeMapping TypeName="LMSModel.Subcription">
+              <MappingFragment StoreEntitySet="Subcriptions">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="NumberOfMonths" ColumnName="NumberOfMonths" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TESTs">
+            <EntityTypeMapping TypeName="LMSModel.TEST">
+              <MappingFragment StoreEntitySet="TEST">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAccounts">
+            <EntityTypeMapping TypeName="LMSModel.UserAccount">
+              <MappingFragment StoreEntitySet="UserAccounts">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAssignedCompanies">
+            <EntityTypeMapping TypeName="LMSModel.UserAssignedCompany">
+              <MappingFragment StoreEntitySet="UserAssignedCompanies">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendors">
+            <EntityTypeMapping TypeName="LMSModel.Vendor">
+              <MappingFragment StoreEntitySet="Vendor">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="VendorTypeID" ColumnName="VendorTypeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OwnerContactName" ColumnName="OwnerContactName" />
+                <ScalarProperty Name="OwnerContactNo" ColumnName="OwnerContactNo" />
+                <ScalarProperty Name="PrimaryContactPerson" ColumnName="PrimaryContactPerson" />
+                <ScalarProperty Name="PrimaryContactNo" ColumnName="PrimaryContactNo" />
+                <ScalarProperty Name="SecContactPerson" ColumnName="SecContactPerson" />
+                <ScalarProperty Name="SecContactNo" ColumnName="SecContactNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PTCLNo" ColumnName="PTCLNo" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+                <ScalarProperty Name="AccountTitle" ColumnName="AccountTitle" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VendorTypes">
+            <EntityTypeMapping TypeName="LMSModel.VendorType">
+              <MappingFragment StoreEntitySet="VendorType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetAccountBalance" FunctionName="LMSModel.Store.GetAccountBalance">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LMSModel.GetAccountBalance_Result">
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="AmountToPay" ColumnName="AmountToPay" />
+                <ScalarProperty Name="DueAmount" ColumnName="DueAmount" />
+                <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+                <ScalarProperty Name="accountId" ColumnName="accountId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCustomersByAcc" FunctionName="LMSModel.Store.GetCustomersByAcc">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LMSModel.GetCustomersByAcc_Result">
+                <ScalarProperty Name="accountId" ColumnName="accountId" />
+                <ScalarProperty Name="customers_id" ColumnName="customers_id" />
+                <ScalarProperty Name="customerName" ColumnName="customerName" />
+                <ScalarProperty Name="docDate" ColumnName="docDate" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+                <ScalarProperty Name="AmountToPay" ColumnName="AmountToPay" />
+                <ScalarProperty Name="DueAmount" ColumnName="DueAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CUST_LEDGER" FunctionName="LMSModel.Store.CUST_LEDGER">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LMSModel.CUST_LEDGER_Result">
+                <ScalarProperty Name="customers_id" ColumnName="customers_id" />
+                <ScalarProperty Name="customers_firstname" ColumnName="customers_firstname" />
+                <ScalarProperty Name="customerTypeId" ColumnName="customerTypeId" />
+                <ScalarProperty Name="InvDate" ColumnName="InvDate" />
+                <ScalarProperty Name="InvNo" ColumnName="InvNo" />
+                <ScalarProperty Name="InvTotal" ColumnName="InvTotal" />
+                <ScalarProperty Name="InvRemarks" ColumnName="InvRemarks" />
+                <ScalarProperty Name="InvType" ColumnName="InvType" />
+                <ScalarProperty Name="VchrNo" ColumnName="VchrNo" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="accountTitle" ColumnName="accountTitle" />
+                <ScalarProperty Name="VchrTotal" ColumnName="VchrTotal" />
+                <ScalarProperty Name="VchrDate" ColumnName="VchrDate" />
+                <ScalarProperty Name="VchrType" ColumnName="VchrType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

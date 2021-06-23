@@ -1,0 +1,119 @@
+﻿
+@{
+    ViewBag.Title = "SaleOrderList";
+}
+
+<div class="content-header">
+
+    <div class="header-section">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <label>Date From</label>
+                </div>
+                <div class="col-md-4">
+                    <label>Date To</label>
+
+                </div>
+              
+            </div>
+        </div>
+        <div class="row">
+            @using (Ajax.BeginForm("SearchSalesOrder", "Admin", new AjaxOptions() {HttpMethod="POST",OnSuccess="fnSuccess",OnFailure="fnFailed" }))
+            {
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <input type="date" name="DateFrom" class="form-control" />
+                </div>
+                <div class="col-md-4">
+                    <input type="date" name="DateTo" class="form-control" />
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i> | Search</button>
+                </div>
+            </div>
+            }
+        </div>
+
+    </div>
+
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>Admin</li>
+    <li><a href="javascript:;">Sales Order</a></li>
+</ul>
+
+<!-- END Datatables Header -->
+<!-- Datatables Content -->
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            <a id="" class="btn btn-primary btn-sm pull-right" href="@Url.Action("salesorder","admin")">Add New | <i class="fa fa-plus"></i></a>
+        </div>
+    </div>
+
+    <div class="" id="grid">
+        @Html.Partial("_SalesOrderList")
+    </div>
+</div>
+
+
+@section Script{
+    <script>
+        $(document).ready(function () {
+            $("#example").DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ]
+            });
+        });
+        function fnSuccess(response) {
+            $("#grid").html(response.html);
+            GetOrders();
+        }
+        function fnFailed() {
+            Message("error", "Request failed", "error");
+        }
+        function Message(title, text, type) {
+            Swal.fire({
+                title: title + '!',
+                text: text,
+                icon: type,
+                confirmButtonText: 'OK'
+            })
+        }
+        function GetOrders() {
+            $('#example').DataTable();
+        }
+
+
+        function DeleteModel(Id) {
+          
+            $.ajax({
+                url: `../Admin/DeleteSalesOrder`,
+                type: 'POST',
+                data: { ID: Id },
+                success: function (res) {
+                    if (res.Status != "OK") {
+                        Message("Error", res.Message, "error");
+                    }
+                    else {
+                        $("#grid").html(res.html);
+                        GetOrders();
+                        Message("Success", "Record Deleted Success", "success");
+                    }
+                },
+                error: function () {
+                    alert('error');
+                }
+            });
+        }
+    </script>    
+    
+    
+}
+

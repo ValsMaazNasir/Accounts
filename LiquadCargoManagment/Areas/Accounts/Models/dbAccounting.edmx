@@ -1,0 +1,1238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AccountingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountsHead">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+          <Property Name="DeletedDateTime" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="DeletedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="AccountsLedger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncomingID" Type="int" Nullable="false" />
+          <Property Name="OutgoingID" Type="int" Nullable="false" />
+          <Property Name="ChartOfAccountID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Debit" Type="float" />
+          <Property Name="Credit" Type="float" />
+          <Property Name="Balance" Type="float" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ARInvoice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PostingDate" Type="datetime" Nullable="false" />
+          <Property Name="DueDate" Type="datetime" Nullable="false" />
+          <Property Name="DocumentDate" Type="datetime" Nullable="false" />
+          <Property Name="Total" Type="float" Nullable="false" />
+          <Property Name="Discount" Type="float" Nullable="false" />
+          <Property Name="TaxAmount" Type="float" Nullable="false" />
+          <Property Name="GrandTotal" Type="float" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+          <Property Name="DeletedDateTime" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="DeletedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="ARInvoiceDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ARInvoiceID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Discount" Type="float" Nullable="false" />
+          <Property Name="DiscountInPercentage" Type="int" Nullable="false" />
+          <Property Name="TaxRate" Type="int" Nullable="false" />
+          <Property Name="TaxAmount" Type="float" Nullable="false" />
+          <Property Name="Total" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChartOfAccounts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountsHeadId" Type="int" Nullable="false" />
+          <Property Name="GLType" Type="int" Nullable="false" />
+          <Property Name="SubAccountsId" Type="int" Nullable="false" />
+          <Property Name="ParentCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+          <Property Name="DeletedDateTime" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="DeletedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="CustomerLedger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Debit" Type="float" />
+          <Property Name="Credit" Type="float" />
+          <Property Name="Balance" Type="float" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GLType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountsHeadId" Type="int" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+          <Property Name="DeletedDateTime" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="DeletedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="MenuPermissions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuID" Type="int" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Icon" Type="nvarchar" MaxLength="255" />
+          <Property Name="AccessURL" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RolePermissions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="MenuID" Type="int" Nullable="false" />
+          <Property Name="Permissions" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="SequenceOrder" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+          <Property Name="DeletedDateTime" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="DeletedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubAccounts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GLTypeId" Type="int" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+          <Property Name="DeletedDateTime" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="DeletedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="ProfileImage" Type="nvarchar" MaxLength="255" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+          <Property Name="DeletedDateTime" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="DeletedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="VendorLedger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Debit" Type="float" />
+          <Property Name="Credit" Type="float" />
+          <Property Name="Balance" Type="float" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AccountsLedger_ChartOfAccounts">
+          <End Role="ChartOfAccounts" Type="Self.ChartOfAccounts" Multiplicity="1" />
+          <End Role="AccountsLedger" Type="Self.AccountsLedger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChartOfAccounts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AccountsLedger">
+              <PropertyRef Name="ChartOfAccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARInvoiceDetails_ARInvoice">
+          <End Role="ARInvoice" Type="Self.ARInvoice" Multiplicity="1" />
+          <End Role="ARInvoiceDetails" Type="Self.ARInvoiceDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARInvoice">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARInvoiceDetails">
+              <PropertyRef Name="ARInvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChartOfAccounts_AccountsHead">
+          <End Role="AccountsHead" Type="Self.AccountsHead" Multiplicity="1" />
+          <End Role="ChartOfAccounts" Type="Self.ChartOfAccounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountsHead">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChartOfAccounts">
+              <PropertyRef Name="AccountsHeadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChartOfAccounts_GLType">
+          <End Role="GLType" Type="Self.GLType" Multiplicity="1" />
+          <End Role="ChartOfAccounts" Type="Self.ChartOfAccounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GLType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChartOfAccounts">
+              <PropertyRef Name="GLType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChartOfAccounts_SubAccounts">
+          <End Role="SubAccounts" Type="Self.SubAccounts" Multiplicity="1" />
+          <End Role="ChartOfAccounts" Type="Self.ChartOfAccounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubAccounts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChartOfAccounts">
+              <PropertyRef Name="SubAccountsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerLedger_CustomerLedger">
+          <End Role="CustomerLedger" Type="Self.CustomerLedger" Multiplicity="1" />
+          <End Role="CustomerLedger1" Type="Self.CustomerLedger" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerLedger">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerLedger1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GLType_AccountsHead">
+          <End Role="AccountsHead" Type="Self.AccountsHead" Multiplicity="1" />
+          <End Role="GLType" Type="Self.GLType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountsHead">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GLType">
+              <PropertyRef Name="AccountsHeadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuPermissions_Menus">
+          <End Role="Menus" Type="Self.Menus" Multiplicity="1" />
+          <End Role="MenuPermissions" Type="Self.MenuPermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MenuPermissions">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuPermissions_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="MenuPermissions" Type="Self.MenuPermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MenuPermissions">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menus_Menus">
+          <End Role="Menus" Type="Self.Menus" Multiplicity="0..1" />
+          <End Role="Menus1" Type="Self.Menus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Menus1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolePermissions_Menus">
+          <End Role="Menus" Type="Self.Menus" Multiplicity="1" />
+          <End Role="RolePermissions" Type="Self.RolePermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RolePermissions">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolePermissions_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="RolePermissions" Type="Self.RolePermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RolePermissions">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubAccounts_GLType">
+          <End Role="GLType" Type="Self.GLType" Multiplicity="1" />
+          <End Role="SubAccounts" Type="Self.SubAccounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GLType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubAccounts">
+              <PropertyRef Name="GLTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AccountingModelStoreContainer">
+          <EntitySet Name="AccountsHead" EntityType="Self.AccountsHead" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountsLedger" EntityType="Self.AccountsLedger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARInvoice" EntityType="Self.ARInvoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARInvoiceDetails" EntityType="Self.ARInvoiceDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChartOfAccounts" EntityType="Self.ChartOfAccounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerLedger" EntityType="Self.CustomerLedger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GLType" EntityType="Self.GLType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuPermissions" EntityType="Self.MenuPermissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RolePermissions" EntityType="Self.RolePermissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubAccounts" EntityType="Self.SubAccounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VendorLedger" EntityType="Self.VendorLedger" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AccountsLedger_ChartOfAccounts" Association="Self.FK_AccountsLedger_ChartOfAccounts">
+            <End Role="ChartOfAccounts" EntitySet="ChartOfAccounts" />
+            <End Role="AccountsLedger" EntitySet="AccountsLedger" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARInvoiceDetails_ARInvoice" Association="Self.FK_ARInvoiceDetails_ARInvoice">
+            <End Role="ARInvoice" EntitySet="ARInvoice" />
+            <End Role="ARInvoiceDetails" EntitySet="ARInvoiceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChartOfAccounts_AccountsHead" Association="Self.FK_ChartOfAccounts_AccountsHead">
+            <End Role="AccountsHead" EntitySet="AccountsHead" />
+            <End Role="ChartOfAccounts" EntitySet="ChartOfAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChartOfAccounts_GLType" Association="Self.FK_ChartOfAccounts_GLType">
+            <End Role="GLType" EntitySet="GLType" />
+            <End Role="ChartOfAccounts" EntitySet="ChartOfAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChartOfAccounts_SubAccounts" Association="Self.FK_ChartOfAccounts_SubAccounts">
+            <End Role="SubAccounts" EntitySet="SubAccounts" />
+            <End Role="ChartOfAccounts" EntitySet="ChartOfAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerLedger_CustomerLedger" Association="Self.FK_CustomerLedger_CustomerLedger">
+            <End Role="CustomerLedger" EntitySet="CustomerLedger" />
+            <End Role="CustomerLedger1" EntitySet="CustomerLedger" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GLType_AccountsHead" Association="Self.FK_GLType_AccountsHead">
+            <End Role="AccountsHead" EntitySet="AccountsHead" />
+            <End Role="GLType" EntitySet="GLType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuPermissions_Menus" Association="Self.FK_MenuPermissions_Menus">
+            <End Role="Menus" EntitySet="Menus" />
+            <End Role="MenuPermissions" EntitySet="MenuPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuPermissions_Roles" Association="Self.FK_MenuPermissions_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="MenuPermissions" EntitySet="MenuPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menus_Menus" Association="Self.FK_Menus_Menus">
+            <End Role="Menus" EntitySet="Menus" />
+            <End Role="Menus1" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolePermissions_Menus" Association="Self.FK_RolePermissions_Menus">
+            <End Role="Menus" EntitySet="Menus" />
+            <End Role="RolePermissions" EntitySet="RolePermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolePermissions_Roles" Association="Self.FK_RolePermissions_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RolePermissions" EntitySet="RolePermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubAccounts_GLType" Association="Self.FK_SubAccounts_GLType">
+            <End Role="GLType" EntitySet="GLType" />
+            <End Role="SubAccounts" EntitySet="SubAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AccountingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccountsHead">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <NavigationProperty Name="ChartOfAccounts" Relationship="Self.FK_ChartOfAccounts_AccountsHead" FromRole="AccountsHead" ToRole="ChartOfAccounts" />
+          <NavigationProperty Name="GLTypes" Relationship="Self.FK_GLType_AccountsHead" FromRole="AccountsHead" ToRole="GLType" />
+        </EntityType>
+        <EntityType Name="AccountsLedger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncomingID" Type="Int32" Nullable="false" />
+          <Property Name="OutgoingID" Type="Int32" Nullable="false" />
+          <Property Name="ChartOfAccountID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Debit" Type="Double" />
+          <Property Name="Credit" Type="Double" />
+          <Property Name="Balance" Type="Double" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ChartOfAccount" Relationship="Self.FK_AccountsLedger_ChartOfAccounts" FromRole="AccountsLedger" ToRole="ChartOfAccounts" />
+        </EntityType>
+        <EntityType Name="ARInvoice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostingDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DocumentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Total" Type="Double" Nullable="false" />
+          <Property Name="Discount" Type="Double" Nullable="false" />
+          <Property Name="TaxAmount" Type="Double" Nullable="false" />
+          <Property Name="GrandTotal" Type="Double" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <NavigationProperty Name="ARInvoiceDetails" Relationship="Self.FK_ARInvoiceDetails_ARInvoice" FromRole="ARInvoice" ToRole="ARInvoiceDetails" />
+        </EntityType>
+        <EntityType Name="ARInvoiceDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ARInvoiceID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Discount" Type="Double" Nullable="false" />
+          <Property Name="DiscountInPercentage" Type="Int32" Nullable="false" />
+          <Property Name="TaxRate" Type="Int32" Nullable="false" />
+          <Property Name="TaxAmount" Type="Double" Nullable="false" />
+          <Property Name="Total" Type="Double" Nullable="false" />
+          <NavigationProperty Name="ARInvoice" Relationship="Self.FK_ARInvoiceDetails_ARInvoice" FromRole="ARInvoiceDetails" ToRole="ARInvoice" />
+        </EntityType>
+        <EntityType Name="ChartOfAccount">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountsHeadId" Type="Int32" Nullable="false" />
+          <Property Name="GLType" Type="Int32" Nullable="false" />
+          <Property Name="SubAccountsId" Type="Int32" Nullable="false" />
+          <Property Name="ParentCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <NavigationProperty Name="AccountsHead" Relationship="Self.FK_ChartOfAccounts_AccountsHead" FromRole="ChartOfAccounts" ToRole="AccountsHead" />
+          <NavigationProperty Name="AccountsLedgers" Relationship="Self.FK_AccountsLedger_ChartOfAccounts" FromRole="ChartOfAccounts" ToRole="AccountsLedger" />
+          <NavigationProperty Name="GLType1" Relationship="Self.FK_ChartOfAccounts_GLType" FromRole="ChartOfAccounts" ToRole="GLType" />
+          <NavigationProperty Name="SubAccount" Relationship="Self.FK_ChartOfAccounts_SubAccounts" FromRole="ChartOfAccounts" ToRole="SubAccounts" />
+        </EntityType>
+        <EntityType Name="GLType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountsHeadId" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <NavigationProperty Name="AccountsHead" Relationship="Self.FK_GLType_AccountsHead" FromRole="GLType" ToRole="AccountsHead" />
+          <NavigationProperty Name="ChartOfAccounts" Relationship="Self.FK_ChartOfAccounts_GLType" FromRole="GLType" ToRole="ChartOfAccounts" />
+          <NavigationProperty Name="SubAccounts" Relationship="Self.FK_SubAccounts_GLType" FromRole="GLType" ToRole="SubAccounts" />
+        </EntityType>
+        <EntityType Name="MenuPermission">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuID" Type="Int32" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK_MenuPermissions_Menus" FromRole="MenuPermissions" ToRole="Menus" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_MenuPermissions_Roles" FromRole="MenuPermissions" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Icon" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AccessURL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MenuPermissions" Relationship="Self.FK_MenuPermissions_Menus" FromRole="Menus" ToRole="MenuPermissions" />
+          <NavigationProperty Name="Menus1" Relationship="Self.FK_Menus_Menus" FromRole="Menus" ToRole="Menus1" />
+          <NavigationProperty Name="Menu1" Relationship="Self.FK_Menus_Menus" FromRole="Menus1" ToRole="Menus" />
+          <NavigationProperty Name="RolePermissions" Relationship="Self.FK_RolePermissions_Menus" FromRole="Menus" ToRole="RolePermissions" />
+        </EntityType>
+        <EntityType Name="RolePermission">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="MenuID" Type="Int32" Nullable="false" />
+          <Property Name="Permissions" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SequenceOrder" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK_RolePermissions_Menus" FromRole="RolePermissions" ToRole="Menus" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_RolePermissions_Roles" FromRole="RolePermissions" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <NavigationProperty Name="MenuPermissions" Relationship="Self.FK_MenuPermissions_Roles" FromRole="Roles" ToRole="MenuPermissions" />
+          <NavigationProperty Name="RolePermissions" Relationship="Self.FK_RolePermissions_Roles" FromRole="Roles" ToRole="RolePermissions" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubAccount">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GLTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <NavigationProperty Name="ChartOfAccounts" Relationship="Self.FK_ChartOfAccounts_SubAccounts" FromRole="SubAccounts" ToRole="ChartOfAccounts" />
+          <NavigationProperty Name="GLType" Relationship="Self.FK_SubAccounts_GLType" FromRole="SubAccounts" ToRole="GLType" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProfileImage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+        </EntityType>
+        <Association Name="FK_ChartOfAccounts_AccountsHead">
+          <End Role="AccountsHead" Type="Self.AccountsHead" Multiplicity="1" />
+          <End Role="ChartOfAccounts" Type="Self.ChartOfAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountsHead">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChartOfAccounts">
+              <PropertyRef Name="AccountsHeadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GLType_AccountsHead">
+          <End Role="AccountsHead" Type="Self.AccountsHead" Multiplicity="1" />
+          <End Role="GLType" Type="Self.GLType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountsHead">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GLType">
+              <PropertyRef Name="AccountsHeadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountsLedger_ChartOfAccounts">
+          <End Role="ChartOfAccounts" Type="Self.ChartOfAccount" Multiplicity="1" />
+          <End Role="AccountsLedger" Type="Self.AccountsLedger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChartOfAccounts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AccountsLedger">
+              <PropertyRef Name="ChartOfAccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARInvoiceDetails_ARInvoice">
+          <End Role="ARInvoice" Type="Self.ARInvoice" Multiplicity="1" />
+          <End Role="ARInvoiceDetails" Type="Self.ARInvoiceDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARInvoice">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARInvoiceDetails">
+              <PropertyRef Name="ARInvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChartOfAccounts_GLType">
+          <End Role="GLType" Type="Self.GLType" Multiplicity="1" />
+          <End Role="ChartOfAccounts" Type="Self.ChartOfAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GLType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChartOfAccounts">
+              <PropertyRef Name="GLType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChartOfAccounts_SubAccounts">
+          <End Role="SubAccounts" Type="Self.SubAccount" Multiplicity="1" />
+          <End Role="ChartOfAccounts" Type="Self.ChartOfAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubAccounts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChartOfAccounts">
+              <PropertyRef Name="SubAccountsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubAccounts_GLType">
+          <End Role="GLType" Type="Self.GLType" Multiplicity="1" />
+          <End Role="SubAccounts" Type="Self.SubAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GLType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubAccounts">
+              <PropertyRef Name="GLTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuPermissions_Menus">
+          <End Role="Menus" Type="Self.Menu" Multiplicity="1" />
+          <End Role="MenuPermissions" Type="Self.MenuPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MenuPermissions">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuPermissions_Roles">
+          <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+          <End Role="MenuPermissions" Type="Self.MenuPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MenuPermissions">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menus_Menus">
+          <End Role="Menus" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="Menus1" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Menus1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolePermissions_Menus">
+          <End Role="Menus" Type="Self.Menu" Multiplicity="1" />
+          <End Role="RolePermissions" Type="Self.RolePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RolePermissions">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolePermissions_Roles">
+          <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+          <End Role="RolePermissions" Type="Self.RolePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RolePermissions">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles">
+          <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AccountingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccountsHeads" EntityType="Self.AccountsHead" />
+          <EntitySet Name="AccountsLedgers" EntityType="Self.AccountsLedger" />
+          <EntitySet Name="ARInvoices" EntityType="Self.ARInvoice" />
+          <EntitySet Name="ARInvoiceDetails" EntityType="Self.ARInvoiceDetail" />
+          <EntitySet Name="ChartOfAccounts" EntityType="Self.ChartOfAccount" />
+          <EntitySet Name="GLTypes" EntityType="Self.GLType" />
+          <EntitySet Name="MenuPermissions" EntityType="Self.MenuPermission" />
+          <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="RolePermissions" EntityType="Self.RolePermission" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Settings" EntityType="Self.Setting" />
+          <EntitySet Name="SubAccounts" EntityType="Self.SubAccount" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_ChartOfAccounts_AccountsHead" Association="Self.FK_ChartOfAccounts_AccountsHead">
+            <End Role="AccountsHead" EntitySet="AccountsHeads" />
+            <End Role="ChartOfAccounts" EntitySet="ChartOfAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GLType_AccountsHead" Association="Self.FK_GLType_AccountsHead">
+            <End Role="AccountsHead" EntitySet="AccountsHeads" />
+            <End Role="GLType" EntitySet="GLTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountsLedger_ChartOfAccounts" Association="Self.FK_AccountsLedger_ChartOfAccounts">
+            <End Role="ChartOfAccounts" EntitySet="ChartOfAccounts" />
+            <End Role="AccountsLedger" EntitySet="AccountsLedgers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARInvoiceDetails_ARInvoice" Association="Self.FK_ARInvoiceDetails_ARInvoice">
+            <End Role="ARInvoice" EntitySet="ARInvoices" />
+            <End Role="ARInvoiceDetails" EntitySet="ARInvoiceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChartOfAccounts_GLType" Association="Self.FK_ChartOfAccounts_GLType">
+            <End Role="GLType" EntitySet="GLTypes" />
+            <End Role="ChartOfAccounts" EntitySet="ChartOfAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChartOfAccounts_SubAccounts" Association="Self.FK_ChartOfAccounts_SubAccounts">
+            <End Role="SubAccounts" EntitySet="SubAccounts" />
+            <End Role="ChartOfAccounts" EntitySet="ChartOfAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubAccounts_GLType" Association="Self.FK_SubAccounts_GLType">
+            <End Role="GLType" EntitySet="GLTypes" />
+            <End Role="SubAccounts" EntitySet="SubAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuPermissions_Menus" Association="Self.FK_MenuPermissions_Menus">
+            <End Role="Menus" EntitySet="Menus" />
+            <End Role="MenuPermissions" EntitySet="MenuPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuPermissions_Roles" Association="Self.FK_MenuPermissions_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="MenuPermissions" EntitySet="MenuPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menus_Menus" Association="Self.FK_Menus_Menus">
+            <End Role="Menus" EntitySet="Menus" />
+            <End Role="Menus1" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolePermissions_Menus" Association="Self.FK_RolePermissions_Menus">
+            <End Role="Menus" EntitySet="Menus" />
+            <End Role="RolePermissions" EntitySet="RolePermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolePermissions_Roles" Association="Self.FK_RolePermissions_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RolePermissions" EntitySet="RolePermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="CustomerLedgers" EntityType="AccountingModel.CustomerLedger" />
+          <AssociationSet Name="FK_CustomerLedger_CustomerLedger" Association="AccountingModel.FK_CustomerLedger_CustomerLedger">
+            <End Role="CustomerLedger" EntitySet="CustomerLedgers" />
+            <End Role="CustomerLedger1" EntitySet="CustomerLedgers" />
+          </AssociationSet>
+          <EntitySet Name="VendorLedgers" EntityType="AccountingModel.VendorLedger" />
+        </EntityContainer>
+        <EntityType Name="CustomerLedger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Debit" Type="Double" />
+          <Property Name="Credit" Type="Double" />
+          <Property Name="Balance" Type="Double" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CustomerLedger1" Relationship="AccountingModel.FK_CustomerLedger_CustomerLedger" FromRole="CustomerLedger" ToRole="CustomerLedger1" />
+          <NavigationProperty Name="CustomerLedger2" Relationship="AccountingModel.FK_CustomerLedger_CustomerLedger" FromRole="CustomerLedger1" ToRole="CustomerLedger" />
+        </EntityType>
+        <Association Name="FK_CustomerLedger_CustomerLedger">
+          <End Type="AccountingModel.CustomerLedger" Role="CustomerLedger" Multiplicity="1" />
+          <End Type="AccountingModel.CustomerLedger" Role="CustomerLedger1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerLedger">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerLedger1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="VendorLedger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Debit" Type="Double" />
+          <Property Name="Credit" Type="Double" />
+          <Property Name="Balance" Type="Double" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AccountingModelStoreContainer" CdmEntityContainer="AccountingEntities">
+          <EntitySetMapping Name="AccountsHeads">
+            <EntityTypeMapping TypeName="AccountingModel.AccountsHead">
+              <MappingFragment StoreEntitySet="AccountsHead">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountsLedgers">
+            <EntityTypeMapping TypeName="AccountingModel.AccountsLedger">
+              <MappingFragment StoreEntitySet="AccountsLedger">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IncomingID" ColumnName="IncomingID" />
+                <ScalarProperty Name="OutgoingID" ColumnName="OutgoingID" />
+                <ScalarProperty Name="ChartOfAccountID" ColumnName="ChartOfAccountID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARInvoices">
+            <EntityTypeMapping TypeName="AccountingModel.ARInvoice">
+              <MappingFragment StoreEntitySet="ARInvoice">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PostingDate" ColumnName="PostingDate" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+                <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARInvoiceDetails">
+            <EntityTypeMapping TypeName="AccountingModel.ARInvoiceDetail">
+              <MappingFragment StoreEntitySet="ARInvoiceDetails">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ARInvoiceID" ColumnName="ARInvoiceID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="DiscountInPercentage" ColumnName="DiscountInPercentage" />
+                <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+                <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChartOfAccounts">
+            <EntityTypeMapping TypeName="AccountingModel.ChartOfAccount">
+              <MappingFragment StoreEntitySet="ChartOfAccounts">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AccountsHeadId" ColumnName="AccountsHeadId" />
+                <ScalarProperty Name="GLType" ColumnName="GLType" />
+                <ScalarProperty Name="SubAccountsId" ColumnName="SubAccountsId" />
+                <ScalarProperty Name="ParentCode" ColumnName="ParentCode" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GLTypes">
+            <EntityTypeMapping TypeName="AccountingModel.GLType">
+              <MappingFragment StoreEntitySet="GLType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AccountsHeadId" ColumnName="AccountsHeadId" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuPermissions">
+            <EntityTypeMapping TypeName="AccountingModel.MenuPermission">
+              <MappingFragment StoreEntitySet="MenuPermissions">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="AccountingModel.Menu">
+              <MappingFragment StoreEntitySet="Menus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="AccessURL" ColumnName="AccessURL" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RolePermissions">
+            <EntityTypeMapping TypeName="AccountingModel.RolePermission">
+              <MappingFragment StoreEntitySet="RolePermissions">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="Permissions" ColumnName="Permissions" />
+                <ScalarProperty Name="SequenceOrder" ColumnName="SequenceOrder" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="AccountingModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="AccountingModel.Setting">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubAccounts">
+            <EntityTypeMapping TypeName="AccountingModel.SubAccount">
+              <MappingFragment StoreEntitySet="SubAccounts">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GLTypeId" ColumnName="GLTypeId" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AccountingModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerLedgers">
+            <EntityTypeMapping TypeName="AccountingModel.CustomerLedger">
+              <MappingFragment StoreEntitySet="CustomerLedger">
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VendorLedgers">
+            <EntityTypeMapping TypeName="AccountingModel.VendorLedger">
+              <MappingFragment StoreEntitySet="VendorLedger">
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

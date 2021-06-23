@@ -1,0 +1,229 @@
+﻿@*MODAL PICK LOCATION START*@
+<div id="modal-add-Locate" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header text-center">
+                    <h2 class="modal-title"><i class="fa fa-pencil-alt"></i> Pick Location</h2>
+                </div>
+                <!-- END Modal Header -->
+                <!-- Modal Body -->
+                @using (Ajax.BeginForm("addPickLocation", "Admin", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "fnSuccessLocate", OnFailure = "fnFailedLocate" }))
+                {
+                    <div class="modal-body">
+                        <table class="table table-responsive" id="Locate">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="hidden" name="ID" id="hfEditID" />
+                                        <label class="control-label">City</label>
+                                        @Html.DropDownList("CityID", ViewBag.City as SelectList, "-Select-", new { @class = "form-control", onchange = "GetLocation(this)" })
+                                    </td>
+                                    <td>
+                                        <label class="control-label">Area</label>
+                                        @*@Html.DropDownList("AreaID", ViewBag.Area as SelectList, "-Select-", new { @class = "form-control" })*@
+                                        <select class="form-control" id="AreaID" name="AreaID">
+                                            <option>--Select--</option>
+                                        </select>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label class="control-label">Location Code</label>
+                                        <input type="text" id="LocationCode" name="LocationCode" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <label class="control-label">Location Name</label>
+                                        <input type="text" id="LocationName" name="LocationName" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="control-label">Shipment Type</label>
+                                        @Html.DropDownList("ShipmentTypeID", ViewBag.ShipmentType as SelectList, "-Select-", new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        <label class="control-label">Location Type</label>
+                                        <select class="form-control" name="LocationType" id="LocationType">
+                                            <option>--Select--</option>
+                                            <option value="Pick">Pick Location</option>
+                                            <option value="Drop">Drop Location</option>
+                                            <option value="Both">Both</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <label class="control-label">Location Address</label>
+                                        <textarea class="form-control" id="Address" name="Address"></textarea>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="submit" id="btnSaveEdit" class="btn btn-primary pull-right"><b><i class="fa fa-save"></i> Save</b></button>
+                    </div>
+                }
+                <!-- END Modal Body -->
+            </div>
+        </div>
+    </div>
+@*MODAL PICK LOCATION END*@
+
+@*MODAL PRODUCT START*@
+<div id="modal-addPro" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title"><i class="fa fa-pencil-alt"></i> Product</h2>
+            </div>
+            <!-- END Modal Header -->
+            <!-- Modal Body -->
+            @using (Ajax.BeginForm("addProduct", "Admin", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "fnSuccess", OnFailure = "fnFailed" }))
+            {
+                <div class="modal-body">
+                    <table class="table table-responsive">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="hidden" name="ID" id="hfEditID" />
+                                    <label class="control-label">Code</label>
+                                    <input type="text" id="Code" name="Code" class="form-control" required />
+                                </td>
+                                <td>
+                                    <label class="control-label">Name</label>
+                                    <input type="text" id="ProductName" name="Name" class="form-control" required />
+                                </td>
+                                <td>
+                                    <label class="control-label">Product Type</label>
+                                    @Html.DropDownList("Category", ViewBag.ProductTypes as SelectList, "--Select--", new { @class = "form-control", @required = true })
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label class="control-label">Package Type</label>
+                                    @Html.DropDownList("PackageTypeID", ViewBag.PackageType as SelectList, "--Select--", new { @class = "form-control" })
+                                </td>
+                                <td>
+                                    <label class="control-label">Product Nature</label>
+                                    @Html.DropDownList("ProductNatureID", ViewBag.ProductNature as SelectList, "--Select--", new { @class = "form-control" })
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label class="control-label">Unit</label>
+                                    <input type="text" id="Unit" name="Unit" class="form-control" />
+
+
+                                </td>
+                                <td>
+                                    <label class="control-label">Weight</label>
+                                    <input type="text" id="Weight" name="Weight" class="form-control" />
+
+
+                                </td>
+                                <td>
+                                    <label class="control-label">Height</label>
+                                    <input type="text" id="Height" name="Height" class="form-control" />
+
+
+                                </td>
+
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="control-label">Width</label>
+                                    <input type="text" id="Width" name="Width" class="form-control" />
+
+
+                                </td>
+                                <td>
+                                    <label class="control-label">Length</label>
+                                    <input type="text" id="Length" name="Length" class="form-control" />
+
+
+                                </td>
+                                <td>
+                                    <label class="control-label">Volume</label>
+                                    <input type="text" id="Volume" name="Volume" class="form-control" />
+
+
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <label class="control-label">Description</label>
+                                    <textarea id="Description" name="Description" cols="6" class="form-control"></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" id="btnSaveEdit" class="btn btn-primary pull-right"><b><i class="fa fa-save"></i> Save</b></button>
+                </div>
+            }
+            <!-- END Modal Body -->
+        </div>
+    </div>
+</div>
+@*MODAL PRODUCT END*@
+
+@*MODAL PRODUCTBROKER START*@
+<div id="modal-addProBroker" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <h2 class="modal-title"><i class="fa fa-pencil-alt"></i> Product Broker</h2>
+            </div>
+            <!-- END Modal Header -->
+            <!-- Modal Body -->
+            @using (Ajax.BeginForm("SaveProductBroker", "Admin", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "ProductBrokerSuccess", OnFailure = "ProductBrokerFailed" }))
+            {
+                <div class="modal-body">
+                    <table class="table table-responsive">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label class="control-label">Name</label>
+                                    <input type="text" id="Name" name="Name" class="form-control" />
+                                </td>
+                                <td>
+                                    <label class="control-label">Address</label>
+                                    <input type="text" id="Address" name="Address" class="form-control" />
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="submit" id="btnSaveEdit" class="btn btn-primary pull-right"><b><i class="fa fa-save"></i> Save</b></button>
+                </div>
+            }
+            <!-- END Modal Body -->
+        </div>
+    </div>
+</div>
+@*MODAL PRODUCTBROKER END*@

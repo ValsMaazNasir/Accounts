@@ -1,0 +1,139 @@
+﻿
+@{
+    ViewBag.Title = "SearchInvoice";
+}
+
+<div class="content-header">
+
+    <div class="header-section">
+        <h1>
+            Invoice <br><small>Create Read Update Delete Invoice</small>
+        </h1>
+    </div>
+
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>Admin</li>
+    <li><a href="javascript:;">Search Invoice</a></li>
+</ul>
+
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            <a id="" class="btn btn-primary btn-sm pull-right" href="#" style="margin-left:5px">Generate Bill | <i class="fa fa-plus"></i></a>
+            <a id="" class="btn btn-primary btn-sm pull-right" onclick="$('#modal-add').modal('show');" href="#">Search Invoice | <i class="fa fa-search"></i></a>
+        </div>
+    </div>
+    <div class="table-responsive">
+        @Html.Partial("_SearchInvoice")
+    </div>
+</div>
+
+<div id="modal-add" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <h2 class="modal-title"><i class="fa fa-search"></i> Search Invoice</h2>
+            </div>
+            <!-- END Modal Header -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <table class="table table-responsive">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label class="control-label">Date From</label>
+                                <input type="text" id="DateFrom" name="DateFrom" class="form-control" />
+                            </td>
+                            <td>
+                                <label class="control-label">Date To</label>
+                                <input type="text" id="DateTo" name="DateTo" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="control-label">Vehicle Reg No.</label>
+                                @Html.DropDownList("Vehicle", ViewBag.VehicleReg as SelectList, "--Select--", new { @class = "form-control" })
+                            </td>
+                            <td>
+                                <label class="control-label">Sales Order No.</label>
+                                <input type="text" id="OrderNo" name="OrderNo" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="control-label">Loading Point</label>
+                                @Html.DropDownList("LoadingPoint", ViewBag.LoadingPoint as SelectList, "--Select--", new { @class = "form-control" })
+                            </td>
+                            <td>
+                                <label class="control-label">Destination Point</label>
+                                @Html.DropDownList("LoadingPoint", ViewBag.LoadingPoint as SelectList, "--Select--", new { @class = "form-control" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="control-label">GST Type</label>
+                                <select class="form-control">
+                                    <option>Inter Province Primary</option>
+                                </select>
+                            </td>
+                            <td>
+                                <label class="control-label">Tax %</label>
+                                @Html.DropDownList("Tax", ViewBag.Tax as SelectList, "--Select--", new { @class = "form-control" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="control-label">Shipment Type</label>
+                                @Html.DropDownList("ShipmentType", ViewBag.ShipmentType as SelectList, "--Select--", new { @class = "form-control" })
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="submit" id="btnSaveEdit" class="btn btn-primary pull-right"><b><i class="fa fa-search"></i> Search</b></button>
+            </div>
+            <!-- END Modal Body -->
+        </div>
+    </div>
+</div>
+
+@section Script
+{
+    <script>
+        $(document).ready(function () {
+            $("#example").DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ]
+            });
+            $("#DateFrom").datepicker({
+                altField: "#DateFrom",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#DateTo").datepicker({
+                altField: "#DateTo",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+        });
+        function GetOrders() {
+            $('#example').DataTable();
+        }
+    </script>
+}
+

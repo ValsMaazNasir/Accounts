@@ -1,0 +1,218 @@
+﻿@model IEnumerable<LiquadCargoManagment.Models.UniversalBilty>
+
+@using LiquadCargoManagment.Models;
+
+<div class="table-responsive">
+    <table class="table display table-striped" id="example" style="font-size:10px;">
+        <thead>
+            <tr>
+                <td>Created Date</td>
+                <td>Order No</td>
+                <td>Manual Bilty No</td>
+                <td>Bilty Date</td>
+                <td>Own Company</td>
+                <td>Pick Location</td>
+                <td>Drop Location</td>
+
+                <td>Operation</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    @if (item.IsDeleted != true)
+                    {
+                        if (item.CreatedDate != null)
+                        {
+                            <td>
+                                @Convert.ToDateTime(item.CreatedDate).ToString(SoftwareFormatting.DateFormat)
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @Convert.ToDateTime(item.ModifiedDate).ToString(SoftwareFormatting.DateFormat)
+                                <small class="text-success">Modified</small>
+                            </td>
+                        }
+
+                        if (item.AutoBiltyNo != null)
+                        {
+                            <td>@item.AutoBiltyNo</td>
+                        }
+                        else
+                        {
+                            <td></td>
+ }
+
+                        if (item.ManualBiltyNo != null)
+                        {
+                            <td>@item.ManualBiltyNo</td>
+ }
+                        else
+                        {
+                            <td></td>
+                        }
+
+                        if (item.BiltyDate != null)
+                        {
+                            <td>@Convert.ToDateTime(item.BiltyDate).ToString(SoftwareFormatting.DateFormat)</td>
+                        }
+                        else
+                        {
+                            <td></td>
+ }
+
+                        if (item.OwnCompanyID != null)
+                        {
+                            <td>@item.OwnCompany.Name</td>
+                        }
+                        else
+                        {
+                            <td></td>
+ }
+
+                        if (item.UniversalBiltyLocationInformations != null)
+                        {
+                            foreach (var items in item.UniversalBiltyLocationInformations)
+                            {
+                                if (items.PickLocation != null)
+                                {
+                                    <td>@items.PickLocation.LocationName</td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+                            }
+
+                        }
+                        if (item.UniversalBiltyLocationInformations != null)
+                        {
+                            foreach (var items in item.UniversalBiltyLocationInformations)
+                            {
+                                if (items.PickLocation1 != null)
+                                {
+                                    <td>@items.PickLocation1.LocationName</td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+                            }
+
+                        }
+                        <td>
+                            <div class="btn-group btn-group-xs">
+                                <a class="btn btn-alt btn-danger btn-sm" onclick="DeleteModel(@item.ID)"><i class="fa fa-window-close"></i></a>
+                                <a href="../Admin/PrintViewBilty?id=@item.ID" target="_blank" class="btn btn-alt btn-warning btn-sm"><i class="fa fa-print"></i></a>
+                                <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                                <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+                                    <li><a href="../Admin/CreateUniversalBilty?id=@item.ID"><i class="fa fa-eye pull-right"></i>Edit</a></li>
+                                    <li class="divider"></li>
+                                </ul>
+                            </div>
+                        </td>
+                    }
+                    else
+                    {
+                        if (item.CreatedDate != null)
+                        {
+                            <td class="themed-background-muted">
+                                @Convert.ToDateTime(item.CreatedDate).ToString(SoftwareFormatting.DateFormat)
+                            </td>
+                        }
+                        else
+                        {
+                            <td class="themed-background-muted">
+                                @Convert.ToDateTime(item.ModifiedDate).ToString(SoftwareFormatting.DateFormat)
+                                <small class="text-success">Modified</small>
+                            </td>
+                        }
+
+                        if (item.AutoBiltyNo != null)
+                        {
+                            <td class="themed-background-muted">@item.AutoBiltyNo</td>
+                        }
+                        else
+                        {
+                            <td class="themed-background-muted"></td>
+ }
+
+                        if (item.ManualBiltyNo != null)
+                        {
+                            <td class="themed-background-muted">@item.ManualBiltyNo</td>
+ }
+                        else
+                        {
+                            <td class="themed-background-muted"> </td>
+                        }
+
+                        if (item.BiltyDate != null)
+                        {
+                            <td class="themed-background-muted">@Convert.ToDateTime(item.BiltyDate).ToString(SoftwareFormatting.DateFormat)</td>
+                        }
+                        else
+                        {
+                            <td class="themed-background-muted"></td>
+ }
+
+                        if (item.OwnCompanyID != null)
+                        {
+                            <td class="themed-background-muted">@item.OwnCompany.Name</td>
+                        }
+                        else
+                        {
+                            <td class="themed-background-muted"></td>
+ }
+
+                        if (item.UniversalBiltyLocationInformations != null)
+                        {
+                            foreach (var items in item.UniversalBiltyLocationInformations)
+                            {
+                                if (items.PickLocation != null)
+                                {
+                                    <td class="themed-background-muted">@items.PickLocation.LocationName</td>
+                                }
+                                else
+                                {
+                                    <td class="themed-background-muted"></td>
+                                }
+                            }
+
+                        }
+                        if (item.UniversalBiltyLocationInformations != null)
+                        {
+                            foreach (var items in item.UniversalBiltyLocationInformations)
+                            {
+                                if (items.PickLocation1 != null)
+                                {
+                                    <td class="themed-background-muted">@items.PickLocation1.LocationName</td>
+                                }
+                                else
+                                {
+                                    <td class="themed-background-muted"></td>
+                                }
+                            }
+
+                        }
+                        <td class="themed-background-muted">
+                            <div class="btn-group btn-group-xs">
+                                <a class="btn btn-alt btn-danger btn-sm disabled" onclick="DeleteModel(@item.ID)"><i class="fa fa-window-close"></i></a>
+                                <a href="../Admin/PrintViewBilty?id=@item.ID" target="_blank" class="btn btn-alt btn-warning btn-sm disabled"><i class="fa fa-print"></i></a>
+                                <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-info disabled dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                                <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+                                    <li><a href="../Admin/CreateUniversalBilty?id=@item.ID"><i class="fa fa-eye pull-right"></i>Edit</a></li>
+                                    <li class="divider"></li>
+                                </ul>
+                            </div>
+                        </td>
+
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

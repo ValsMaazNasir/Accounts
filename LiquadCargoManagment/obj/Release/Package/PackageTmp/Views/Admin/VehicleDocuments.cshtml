@@ -1,0 +1,223 @@
+﻿
+@{
+    ViewBag.Title = "VehicleDocuments";
+}
+
+
+<div class="content-header">
+
+    <div class="header-section">
+        <h1>
+            Vehicle Documents<br><small>Create Read Update Delete Vehicle Documents</small>
+        </h1>
+    </div>
+
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>Admin</li>
+    <li><a href="javascript:;">Vehicle Documents</a></li>
+</ul>
+
+<!-- END Datatables Header -->
+<!-- Datatables Content -->
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            <a id="" class="btn btn-primary btn-sm pull-right" onclick="$('#modal-add').modal('show'); ClearItem(); Enable();" href="#">Add New | <i class="fa fa-plus"></i></a>
+        </div>
+    </div>
+
+    <div class="" id="grid">
+        @Html.Partial("_VehicleDocuments")
+    </div>
+</div>
+
+<!-- END Datatables Content -->
+
+
+
+
+
+<div id="modal-add" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title"><i class="fa fa-pencil"></i> Vehicle Documents</h2>
+            </div>
+            <!-- END Modal Header -->
+            <!-- Modal Body -->
+            @using (Ajax.BeginForm("addVehicleDocuments", "Admin", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "fnSuccess", OnFailure = "fnFailed" }, new { enctype = "multipart/form-data" }))
+            {
+                <div class="modal-body">
+                    <h3>Vehicle Info</h3>
+                    <table class="table table-striped" id="Add">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="hidden" name="ID" id="hfEditID" />
+                                    <label>Vehicle Type</label>
+                                    @*@Html.DropDownList("VehicleRegNo", ViewBag.VehicleRegistration as SelectList, "--Select--", new { @class = "form-control", onchange="GetVehicleType(this)" })*@
+                                    @Html.DropDownList("VehicleType", ViewBag.VehicleType as SelectList, "--Select--", new { @class = "form-control", onchange = "GetVehicleReg(this),GetVehicleOwnerStatus(this)" })
+                                </td>
+                                <td>
+                                    <label>Vehicle Reg No</label>
+                                    <select class="form-control" name="VehicleRegNo" id="VehicleRegNo" onchange="GetVehicleOwnerStatus(this)">
+                                        <option>--Select--</option>
+                                    </select>
+                                    @*@Html.DropDownList("VehicleType", ViewBag.VehicleType as SelectList, "--Select--", new { @class = "form-control" })*@
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Status</label>
+                                    @Html.DropDownList("VehicleOwnership", ViewBag.VehicleOwnership as SelectList, "--Select--", new { @class = "form-control" })
+                                </td>
+                                <td>
+                                    <label>Principle Company</label>
+                                    @Html.DropDownList("PrincipleCompany", ViewBag.PrincipleCompany as SelectList, "--Select--", new { @class = "form-control" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>SMS Alert</label>
+                                    <input type="number" class="form-control" id="SMSAlert" name="SMSAlert" />
+                                </td>
+                                <td>
+                                    <label>Email Alert</label>
+                                    <input type="text" class="form-control" id="EmailAlert" name="EmailAlert" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Vehicle Documents</h3>
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label>Vehicle Document Type</label>
+                                    @Html.DropDownList("VehicleDocumentType", ViewBag.VehicleDocumentType as SelectList, "--Select--", new { @class = "form-control" })
+                                </td>
+                                <td>
+                                    <label>Vehicle Document</label>
+                                    @Html.DropDownList("VehicleDocuments", ViewBag.VehicleDocuments as SelectList, "--Select--", new { @class = "form-control" })
+                                </td>
+                                <td>
+                                    <label>Renewal Date</label>
+                                    <input type="text" class="form-control" id="RenewalDate" name="RenewalDate" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Expiry Date</label>
+                                    <input type="text" class="form-control" id="ExpiryDate" name="ExpiryDate" />
+                                </td>
+                                <td>
+                                    <label>Alert Type</label>
+                                    <select class="form-control" id="AlertType" name="AlertType">
+                                        <option>SMS Alert</option>
+                                        <option>Email Alert</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <label>Alert Before (Days)</label>
+                                    <input type="number" class="form-control" id="AlertBefore" name="AlertBefore" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Alert Frequency</label>
+                                    <select class="form-control" id="AlertFrequency" name="AlertFrequency">
+                                        <option>Daily</option>
+                                        <option>Weekly</option>
+                                        <option>Monthly</option>
+                                        <option>Yearly</option>
+                                    </select>
+                                </td>
+                                <td colspan="2">
+                                    <label>Upload Documents</label>
+                                    <input type="file" class="form-control" id="file" name="file" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <label>Remarks</label>
+                                    <textarea class="form-control" id="Remarks" name="Remarks"></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" id="btnSaveEdit" class="btn btn-primary pull-right"><b><i class="fa fa-save"></i> Save</b></button>
+                </div>
+            }
+            <!-- END Modal Body -->
+        </div>
+    </div>
+</div>
+
+<script src="~/js/Function.js"></script>
+<script src="~/js/Software js/VehicleDocuments.js"></script>
+
+@section Script
+{
+    <script>
+
+        $(document).ready(function () {
+            $("#example").DataTable({
+                //dom: 'Bfrtip',
+                //buttons: [
+                //    'copyHtml5',
+                //    'excelHtml5',
+                //    'csvHtml5',
+                //    'pdfHtml5'
+                //]
+            });
+            $("#ExpiryDate").datepicker({
+                altField: "#ExpiryDate",
+                altFormat: "d-M-y"
+            });
+            $("#RenewalDate").datepicker({
+                altField: "#RenewalDate",
+                altFormat: "d-M-y"
+            });
+        });
+
+        function Message(title, text, type) {
+            Swal.fire({
+                title: title + '!',
+                text: text,
+                icon: type,
+                confirmButtonText: 'OK'
+            })
+        }
+
+        function GetOrders() {
+            $('#example').DataTable();
+        }
+
+        function ClearItem() {
+            $("input[type='text']").val('');
+            $("input[type='checkbox']").val('');
+            $("input[type='file']").val('');
+            $("input[type='hidden']").val('');
+            $("input[type='number']").val('');
+            $("input[type='datetime-local']").val('');
+            $("input[type='date']").val('');
+            $("textarea").val('');
+            //$("select").val('--Select--');
+            $("#Documents").hide();
+        }
+
+
+
+
+    </script>
+}

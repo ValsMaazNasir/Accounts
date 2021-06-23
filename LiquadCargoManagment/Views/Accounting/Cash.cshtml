@@ -1,0 +1,49 @@
+﻿@model IEnumerable<LiquadCargoManagment.Models.GM_ACC>
+
+@{
+    ViewBag.Title = "Cash";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="content-header">
+    <div class="header-section">
+        <h1>
+            Cash<br><small>Add Cash</small>
+        </h1>
+    </div>
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>Admin</li>
+    <li><a href="javascript:void();">Cash</a></li>
+</ul>
+
+<!-- END Datatables Header -->
+<!-- Datatables Content -->
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            <a id="" class="btn btn-primary btn-sm pull-right" onclick="$('#modal-add').modal('show'); Enable()" href="#">Add New | <i class="fa fa-plus"></i></a>
+        </div>
+    </div>
+
+    <div class="" id="grid">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Description</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.title</td>
+                        <td>@item.description</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

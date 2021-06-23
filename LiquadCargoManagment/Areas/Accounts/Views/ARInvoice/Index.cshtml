@@ -1,0 +1,69 @@
+﻿
+@using LiquadCargoManagment.Areas.Accounts.Helpers;;
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Areas/Accounts/Views/Shared/_Layout1.cshtml";
+}
+
+@{ ViewBag.AllowAdding = true;
+    ViewBag.AllowEditing = true;
+    string DataTableColumns = "{ \"data\": \"ID\",\"searchable\": false,\"bSortable\": true,\"bVisible\": false},{ \"data\": \"Code\"},{ \"data\": \"PostingDate\"},{ \"data\": \"DueDate\"},{ \"data\": \"DocumentDate\"},{ \"data\": \"GrandTotal\"},{ \"data\": \"Status\"},{ \"data\": \"CreatedDateTime\"},{ \"data\": \"UpdatedDateTime\"}";
+    if (ViewBag.AllowAdding != null || ViewBag.AllowEditing != null || ViewBag.AllowDeleting != null)
+    {
+        ViewBag.DataTableActionColumn = "8";
+        DataTableColumns += ",{ \"data\": \"ID\",\"searchable\": false,\"bSortable\": false}";
+    }
+    ViewBag.DataTableColumns = DataTableColumns; }
+@section LinkStyleSection{
+    @Styles.Render("~/assets/cache/datatablestyle")
+}
+@section LinkScriptSection{
+    @Scripts.Render("~/assets/cache/datatablescript")
+    @Scripts.Render("~/assets/js/Arinvoice")
+}
+@section InLineScriptSection{
+    @{Html.RenderPartial("JScript");}
+    <script>
+        $(document).ready(function () {
+            $("#btnAdd").text('Add AccountReceivable');
+        });</script>
+}
+
+<!--Page content-->
+<!--===================================================-->
+<div id="page-content">
+    @{Html.RenderPartial("BreadCrumb");}
+    <div class="panel">
+        <div class="panel-body">
+            <table class="table table-striped table-bordered record-table " cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+
+                        <th>ID</th>
+                        <th class="min-desktop">Series</th>
+
+
+                        <th class="min-desktop">Posting Date</th>
+                        <th class="min-desktop">Due Date</th>
+                        <th class="min-desktop">Document Date</th>
+
+                        <th class="min-desktop">Grand Total</th>
+                        <th class="min-desktop">Status</th>
+                        <th class="min-desktop">Created Date</th>
+                        <th class="min-desktop">Updated Date</th>
+
+                        @if (ViewBag.DataTableActionColumn != null)
+                        {
+                            <th data-priority="2">Actions</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <!--===================================================-->
+    <!-- End Striped Table -->
+</div>
+<!--===================================================-->
+<!--End page content-->

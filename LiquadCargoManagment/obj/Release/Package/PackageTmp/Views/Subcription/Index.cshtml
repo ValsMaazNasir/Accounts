@@ -1,0 +1,220 @@
+﻿
+@{
+    ViewBag.Title = "Subcription";
+}
+
+
+@*<div class="content-header">
+
+    <div class="header-section">
+        <h1>
+            Subcriptions <br><small>Create new subcriptions</small>
+        </h1>
+    </div>
+
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>Subcriptions</li>
+    <li><a href="javascript:;">Add Subcription</a></li>
+</ul>*@
+
+<!-- END Datatables Header -->
+<!-- Datatables Content -->
+<div class="block full">
+    <div class="block-title row">
+        <h3>Subcription</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <input type="hidden" name="ID" id="hfEditID" />
+            <label class="control-label">Subcription Name</label>
+            <input type="text" id="Name" name="Name" class="form-control" required />
+        </div>
+        <div class="col-md-4">
+            <label class="control-label">Start Date</label>
+            <input type="text" id="StartDate" name="StartDate" class="form-control" placeholder="DD-MM-YY" required />
+        </div>
+        <div class="col-md-4">
+            <label class="control-label">Number of Months</label>
+            <input type="number" id="NumberOfMonths" name="NumberOfMonths" class="form-control" required />
+        </div>
+    </div>
+    <div style="height:200px;overflow:scroll">
+        <table class="table table-responsive" id="grid">
+            <thead>
+                <tr>
+                    <td width="69%">Modules</td>
+                    <td>Subcription</td>
+                </tr>
+            </thead>
+            <tbody>
+                @{int i = 0; }
+                @foreach (var item in ViewBag.Menus)
+                {
+
+
+                    <tr>
+                        <td width="69%">
+                            <input type="hidden" value="@item.MenuID" />
+                            @item.MenuName
+                        </td>
+                        <td>
+                            <div class="radio" style="display:inline-block; margin-right:20px;">
+                                <label for="example-radio1">
+                                    <input type="radio" name="rd_@i" value="false" checked> Unsubcribe
+                                </label>
+                            </div>
+                            <div class="radio" style="display:inline-block">
+                                <label for="example-radio1">
+                                    <input type="radio" name="rd_@i" value="true"> Subcribe
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                    i++;
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-md-6 pull-right">
+            <button type="submit" onclick="post()" id="btnSaveEdit" class="btn btn-primary pull-right"><b><i class="fa fa-save"></i> Save</b></button>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="block full">
+
+    <div class="" id="Subgrid">
+        @Html.Partial("_SubcriptionList")
+    </div>
+</div>
+
+@section Script{
+    <script type="text/javascript">
+        function post() {
+            let SubName = $("#Name").val();
+            let StartDate = $("#StartDate").val();
+            let NumberOfMonths = $("#NumberOfMonths").val();
+            let arr = [];
+            let tableRows = $("#grid tbody tr");
+            debugger;
+            for (var i = 0; i < tableRows.length; i++) {
+                if (tableRows.eq(i).find("td:eq(1) input[type=radio]:checked").val() == "true" || tableRows.eq(i).find("td:eq(1) input[type=radio]:checked").val() == true) {
+                    arr.push(tableRows.eq(i).find("td:eq(0) input").val())
+                }
+            }
+            $.post("../Subcription/addIndex", { Name: SubName, StartDate: StartDate, NumberOfMonths: NumberOfMonths, Menus: arr })
+                .done(function (response) {
+                    if (response.Status != "OK") {
+                        Message("Error", response.Message, "error");
+                    }
+                    else {
+                        Message("Success", response.Message, "success");
+                        setTimeout(window.location.reload(),2000);
+                    }
+                });
+        }
+
+        function viewRecord(object, e) {
+            console.log(object);
+            $("#Name").val(object.Name);
+            $("#StartDate").val(object.StartDate);
+            $("#NumberOfMonths").val(object.NumberOfMonths);
+            let OrderID = object.ID;
+            $("#hfEditID").val(OrderID);
+        }
+
+        $(document).ready(function () {
+            $("#StartDate").datepicker({
+                altField: "#StartDate",
+                altFormat: "d-M-y",
+                changeMonth:true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#example").DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ]
+            });
+        });
+        function GetOrders() {
+            $('#example').DataTable();
+        }
+
+        function DeleteModel(Id) {
+    debugger;
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.value) {
+            $.ajax({
+                url: `../Subcription/DeleteIndex`,
+                type: 'POST',
+                data: { ID: Id },
+                success: function (res) {
+                    if (res.Status != "OK") {
+                        Message("Error", res.Message, "error");
+                    }
+                    else {
+                        $("#grid").html(res.html);
+                        GetOrders();
+                        Message("Success", "Record Deleted Success", "success");
+                    }
+                },
+                error: function () {
+                    alert('error');
+                }
+            });
+
+        }
+    })
+
+}
+
+        function ChangeStatus(Id, status) {
+            $.ajax({
+            url: `../Subcription/ChangeSubcriptionStatus`,
+            type: 'POST',
+            data: { ID: Id, status: status },
+            success: function (res) {
+                if (res.Status != "OK") {
+                    Message("Error", res.Message, "error");
+                }
+                else {
+                    if (status == true) {
+                        $("#Subgrid").html(res.html);
+                        GetOrders();
+                        Message("Success", "Activate Success", "success");
+                    }
+                    else {
+                        $("#grid").html(res.html);
+                        GetOrders();
+                        Message("Success", "Deactivate Success", "success");
+                    }
+
+                }
+            },
+            error: function () {
+                window.location.reload();
+            }
+        })
+    }
+
+    </script>
+}
+

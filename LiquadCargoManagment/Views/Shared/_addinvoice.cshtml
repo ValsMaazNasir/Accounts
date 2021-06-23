@@ -1,0 +1,88 @@
+﻿@using Newtonsoft.Json;
+@model LiquadCargoManagment.ViewModels.OrdersViewModel
+@using LiquadCargoManagment.Models;
+
+<div class="table-responsive">
+    <table class="table display table-striped" id="example">
+        <thead>
+            <tr>
+                <td>Doc #</td>
+                <td>Customer</td>
+                <td>Doc Date</td>
+                <td>Amount</td>
+                <td>Narrations</td>
+                <td>Creation Date</td>
+                <td>Operation</td>
+            </tr>
+        </thead>
+        <tbody
+            @foreach (var item in Model.orders)
+                    {
+                        string jsonData = "{";
+                        jsonData += $"'orders_id':'{item.orders_id}',";
+                        jsonData += $"'customers_id':'{item.customers_id}',";
+                        jsonData += $"'customers_address':'{item.customers_address}',";
+                        jsonData += $"'customers_area':'{item.customers_area}', ";
+                        jsonData += $"'customers_city':'{item.customers_city}',";
+                        jsonData += $"'customers_country':'{item.customers_country}', ";
+                        jsonData += $"'customers_name':'{item.customers_name}', ";
+                        jsonData += $"'customers_tel':'{item.customers_tel}', ";
+                        jsonData += $"'date_purchased':'{item.date_purchased.Date.ToString("yyyy-MM-dd")}', ";
+                        jsonData += $"'docTypeId':'{item.docTypeId}', ";
+                        jsonData += $"'orderStatus':'{item.orderStatus}', ";
+                        jsonData += $"'created':'{item.created}', ";
+                        jsonData += $"'createdBy':'{item.createdBy}', ";
+                        jsonData += $"'modified':'{item.modified}', ";
+                        jsonData += $"'modifiedBy':'{item.modifiedBy}',";
+                        jsonData += $"'remarks':'{item.remarks}',";
+                        jsonData += $"'total_amt':{ item.total_amt},";
+                        jsonData += $"'totalItems':{item.totalItems},";
+                        jsonData += $"'orders_products':[";
+                        foreach (orders_products transaction in Model.orders_products)
+                        {
+                            if (transaction.orders_id == item.orders_id)
+                            {
+                                jsonData += "{";
+                                jsonData += $" 'orders_products_id' : '{transaction.orders_products_id}',";
+                                jsonData += $" 'orders_id' : '{transaction.orders_id}',";
+                                jsonData += $" 'products_id' : '{transaction.products_id}',";
+                                jsonData += $" 'products_name' : '{transaction.products_name}',";
+                                jsonData += $" 'products_quantity' : '{transaction.products_quantity}',";
+                                jsonData += $" 'products_price' : '{transaction.products_price}',";
+                                jsonData += $" 'discAmt' : '{transaction.discAmt}',";
+                                jsonData += $" 'discPer' : '{transaction.discPer}',";
+                                jsonData += $" 'bonus' : '{transaction.bonus}',";
+                                jsonData += $" 'scheme' : '{transaction.scheme}',";
+                                jsonData += $" 'lineAmount' : '{transaction.lineAmount}',";
+                                jsonData += $" 'created' : '{transaction.created}',";
+                                jsonData += $" 'modified' : '{transaction.modified}',";
+                                jsonData += $" 'modifiedBy' : '{transaction.modifiedBy}',";
+                                jsonData += $" 'createdBy' : '{transaction.createdBy}'";
+                                jsonData += "},";
+                            }
+                        }
+                        jsonData += "]";
+                        jsonData += "}";
+                <tr>
+                    <td>@item.orders_id</td>
+                    <td>@Html.DisplayName((String.IsNullOrEmpty(item.customers_name) ? " - " : item.customers_name))</td>
+                    <td>@item.date_purchased</td>
+                    <td>@item.total_amt</td>
+                    <td>@item.remarks</td>
+                    @if (item.created != null)
+                            {
+                        <td>@Convert.ToDateTime(item.created).ToString(SoftwareFormatting.DateFormat)</td>
+                    }
+                    else
+                        {
+                        <td>@Convert.ToDateTime(item.modified).ToString(SoftwareFormatting.DateFormat)</td>
+                    }
+                    <td>
+                        <button type="button" onclick="update(@jsonData,this)" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></button>
+                        <button type="button" onclick="Delete(@item.orders_id)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<LiquadCargoManagment.Models.GM_ACC>
+@using Newtonsoft.Json;
+@using LiquadCargoManagment.Models
+@{
+    ViewBag.Title = "Bank";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-header">
+    <div class="header-section">
+        <h1>
+            Bank<br><small>Add Bank</small>
+        </h1>
+    </div>
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>Admin</li>
+    <li><a href="javascript:void();">Bank</a></li>
+</ul>
+
+<!-- END Datatables Header -->
+<!-- Datatables Content -->
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            <a id="" class="btn btn-primary btn-sm pull-right" onclick="$('#modal-add').modal('show'); Enable()" href="#">Add New | <i class="fa fa-plus"></i></a>
+        </div>
+    </div>
+
+    <div class="" id="grid">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Description</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var data in Model)
+                {
+                    //string jsonData = JsonConvert.SerializeObject(item);
+                    string jsonData = "{";
+                    jsonData += " 'id' : '" + data.id + "', ";
+                    jsonData += " 'title' : '" + data.title + "', ";
+                    jsonData += " 'description' : '" + data.description + "', ";
+                    jsonData += " 'parent_id' : '" + data.parent_id + "', ";
+                    jsonData += " 'LEVEL' : '" + data.LEVEL + "', ";
+                    jsonData += " 'CODE' : '" + data.CODE + "', ";
+                    jsonData += " 'isActive' : '" + data.isActive + "', ";
+                    jsonData += " 'created' : '" + data.created + "', ";
+                    jsonData += " 'modified' : '" + data.modified + "', ";
+                    jsonData += " 'c' : '" + data.modified + "', ";
+                    jsonData += "}";
+                }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.title</td>
+                        <td>@item.description</td>
+                        @foreach (var items in ViewBag.fourth_level)
+                        {
+                            <td>@*@items.Balance*@</td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

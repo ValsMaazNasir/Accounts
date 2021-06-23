@@ -1,0 +1,1790 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="POSModelStoreContainer" CdmEntityContainer="POSEntities">
+    <EntitySetMapping Name="AccountsHeads">
+      <EntityTypeMapping TypeName="POSModel.AccountsHead">
+        <MappingFragment StoreEntitySet="AccountsHead">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AcctCode" ColumnName="AcctCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="APDebitMemoMains">
+      <EntityTypeMapping TypeName="POSModel.APDebitMemoMain">
+        <MappingFragment StoreEntitySet="APDebitMemoMain">
+          <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+          <ScalarProperty Name="DocEntry" ColumnName="DocEntry" />
+          <ScalarProperty Name="DocType" ColumnName="DocType" />
+          <ScalarProperty Name="Canceled" ColumnName="Canceled" />
+          <ScalarProperty Name="ManualNumber" ColumnName="ManualNumber" />
+          <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+          <ScalarProperty Name="ObjType" ColumnName="ObjType" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+          <ScalarProperty Name="VendorCode" ColumnName="VendorCode" />
+          <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+          <ScalarProperty Name="VendorRef_" ColumnName="VendorRef#" />
+          <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+          <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+          <ScalarProperty Name="DiscountPer" ColumnName="DiscountPer" />
+          <ScalarProperty Name="DiscountTotal" ColumnName="DiscountTotal" />
+          <ScalarProperty Name="DocTotal" ColumnName="DocTotal" />
+          <ScalarProperty Name="Ref1" ColumnName="Ref1" />
+          <ScalarProperty Name="Ref2" ColumnName="Ref2" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="TransId" ColumnName="TransId" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="APInvoiceId" ColumnName="APInvoiceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="APDebitMemoRows">
+      <EntityTypeMapping TypeName="POSModel.APDebitMemoRow">
+        <MappingFragment StoreEntitySet="APDebitMemoRow">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DocEntry" ColumnName="DocEntry" />
+          <ScalarProperty Name="LineNum" ColumnName="LineNum" />
+          <ScalarProperty Name="BaseType" ColumnName="BaseType" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="Item_Description" ColumnName="Item/Description" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="DiscountRate" ColumnName="DiscountRate" />
+          <ScalarProperty Name="DiscAmount" ColumnName="DiscAmount" />
+          <ScalarProperty Name="PriceADisc" ColumnName="PriceADisc" />
+          <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+          <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+          <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+          <ScalarProperty Name="BaseDocNum" ColumnName="BaseDocNum" />
+          <ScalarProperty Name="AcctCode" ColumnName="AcctCode" />
+          <ScalarProperty Name="GLCode" ColumnName="GLCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="APInvoiceMains">
+      <EntityTypeMapping TypeName="POSModel.APInvoiceMain">
+        <MappingFragment StoreEntitySet="APInvoiceMain">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+          <ScalarProperty Name="DocEntry" ColumnName="DocEntry" />
+          <ScalarProperty Name="DocType" ColumnName="DocType" />
+          <ScalarProperty Name="Canceled" ColumnName="Canceled" />
+          <ScalarProperty Name="ManualNumber" ColumnName="ManualNumber" />
+          <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+          <ScalarProperty Name="ObjType" ColumnName="ObjType" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+          <ScalarProperty Name="VendorCode" ColumnName="VendorCode" />
+          <ScalarProperty Name="VendorRefNo" ColumnName="VendorRefNo" />
+          <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+          <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+          <ScalarProperty Name="DiscountPer" ColumnName="DiscountPer" />
+          <ScalarProperty Name="DiscountTotal" ColumnName="DiscountTotal" />
+          <ScalarProperty Name="PriceAfterDisc" ColumnName="PriceAfterDisc" />
+          <ScalarProperty Name="DocTotal" ColumnName="DocTotal" />
+          <ScalarProperty Name="Ref1" ColumnName="Ref1" />
+          <ScalarProperty Name="Ref2" ColumnName="Ref2" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="TransId" ColumnName="TransId" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="GoodsReceiptId" ColumnName="GoodsReceiptId" />
+          <ScalarProperty Name="DifferenceItemServices" ColumnName="DifferenceItemServices" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="APInvoiceRows">
+      <EntityTypeMapping TypeName="POSModel.APInvoiceRow">
+        <MappingFragment StoreEntitySet="APInvoiceRow">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ApInvoiceID" ColumnName="ApInvoiceID" />
+          <ScalarProperty Name="LineNum" ColumnName="LineNum" />
+          <ScalarProperty Name="BaseType" ColumnName="BaseType" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="Item_Description" ColumnName="Item/Description" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="DiscountRate" ColumnName="DiscountRate" />
+          <ScalarProperty Name="DiscAmount" ColumnName="DiscAmount" />
+          <ScalarProperty Name="PriceADisc" ColumnName="PriceADisc" />
+          <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+          <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+          <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+          <ScalarProperty Name="BusinessLine" ColumnName="BusinessLine" />
+          <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+          <ScalarProperty Name="BaseDocNum" ColumnName="BaseDocNum" />
+          <ScalarProperty Name="AcctCode" ColumnName="AcctCode" />
+          <ScalarProperty Name="GLCode" ColumnName="GLCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Areas">
+      <EntityTypeMapping TypeName="POSModel.Area">
+        <MappingFragment StoreEntitySet="Area">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ARInvoiceMains">
+      <EntityTypeMapping TypeName="POSModel.ARInvoiceMain">
+        <MappingFragment StoreEntitySet="ARInvoiceMain">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+          <ScalarProperty Name="DocType" ColumnName="DocType" />
+          <ScalarProperty Name="Canceled" ColumnName="Canceled" />
+          <ScalarProperty Name="ManualNumber" ColumnName="ManualNumber" />
+          <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+          <ScalarProperty Name="ObjType" ColumnName="ObjType" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+          <ScalarProperty Name="VendorCode" ColumnName="VendorCode" />
+          <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+          <ScalarProperty Name="VendorRef_" ColumnName="VendorRef#" />
+          <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+          <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+          <ScalarProperty Name="DiscountPer" ColumnName="DiscountPer" />
+          <ScalarProperty Name="DiscountTotal" ColumnName="DiscountTotal" />
+          <ScalarProperty Name="DocTotal" ColumnName="DocTotal" />
+          <ScalarProperty Name="Ref1" ColumnName="Ref1" />
+          <ScalarProperty Name="Ref2" ColumnName="Ref2" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="TransId" ColumnName="TransId" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="DifferenceItemServices" ColumnName="DifferenceItemServices" />
+          <ScalarProperty Name="DeliveryID" ColumnName="DeliveryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ARInvoiceRows">
+      <EntityTypeMapping TypeName="POSModel.ARInvoiceRow">
+        <MappingFragment StoreEntitySet="ARInvoiceRow">
+          <ScalarProperty Name="DocEntry" ColumnName="DocEntry" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LineNum" ColumnName="LineNum" />
+          <ScalarProperty Name="BaseType" ColumnName="BaseType" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="DiscountRate" ColumnName="DiscountRate" />
+          <ScalarProperty Name="DiscAmount" ColumnName="DiscAmount" />
+          <ScalarProperty Name="PriceADisc" ColumnName="PriceADisc" />
+          <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+          <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+          <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+          <ScalarProperty Name="GLCode" ColumnName="GLCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Assets">
+      <EntityTypeMapping TypeName="POSModel.Asset">
+        <MappingFragment StoreEntitySet="Assets">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AssetsName" ColumnName="AssetsName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AssignDrivers">
+      <EntityTypeMapping TypeName="POSModel.AssignDriver">
+        <MappingFragment StoreEntitySet="AssignDrivers">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+          <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BankPayments">
+      <EntityTypeMapping TypeName="POSModel.BankPayment">
+        <MappingFragment StoreEntitySet="BankPayment">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BankAmount" ColumnName="BankAmount" />
+          <ScalarProperty Name="GLAccountID" ColumnName="GLAccountID" />
+          <ScalarProperty Name="OutgoingMainID" ColumnName="OutgoingMainID" />
+          <ScalarProperty Name="IncomingMainID" ColumnName="IncomingMainID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Banks">
+      <EntityTypeMapping TypeName="POSModel.Bank">
+        <MappingFragment StoreEntitySet="Banks">
+          <ScalarProperty Name="BankID" ColumnName="BankID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+          <ScalarProperty Name="AccountTitle" ColumnName="AccountTitle" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Brokers">
+      <EntityTypeMapping TypeName="POSModel.Broker">
+        <MappingFragment StoreEntitySet="Brokers">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+          <ScalarProperty Name="HomeNo" ColumnName="HomeNo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="NIC" ColumnName="NIC" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CashPayments">
+      <EntityTypeMapping TypeName="POSModel.CashPayment">
+        <MappingFragment StoreEntitySet="CashPayment">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CashAmount" ColumnName="CashAmount" />
+          <ScalarProperty Name="GLAccountID" ColumnName="GLAccountID" />
+          <ScalarProperty Name="OutgoingMainID" ColumnName="OutgoingMainID" />
+          <ScalarProperty Name="IncomingMainID" ColumnName="IncomingMainID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="POSModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CheckPayments">
+      <EntityTypeMapping TypeName="POSModel.CheckPayment">
+        <MappingFragment StoreEntitySet="CheckPayment">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CheckNum" ColumnName="CheckNum" />
+          <ScalarProperty Name="CheckAmount" ColumnName="CheckAmount" />
+          <ScalarProperty Name="GLAccountID" ColumnName="GLAccountID" />
+          <ScalarProperty Name="OutgoingMainID" ColumnName="OutgoingMainID" />
+          <ScalarProperty Name="IncomingMainID" ColumnName="IncomingMainID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="POSModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="CityCode" ColumnName="CityCode" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="POSModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyEmail" ColumnName="CompanyEmail" />
+          <ScalarProperty Name="CompanyWebSite" ColumnName="CompanyWebSite" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="OtherContact" ColumnName="OtherContact" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="STN" ColumnName="STN" />
+          <ScalarProperty Name="NTN" ColumnName="NTN" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContactNoTypes">
+      <EntityTypeMapping TypeName="POSModel.ContactNoType">
+        <MappingFragment StoreEntitySet="ContactNoType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ContactNoType1" ColumnName="ContactNoType" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Containers">
+      <EntityTypeMapping TypeName="POSModel.Container">
+        <MappingFragment StoreEntitySet="Container">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ContainerNo" ColumnName="ContainerNo" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ShippingCompany" ColumnName="ShippingCompany" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerContact" ColumnName="OwnerContact" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="OwnershipType" ColumnName="OwnershipType" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContainerTypes">
+      <EntityTypeMapping TypeName="POSModel.ContainerType">
+        <MappingFragment StoreEntitySet="ContainerType">
+          <ScalarProperty Name="ContainerTypeID" ColumnName="ContainerTypeID" />
+          <ScalarProperty Name="ContainerType1" ColumnName="ContainerType" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Wheels" ColumnName="Wheels" />
+          <ScalarProperty Name="BodyType" ColumnName="BodyType" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="DimensionUnitType" ColumnName="DimensionUnitType" />
+          <ScalarProperty Name="LowerDeckInnerLength" ColumnName="LowerDeckInnerLength" />
+          <ScalarProperty Name="LowerDeckInnerWidth" ColumnName="LowerDeckInnerWidth" />
+          <ScalarProperty Name="LowerDeckInnerHeight" ColumnName="LowerDeckInnerHeight" />
+          <ScalarProperty Name="UpperDeckInnerLength" ColumnName="UpperDeckInnerLength" />
+          <ScalarProperty Name="UpperDeckInnerWidth" ColumnName="UpperDeckInnerWidth" />
+          <ScalarProperty Name="UpperDeckInnerHeight" ColumnName="UpperDeckInnerHeight" />
+          <ScalarProperty Name="LowerDeckOuterLength" ColumnName="LowerDeckOuterLength" />
+          <ScalarProperty Name="LowerDeckOuterWidth" ColumnName="LowerDeckOuterWidth" />
+          <ScalarProperty Name="LowerDeckOuterHeight" ColumnName="LowerDeckOuterHeight" />
+          <ScalarProperty Name="UpperDeckOuterLength" ColumnName="UpperDeckOuterLength" />
+          <ScalarProperty Name="UpperDeckOuterWidth" ColumnName="UpperDeckOuterWidth" />
+          <ScalarProperty Name="UpperDeckOuterHeight" ColumnName="UpperDeckOuterHeight" />
+          <ScalarProperty Name="UpperPortionInnerLength" ColumnName="UpperPortionInnerLength" />
+          <ScalarProperty Name="UpperPortionInnerwidth" ColumnName="UpperPortionInnerwidth" />
+          <ScalarProperty Name="UpperPortionInnerHeight" ColumnName="UpperPortionInnerHeight" />
+          <ScalarProperty Name="LowerPortionInnerLength" ColumnName="LowerPortionInnerLength" />
+          <ScalarProperty Name="LowerPortionInnerWidth" ColumnName="LowerPortionInnerWidth" />
+          <ScalarProperty Name="LowerPortionInnerHeight" ColumnName="LowerPortionInnerHeight" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TareWeight" ColumnName="TareWeight" />
+          <ScalarProperty Name="TareWeightUnit" ColumnName="TareWeightUnit" />
+          <ScalarProperty Name="CubicCapacity" ColumnName="CubicCapacity" />
+          <ScalarProperty Name="CubicCapacityUnit" ColumnName="CubicCapacityUnit" />
+          <ScalarProperty Name="PayLoadWeight" ColumnName="PayLoadWeight" />
+          <ScalarProperty Name="PayLoadWeightUnit" ColumnName="PayLoadWeightUnit" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="POSModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="CountryDialCode" ColumnName="CountryDialCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrencyTypes">
+      <EntityTypeMapping TypeName="POSModel.CurrencyType">
+        <MappingFragment StoreEntitySet="CurrencyType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CurrencyType1" ColumnName="CurrencyType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="POSModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+          <ScalarProperty Name="CustomerAdd" ColumnName="CustomerAdd" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CustomerContact1" ColumnName="CustomerContact1" />
+          <ScalarProperty Name="CustomerContact2" ColumnName="CustomerContact2" />
+          <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+          <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+          <ScalarProperty Name="Customerlogo" ColumnName="Customerlogo" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerCompanies">
+      <EntityTypeMapping TypeName="POSModel.CustomerCompany">
+        <MappingFragment StoreEntitySet="CustomerCompany">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="ContactOther" ColumnName="ContactOther" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerGroups">
+      <EntityTypeMapping TypeName="POSModel.CustomerGroup">
+        <MappingFragment StoreEntitySet="CustomerGroup">
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="ContactOther" ColumnName="ContactOther" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DamageTypes">
+      <EntityTypeMapping TypeName="POSModel.DamageType">
+        <MappingFragment StoreEntitySet="DamageType">
+          <ScalarProperty Name="DamageTypeID" ColumnName="DamageTypeID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="ModifiedByID" ColumnName="ModifiedByID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DateTypes">
+      <EntityTypeMapping TypeName="POSModel.DateType">
+        <MappingFragment StoreEntitySet="DateType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DateType1" ColumnName="DateType" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeliveryOrderMains">
+      <EntityTypeMapping TypeName="POSModel.DeliveryOrderMain">
+        <MappingFragment StoreEntitySet="DeliveryOrderMain">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+          <ScalarProperty Name="DocType" ColumnName="DocType" />
+          <ScalarProperty Name="Canceled" ColumnName="Canceled" />
+          <ScalarProperty Name="ManualNumber" ColumnName="ManualNumber" />
+          <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+          <ScalarProperty Name="ObjType" ColumnName="ObjType" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+          <ScalarProperty Name="VendorCode" ColumnName="VendorCode" />
+          <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+          <ScalarProperty Name="VendorRef_" ColumnName="VendorRef#" />
+          <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+          <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+          <ScalarProperty Name="DiscountPer" ColumnName="DiscountPer" />
+          <ScalarProperty Name="DiscountTotal" ColumnName="DiscountTotal" />
+          <ScalarProperty Name="DocTotal" ColumnName="DocTotal" />
+          <ScalarProperty Name="Ref1" ColumnName="Ref1" />
+          <ScalarProperty Name="Ref2" ColumnName="Ref2" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="TransId" ColumnName="TransId" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="DifferenceItemServices" ColumnName="DifferenceItemServices" />
+          <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeliveryOrderRows">
+      <EntityTypeMapping TypeName="POSModel.DeliveryOrderRow">
+        <MappingFragment StoreEntitySet="DeliveryOrderRow">
+          <ScalarProperty Name="DocEntry" ColumnName="DocEntry" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LineNum" ColumnName="LineNum" />
+          <ScalarProperty Name="BaseType" ColumnName="BaseType" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="DiscountRate" ColumnName="DiscountRate" />
+          <ScalarProperty Name="DiscAmount" ColumnName="DiscAmount" />
+          <ScalarProperty Name="PriceADisc" ColumnName="PriceADisc" />
+          <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+          <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+          <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+          <ScalarProperty Name="GLCode" ColumnName="GLCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="POSModel.Department">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="DepartID" ColumnName="DepartID" />
+          <ScalarProperty Name="DepartCode" ColumnName="DepartCode" />
+          <ScalarProperty Name="DepartName" ColumnName="DepartName" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="ContactOther" ColumnName="ContactOther" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DepartmentPersons">
+      <EntityTypeMapping TypeName="POSModel.DepartmentPerson">
+        <MappingFragment StoreEntitySet="DepartmentPerson">
+          <ScalarProperty Name="PersonalID" ColumnName="PersonalID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="BusinessEmail" ColumnName="BusinessEmail" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="Cell" ColumnName="Cell" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="OtherContact" ColumnName="OtherContact" />
+          <ScalarProperty Name="AddressOffice" ColumnName="AddressOffice" />
+          <ScalarProperty Name="AddressOther" ColumnName="AddressOther" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsIndividual" ColumnName="IsIndividual" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Designations">
+      <EntityTypeMapping TypeName="POSModel.Designation">
+        <MappingFragment StoreEntitySet="Designation">
+          <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+          <ScalarProperty Name="DesignationName" ColumnName="DesignationName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocumentTypes">
+      <EntityTypeMapping TypeName="POSModel.DocumentType">
+        <MappingFragment StoreEntitySet="DocumentType">
+          <ScalarProperty Name="DocumentTypeID" ColumnName="DocumentTypeID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="ModifiedByID" ColumnName="ModifiedByID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Drivers">
+      <EntityTypeMapping TypeName="POSModel.Driver">
+        <MappingFragment StoreEntitySet="Driver">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+          <ScalarProperty Name="CellNo" ColumnName="CellNo" />
+          <ScalarProperty Name="OtherContact" ColumnName="OtherContact" />
+          <ScalarProperty Name="HomeNo" ColumnName="HomeNo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="NIC" ColumnName="NIC" />
+          <ScalarProperty Name="IdentityMark" ColumnName="IdentityMark" />
+          <ScalarProperty Name="NICIssueDate" ColumnName="NICIssueDate" />
+          <ScalarProperty Name="NICExpiryDate" ColumnName="NICExpiryDate" />
+          <ScalarProperty Name="LicenseNo" ColumnName="LicenseNo" />
+          <ScalarProperty Name="LicenseCategory" ColumnName="LicenseCategory" />
+          <ScalarProperty Name="LicenseIssueDate" ColumnName="LicenseIssueDate" />
+          <ScalarProperty Name="LicenseExpiryDate" ColumnName="LicenseExpiryDate" />
+          <ScalarProperty Name="LicenseIssuingAuthority" ColumnName="LicenseIssuingAuthority" />
+          <ScalarProperty Name="LicenseStatus" ColumnName="LicenseStatus" />
+          <ScalarProperty Name="EmergencyContactName" ColumnName="EmergencyContactName" />
+          <ScalarProperty Name="EmergencyContactNo" ColumnName="EmergencyContactNo" />
+          <ScalarProperty Name="ContactRelation" ColumnName="ContactRelation" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="DriverImageID" ColumnName="DriverImageID" />
+          <ScalarProperty Name="Document" ColumnName="Document" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="POSModel.Employee">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
+          <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+          <ScalarProperty Name="ProbationPeriod" ColumnName="ProbationPeriod" />
+          <ScalarProperty Name="EmployeeRate" ColumnName="EmployeeRate" />
+          <ScalarProperty Name="BankAccount" ColumnName="BankAccount" />
+          <ScalarProperty Name="BankAccountNo" ColumnName="BankAccountNo" />
+          <ScalarProperty Name="BankAccountTitle" ColumnName="BankAccountTitle" />
+          <ScalarProperty Name="Ima" ColumnName="Ima" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+          <ScalarProperty Name="IsManager" ColumnName="IsManager" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExpensesTypes">
+      <EntityTypeMapping TypeName="POSModel.ExpensesType">
+        <MappingFragment StoreEntitySet="ExpensesType">
+          <ScalarProperty Name="ExpensesTypeID" ColumnName="ExpensesTypeID" />
+          <ScalarProperty Name="ExpensesTypeName" ColumnName="ExpensesTypeName" />
+          <ScalarProperty Name="ExpensesTypeCode" ColumnName="ExpensesTypeCode" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Geners">
+      <EntityTypeMapping TypeName="POSModel.Gener">
+        <MappingFragment StoreEntitySet="Gener">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GLAccounts">
+      <EntityTypeMapping TypeName="POSModel.GLAccount">
+        <MappingFragment StoreEntitySet="GLAccounts">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AcctCode" ColumnName="AcctCode" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="SubAcctTypeID" ColumnName="SubAcctTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GLDetails">
+      <EntityTypeMapping TypeName="POSModel.GLDetail">
+        <MappingFragment StoreEntitySet="GLDetails">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Origin" ColumnName="Origin" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Debit" ColumnName="Debit" />
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+          <ScalarProperty Name="CommulativeBalance" ColumnName="CommulativeBalance" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GLTypes">
+      <EntityTypeMapping TypeName="POSModel.GLType">
+        <MappingFragment StoreEntitySet="GLType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AcctHeadID" ColumnName="AcctHeadID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GoodReceiptMains">
+      <EntityTypeMapping TypeName="POSModel.GoodReceiptMain">
+        <MappingFragment StoreEntitySet="GoodReceiptMain">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+          <ScalarProperty Name="VendorCode" ColumnName="VendorCode" />
+          <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+          <ScalarProperty Name="ReferenceNo" ColumnName="ReferenceNo" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="DiscountTotal" ColumnName="DiscountTotal" />
+          <ScalarProperty Name="TaxTotal" ColumnName="TaxTotal" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+          <ScalarProperty Name="PurchaseOrderID" ColumnName="PurchaseOrderID" />
+          <ScalarProperty Name="DifferenceItemServices" ColumnName="DifferenceItemServices" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GoodReceiptRows">
+      <EntityTypeMapping TypeName="POSModel.GoodReceiptRow">
+        <MappingFragment StoreEntitySet="GoodReceiptRow">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="GoodReceiptID" ColumnName="GoodReceiptID" />
+          <ScalarProperty Name="GLCode" ColumnName="GLCode" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="ItemNameDescription" ColumnName="ItemNameDescription" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="PriceAfterDiscount" ColumnName="PriceAfterDiscount" />
+          <ScalarProperty Name="TaxCode" ColumnName="TaxCode" />
+          <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+          <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="POSModel.Group">
+        <MappingFragment StoreEntitySet="Groups">
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="ContactOther" ColumnName="ContactOther" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CompanyAccess" ColumnName="CompanyAccess" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IncomingMains">
+      <EntityTypeMapping TypeName="POSModel.IncomingMain">
+        <MappingFragment StoreEntitySet="IncomingMain">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+          <ScalarProperty Name="DocType" ColumnName="DocType" />
+          <ScalarProperty Name="Canceled" ColumnName="Canceled" />
+          <ScalarProperty Name="HandWritten" ColumnName="HandWritten" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DocDueDate" ColumnName="DocDueDate" />
+          <ScalarProperty Name="CardCode" ColumnName="CardCode" />
+          <ScalarProperty Name="CardName" ColumnName="CardName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CashAcct" ColumnName="CashAcct" />
+          <ScalarProperty Name="CashSum" ColumnName="CashSum" />
+          <ScalarProperty Name="DocTotal" ColumnName="DocTotal" />
+          <ScalarProperty Name="Ref1" ColumnName="Ref1" />
+          <ScalarProperty Name="Ref2" ColumnName="Ref2" />
+          <ScalarProperty Name="JournalMemo" ColumnName="JournalMemo" />
+          <ScalarProperty Name="TransID" ColumnName="TransID" />
+          <ScalarProperty Name="DocTime" ColumnName="DocTime" />
+          <ScalarProperty Name="ObjType" ColumnName="ObjType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JournalEntries">
+      <EntityTypeMapping TypeName="POSModel.JournalEntry">
+        <MappingFragment StoreEntitySet="JournalEntries">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="GLCode" ColumnName="GLCode" />
+          <ScalarProperty Name="GLAccountName" ColumnName="GLAccountName" />
+          <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+          <ScalarProperty Name="VendorCode" ColumnName="VendorCode" />
+          <ScalarProperty Name="Debit" ColumnName="Debit" />
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="BusinessLine" ColumnName="BusinessLine" />
+          <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+          <ScalarProperty Name="GLDetailID" ColumnName="GLDetailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LocationTypes">
+      <EntityTypeMapping TypeName="POSModel.LocationType">
+        <MappingFragment StoreEntitySet="LocationType">
+          <ScalarProperty Name="LocationTypeID" ColumnName="LocationTypeID" />
+          <ScalarProperty Name="LocationTypeName" ColumnName="LocationTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menus">
+      <EntityTypeMapping TypeName="POSModel.Menu">
+        <MappingFragment StoreEntitySet="Menu">
+          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SequenceOrder" ColumnName="SequenceOrder" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Natures">
+      <EntityTypeMapping TypeName="POSModel.Nature">
+        <MappingFragment StoreEntitySet="Nature">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NavMenus">
+      <EntityTypeMapping TypeName="POSModel.NavMenu">
+        <MappingFragment StoreEntitySet="NavMenu">
+          <ScalarProperty Name="FormID" ColumnName="FormID" />
+          <ScalarProperty Name="FormName" ColumnName="FormName" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="icon" ColumnName="icon" />
+          <ScalarProperty Name="SequenceOrder" ColumnName="SequenceOrder" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="SecondLevelMenuID" ColumnName="SecondLevelMenuID" />
+          <ScalarProperty Name="formTarget" ColumnName="formTarget" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notifications">
+      <EntityTypeMapping TypeName="POSModel.Notification">
+        <MappingFragment StoreEntitySet="Notifications">
+          <ScalarProperty Name="NotificationID" ColumnName="NotificationID" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="NotifiedTo" ColumnName="NotifiedTo" />
+          <ScalarProperty Name="NotifiedDate" ColumnName="NotifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NoTypes">
+      <EntityTypeMapping TypeName="POSModel.NoType">
+        <MappingFragment StoreEntitySet="NoType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NoType1" ColumnName="NoType" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Organizations">
+      <EntityTypeMapping TypeName="POSModel.Organization">
+        <MappingFragment StoreEntitySet="Organization">
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Modifiedby" ColumnName="Modifiedby" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OutGoings">
+      <EntityTypeMapping TypeName="POSModel.OutGoing">
+        <MappingFragment StoreEntitySet="OutGoing">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+          <ScalarProperty Name="DocType" ColumnName="DocType" />
+          <ScalarProperty Name="Canceled" ColumnName="Canceled" />
+          <ScalarProperty Name="HandWritten" ColumnName="HandWritten" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DocDueDate" ColumnName="DocDueDate" />
+          <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+          <ScalarProperty Name="CardCode" ColumnName="CardCode" />
+          <ScalarProperty Name="CardName" ColumnName="CardName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CashAcct" ColumnName="CashAcct" />
+          <ScalarProperty Name="CashSum" ColumnName="CashSum" />
+          <ScalarProperty Name="DocTotal" ColumnName="DocTotal" />
+          <ScalarProperty Name="Ref1" ColumnName="Ref1" />
+          <ScalarProperty Name="Ref2" ColumnName="Ref2" />
+          <ScalarProperty Name="JournalMemo" ColumnName="JournalMemo" />
+          <ScalarProperty Name="TransID" ColumnName="TransID" />
+          <ScalarProperty Name="DocTime" ColumnName="DocTime" />
+          <ScalarProperty Name="ObjType" ColumnName="ObjType" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="Modifiedby" ColumnName="Modifiedby" />
+          <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OutgoingRows">
+      <EntityTypeMapping TypeName="POSModel.OutgoingRow">
+        <MappingFragment StoreEntitySet="OutgoingRow">
+          <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+          <ScalarProperty Name="OutgoingID" ColumnName="OutgoingID" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="GLAccountID" ColumnName="GLAccountID" />
+          <ScalarProperty Name="CashAmount" ColumnName="CashAmount" />
+          <ScalarProperty Name="CheckNum" ColumnName="CheckNum" />
+          <ScalarProperty Name="BankCode" ColumnName="BankCode" />
+          <ScalarProperty Name="BankAmount" ColumnName="BankAmount" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="AcctNum" ColumnName="AcctNum" />
+          <ScalarProperty Name="CheckAmount" ColumnName="CheckAmount" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
+          <ScalarProperty Name="BusinessLine" ColumnName="BusinessLine" />
+          <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OwnCompanies">
+      <EntityTypeMapping TypeName="POSModel.OwnCompany">
+        <MappingFragment StoreEntitySet="OwnCompany">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SubcriptionID" ColumnName="SubcriptionID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="ContactOther" ColumnName="ContactOther" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OwnDepartments">
+      <EntityTypeMapping TypeName="POSModel.OwnDepartment">
+        <MappingFragment StoreEntitySet="OwnDepartment">
+          <ScalarProperty Name="DepartID" ColumnName="DepartID" />
+          <ScalarProperty Name="DepartCode" ColumnName="DepartCode" />
+          <ScalarProperty Name="DepartName" ColumnName="DepartName" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="ContactOther" ColumnName="ContactOther" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="GROUPID" ColumnName="GROUPID" />
+          <ScalarProperty Name="COMPANYID" ColumnName="COMPANYID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OwnGroups">
+      <EntityTypeMapping TypeName="POSModel.OwnGroup">
+        <MappingFragment StoreEntitySet="OwnGroups">
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="ContactOther" ColumnName="ContactOther" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="WebAdd" ColumnName="WebAdd" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PackageTypes">
+      <EntityTypeMapping TypeName="POSModel.PackageType">
+        <MappingFragment StoreEntitySet="PackageType">
+          <ScalarProperty Name="PackageTypeID" ColumnName="PackageTypeID" />
+          <ScalarProperty Name="PackageTypeCode" ColumnName="PackageTypeCode" />
+          <ScalarProperty Name="PackageTypeName" ColumnName="PackageTypeName" />
+          <ScalarProperty Name="Length" ColumnName="Length" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="DimensionUnit" ColumnName="DimensionUnit" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="WeightUnit" ColumnName="WeightUnit" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsMaster" ColumnName="IsMaster" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PickDropLocations">
+      <EntityTypeMapping TypeName="POSModel.PickDropLocation">
+        <MappingFragment StoreEntitySet="PickDropLocation">
+          <ScalarProperty Name="PickDropID" ColumnName="PickDropID" />
+          <ScalarProperty Name="PickDropCode" ColumnName="PickDropCode" />
+          <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="LocationTypeID" ColumnName="LocationTypeID" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PickDropLocationName" ColumnName="PickDropLocationName" />
+          <ScalarProperty Name="IsPort" ColumnName="IsPort" />
+          <ScalarProperty Name="LAT" ColumnName="LAT" />
+          <ScalarProperty Name="LON" ColumnName="LON" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POrderMains">
+      <EntityTypeMapping TypeName="POSModel.POrderMain">
+        <MappingFragment StoreEntitySet="POrderMain">
+          <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+          <ScalarProperty Name="DocType" ColumnName="DocType" />
+          <ScalarProperty Name="Canceled" ColumnName="Canceled" />
+          <ScalarProperty Name="ManualNumber" ColumnName="ManualNumber" />
+          <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+          <ScalarProperty Name="ObjType" ColumnName="ObjType" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+          <ScalarProperty Name="VendorCode" ColumnName="VendorCode" />
+          <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+          <ScalarProperty Name="VendorRef_" ColumnName="VendorRef#" />
+          <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+          <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+          <ScalarProperty Name="DiscountPer" ColumnName="DiscountPer" />
+          <ScalarProperty Name="DiscountTotal" ColumnName="DiscountTotal" />
+          <ScalarProperty Name="DocTotal" ColumnName="DocTotal" />
+          <ScalarProperty Name="Ref1" ColumnName="Ref1" />
+          <ScalarProperty Name="Ref2" ColumnName="Ref2" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="TransId" ColumnName="TransId" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="DocEntry" ColumnName="DocEntry" />
+          <ScalarProperty Name="DifferenceItemServices" ColumnName="DifferenceItemServices" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POrderRows">
+      <EntityTypeMapping TypeName="POSModel.POrderRow">
+        <MappingFragment StoreEntitySet="POrderRow">
+          <ScalarProperty Name="DocEntry" ColumnName="DocEntry" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LineNum" ColumnName="LineNum" />
+          <ScalarProperty Name="BaseType" ColumnName="BaseType" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="DiscountRate" ColumnName="DiscountRate" />
+          <ScalarProperty Name="DiscAmount" ColumnName="DiscAmount" />
+          <ScalarProperty Name="PriceADisc" ColumnName="PriceADisc" />
+          <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+          <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+          <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+          <ScalarProperty Name="GLCode" ColumnName="GLCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrincipleCompanies">
+      <EntityTypeMapping TypeName="POSModel.PrincipleCompany">
+        <MappingFragment StoreEntitySet="PrincipleCompany">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OwnCompanyID" ColumnName="OwnCompanyID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="POSModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="Length" ColumnName="Length" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+          <ScalarProperty Name="AssetsID" ColumnName="AssetsID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Provinces">
+      <EntityTypeMapping TypeName="POSModel.Province">
+        <MappingFragment StoreEntitySet="Province">
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Regions">
+      <EntityTypeMapping TypeName="POSModel.Region">
+        <MappingFragment StoreEntitySet="Region">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedByID" ColumnName="ModifiedByID" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RevenueTypes">
+      <EntityTypeMapping TypeName="POSModel.RevenueType">
+        <MappingFragment StoreEntitySet="RevenueType">
+          <ScalarProperty Name="RevenueTypeID" ColumnName="RevenueTypeID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="CreatedById" ColumnName="CreatedById" />
+          <ScalarProperty Name="ModifiedByID" ColumnName="ModifiedByID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RolePermissions">
+      <EntityTypeMapping TypeName="POSModel.RolePermission">
+        <MappingFragment StoreEntitySet="RolePermission">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="FormID" ColumnName="FormID" />
+          <ScalarProperty Name="Parameter" ColumnName="Parameter" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="POSModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SaleOrders">
+      <EntityTypeMapping TypeName="POSModel.SaleOrder">
+        <MappingFragment StoreEntitySet="SaleOrder">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SaleOrderNo" ColumnName="SaleOrderNo" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+          <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+          <ScalarProperty Name="AreaIdForLoadingPoint" ColumnName="AreaIdForLoadingPoint" />
+          <ScalarProperty Name="AreaIdForDestinationPoint" ColumnName="AreaIdForDestinationPoint" />
+          <ScalarProperty Name="LoadingDate" ColumnName="LoadingDate" />
+          <ScalarProperty Name="DecantationDate" ColumnName="DecantationDate" />
+          <ScalarProperty Name="TokenNumber" ColumnName="TokenNumber" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SaleOrderDieselExpenses">
+      <EntityTypeMapping TypeName="POSModel.SaleOrderDieselExpense">
+        <MappingFragment StoreEntitySet="SaleOrderDieselExpense">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+          <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
+          <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+          <ScalarProperty Name="Liter" ColumnName="Liter" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SaleOrderExpenses">
+      <EntityTypeMapping TypeName="POSModel.SaleOrderExpens">
+        <MappingFragment StoreEntitySet="SaleOrderExpenses">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+          <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
+          <ScalarProperty Name="ExpenseTypeId" ColumnName="ExpenseTypeId" />
+          <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+          <ScalarProperty Name="BankBranchId" ColumnName="BankBranchId" />
+          <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+          <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SaleOrderProducts">
+      <EntityTypeMapping TypeName="POSModel.SaleOrderProduct">
+        <MappingFragment StoreEntitySet="SaleOrderProducts">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OwnComanyId" ColumnName="OwnComanyId" />
+          <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Freight" ColumnName="Freight" />
+          <ScalarProperty Name="ShortageQty" ColumnName="ShortageQty" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesOrderMains">
+      <EntityTypeMapping TypeName="POSModel.SalesOrderMain">
+        <MappingFragment StoreEntitySet="SalesOrderMain">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+          <ScalarProperty Name="DocType" ColumnName="DocType" />
+          <ScalarProperty Name="Canceled" ColumnName="Canceled" />
+          <ScalarProperty Name="ManualNumber" ColumnName="ManualNumber" />
+          <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+          <ScalarProperty Name="ObjType" ColumnName="ObjType" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+          <ScalarProperty Name="VendorCode" ColumnName="VendorCode" />
+          <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+          <ScalarProperty Name="VendorRef_" ColumnName="VendorRef#" />
+          <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+          <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+          <ScalarProperty Name="DiscountPer" ColumnName="DiscountPer" />
+          <ScalarProperty Name="DiscountTotal" ColumnName="DiscountTotal" />
+          <ScalarProperty Name="DocTotal" ColumnName="DocTotal" />
+          <ScalarProperty Name="Ref1" ColumnName="Ref1" />
+          <ScalarProperty Name="Ref2" ColumnName="Ref2" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="TransId" ColumnName="TransId" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="DifferenceItemServices" ColumnName="DifferenceItemServices" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesOrderRows">
+      <EntityTypeMapping TypeName="POSModel.SalesOrderRow">
+        <MappingFragment StoreEntitySet="SalesOrderRow">
+          <ScalarProperty Name="DocEntry" ColumnName="DocEntry" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LineNum" ColumnName="LineNum" />
+          <ScalarProperty Name="BaseType" ColumnName="BaseType" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="DiscountRate" ColumnName="DiscountRate" />
+          <ScalarProperty Name="DiscAmount" ColumnName="DiscAmount" />
+          <ScalarProperty Name="PriceADisc" ColumnName="PriceADisc" />
+          <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+          <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+          <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+          <ScalarProperty Name="GLCode" ColumnName="GLCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SecondLevelMenus">
+      <EntityTypeMapping TypeName="POSModel.SecondLevelMenu">
+        <MappingFragment StoreEntitySet="SecondLevelMenu">
+          <ScalarProperty Name="SecLevelID" ColumnName="SecLevelID" />
+          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+          <ScalarProperty Name="SecLevelMenu" ColumnName="SecLevelMenu" />
+          <ScalarProperty Name="SequenceOrder" ColumnName="SequenceOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sections">
+      <EntityTypeMapping TypeName="POSModel.Section">
+        <MappingFragment StoreEntitySet="Section">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+          <ScalarProperty Name="Group" ColumnName="Group" />
+          <ScalarProperty Name="Dept" ColumnName="Dept" />
+          <ScalarProperty Name="ListofPerson" ColumnName="ListofPerson" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShipmentTypes">
+      <EntityTypeMapping TypeName="POSModel.ShipmentType">
+        <MappingFragment StoreEntitySet="ShipmentType">
+          <ScalarProperty Name="ShipmentType_ID" ColumnName="ShipmentType_ID" />
+          <ScalarProperty Name="ShipmentTypeDetail" ColumnName="ShipmentTypeDetail" />
+          <ScalarProperty Name="ShipmentType1" ColumnName="ShipmentType" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShippingLines">
+      <EntityTypeMapping TypeName="POSModel.ShippingLine">
+        <MappingFragment StoreEntitySet="ShippingLine">
+          <ScalarProperty Name="ShippingLineID" ColumnName="ShippingLineID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="PrimaryContact" ColumnName="PrimaryContact" />
+          <ScalarProperty Name="SecondaryContact" ColumnName="SecondaryContact" />
+          <ScalarProperty Name="LandLine" ColumnName="LandLine" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedById" ColumnName="CreatedById" />
+          <ScalarProperty Name="ModifiedByID" ColumnName="ModifiedByID" />
+          <ScalarProperty Name="LiftOffLiftOnCharges" ColumnName="LiftOffLiftOnCharges" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShippingTypes">
+      <EntityTypeMapping TypeName="POSModel.ShippingType">
+        <MappingFragment StoreEntitySet="ShippingType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SoftwareSetups">
+      <EntityTypeMapping TypeName="POSModel.SoftwareSetup">
+        <MappingFragment StoreEntitySet="SoftwareSetup">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CurrencyTypeID" ColumnName="CurrencyTypeID" />
+          <ScalarProperty Name="DateTypeID" ColumnName="DateTypeID" />
+          <ScalarProperty Name="ContactNoTypeID" ColumnName="ContactNoTypeID" />
+          <ScalarProperty Name="NoTypeID" ColumnName="NoTypeID" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubAccounts">
+      <EntityTypeMapping TypeName="POSModel.SubAccount">
+        <MappingFragment StoreEntitySet="SubAccount">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="GLTypeID" ColumnName="GLTypeID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubAccountTypes">
+      <EntityTypeMapping TypeName="POSModel.SubAccountType">
+        <MappingFragment StoreEntitySet="SubAccountType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AcctTypeID" ColumnName="AcctTypeID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubcriptionModules">
+      <EntityTypeMapping TypeName="POSModel.SubcriptionModule">
+        <MappingFragment StoreEntitySet="SubcriptionModules">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SubcriptionID" ColumnName="SubcriptionID" />
+          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subcriptions">
+      <EntityTypeMapping TypeName="POSModel.Subcription">
+        <MappingFragment StoreEntitySet="Subcriptions">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="NumberOfMonths" ColumnName="NumberOfMonths" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaxTypes">
+      <EntityTypeMapping TypeName="POSModel.TaxType">
+        <MappingFragment StoreEntitySet="TaxTypes">
+          <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBrands">
+      <EntityTypeMapping TypeName="POSModel.tblBrand">
+        <MappingFragment StoreEntitySet="tblBrand">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAccounts">
+      <EntityTypeMapping TypeName="POSModel.UserAccount">
+        <MappingFragment StoreEntitySet="UserAccounts">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehicles">
+      <EntityTypeMapping TypeName="POSModel.Vehicle">
+        <MappingFragment StoreEntitySet="Vehicle">
+          <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="RegNo" ColumnName="RegNo" />
+          <ScalarProperty Name="ChasisNo" ColumnName="ChasisNo" />
+          <ScalarProperty Name="EngineNo" ColumnName="EngineNo" />
+          <ScalarProperty Name="Length" ColumnName="Length" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="DimensionUnitType" ColumnName="DimensionUnitType" />
+          <ScalarProperty Name="VehicleTypeID" ColumnName="VehicleTypeID" />
+          <ScalarProperty Name="VehicleModel" ColumnName="VehicleModel" />
+          <ScalarProperty Name="VehicleColor" ColumnName="VehicleColor" />
+          <ScalarProperty Name="BodyType" ColumnName="BodyType" />
+          <ScalarProperty Name="ManufacturingYear" ColumnName="ManufacturingYear" />
+          <ScalarProperty Name="ManufacturerName" ColumnName="ManufacturerName" />
+          <ScalarProperty Name="PurchasingDate" ColumnName="PurchasingDate" />
+          <ScalarProperty Name="PurchasingAmount" ColumnName="PurchasingAmount" />
+          <ScalarProperty Name="PurchaseFromName" ColumnName="PurchaseFromName" />
+          <ScalarProperty Name="PurchaseFromDetail" ColumnName="PurchaseFromDetail" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="OwnerContact" ColumnName="OwnerContact" />
+          <ScalarProperty Name="OwnerNIC" ColumnName="OwnerNIC" />
+          <ScalarProperty Name="PrincipleCompanyId" ColumnName="PrincipleCompanyId" />
+          <ScalarProperty Name="Comission" ColumnName="Comission" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Amount2" ColumnName="Amount2" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsOwnVehicle" ColumnName="IsOwnVehicle" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="MaximumLoadingCapacity" ColumnName="MaximumLoadingCapacity" />
+          <ScalarProperty Name="OwnershipStatus" ColumnName="OwnershipStatus" />
+          <ScalarProperty Name="Documents" ColumnName="Documents" />
+          <ScalarProperty Name="LoadingLimitNHA" ColumnName="LoadingLimitNHA" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VehicleTypes">
+      <EntityTypeMapping TypeName="POSModel.VehicleType">
+        <MappingFragment StoreEntitySet="VehicleType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendors">
+      <EntityTypeMapping TypeName="POSModel.Vendor">
+        <MappingFragment StoreEntitySet="Vendor">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="VendorTypeID" ColumnName="VendorTypeID" />
+          <ScalarProperty Name="OwnerContactName" ColumnName="OwnerContactName" />
+          <ScalarProperty Name="OwnerContactNo" ColumnName="OwnerContactNo" />
+          <ScalarProperty Name="PrimaryContactPerson" ColumnName="PrimaryContactPerson" />
+          <ScalarProperty Name="PrimaryContactNo" ColumnName="PrimaryContactNo" />
+          <ScalarProperty Name="SecContactPerson" ColumnName="SecContactPerson" />
+          <ScalarProperty Name="SecContactNo" ColumnName="SecContactNo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VendorTypes">
+      <EntityTypeMapping TypeName="POSModel.VendorType">
+        <MappingFragment StoreEntitySet="VendorType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="OwnCompanyId" ColumnName="OwnCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WHoldingTaxes">
+      <EntityTypeMapping TypeName="POSModel.WHoldingTax">
+        <MappingFragment StoreEntitySet="WHoldingTax">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="WTaxCode" ColumnName="WTaxCode" />
+          <ScalarProperty Name="WTaxName" ColumnName="WTaxName" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="EffectiveFrom" ColumnName="EffectiveFrom" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="BaseType" ColumnName="BaseType" />
+          <ScalarProperty Name="BaseAmount" ColumnName="BaseAmount" />
+          <ScalarProperty Name="GLAccountID" ColumnName="GLAccountID" />
+          <ScalarProperty Name="TaxSection" ColumnName="TaxSection" />
+          <ScalarProperty Name="SectionDescription" ColumnName="SectionDescription" />
+          <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IncomingRows">
+      <EntityTypeMapping TypeName="POSModel.IncomingRow">
+        <MappingFragment StoreEntitySet="IncomingRow">
+          <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+          <ScalarProperty Name="LineID" ColumnName="LineID" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="CheckNum" ColumnName="CheckNum" />
+          <ScalarProperty Name="BankCode" ColumnName="BankCode" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="AcctNum" ColumnName="AcctNum" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="CheckAmount" ColumnName="CheckAmount" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

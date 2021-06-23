@@ -1,0 +1,442 @@
+﻿@model Bilty.Data.usp_DepartmentPerson
+
+@{ ViewBag.Title = "PersonView"; }
+
+<div class="content-header">
+
+    <div class="header-section">
+        <h1>
+            Department Person<br><small>Create Read Update Delete Department Person</small>
+        </h1>
+    </div>
+
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>Admin</li>
+    <li><a href="javascript:;">Department Person</a></li>
+</ul>
+
+<!-- END Datatables Header -->
+<!-- Datatables Content -->
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            <a id="" class="btn btn-primary btn-sm pull-right" data-target="#AddPerson" data-toggle="modal" href="#">Add Person | <i class="fa fa-plus"></i></a>
+        </div>
+    </div>
+</div>
+@*<div class="col-lg-12"><div><input type="button" style="float:right" class="btn btn-primary" data-target="#AddPerson" value="Add Person" data-toggle="modal" /></div></div>
+<hr />*@
+
+<div id="AddPerson" class="modal fade clearControl" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add Department Person</h4>
+            </div>
+            <div class="modal-body">
+                @*@using (Html.BeginForm("PersonCreate", "Admin", FormMethod.Post, new { @onsubmit = " return validateForm();" }))*@
+                @using (Ajax.BeginForm("PersonCreate", "Admin", new AjaxOptions { HttpMethod = "POST", LoadingElementId = "page_loader", OnSuccess = "ResponseSuccess", OnFailure = "ResponseFailure" }))
+                {
+    @Html.AntiForgeryToken()
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.Label("Group", htmlAttributes: new { @class = "control-label" })
+                                    <div class="" id="group">
+
+                                    </div>
+                                </td>
+                                <td>
+                                    @Html.Label("Company", htmlAttributes: new { @class = "control-label" })
+                                    <div class="" id="company">
+
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Department", htmlAttributes: new { @class = "control-label" })
+                                    <div class="" id="department">
+
+                                    </div>
+                                </td>
+                                <td>
+                                    @Html.Label("Designation", htmlAttributes: new { @class = "control-label" })
+                                    <div class="">
+                                        @Html.EditorFor(model => model.Designation, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Designation, "", new { @class = "text-danger" })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label" })
+                                    <div class="">
+                                        @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+                                    </div>
+                                </td>
+                                <td>
+                                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
+                                    <div class="">
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+                                    <div class="">
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </td>
+                                <td>
+                                    @Html.LabelFor(model => model.BusinessEmail, htmlAttributes: new { @class = "control-label" })
+                                    <div class="">
+                                        @Html.EditorFor(model => model.BusinessEmail, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.BusinessEmail, "", new { @class = "text-danger" })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.Cell, htmlAttributes: new { @class = "control-label" })
+                                    <div class="">
+                                        @Html.EditorFor(model => model.Cell, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Cell, "", new { @class = "text-danger" })
+                                    </div>
+                                </td>
+                                <td>
+                                    @Html.LabelFor(model => model.PhoneNo, htmlAttributes: new { @class = "control-label" })
+                                    <div class="">
+                                        @Html.EditorFor(model => model.PhoneNo, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.PhoneNo, "", new { @class = "text-danger" })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.OtherContact, htmlAttributes: new { @class = "control-label" })
+                                    <div class="">
+                                        @Html.EditorFor(model => model.OtherContact, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.OtherContact, "", new { @class = "text-danger" })
+                                    </div>
+                                </td>
+                                <td>
+                                    @Html.LabelFor(model => model.AddressOffice, htmlAttributes: new { @class = "control-label" })
+                                    <div class="">
+                                        @Html.EditorFor(model => model.AddressOffice, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.AddressOffice, "", new { @class = "text-danger" })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.AddressOther, htmlAttributes: new { @class = "control-label" })
+                                    <div class="">
+                                        @Html.EditorFor(model => model.AddressOther, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.AddressOther, "", new { @class = "text-danger" })
+                                    </div>
+                                </td>
+                                <td>
+                                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
+                                    <div class="">
+                                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.IsIndividual, htmlAttributes: new { @class = "control-label" })
+                                    <div class="">
+                                        <input type="checkbox" id="IsIndividual" name="IsIndividual" value="false" onclick="$(this).attr('value', this.checked ? true : false)" />
+                                    </div>
+                                </td>
+                                <td>
+                                    @Html.LabelFor(model => model.Active, htmlAttributes: new { @class = "control-label" })
+                                    <div class="">
+                                        <input type="checkbox" id="Active" name="Active" value="false" onclick="$(this).attr('value', this.checked ? true : false)" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="">
+                                        <input type="hidden" id="GroupID" name="GroupID" value="0" />
+                                        <input type="hidden" id="CompanyID" name="CompanyID" value="0" />
+                                        <input type="hidden" id="DepartmentID" name="DepartmentID" value="0" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                }
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> | Save</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div>
+    <div class="col-lg-12" id="deptPersonView">
+
+        Loading...
+
+    </div>
+</div>
+<script>
+    function EditDeptPerson(id) {
+        var Json = jQuery.parseJSON($("#DepartmentPerson-" + id).val());
+
+        Person_GETCOMANYBY_ID(Json.GroupID);
+        $("#GroupID").val(Json.GroupID);
+        $("#CompanyID").val(Json.CompanyID);
+        $("#DepartmentID").val(Json.DepartmentID);
+        $("#PersonalID").val(Json.PersonalID);
+        $("#Code").val(Json.Code);
+        $("#Name").val(Json.Name);
+        $("#Email").val(Json.Email);
+        $("#BusinessEmail").val(Json.BusinessEmail);
+        $("#Address").val(Json.Address);
+        $("#Designation").val(Json.Designation);
+
+        $("#Cell").val(Json.Cell);
+        $("#PhoneNo").val(Json.PhoneNo);
+        $("#OtherContact").val(Json.OtherContact);
+        $("#AddressOffice").val(Json.AddressOffice);
+
+        $("#AddressOther").val(Json.AddressOther);
+        $("#IsIndividual").val(Json.IsIndividual);
+        $("#Grouplst").val(Json.GroupID)
+
+        if (Json.IsIndividual == "True") {
+            $('#IsIndividual').attr('checked', true);
+            $('#IsIndividual').val("True");
+        }
+        else
+            $('#IsIndividual').attr('checked', false);
+        if (Json.Active == "True") {
+            $('#Active').attr('checked', true);
+            $('#Active').val("True");
+        }
+        else
+            $('#Active').attr('checked', false);
+        Person_GETDEPARTMENT(Json.GroupID, Json.CompanyID);
+        $("#ddlDepartment").val(Json.DepartmentID);
+        $('#AddPerson').modal('toggle');
+        //$("#btnText").val("Update");
+    }
+    $(document).ready(function () {
+        $('#AddPerson').on('hidden.bs.modal', function () {
+            if ($("#PersonalID").val() != "0") {
+                clearFirst();
+                Person_GETCOMANYBY_ID(0);
+                Person_GETGROUP();
+                Person_GETDEPARTMENT(0, 0);
+
+            }
+
+        });
+
+
+        GetPersonRecord();
+        $("#addPerson").click(function () {
+            clearFirst();
+        });
+        Person_GETGROUP();
+        Person_GETCOMANYBY_ID(0);
+        Person_GETDEPARTMENT(0, 0);
+    });
+    function validateForm() {
+
+
+        if ($("#DepartCode").val() == "") {
+            $("#DepartCode").focus();
+            return false;
+        }
+        else if ($("#DepartName").val() == "") {
+            $("#DepartCode").focus();
+            return false;
+        }
+
+        else if ($("#GROUPID").val() == "0") {
+            $("#Grouplst").focus();
+            return false;
+        }
+        else if ($("#CompanyID").val() == "0") {
+            $("#ddlCompanyByGroup").focus();
+            return false;
+        }
+    }
+
+
+
+    function intialize(actiontype) {
+        if (actiontype == "Group") {
+            $('#Grouplst').on('change', function () {
+                $("#GroupID").val(this.value);
+                Person_GETCOMANYBY_ID(this.value)
+                $("#CompanyID").val("0");
+            });
+        }
+        else if (actiontype == "Department") {
+            $('#ddlDepartment').on('change', function () {
+                $("#DepartmentID").val(this.value);
+
+            });
+        }
+        else {
+            $('#ddlCompanyByGroup').on('change', function () {
+                $("#CompanyID").val(this.value);
+                $("#DepartmentID").val("0");
+                Person_GETDEPARTMENT($("#GroupID").val(), this.value);
+            });
+        }
+
+    }
+    function AddPerson() {
+        Person_GETGROUP();
+        Person_GETCOMANYBY_ID(0);
+        Person_GETDEPARTMENT(0, 0);
+        clearFirst();
+        $('#myModal').modal('toggle');
+
+    }
+    function Person_GETGROUP() {
+        try {
+
+            var requestData = {
+                GroupID: $.trim($('#GroupID').val()),
+
+            };
+            $.ajax({
+                type: 'POST',
+                url: 'ddl-Group',
+                //  data: JSON.stringify(requestData),
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    //   if ($('#hdFlag').val() == 'allergyWidg')
+                    $("#group").html(data.html);
+                    intialize("Group");
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    //if error
+
+                    //alert('Error : ' + xhr.message);
+                    //  HideLoader();
+                },
+                complete: function (data) {
+                    // if completed
+                    //   HideLoader();
+
+                },
+                async: true,
+                processData: false
+            });
+
+        }
+        catch (err) {
+
+            if (err && err !== "") {
+                alert(err.message);
+                HideLoader();
+            }
+        }
+    }
+
+    function Person_GETCOMANYBY_ID(GroupID) {
+        try {
+
+            var requestData = {
+                GroupID: GroupID,
+
+            };
+            $.ajax({
+                type: 'POST',
+                url: 'ddl-CompanyByID',
+                data: JSON.stringify(requestData),
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    $("#company").html(data.html);
+                    intialize("Company");
+                    if ($("#CompanyID").val() == "0") { Person_GETDEPARTMENT(0, 0); $("#DepartmentID").val(0); }
+                    $("#ddlCompanyByGroup").val($("#CompanyID").val());
+
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+
+                },
+                complete: function (data) {
+
+                },
+                async: true,
+                processData: false
+            });
+
+        }
+        catch (err) {
+
+            if (err && err !== "") {
+                alert(err.message);
+                HideLoader();
+            }
+        }
+    }
+
+    function Person_GETDEPARTMENT(GroupID, CompanyID) {
+        try {
+
+            var requestData = {
+                GroupID: GroupID,
+                CompanyID: CompanyID
+
+            };
+            $.ajax({
+                type: 'POST',
+                url: 'ddl-Department',
+                data: JSON.stringify(requestData),
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    //   if ($('#hdFlag').val() == 'allergyWidg')
+                    $("#department").html(data.html);
+                    intialize("Department");
+                    //  alert($("#DepartmentID").val());
+                    $("#ddlDepartment").val($("#DepartmentID").val());
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+
+                },
+                complete: function (data) {
+
+                },
+                async: true,
+                processData: false
+            });
+
+        }
+        catch (err) {
+
+            if (err && err !== "") {
+                alert(err.message);
+                HideLoader();
+            }
+        }
+    }</script>

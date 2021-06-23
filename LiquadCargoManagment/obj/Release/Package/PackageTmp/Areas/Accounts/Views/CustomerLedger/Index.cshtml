@@ -1,0 +1,56 @@
+﻿@using LiquadCargoManagment.Areas.Accounts.Helpers;;
+@{
+
+    Layout = "~/Areas/Accounts/Views/Shared/_Layout1.cshtml";
+    ViewBag.AllowAdding = null;
+    ViewBag.AllowEditing = null;
+    ViewBag.AllowDeleting = null;
+    string DataTableColumns = "{ \"data\": \"ID\",\"searchable\": false,\"bSortable\": true,\"bVisible\": false},{ \"data\": \"CreatedDateTime\"},{ \"data\": \"Description\"},{ \"data\": \"Debit\"},{ \"data\": \"Credit\"},{ \"data\": \"Balance\"}";
+    if (ViewBag.AllowAdding != null || ViewBag.AllowEditing != null || ViewBag.AllowDeleting != null)
+    {
+        ViewBag.DataTableActionColumn = "5";
+        DataTableColumns += ",{ \"data\": \"ID\",\"searchable\": false,\"bSortable\": false}";
+    }
+    ViewBag.DataTableColumns = DataTableColumns;
+}
+@section LinkStyleSection{
+    @Styles.Render("~/assets/accounts/cache/datatablestyle")
+}
+@section LinkScriptSection{
+    @Scripts.Render("~/assets/accounts/cache/datatablescript")
+}
+@section InLineScriptSection{
+    @{Html.RenderPartial("JScript");}
+
+}
+
+<!--Page content-->
+<!--===================================================-->
+<div id="page-content">
+    @{Html.RenderPartial("BreadCrumb");}
+    <div class="panel">
+        <div class="panel-body">
+            <table class="table table-striped table-bordered record-table" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Created Date</th>
+                        <th>Description</th>
+                        <th>Debit</th>
+                        <th>Credit</th>
+                        <th>Blanace</th>
+                        @if (ViewBag.DataTableActionColumn != null)
+                        {
+                            <th data-priority="2">Actions</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <!--===================================================-->
+    <!-- End Striped Table -->
+</div>
+<!--===================================================-->
+<!--End page content-->

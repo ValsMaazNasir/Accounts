@@ -1,0 +1,140 @@
+﻿@model  LiquadCargoManagment.Models.AdminModel
+@{ ViewBag.Title = "MCB Branches"; }
+
+
+<div class="content-header">
+
+    <div class="header-section">
+        <h1>
+            MCB Branches <br><small>Create Read Update Delete MCB Branches</small>
+        </h1>
+    </div>
+
+</div>
+
+
+
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            <h2><i class="fa fa-pencil"></i> | MCB Branches</h2>
+            <input type="button" class="btn btn-primary pull-right" data-target="#AddBranches" value="Add Branch" data-toggle="modal" />
+        </div>
+    </div>
+    <div id="AddBranches" class="modal fade clearControl" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Broker</h4>
+                </div>
+                <div class="modal-body">
+
+                    @using (Ajax.BeginForm("mcbBranches", "Admin", new AjaxOptions { HttpMethod = "POST", LoadingElementId = "page_loader", OnSuccess = "SuccessResponse", OnFailure = "FailureResponse" }))
+                    {
+                    <div class="modal-body form">
+                        @Html.AntiForgeryToken()
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        @Html.Hidden("ID", "0", new { htmlAttributes = new { @class = "form-control" } })
+                                        <label>Code</label>
+                                        <input type="text" id="BR_CODE" name="BR_CODE" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <label>Name</label>
+                                        <input type="text" id="BranchName" name="BranchName" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Contact</label>
+                                        <input type="number" id="ContactNo" name="ContactNo" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <label>Email</label>
+                                        <input type="email" id="EmailId" name="EmailId" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Is Active</label>
+                                        <input type="checkbox" id="Active" name="Active" value="true" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button id="btnSubmit" type="submit" value="Save" class="btn btn-primary pull-right"><i class="fa fa-save"></i> | Save</button>
+                    </div>
+                    }
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <div id="lstBranch">
+        @Html.Partial("Admin/_Branches", Model.lstmcbBranches)
+    </div>
+</div>
+
+@section Script
+{
+    <script>
+
+        $(document).ready(function () {
+            GetOrders();
+        })
+        function GetOrders() {
+            $('.example').DataTable();
+        }
+        function SuccessResponse(data) {
+            if (data.Status == "OK") {
+                if (data.Form == "mcbBranch") {
+                    $("#lstBranch").html(data.html);
+                    alert(data.Message);
+                    if (data.Message !== "Record deleted Successfully!.")
+                        $('#AddBranches').modal('toggle');
+                    clearFirst();
+
+
+                }
+                $("#btnSubmit").html("Save");
+            }
+            else {
+                alert(data.Message);
+            }
+
+        }
+
+        function EditBranches(id) {
+            var Json = jQuery.parseJSON($("#branches-" + id).val());
+            $("#ID").val(Json.ID);
+            $("#BR_CODE").val(Json.BR_CODE);
+            $("#BranchName").val(Json.BranchName);
+            $("#ContactNo").val(Json.ContactNo);
+            $("#EmailId").val(Json.EmailId);
+
+            if (Json.Active == "True") {
+                $('#Active').attr('checked', true);
+                $('#Active').val("True");
+            }
+            else
+                $('#Active').attr('checked', false);
+            $('#AddBranches').modal('toggle');
+
+        }
+    </script>
+}

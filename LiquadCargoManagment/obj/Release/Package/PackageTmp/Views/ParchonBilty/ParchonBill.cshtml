@@ -1,0 +1,307 @@
+﻿
+@{
+    ViewBag.Title = "ParchonBill";
+}
+
+<link href="~/css/CustomerLoader.css" rel="stylesheet" />
+<style>
+    #grid {
+        display: none;
+    }
+</style>
+
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            <h2>Create Parchon Bill</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <input type="hidden" id="hfEditID" name="ID" />
+                <label>Reference No</label>
+                <input type="text" class="form-control" id="ReferenceNo" />
+            </div>
+            <div class="col-md-4">
+                <label>Report Type</label>
+                <select class="form-control" id="ReportType">
+                    <option value="rptUniverbill">Bill Format No:1</option>
+                    @*<option value="rptBillformat2">Bill Format No:2</option>
+                        <option value="rptBillformat3">Bill Format No:3</option>
+                        <option value="rptBillformat4">Bill Format No:4</option>
+                        <option value="rptBillformat5">Bill Format No:5</option>
+                        <option value="rptBillformat6">Bill Format No:6</option>
+                        <option value="rptBillformat7">Bill Format No:7</option>*@
+
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label>Billing Date</label>
+                <input type="text" class="form-control" id="BillingDate" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            <h2>Search Filter</h2>
+            <button type="button" class="btn btn-warning pull-right btn-sm" style="margin-left:15px;">Generate Bill | <i class="fa fa-plus-circle"></i></button>
+            <button class="btn btn-success pull-right btn-sm" type="submit" target="_blank" style="margin-left:15px;" onclick="Preview('BillPreview')">Report View | <i class="fa fa-eye"></i></button>
+            <a id="" class="btn btn-primary pull-right btn-sm" onclick="$('#modal-add').modal('show');" href="#" style="margin-left:15px;">Search Bilty | <i class="fa fa-search"></i></a>
+        </div>
+    </div>
+
+    <div class="" id="grid">
+
+        @Html.Partial("_SearchUniversalBill")
+    </div>
+</div>
+
+
+<div id="modal-add" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title"><i class="fa fa-search"></i> Search Bilty</h2>
+            </div>
+            <!-- END Modal Header -->
+            <!-- Modal Body -->
+            @using (Ajax.BeginForm("SearchUniversalBill", "UniversalBilty", new AjaxOptions() { HttpMethod = "GET", OnSuccess = "fnSuccessSearch", OnFailure = "fnFailedSearch" }))
+            {
+                <div class="modal-body">
+                    <div class="loader LoaderTd" style="display:none"></div>
+                    <table class="table table-responsive Search">
+                        <tbody>
+                            <tr>
+                                <td width="25%">
+                                    <label class="control-label">Date From</label>
+                                    <input type="text" id="DateFrom" name="DateFrom" class="form-control" />
+                                </td>
+                                <td width="25%">
+                                    <label class="control-label">Date To</label>
+                                    <input type="text" id="DateTo" name="DateTo" class="form-control" />
+                                </td>
+                                <td width="25%">
+                                    <label class="control-label">BiltyNo</label>
+                                    <input type="text" id="BiltyNo" name="OrderNo" class="form-control" />
+                                </td>
+                                <td width="25%">
+                                    <label class="control-label">Bill To</label>
+                                    @Html.DropDownList("BillTo", ViewBag.BillTo as SelectList, "--Select--", new { @class = "form-control select-chosen" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="25%">
+                                    <label class="control-label">Vehicle</label>
+                                    @Html.DropDownList("Vehicle", ViewBag.Vehicle as SelectList, "--Select--", new { @class = "form-control select-chosen" })
+                                </td>
+                                <td width="25%">
+                                    <label class="control-label">Sender</label>
+                                    @Html.DropDownList("Sender", ViewBag.BillTo as SelectList, "--Select--", new { @class = "form-control select-chosen" })
+                                </td>
+                                <td width="25%">
+                                    <label class="control-label">Receiver</label>
+                                    @Html.DropDownList("Receiver", ViewBag.BillTo as SelectList, "--Select--", new { @class = "form-control select-chosen" })
+                                </td>
+
+                                <td width="25%">
+                                    <label class="control-label">Own Company</label>
+                                    @Html.DropDownList("OwnCompany", ViewBag.OwnCompany as SelectList, "--Select--", new { @class = "form-control select-chosen" })
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary pull-right" onclick="$('.Search').hide(); $('.LoaderTd').show();"><b><i class="fa fa-search"></i> | Search Bilty</b></button>
+                </div>
+            }
+            <!-- END Modal Body -->
+        </div>
+    </div>
+</div>
+
+<script src="~/js/Function.js"></script>
+<script src="~/js/Software js/Challan.js"></script>
+
+@section Script
+{
+    <script>
+
+        function fnSuccessSearch(response) {
+            debugger;
+            $("select").chosen('destroy');
+            $("select").val('');
+            $("input").val('');
+            if (response.Status == "OK") {
+                $("#modal-add").modal('hide');
+                $("#grid").html(response.html);
+                $("#grid").slideDown();
+                $(".LoaderTd").hide();
+                $('.Search').show();
+                GetOrders();
+                $("select").chosen();
+            }
+
+
+        }
+        function Clear() {
+            $("input[type='text']").val('');
+        }
+        $(document).ready(function () {
+            $("#DateTo").datepicker({
+                altField: "#DateTo",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#DateFrom").datepicker({
+                altField: "#DateFrom",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#BillingDate").datepicker({
+                altField: "#BillingDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+        });
+        $(document).ready(function () {
+            $("#example").DataTable();
+        });
+        function GetOrders() {
+            $('#example').DataTable({
+                "lengthMenu": [[50, 100, 150, 200 - 1], [50, 100, 150, 200, "All"]]
+            });
+        }
+
+        $(document).on('click', '#checkAll', function (a) {
+            debugger;
+            var table = $(this).closest('#example table');
+            table.find(':checkbox').not(this).prop('checked', this.checked);
+        });
+
+        jQuery(function ($) {
+            debugger;
+            $('body').on('click', '#checkAll', function () {
+                $('#example tbody tr').find("td:eq(0) input[type='checkbox']").prop('checked', this.checked);
+            });
+
+            $('body').on('click', '#UniversalBiltyID', function () {
+                $("#example tbody tr").each(function () {
+                    let row = $(this);
+                    if (row.find("td:eq(0) input[type='checkbox']").length == $("td:eq(0) input[type='checkbox']:checked").length) {
+                        $('#checkAll').prop('checked', true);
+                    } else {
+                        $("#checkAll").prop('checked', false);
+                    }
+                })
+            });
+        });
+
+        function SaveData() {
+            debugger;
+            let Order = {}
+            let ID = $("#hfEditID").val();
+            let ReferenceNo = $("#ReferenceNo").val();
+            let ReportType = $("#ReportType").val();
+            let BillingDate = $("#BillingDate").val();
+
+
+            if (ReferenceNo == "" || ReportType == "" || BillingDate == "") {
+                Message("Required", "Enter all required fields", "error");
+                return;
+            }
+
+            Order.ID = ID;
+            Order.ReferenceNo = ReferenceNo;
+            Order.ReportType = ReportType;
+            Order.BillingDate = BillingDate;
+
+            var Customers = new Array();
+            $("#example tbody tr").each(function () {
+                var row = $(this);
+                var customer = {};
+                if (row.find("td:eq(0) input").is(":checked")) {
+                    customer.UniversalBiltyID = row.find("td:eq(0) input[type='checkbox']").val();
+                    Customers.push(customer);
+                }
+            });
+
+            if (Customers != "") {
+                $.ajax({
+                    url: "../UniversalBilty/SaveUniversalBill",
+                    type: "POST",
+                    data: { Order: Order, check: Customers },
+                    success: function (response) {
+                        debugger;
+                        if (response.status != "OK") {
+                            Message("Error", "Reference No already exist", "error");
+                        }
+                        else {
+                            Message("Success", "Universal Bill has been created", "success");
+                            window.location = "../UniversalBilty/UniversalBillList";
+                        }
+                    },
+                    error: function (res) {
+                        Message("Error", res.Status, "error");
+                    }
+                });
+            }
+            else {
+                Message("Required", "Please select bilty !", "info");
+            }
+        }
+
+        function Preview() {
+            let ReportType = $("#ReportType").val();
+            if (ReportType == null) {
+                Message("Required", "Please Select Report Type", "info");
+                return;
+            }
+            debugger;
+            var Customers = new Array();
+            $("#example tbody tr").each(function () {
+                var row = $(this);
+                if (row.find("td:eq(0) input").is(":checked")) {
+                    Customers.push(parseInt(row.find("td:eq(0) input[type='checkbox']").val()));
+                }
+            });
+            console.log(Customers);
+            if (Customers != "") {
+                $.ajax({
+                    type: "POST",
+                    url: "../Report/BillPreview/",
+                    data: { BiltyIds: Customers },
+                    success: function () {
+                        window.location = "/rpaspx/report.aspx?reportname=" + ReportType + " ";
+                    },
+                    error: function () {
+                        Message("Error", "An Error Occured", "error");
+                    }
+                });
+            }
+            else {
+                Message("Required", "Please select bilty !", "info");
+            }
+        }
+
+
+
+    </script>
+}

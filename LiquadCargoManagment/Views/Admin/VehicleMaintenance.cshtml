@@ -1,0 +1,296 @@
+﻿
+@{
+    ViewBag.Title = "VehicleMaintenance";
+}
+<div class="content-header">
+
+    <div class="header-section">
+        <h1>
+            Vehicle Maintenance<br><small>Create Read Update Delete Vehicle Maintenance</small>
+        </h1>
+    </div>
+
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>Admin</li>
+    <li><a href="javascript:;">Vehicle Maintenance</a></li>
+</ul>
+
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+
+            <a id="" class="btn btn-primary btn-sm pull-right" onclick="$('#modal-add').modal('show'); ClearItem(); Enable();" href="#" style="margin-left:10px;">Add New | <i class="fa fa-plus"></i></a>
+            <a id="" class="btn btn-primary btn-sm pull-right" onclick="$('#modal-addSearch').modal('show'); ClearItem();" href="#">Search | <i class="fa fa-search"></i></a>
+        </div>
+    </div>
+    <div class="" id="grid">
+        @Html.Partial("_VehicleMaintenance")
+    </div>
+</div>
+
+<div id="modal-add" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h2 class="modal-title"><i class="fa fa-pencil-alt"></i>Maintenance Schedule</h2>
+            </div>
+            <!-- END Modal Header -->
+            <!-- Modal Body -->
+            @using (Ajax.BeginForm("addVehicleMaintenance", "Admin", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "fnSuccess", OnFailure = "fnFailed" }, new { enctype = "multipart/form-data" }))
+            {
+                <div class="modal-body col-md-12">
+                    <h3>Vehicle Info</h3>
+                    <table class="table table-striped" id="Add">
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    <input type="hidden" name="ID" id="hfEditID" />
+                                    <label class="control-label">Vehicle Type</label>
+                                    @Html.DropDownList("VehicleType", ViewBag.VehicleType as SelectList, "--Select Type--", new { @class = "form-control", onchange = "GetVehicleReg(this) " })
+                                </td>
+                                <td width="50%">
+
+                                    <label class="control-label">Vehicle Reg No</label>
+                                    @Html.DropDownList("VehicleRegNo", ViewBag.VehRegNo as SelectList, "--Select--", new { @class = "form-control" })
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label class="control-label">OwnerShip Status</label>
+                                    @Html.DropDownList("Ownership", ViewBag.ownership as SelectList, "--Select--", new { @class = "form-control" })
+                                </td>
+                                <td>
+                                    <label class="control-label">OMC</label>
+                                    @Html.DropDownList("PrincipleCompany", ViewBag.principlecompany as SelectList, "--Select--", new { @class = "form-control" })
+                                </td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                    <h3>Maintenance Details</h3>
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <td width="33%">
+                                    <label class="control-label">Maintenance Type</label>
+                                    @Html.DropDownList("MaintenanceTypeID", ViewBag.MaintenanceType as SelectList, "--Select--", new { @class = "form-control" })
+
+                                </td>
+                                <td width="33%">
+                                    <label class="control-label">Start From</label>
+                                    <input type="text" id="txtStartFrom" name="StartFrom" class="form-control">
+                                </td>
+
+                                <td width="33%">
+                                    <label class="control-label">Expiry Date</label>
+                                    <input type="text" id="txtExpiryDate" name="ExpiryDate" class="form-control">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td width="33%">
+                                    <label class="control-label">Alert Type</label>
+                                    <select class="form-control" name="AlertType" id="txtAlertType">
+                                        <option value="0">Select</option>
+                                        <option value="SMS">SMS</option>
+                                        <option value="Email">Email</option>
+                                    </select>
+                                </td>
+                                <td width="33%">
+                                    <label class="control-label">SMS No</label>
+                                    <input type="number" id="txtSmsNo" name="SMSNo" class="form-control">
+                                </td>
+                                <td width="33%">
+                                    <label class="control-label">Email Add</label>
+                                    <input id="txtEmailAdd" name="EmailAdd" class="form-control">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="control-label">Alert Frequency</label>
+                                    @*<input id="txtAlertFrequency" name="AlertFrequency" class="form-control">*@
+                                    <select id="txtAlertFrequency" name="AlertFrequency" class="form-control">
+                                        <option value="0">Select</option>
+                                        <option value="Daily">Daily</option>
+                                        <option value="Weekly">Weekly</option>
+                                        <option value="Monthly">Monthy</option>
+                                        <option value="Yearly">Yearly</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <label class="control-label">Alert Before(Days)</label>
+                                    <input type="number" id="txtAlertBefore" name="AlertBefore" class="form-control">
+                                </td>
+                                <td>
+                                    <label class="control-label">Grace Period %</label>
+                                    <input type="number" id="GracePeriod" name="GracePeriod" class="form-control">
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>
+                                    <label class="control-label">Current Odo Meter</label>
+                                    <input id="CurrentOdoMeter" name="CurrentOdoMeter" class="form-control">
+                                </td>
+                                <td>
+                                    <label class="control-label">Due KMs</label>
+                                    <input id="DueKMs" name="DueKMs" class="form-control">
+                                </td>
+                                <td>
+                                    <label class="control-label">Grace due KMs</label>
+                                    <input id="GraceDue" name="GraceDueKMs" class="form-control">
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" id="btnSaveEdit" class="btn btn-primary pull-right"><b><i class="fa fa-save"></i> Save</b></button>
+                </div>
+            }
+            <!-- END Modal Body -->
+        </div>
+    </div>
+</div>
+
+
+<div id="modal-addSearch" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h2 class="modal-title"><i class="fa fa-pencil-alt"></i>Maintenance Schedule</h2>
+            </div>
+            <!-- END Modal Header -->
+            <!-- Modal Body -->
+            @using (Ajax.BeginForm("SearchVehicleMaintenance", "Admin", new AjaxOptions() { HttpMethod = "GET", OnSuccess = "fnSuccessSearch" }))
+            {
+                <div class="modal-body col-md-12">
+                    <h3>Vehicle Info</h3>
+                    <table class="table table-striped" id="Add">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label class="control-label">Vehicle Type</label>
+                                    @Html.DropDownList("VehicleType", ViewBag.VehicleType as SelectList, "--Select Type--", new { @class = "form-control", onchange = "GetVehicleReg(this) " })
+                                </td>
+                                <td>
+
+                                    <label class="control-label">Vehicle Reg No</label>
+                                    @Html.DropDownList("VehicleRegNo", ViewBag.VehRegNo as SelectList, "--Select--", new { @class = "form-control" })
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label class="control-label">OwnerShip Status</label>
+                                    @Html.DropDownList("Ownership", ViewBag.ownership as SelectList, "--Select--", new { @class = "form-control" })
+                                </td>
+                                <td>
+                                    <label class="control-label">OMC</label>
+                                    @Html.DropDownList("PrincipleCompany", ViewBag.principlecompany as SelectList, "--Select--", new { @class = "form-control" })
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" id="btnSaveEdit" class="btn btn-primary pull-right"><b><i class="fa fa-search"></i> | Search</b></button>
+                </div>
+            }
+            <!-- END Modal Body -->
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="~/js/Function.js"></script>
+<script src="~/js/Software js/VehicleMaintenance.js"></script>
+@section Script
+{
+    <script>
+
+        $(document).ready(function () {
+            GetOrders();
+            $("#txtStartFrom").datepicker({
+                altField: "#txtStartFrom",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#txtExpiryDate").datepicker({
+                altField: "#txtExpiryDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+        });
+
+        function Message(title, text, type) {
+            Swal.fire({
+                title: title + '!',
+                text: text,
+                icon: type,
+                confirmButtonText: 'OK'
+            })
+        }
+        function GetOrders() {
+            $('#example').DataTable({
+                "lengthMenu": [[100, 200, 300, 400 - 1], [100, 200, 300, 400, "All"]],
+                dom: 'Bfrtip',
+                buttons: [
+                    //'copyHtml5',
+                    {
+                        extend: 'copyHtml5',
+                        text: '<i class="fa fa-copy"></i> | COPY',
+                        titleAttr: 'COPY'
+                    },
+                    //'excelHtml5',
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fa fa-file-o"></i> | EXCEL',
+                        titleAttr: 'Excel'
+                    },
+                    //'csvHtml5',
+                    {
+                        extend: 'csvHtml5',
+                        text: '<i class="fa fa-file-o"></i> | CSV',
+                        titleAttr: 'CSV'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        text: '<i class="fa fa-file-pdf-o"></i> | PDF',
+                        titleAttr: 'PDF'
+                    },
+                    'pageLength'
+                ]
+            }).order([1, 'des'])
+                .draw();
+        }
+
+        function ClearItem() {
+            $("input[type='text']").val('');
+            $("input[type='hidden']").val('');
+            $("textarea").val('');
+        }
+    </script>
+}
+

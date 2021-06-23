@@ -1,0 +1,2648 @@
+﻿@model LiquadCargoManagment.Models.OrderViewModel
+@using LiquadCargoManagment.Models;
+
+@{
+    ViewBag.Title = "CreateUniversalBilty";
+}
+
+
+<style>
+    #DamageInformation, #DispatchInformation,
+    #ExpensesInformation,
+    #ProductInformation,
+    #ReceivingInformation1,
+    #ContainerInformation,
+    #ReceivingDocument1,
+    #VehicleInformation,
+    #PackageTypeInformation,
+    #LoadingUnloadingDetail,
+    #SearchVehicle {
+        display: none;
+    }
+    /*#VehicleInfoModal, #ContainerInfoModal {
+        counter-reset: serial-number;*/ /* Set the serial number counter to 0 */
+    /*}
+
+        #VehicleInfoModal tbody td:first-child:before, #ContainerInfoModal tbody td:first-child:before {
+            counter-increment: serial-number;*/ /* Increment the serial number counter */
+            /*content: counter(serial-number);*/ /* Display the counter */
+        /*}*/
+
+</style>
+
+<div class="content-header">
+
+    <div class="header-section">
+        <h1>
+            Create Universal Bilty <br><small>Create Read Update Delete Universal Bilty</small>
+        </h1>
+    </div>
+
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>Admin</li>
+    <li><a href="javascript:;">Create Universal Bilty</a></li>
+</ul>
+
+<!-- END Datatables Header -->
+<!-- Datatables Content -->
+<div class="block full">
+
+    <div class="block-title row">
+        <div class="col-md-4">
+            <h2><i class="fa fa-pencil"></i> | Manual Bilty</h2>
+        </div>
+        <div class="col-md-8">
+            <button type="button" class="btn btn-default pull-right" title="Show all" data-toggle="tooltip" onclick="ShowAllForms(this)"><i class="fa fa-eye" style="font-size:18px; color:black;"></i></button>
+            <button type="button" class="btn btn-default pull-right" title="Hide all" data-toggle="tooltip" onclick="HideAllForms(this)" style="margin-right:3px;"><i class="fa fa-eye-slash" style="font-size:18px; color:black;"></i></button>
+
+            <div class="btn-group btn-group-sm pull-right" style="margin-right:5px;">
+                <a href="javascript:void(0)" style="font-size:14px;" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Open | <span class="caret"></span></a>
+                <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+                    <li><a href="#">Customer Info</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#Location">Location Info</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#VehicleInformation" onclick="ShowVehicle(this)">Vehicle Info</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#ContainerInformation" onclick="ShowContainer(this)">Container Info</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#ProductInformation" onclick="ShowProduct(this)">Product Info</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#DispatchInformation" onclick="ShowDispatchDocument(this)">Dispatch Document Detail</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#LoadingUnloadingDetail" onclick="ShowLoadingUnloading(this)">Loading & UnLoading Detail</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#ReceivingInformation1" onclick="ShowReceivingDetail(this)">Receiving Information</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#DamageInformation" onclick="ShowDamage(this)">Damage Info</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#ExpensesInformation" onclick="ShowExpenses(this)">Expense Detail</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <table class="table">
+        <tbody>
+
+            @if (Model.UniversalBilty.ID > 0)
+            {
+                <tr>
+                    <td hidden>
+                        <label>Order No</label>
+                        @if (ViewBag.BiltyNo != null)
+                        {
+                            <input type="number" value="@ViewBag.BiltyNo" name="AutoBiltyNo" class="form-control" id="AutoBiltyNo" disabled />
+                        }
+                        else
+                        {
+                            <input type="number" value="@Model.UniversalBilty.AutoBiltyNo" name="AutoBiltyNo" class="form-control" id="AutoBiltyNo" disabled />
+                        }
+                    </td>
+                    <td>
+                        <input type="hidden" name="ID" id="hfBiltyID" value="@Model.UniversalBilty.ID" />
+                        <label>Self Company</label>
+                        @Html.DropDownList("OwnCompanyID", ViewBag.OwnCompany as SelectList, new { @class = "form-control" })
+                    </td>
+                    <td>
+                        <label id="ManualError">Manual Bilty #</label><label class="text-danger Error" style="display:none;">Manual Bilty # already exist</label>
+                        <input type="text" class="form-control" name="ManualBiltyNo" id="ManualBiltyNo" value="@Model.UniversalBilty.ManualBiltyNo" />
+                    </td>
+                    <td>
+                        <label>Bilty Date</label>
+                        <input type="text" class="form-control MakeDate" id="BiltyDate" value="@Model.UniversalBilty.BiltyDate" />
+                    </td>
+                    <td>
+                        <label>Delivery Date</label>
+                        <input type="text" class="form-control MakeDate" id="DeliveryDate" value="@Model.UniversalBilty.DeliveryDate" />
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td hidden>
+                        <label>Order No</label>
+                        @if (ViewBag.BiltyNo != null)
+                        {
+                            <input type="number" value="@ViewBag.BiltyNo" name="AutoBiltyNo" class="form-control" id="AutoBiltyNo" disabled />
+                        }
+                        else
+                        {
+                            <input type="number" value="@Model.UniversalBilty.AutoBiltyNo" name="AutoBiltyNo" class="form-control" id="AutoBiltyNo" disabled />
+                        }
+                    </td>
+                    <td>
+                        <input type="hidden" name="ID" id="hfBiltyID" value="@Model.UniversalBilty.ID" />
+                        <label>Self Company</label>
+                        @Html.DropDownList("OwnCompanyID", ViewBag.OwnCompany as SelectList, new { @class = "form-control" })
+                    </td>
+                    <td>
+                        <label id="ManualError">Manual Bilty #</label><label class="text-danger Error" style="display:none;">Manual Bilty # already exist</label>
+                        <input type="text" class="form-control" name="ManualBiltyNo" id="ManualBiltyNo" />
+                    </td>
+                    <td>
+                        <label>Bilty Date</label>
+                        <input type="text" class="form-control MakeDate" name="BiltyDate" id="BiltyDate" value="@DateTime.Today" />
+                    </td>
+                    <td>
+                        <label>Delivery Date</label>
+                        <input type="text" class="form-control MakeDate" name="DeliveryDate" id="DeliveryDate" value="@DateTime.Today" />
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+    <div class="border" style="border-top:dashed thin lavender">
+        <div class="row" style="margin-top:20px;">
+            <div class="col-md-12">
+                <h4>
+                    Customer Information
+                    <button type="button" class="btn btn-default btn-sm pull-right" onclick="ReloadCustomer(this)"><i class="fa fa-refresh fa-spin" id="Reload"></i></button>
+                </h4>
+            </div>
+        </div>
+        <div class="table">
+            <table class="table table-responsive" id="Customer">
+                <tbody>
+                    @if (Model.lstCustomerinformation.Count > 0)
+                    {
+                        foreach (var item in Model.lstCustomerinformation)
+                        {
+                            <tr class="CustomerCompany Sender">
+                                <td width="33%">
+                                    <label>Consigner/Sender</label>
+                                    <select class="form-control chosen" id="ConsignerSenderCustomerCode" onchange="GetCustomerName(this)">
+                                        <option value="">--Select--</option>
+                                        @if (ViewBag.CustomerCode != null)
+                                        {
+                                            foreach (var pro in ViewBag.CustomerCode)
+                                            {
+                                                if (item.ConsignerSenderCustomerCode.ToString() == pro.Value)
+                                                {
+                                                    <option value="@pro.Value" selected>@pro.Text</option>
+
+                                                }
+                                                else
+                                                {
+                                                    <option value="@pro.Value">@pro.Text</option>
+                                                }
+                                            }
+                                        }
+                                    </select>
+                                </td>
+                                @if (item.ConsignerSenderCustomerCode != null)
+                                {
+                                    <td width="33%">
+                                        <label>Company</label>
+                                        <input type="text" class="form-control" value="@item.CustomerDepartment.CustomerCompany.Name" id="ConsignerSenderCustomerCompany" name="ConsignerSenderCustomerCompany" disabled />
+                                    </td>
+                                    <td width="33%">
+                                        <label>Depart</label>
+                                        <input type="text" class="form-control" value="@item.CustomerDepartment.Name" id="SenderDepart" disabled />
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td width="33%">
+                                        <label>Company</label>
+                                        <input type="text" class="form-control" value="" id="ConsignerSenderCustomerCompany" name="ConsignerSenderCustomerCompany" disabled />
+                                    </td>
+                                    <td width="33%">
+                                        <label>Depart</label>
+                                        <input type="text" class="form-control" value="" id="SenderDepart" disabled />
+                                    </td>
+                                }
+                            </tr>
+
+                            <tr class="CustomerCompany Receiver">
+                                <td width="30%">
+                                    <label>Consigner/Receiver</label>
+                                    <select class="form-control chosen" id="ConsignerReceiverCustomerCode" onchange="GetCustomerName(this)">
+                                        <option value="">--Select--</option>
+                                        @if (ViewBag.CustomerCode != null)
+                                        {
+                                            foreach (var pro in ViewBag.CustomerCode)
+                                            {
+                                                if (item.ConsignerReceiverCustomerCode.ToString() == pro.Value)
+                                                {
+                                                    <option value="@pro.Value" selected>@pro.Text</option>
+
+                                                }
+                                                else
+                                                {
+                                                    <option value="@pro.Value">@pro.Text</option>
+                                                }
+                                            }
+                                        }
+                                    </select>
+                                </td>
+                                @if (item.ConsignerReceiverCustomerCode != null)
+                                {
+                                    <td>
+                                        <label>Company</label>
+                                        <input type="text" class="form-control" value="@item.CustomerDepartment1.CustomerCompany.Name" id="ConsignerReceiverCustomerCompany" name="ConsignerReceiverCustomerCompany" disabled />
+                                    </td>
+                                    <td>
+                                        <label>Depart</label>
+                                        <input type="text" class="form-control" value="@item.CustomerDepartment1.Name" id="ReceiverDepart" disabled />
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <label>Company</label>
+                                        <input type="text" class="form-control" value="" id="ConsignerReceiverCustomerCompany" name="ConsignerReceiverCustomerCompany" disabled />
+                                    </td>
+                                    <td>
+                                        <label>Depart</label>
+                                        <input type="text" class="form-control" value="" id="ReceiverDepart" disabled />
+                                    </td>
+                                }
+                                <td colspan="2"></td>
+                            </tr>
+
+                            <tr class="CustomerCompany Client">
+                                <td width="20%">
+                                    <label>Client/Bill To</label>
+                                    <select class="form-control chosen" id="ClientCode" onchange="GetCustomerClient(this)">
+                                        <option value="">--Select--</option>
+                                        @if (ViewBag.CustomerCode != null)
+                                        {
+                                            foreach (var pro in ViewBag.CustomerCode)
+                                            {
+                                                if (item.ClientCode.ToString() == pro.Value)
+                                                {
+                                                    <option value="@pro.Value" selected>@pro.Text</option>
+
+                                                }
+                                                else
+                                                {
+                                                    <option value="@pro.Value">@pro.Text</option>
+                                                }
+                                            }
+                                        }
+                                    </select>
+                                </td>
+                                @if (item.ClientCode != null)
+                                {
+                                    <td>
+                                        <label>Company</label>
+                                        <input type="text" class="form-control" value="@item.CustomerDepartment2.CustomerCompany.Name" id="ClientCompany" disabled />
+                                    </td>
+                                    <td>
+                                        <label>Depart</label>
+                                        <input type="text" class="form-control" value="@item.CustomerDepartment2.Name" id="ClientDepart" disabled />
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <label>Company</label>
+                                        <input type="text" class="form-control" value="" id="ClientCompany" disabled />
+                                    </td>
+                                    <td>
+                                        <label>Depart</label>
+                                        <input type="text" class="form-control" value="" id="ClientDepart" disabled />
+                                    </td>
+                                }
+                            </tr>
+
+                            <tr class="Payment">
+                                <td width="20%">
+                                    <label>Billing Type</label>
+                                    <select class="form-control chosen" id="BillingType" name="BillingType">
+                                        @foreach (var Billing in Model.lstCustomerinformation)
+                                        {
+                                            if (Billing.BillingType == "Paid")
+                                            {
+                                                <option>--Select--</option>
+                                                <option selected>Paid</option>
+                                                <option>To Pay</option>
+                                            }
+                                            else if (Billing.BillingType == "To Pay")
+                                            {
+                                                <option>--Select--</option>
+                                                <option>Paid</option>
+                                                <option selected>To Pay</option>
+                                            }
+                                            else
+                                            {
+                                                <option selected>--Select--</option>
+                                                <option>Paid</option>
+                                                <option>To Pay</option>
+                                            }
+                                        }
+                                    </select>
+                                </td>
+                                <td width="20%">
+                                    <label>Shipment Type</label>
+                                    <select class="form-control chosen" id="ShipmentType">
+                                        <option value="">--Select--</option>
+                                        @if (ViewBag.ShipmentType != null)
+                                        {
+                                            foreach (var pro in ViewBag.ShipmentType)
+                                            {
+                                                if (item.ShipmentType.ToString() == pro.Value)
+                                                {
+                                                    <option value="@pro.Value" selected>@pro.Text</option>
+
+                                                }
+                                                else
+                                                {
+                                                    <option value="@pro.Value">@pro.Text</option>
+                                                }
+                                            }
+                                        }
+                                    </select>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr class="CustomerCompany Sender">
+                            <td width="33%">
+                                <label>Consigner/Sender</label>
+                                @Html.DropDownList("ConsignerSenderCustomerCode", ViewBag.CustomerCode as SelectList, "--Select--", new { @class = "form-control chosen", onchange = "GetCustomerName(this)" })
+                            </td>
+                            <td width="33%">
+                                <label>Company</label>
+                                <input type="text" class="form-control" id="ConsignerSenderCustomerCompany" name="ConsignerSenderCustomerCompany" disabled />
+                            </td>
+                            <td width="33%">
+                                <label>Depart</label>
+                                <input type="text" class="form-control" id="SenderDepart" disabled />
+                            </td>
+                        </tr>
+
+                        <tr class="CustomerCompany Receiver">
+                            <td width="30%">
+                                <label>Consigner/Receiver</label>
+                                @Html.DropDownList("ConsignerReceiverCustomerCode", ViewBag.CustomerCode as SelectList, "--Select--", new { @class = "form-control chosen", onchange = "GetCustomerName(this)" })
+                            </td>
+                            <td>
+                                <label>Company</label>
+                                <input type="text" class="form-control" id="ConsignerReceiverCustomerCompany" name="ConsignerReceiverCustomerCompany" disabled />
+                            </td>
+                            <td>
+                                <label>Depart</label>
+                                <input type="text" class="form-control" id="ReceiverDepart" disabled />
+                            </td>
+                        </tr>
+
+                        <tr class="CustomerCompany Client">
+                            <td width="20%">
+                                <label>Client/Bill To</label>
+                                @Html.DropDownList("ClientCode", ViewBag.CustomerCode as SelectList, "--Select--", new { @class = "form-control chosen", onchange = "GetCustomerClient(this)" })
+                            </td>
+                            <td>
+                                <label>Company</label>
+                                <input type="text" class="form-control" id="ClientCompany" disabled />
+                            </td>
+                            <td>
+                                <label>Depart</label>
+                                <input type="text" class="form-control" id="ClientDepart" disabled />
+                            </td>
+                        </tr>
+
+                        <tr class="Payment">
+                            <td width="20%">
+                                <label>Billing Type</label>
+                                <select class="form-control chosen" id="BillingType" name="BillingType">
+                                    <option>--Select--</option>
+                                    <option value="Paid">Paid</option>
+                                    <option value="To Pay">To Pay</option>
+                                </select>
+                            </td>
+                            <td width="20%">
+                                <label>Shipment Type</label>
+                                @Html.DropDownList("ShipmentType", ViewBag.ShipmentType as SelectList, "--Select--", new { @class = "form-control chosen" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="border" style="border-top:dashed thin lavender">
+        <h4>
+            Location Information
+            <button type="button" class="btn btn-default btn-sm pull-right" onclick="ReloadLocation(this)"><i class="fa fa-refresh fa-spin" id="Reload"></i></button>
+        </h4>
+        <table class="table" id="Location">
+            <tbody>
+                @if (Model.lstLocationInformation.ID > 0)
+                {
+                    <tr class="LocationCode" id="LocalPick">
+                        <td width="20%">
+                            <label>Pick Location</label>
+                            @if (Model.lstLocationInformation.LocationCode != null)
+                            {
+                                <select class="form-control chosen pickcode" id="LocationCode" onchange="GetArea(this);GetAreas(this);EnabledUpdate(this);">
+                                    <option value="0">--Select--</option>
+                                    @if (ViewBag.PickLocation != null)
+                                    {
+                                        foreach (var pro in ViewBag.PickLocation)
+                                        {
+                                            if (Model.lstLocationInformation.LocationCode.ToString() == pro.Value)
+                                            {
+                                                <option value="@pro.Value" selected>@pro.Text</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@pro.Value">@pro.Text</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            }
+                            else
+                            {
+                                @Html.DropDownList("LocationCode", ViewBag.PickLocation as SelectList, "--Select--", new { @class = "form-control chosen pickcode", onchange = "GetArea(this);EnabledUpdate(this);" })
+                            }
+                        </td>
+                        @if (Model.lstLocationInformation.LocationCode == null)
+                        {
+                            <td width="15%" class="UpdatePicktbl" style="display:none">
+                                <label>City</label>
+                                <input type="text" class="form-control" value="" id="CityID" name="City" disabled />
+                            </td>
+                            <td width="15%" class="UpdatePicktbl" style="display:none">
+                                <label>Area</label>
+                                <input type="text" class="form-control" value="" id="Area" name="Area" disabled />
+                            </td>
+                            <td width="28%" class="UpdatePicktbl" style="display:none">
+                                <label>Address</label>
+                                <input type="text" class="form-control" value="" id="PickLocAddress" disabled />
+                            </td>
+                            <td width="15%" class="UpdatePicktblddl">
+                                <label>City</label>
+                                <select class="form-control ddlseacrhcity" id="LocalPickCity">
+                                    <option>--Select--</option>
+                                    @if (ViewBag.City != null)
+                                    {
+                                        foreach (var pro in ViewBag.City)
+                                        {
+                                            if (Model.lstLocationInformation.LocalPickCity.ToString() == pro.Value)
+                                            {
+                                                <option value="@pro.Value" selected>@pro.Text</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@pro.Value">@pro.Text</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            </td>
+                            <td width="15%" class="UpdatePicktblddl">
+                                <label>Area</label>
+                                <select class="form-control ddlsearcharea" id="LocalPickArea">
+                                    <option>--Select--</option>
+                                    @if (ViewBag.Area != null)
+                                    {
+                                        foreach (var pro in ViewBag.Area)
+                                        {
+                                            if (Model.lstLocationInformation.LocalPickArea.ToString() == pro.Value)
+                                            {
+                                                <option value="@pro.Value" selected>@pro.Text</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@pro.Value">@pro.Text</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            </td>
+                            <td width="28%" class="UpdatePicktblddl">
+                                <label>Address</label>
+                                <input type="text" class="form-control" value="@Model.lstLocationInformation.LocalPickAddress" id="LocalPickAddress" />
+                            </td>
+                        }
+                        else
+                        {
+                            if (Model.lstLocationInformation.PickLocation.City != null)
+                            {
+                                <td width="15%" class="UpdatePicktbl">
+                                    <label>City</label>
+                                    <input type="text" class="form-control" value="@Model.lstLocationInformation.PickLocation.City.CityName" id="CityID" name="City" disabled />
+                                </td>
+                            }
+                            else
+                            {
+                                <td width="15%" class="UpdatePicktbl">
+                                    <label>City</label>
+                                    <input type="text" class="form-control" value="" id="CityID" name="City" disabled />
+                                </td>
+                            }
+                            if (Model.lstLocationInformation.PickLocation.Area != null)
+                            {
+                                <td width="15%" class="UpdatePicktbl">
+                                    <label>Area</label>
+                                    <input type="text" class="form-control" value="@Model.lstLocationInformation.PickLocation.Area.Name" id="Area" name="Area" disabled />
+                                </td>
+                            }
+                            else
+                            {
+                                <td width="15%" class="UpdatePicktbl">
+                                    <label>Area</label>
+                                    <input type="text" class="form-control" value="" id="Area" name="Area" disabled />
+                                </td>
+                            }
+                            if (Model.lstLocationInformation.PickLocation != null)
+                            {
+                                <td width="28%" class="UpdatePicktbl">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control" value="@Model.lstLocationInformation.PickLocation.Address" id="PickLocAddress" disabled />
+                                </td>
+                            }
+                            else
+                            {
+                                <td width="28%" class="UpdatePicktbl">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control" value="" id="PickLocAddress" disabled />
+                                </td>
+                            }
+                            <td width="15%" class="UpdatePicktblddl" style="display:none">
+                                <label>City</label>
+                                @Html.DropDownList("LocalPickCity", ViewBag.City as SelectList, "--Select--", new { @class = "form-control ddlsearchcity", @id = "City" })
+                            </td>
+                            <td width="15%" class="UpdatePicktblddl" style="display:none">
+                                <label>Area</label>
+                                @Html.DropDownList("LocalPickArea", ViewBag.Area as SelectList, "--Select--", new { @class = "form-control ddlsearcharea", @id = "Area" })
+                            </td>
+                            <td width="28%" class="UpdatePicktblddl" style="display:none">
+                                <label>Address</label>
+                                <input type="text" class="form-control" id="PickLocAddress" />
+                            </td>
+                        }
+                        @if (Model.lstLocationInformation.LocalPickStatus == true)
+                        {
+                            <td>
+                                <div class="radio-inline" style="padding-top:30px;">
+                                    <label for="Pick">
+                                        <input type="checkbox" id="Pick" name="LocalPickStatus" value="@Model.lstLocationInformation.LocalPickStatus" checked> Local Drop
+                                    </label>
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <div class="radio-inline" style="padding-top:30px;">
+                                    <label for="Pick">
+                                        <input type="checkbox" id="Pick" name="LocalPickStatus"> Local Drop
+                                    </label>
+                                </div>
+                            </td>
+                        }
+                    </tr>
+
+                    <tr class="LocationCode" id="LocalDrop">
+                        <td width="30%">
+                            <label>Drop Location</label>
+                            @if (Model.lstLocationInformation.DropLocationCode != null)
+                            {
+                                <select class="form-control chosen dropcode" id="DropLocationCode" onchange="GetArea(this);GetAreas(this);EnabledDropUpdate(this);">
+                                    <option value="-0">--Select--</option>
+                                    @if (ViewBag.DropLocation != null)
+                                    {
+                                        foreach (var pro in ViewBag.DropLocation)
+                                        {
+                                            if (Model.lstLocationInformation.DropLocationCode.ToString() == pro.Value)
+                                            {
+                                                <option value="@pro.Value" selected>@pro.Text</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@pro.Value">@pro.Text</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            }
+                            else
+                            {
+                                @Html.DropDownList("DropLocationCode", ViewBag.DropLocation as SelectList, "--Select--", new { @class = "form-control chosen dropcode", onchange = "GetArea(this);EnabledDropUpdate(this);" })
+                            }
+                        </td>
+                        @if (Model.lstLocationInformation.DropLocationCode == null)
+                        {
+                            <td width="15%" class="UpdateDroptbl" style="display:none">
+                                <label>City</label>
+                                <input type="text" class="form-control" value="" id="CityID" name="City" disabled />
+                            </td>
+                            <td width="15%" class="UpdateDroptbl" style="display:none">
+                                <label>Area</label>
+                                <input type="text" class="form-control" value="" id="Area" name="Area" disabled />
+                            </td>
+                            <td width="28%" class="UpdateDroptbl" style="display:none">
+                                <label>Address</label>
+                                <input type="text" class="form-control" value="" id="PickLocAddress" disabled />
+                            </td>
+                            <td width="15%" class="UpdateDroptblddl">
+                                <label>City</label>
+                                <select class="form-control ddlsearchcitydrop" id="LocalDropCity">
+                                    <option value="">--Select--</option>
+                                    @if (ViewBag.City != null)
+                                    {
+                                        foreach (var pro in ViewBag.City)
+                                        {
+                                            if (Model.lstLocationInformation.LocalDropCity.ToString() == pro.Value)
+                                            {
+                                                <option value="@pro.Value" selected>@pro.Text</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@pro.Value">@pro.Text</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            </td>
+                            <td width="15%" class="UpdateDroptblddl">
+                                <label>Area</label>
+                                <select class="form-control ddlsearchareadrop" id="LocalDropArea">
+                                    <option value="">--Select--</option>
+                                    @if (ViewBag.Area != null)
+                                    {
+                                        foreach (var pro in ViewBag.Area)
+                                        {
+                                            if (Model.lstLocationInformation.LocalDropArea.ToString() == pro.Value)
+                                            {
+                                                <option value="@pro.Value" selected>@pro.Text</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@pro.Value">@pro.Text</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            </td>
+                            <td width="28%" class="UpdateDroptblddl">
+                                <label>Address</label>
+                                <input type="text" class="form-control" value="@Model.lstLocationInformation.LocalDropAddress" id="LocalDropAddress" />
+                            </td>
+                        }
+                        else
+                        {
+                            if (Model.lstLocationInformation.PickLocation1.City != null)
+                            {
+                                <td width="15%" class="UpdateDroptbl">
+                                    <label>City</label>
+                                    <input type="text" class="form-control" value="@Model.lstLocationInformation.PickLocation1.City.CityName" id="CityID" name="City" disabled />
+                                </td>
+                            }
+                            else
+                            {
+                                <td width="15%" class="UpdateDroptbl">
+                                    <label>City</label>
+                                    <input type="text" class="form-control" value="" id="CityID" name="City" disabled />
+                                </td>
+                            }
+                            if (Model.lstLocationInformation.PickLocation1.Area != null)
+                            {
+                                <td width="15%" class="UpdateDroptbl">
+                                    <label>Area</label>
+                                    <input type="text" class="form-control" value="@Model.lstLocationInformation.PickLocation1.Area.Name" id="Area" name="Area" disabled />
+                                </td>
+                            }
+                            else
+                            {
+                                <td width="15%" class="UpdateDroptbl">
+                                    <label>Area</label>
+                                    <input type="text" class="form-control" value="" id="Area" name="Area" disabled />
+                                </td>
+                            }
+                            if (Model.lstLocationInformation.PickLocation1.Address != null)
+                            {
+                                <td width="28%" class="UpdateDroptbl">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control" value="@Model.lstLocationInformation.PickLocation1.Address" id="PickLocAddress" disabled />
+                                </td>
+                            }
+                            else
+                            {
+                                <td width="28%" class="UpdateDroptbl">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control" value="" id="PickLocAddress" disabled />
+                                </td>
+                            }
+                            <td width="15%" class="UpdateDroptblddl" style="display:none">
+                                <label>City</label>
+                                @Html.DropDownList("LocalPickCity", ViewBag.City as SelectList, "--Select--", new { @class = "form-control ddlsearchcitydrop", @id = "City" })
+                            </td>
+                            <td width="15%" class="UpdateDroptblddl" style="display:none">
+                                <label>Area</label>
+                                @Html.DropDownList("LocalPickArea", ViewBag.Area as SelectList, "--Select--", new { @class = "form-control ddlsearchareadrop", @id = "Area" })
+                            </td>
+                            <td width="28%" class="UpdateDroptblddl" style="display:none">
+                                <label>Address</label>
+                                <input type="text" class="form-control" id="PickLocAddress" />
+                            </td>
+                        }
+                        @if (Model.lstLocationInformation.LocalDropStatus == true)
+                        {
+                            <td>
+                                <div class="radio-inline" style="padding-top:30px;">
+                                    <label for="Drop">
+                                        <input type="checkbox" id="Drop" name="LocalDropStatus" value="@Model.lstLocationInformation.LocalDropStatus" checked> Local Drop
+                                    </label>
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <div class="radio-inline" style="padding-top:30px;">
+                                    <label for="Drop">
+                                        <input type="checkbox" id="Drop" name="LocalDropStatus"> Local Drop
+                                    </label>
+                                </div>
+                            </td>
+                        }
+                    </tr>
+                }
+                else
+                {
+                    <tr class="LocationCode" id="LocalPick">
+                        <td width="30%">
+                            <label>Pick Location</label>
+                            @Html.DropDownList("LocationCode", ViewBag.PickLocation as SelectList, "--Select--", new { @class = "form-control chosen", onchange = "GetArea(this);Enabled(this);GetAreas(this)" })
+                        </td>
+                        <td width="15%" style="display:none" class="Picktbl">
+                            <label>City</label>
+                            <input type="text" class="form-control" id="CityID" name="City" disabled />
+                        </td>
+                        <td width="15%" style="display:none" class="Picktbl">
+                            <label>Area</label>
+                            <input type="text" class="form-control" id="AreaID" name="Area" disabled />
+                        </td>
+                        <td width="28%" style="display:none" class="Picktbl">
+                            <label>Address</label>
+                            <input type="text" class="form-control" id="Address" disabled />
+                        </td>
+                        <td width="15%" class="Picktblddl">
+                            <label>City</label>
+                            @Html.DropDownList("LocalPickCity", ViewBag.City as SelectList, "--Select--", new { @class = "form-control chosen" })
+                        </td>
+                        <td width="15%" class="Picktblddl">
+                            <label>Area</label>
+                            @Html.DropDownList("LocalPickArea", ViewBag.Area as SelectList, "--Select--", new { @class = "form-control chosen" })
+                        </td>
+                        <td width="28%" class="Picktblddl">
+                            <label>Address</label>
+                            <input type="text" class="form-control" id="LocalPickAddress" />
+                        </td>
+                        <td>
+                            <div class="radio-inline" style="padding-top:30px;">
+                                <label for="Pick">
+                                    <input type="checkbox" id="Pick" name="LocalPickStatus"> Local Pick
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr class="LocationCode" id="LocalDrop">
+                        <td width="30%">
+                            <label>Drop Location</label>
+                            @Html.DropDownList("DropLocationCode", ViewBag.DropLocation as SelectList, "--Select--", new { @class = "form-control chosen", onchange = "GetArea(this);EnabledDrop(this);GetAreas(this)" })
+                        </td>
+                        <td width="15%" style="display:none" class="Droptbl">
+                            <label>City</label>
+                            <input type="text" class="form-control" id="DropCity" name="City" disabled />
+                        </td>
+                        <td width="15%" style="display:none" class="Droptbl">
+                            <label>Area</label>
+                            <input type="text" class="form-control" id="DropArea" name="Area" disabled />
+                        </td>
+                        <td width="28%" style="display:none" class="Droptbl">
+                            <label>Address</label>
+                            <input type="text" class="form-control" id="DropAddress" disabled />
+                        </td>
+                        <td width="15%" class="Droptblddl">
+                            <label>City</label>
+                            @Html.DropDownList("LocalDropCity", ViewBag.City as SelectList, "--Select--", new { @class = "form-control chosen" })
+                        </td>
+                        <td width="15%" class="Droptblddl">
+                            <label>Area</label>
+                            @Html.DropDownList("LocalDropArea", ViewBag.Area as SelectList, "--Select--", new { @class = "form-control chosen" })
+                        </td>
+                        <td width="28%" class="Droptblddl">
+                            <label>Address</label>
+                            <input type="text" class="form-control" id="LocalDropAddress" />
+                        </td>
+                        <td>
+                            <div class="radio-inline" style="padding-top:30px;">
+                                <label for="Drop">
+                                    <input type="checkbox" id="Drop" name="LocalDropStatus" value="false"> Local Drop
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot id="LocationFoot">
+                <tr>
+                    <td colspan="10">
+                        <button type="button" class="btn btn-primary pull-right" onclick="ShowVehicle(this)">Next | <i class="fa fa-arrow-circle-o-right"></i></button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="border" style="border-top:dashed thin lavender" id="VehicleInformation">
+        <h4>
+            Vehicle Information
+            <button type="button" class="btn btn-default btn-sm pull-right" onclick="ReloadVehicle(this)"><i class="fa fa-refresh fa-spin" id="Reload"></i></button>
+        </h4>
+
+        <table class="table detailsVehicle" id="Vehicle">
+            <thead>
+                <tr>
+                    <td>Code</td>
+                    <td>Qty</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.lstVehicleInformation.Count > 0)
+                {
+                    foreach (var item in Model.lstVehicleInformation)
+                    {
+                        <tr class="VehicleType">
+                            <td width="30%">
+                                <select class="form-control select-chosen" id="VehicleCode">
+                                    <option value="">--Select--</option>
+                                    @if (ViewBag.VehicleCode != null)
+                                    {
+                                        foreach (var pro in ViewBag.VehicleCode)
+                                        {
+                                            if (item.VehicleID.ToString() == pro.Value)
+                                            {
+                                                <option value="@pro.Value" selected>@pro.Text</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@pro.Value">@pro.Text</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            </td>
+                            <td width="20%">
+                                <input type="text" class="form-control Qty text-right" id="Qty" name="Qty" value="@item.Qty" />
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary" onclick="AddVehicleRow(this);" id="P"><i class="fa fa-plus"></i></button>
+                                <button type="button" class="btn btn-danger" onclick="remove(this);" disabled><i class="fa fa-trash"></i></button>
+                            </td>
+                            <td colspan="4">
+                                <button type="button" class="btn btn-success pull-right" id="btnVehicleInfo"><i class="fa fa-info"></i> | Vehicle Details</button>
+                                <button type="button" class="btn btn-success pull-right hidden" id="btnUpdateVehicleInfo"><i class="fa fa-info"></i> | Update Vehicle Details</button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr class="VehicleType">
+                        <td width="30%">
+                            @Html.DropDownList("VehicleCode", ViewBag.VehicleCode as SelectList, "--Select--", new { @class = "form-control select-chosen" })
+                        </td>
+                        <td width="20%">
+                            <input type="text" class="form-control Qty text-right" id="Qty" name="Qty" value="1" />
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" onclick="AddVehicleRow(this);" id="P"><i class="fa fa-plus"></i></button>
+                            <button type="button" class="btn btn-danger" onclick="remove(this);" disabled><i class="fa fa-trash"></i></button>
+                        </td>
+                        <td colspan="4">
+                            @*<button type="button" class="btn btn-success pull-right" onclick="InfoVehicle(this);$('#modal-addVehicleInfo').modal('show');"><i class="fa fa-info"></i> | Vehicle Details</button>*@
+                            <button type="button" class="btn btn-success pull-right" id="btnVehicleInfo"><i class="fa fa-info"></i> | Vehicle Details</button>
+                            <button type="button" class="btn btn-success pull-right hidden" id="btnUpdateVehicleInfo"><i class="fa fa-info"></i> | Update Vehicle Details</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr class="grand_total_Vehicle" style="font-weight:bold;">
+                    <td><b>Grand Total : </b></td>
+                    <td class="text-right" style="padding-right:66px" id="TotalQtyVehicle"></td>
+                    <td colspan="10"></td>
+                </tr>
+                <tr id="VehicleFoot">
+                    <td colspan="10">
+                        <button type="button" class="btn btn-primary pull-right" onclick="ShowContainer(this)">Next | <i class="fa fa-arrow-circle-o-right"></i></button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div id="modal-addVehicleInfo" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="width:1300px;left:0%">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h2 class="modal-title"><i class="fa fa-pencil"></i> | Add Vehicle Information</h2>
+                </div>
+
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table VehiclemodalTable" id="VehicleInfoModal">
+                            <thead>
+                                <tr>
+                                    <td>Sr No.</td>
+                                    <td>Vehicle Type</td>
+                                    <td>Reg No</td>
+                                    <td>Cell</td>
+                                    <td>Driver Name</td>
+                                    <td>Father</td>
+                                    <td>NIC</td>
+                                    <td>License</td>
+                                    <td>Broker</td>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" @*onclick="VehicleModalTr(this)"*@>Cancel</button>
+                    <button type="submit" id="Vehicle" class="btn btn-primary pull-right" onclick="$('#modal-addVehicleInfo').modal('hide');"><b><i class="fa fa-plus"></i> Add Detail</b></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="border" style="border-top:dashed thin lavender" id="ContainerInformation">
+        <h4>
+            Container Information
+            <button type="button" class="btn btn-default btn-sm pull-right" onclick="ReloadContainer(this)"><i class="fa fa-refresh fa-spin" id="Reload"></i></button>
+        </h4>
+        <table class="table detailsContainer" id="Container">
+            <thead>
+                <tr>
+                    <td>Code</td>
+                    <td>Qty</td>
+                    <td>Weight</td>
+                    <td>Total Weight</td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.lstContainerInformation.Count > 0)
+                {
+                    foreach (var item in Model.lstContainerInformation)
+                    {
+                        <tr>
+                            <td width="30%">
+                                <select class="form-control select-chosen" id="ContainerCode">
+                                    <option value="">--Select--</option>
+                                    @if (ViewBag.ContainerCode != null)
+                                    {
+                                        foreach (var pro in ViewBag.ContainerCode)
+                                        {
+                                            if (item.ContainerID.ToString() == pro.Value)
+                                            {
+                                                <option value="@pro.Value" selected>@pro.Text</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@pro.Value">@pro.Text</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            </td>
+                            <td width="15%">
+                                <input type="text" class="form-control ContainerQuantity text-right" id="ContainerQuantity" name="ContainerQuantity" value="@item.Qty" />
+                            </td>
+                            <td width="3%">
+                                <input type="text" class="form-control text-right" value="@item.Weight" id="ContainerWeight" onkeyup="GrandtotalContainer('#Container',2,'Weight')" />
+                            </td>
+                            <td width="10%">
+                                <input type="text" class="form-control text-right" value="@item.GrandTotal" readonly id="ContainerTotalWeight" onkeyup="GrandtotalContainer('#Container',3,'TotalWeight')" />
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary" onclick="AddContainerRow(this)"><i class="fa fa-plus"></i></button>
+                                <button type="button" class="btn btn-danger" onclick="remove(this)" disabled><i class="fa fa-trash"></i></button>
+                            </td>
+                            <td colspan="4">
+                                <button type="button" id="btnContainerInfo" class="btn btn-success pull-right"><i class="fa fa-info"></i> | Container Details</button>
+                                <button type="button" id="btnUpdateContainerInfo" class="btn btn-success pull-right hidden"><i class="fa fa-info"></i> | Update Container Details</button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td width="30%">
+                            @Html.DropDownList("ContainerCode", ViewBag.ContainerCode as SelectList, "--Select--", new { @class = "form-control select-chosen" })
+                        </td>
+                        <td width="15%">
+                            <input type="text" class="form-control ContainerQuantity text-right" value="1" id="ContainerQuantity" name="ContainerQuantity" />
+                        </td>
+                        <td width="3%">
+                            <input type="text" class="form-control text-right" id="ContainerWeight" onkeyup="GrandtotalContainer('#Container',2,'Weight')" />
+                        </td>
+                        <td width="10%">
+                            <input type="text" class="form-control text-right" readonly id="ContainerTotalWeight" onkeyup="GrandtotalContainer('#Container',3,'TotalWeight')" />
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" onclick="AddContainerRow(this)"><i class="fa fa-plus"></i></button>
+                            <button type="button" class="btn btn-danger" onclick="remove(this)" disabled><i class="fa fa-trash"></i></button>
+                        </td>
+                        <td colspan="4">
+                            @*<button type="button" id="ContainerTable" class="btn btn-success pull-right" onclick="InfoContainer(this);$('#modal-addContainerInfo').modal('show');"><i class="fa fa-info"></i> | Container Details</button>*@
+                            <button type="button" id="btnContainerInfo" class="btn btn-success pull-right"><i class="fa fa-info"></i> | Container Details</button>
+                            <button type="button" id="btnUpdateContainerInfo" class="btn btn-success pull-right hidden"><i class="fa fa-info"></i> | Update Container Details</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                @if (Model.UniversalBilty.ID > 0)
+                {
+                    <tr class="grand_total_Container" style="font-weight:bold;">
+                        <td><b>Grand Total : </b></td>
+                        <td class="text-right" style="padding-right:66px" id="Container_Qty">@Model.UniversalBilty.ContainerQty</td>
+                        <td class="text-right" style="padding-right:17px" id="Container_Weight">@Model.UniversalBilty.ContainerWeight</td>
+                        <td class="text-right" style="padding-right:17px" id="Container_Total">@Model.UniversalBilty.ContainerTotalWeight</td>
+                        <td colspan="4"></td>
+                    </tr>
+                }
+                else
+                {
+                    <tr class="grand_total_Container" style="font-weight:bold;">
+                        <td><b>Grand Total : </b></td>
+                        <td class="text-right" style="padding-right:66px" id="Container_Qty"></td>
+                        <td class="text-right" style="padding-right:17px" id="Container_Weight"></td>
+                        <td class="text-right" style="padding-right:17px" id="Container_Total"></td>
+                        <td colspan="4"></td>
+                    </tr>
+                }
+
+                <tr id="ContainerFoot">
+                    <td colspan="10">
+                        <button type="button" class="btn btn-primary pull-right" onclick="ShowProduct(this)">Next | <i class="fa fa-arrow-circle-o-right"></i></button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div id="modal-addContainerInfo" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="width:1300px;left:0%">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h2 class="modal-title"><i class="fa fa-pencil"></i> | Add Container Information</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-responsive ContainermodalTable" id="ContainerInfoModal">
+                            <thead>
+                                <tr>
+                                    <td>Sr No.</td>
+                                    <td>Container Type</td>
+                                    <td>Container No</td>
+                                    <td>Weight</td>
+                                    <td>Empty Container Pick</td>
+                                    <td>Empty Container Drop</td>
+                                    <td>Vessel</td>
+                                    <td>Remarks</td>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" id="btnSaveEdit" class="btn btn-primary pull-right" onclick="$('#modal-addContainerInfo').modal('hide')"><b><i class="fa fa-plus"></i> Add Detail</b></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="border" style="border-top:dashed thin lavender" id="ProductInformation">
+
+        <div class="checkbox">
+            <h4 style="display:inline-block; margin-right:20px;">Product</h4>
+            <label for="Dispatch">
+                <input type="checkbox" id="Dispatch" name="example-checkbox3" value="option3">
+                As per dispatch document
+            </label>
+            <h4><button type="button" class="btn btn-default btn-sm pull-right" onclick="ReloadProduct(this)"><i class="fa fa-refresh fa-spin" id="Reload"></i></button></h4>
+        </div>
+        <table class="table" id="Product">
+            <thead>
+                <tr>
+                    <td>Code</td>
+                    <td>Package Type</td>
+                    <td>Product Nature</td>
+                    <td>Qty</td>
+                    <td>Weight</td>
+                    <td>Total Weight</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.lstProductInformation.Count > 0)
+                {
+                    foreach (var item in Model.lstProductInformation)
+                    {
+                        <tr>
+                            <td width="20%">
+                                <select class="form-control select-chosen" id="ProductCode" onchange="GetProduct(this)">
+                                    <option value="">--Select--</option>
+                                    @if (ViewBag.Product != null)
+                                    {
+                                        foreach (var pro in ViewBag.Product)
+                                        {
+                                            if (item.ProductID.ToString() == pro.Value)
+                                            {
+                                                <option value="@pro.Value" selected>@pro.Text</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@pro.Value">@pro.Text</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            </td>
+                            @if (item.ProductID == null)
+                            {
+                                <td width="20%">
+                                    <input type="text" class="form-control" value="" readonly />
+                                </td>
+                                <td width="25%">
+                                    <input type="text" class="form-control" value="" readonly />
+                                </td>
+                            }
+                            else
+                            {
+                                if (item.Product.PackageType == null)
+                                {
+                                    <td width="20%">
+                                        <input type="text" class="form-control" value="" readonly />
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td width="20%">
+                                        <input type="text" class="form-control" value="@item.Product.PackageType.PackageTypeName" readonly />
+                                    </td>
+                                }
+                                if (item.Product.Nature == null)
+                                {
+                                    <td width="25%">
+                                        <input type="text" class="form-control" value="" readonly />
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td width="25%">
+                                        <input type="text" class="form-control" value="@item.Product.Nature.Name" readonly />
+                                    </td>
+                                }
+                            }
+                            @if (item.Qty != null)
+                            {
+                                <td width="5%">
+                                    <input type="text" class="form-control text-right" value="@item.Qty" id="Quantity" onkeyup="Grandtotal('#Product',3,'Qty')" />
+                                </td>
+                            }
+                            else
+                            {
+                                <td width="5%">
+                                    <input type="text" class="form-control text-right" value="" id="Quantity" onkeyup="Grandtotal('#Product',3,'Qty')" />
+                                </td>
+                            }
+                            @if (item.Weight != null)
+                            {
+                                <td width="3%">
+                                    <input type="text" class="form-control text-right" id="Weight" value="@item.Weight" onkeyup="Grandtotal('#Product',4,'Weight')" />
+                                </td>
+                            }
+                            else
+                            {
+                                <td width="3%">
+                                    <input type="text" class="form-control text-right" id="Weight" value="" onkeyup="Grandtotal('#Product',4,'Weight')" />
+                                </td>
+                            }
+                            @if (item.WeightQtyTotal != null)
+                            {
+                                <td width="10%">
+                                    <input type="text" class="form-control text-right" readonly value="@item.WeightQtyTotal" id="TotalWeight" onkeyup="Grandtotal('#Product',5,'TotalWeight')" />
+                                </td>
+                            }
+                            else
+                            {
+                                <td width="10%">
+                                    <input type="text" class="form-control text-right" readonly value="" id="TotalWeight" onkeyup="Grandtotal('#Product',5,'TotalWeight')" />
+                                </td>
+                            }
+                            <td>
+                                <button type="button" class="btn btn-primary" onclick="AddProductRow(this)"><i class="fa fa-plus"></i></button>
+                                <button type="button" class="btn btn-danger" onclick="remove(this);" disabled><i class="fa fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td width="20%">
+                            @Html.DropDownList("ProductCode", ViewBag.Product as SelectList, "--Select--", new { @class = "form-control select-chosen", onchange = "GetProduct(this);AddProductddl(this)" })
+                        </td>
+                        <td width="20%">
+                            <input type="text" class="form-control" readonly id="txtPack" />
+                        </td>
+                        <td width="15%">
+                            <input type="text" class="form-control" readonly id="txtNat" />
+                        </td>
+                        <td width="5%">
+                            <input type="text" class="form-control text-right" id="Quantity" onkeyup="Grandtotal('#Product',3,'Qty')" />
+                        </td>
+                        <td width="3%">
+                            <input type="text" class="form-control text-right" id="Weight" onkeyup="Grandtotal('#Product',4,'Weight')" />
+                        </td>
+                        <td width="10%">
+                            <input type="text" class="form-control text-right" readonly id="TotalWeight" onkeyup="Grandtotal('#Product',5,'TotalWeight')" />
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" onclick="AddProductRow(this)"><i class="fa fa-plus"></i></button>
+                            <button type="button" class="btn btn-danger" onclick="remove(this);" disabled><i class="fa fa-trash"></i></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                @if (Model.UniversalBilty.ID > 0)
+                {
+                    <tr class="grand_total" style="font-weight:bold;">
+                        <td colspan="3"><b>Grand Total : </b></td>
+                        <td class="text-right" style="padding-right:16px">@Model.UniversalBilty.ProductQty</td>
+                        <td class="text-right" style="padding-right:17px">@Model.UniversalBilty.ProductWeight</td>
+                        <td colspan="2" class="text-right" style="padding-right:19%">@Model.UniversalBilty.ProductTotalWeight</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr class="grand_total" style="font-weight:bold;">
+                        <td colspan="3"><b>Grand Total : </b></td>
+                        <td class="text-right" style="padding-right:16px"></td>
+                        <td class="text-right" style="padding-right:17px"></td>
+                        <td colspan="2" class="text-right" style="padding-right:19%"></td>
+                    </tr>
+                }
+                <tr id="ProductFoot">
+                    <td colspan="10">
+                        <button type="button" class="btn btn-primary pull-right" onclick="ShowDispatchDocument(this)">Next | <i class="fa fa-arrow-circle-o-right"></i></button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="border" style="border-top:dashed thin lavender" id="DispatchInformation">
+        <h4>
+            Dispatch Document Information
+            <button type="button" class="btn btn-default btn-sm pull-right" onclick="ReloadDispatch(this)"><i class="fa fa-refresh fa-spin" id="Reload"></i></button>
+        </h4>
+        <table class="table dispatch" id="Dispatch">
+            <thead>
+                <tr>
+                    <td>Code</td>
+                    <td>Document No</td>
+                    <td>File Name</td>
+                    <td>Document</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.lstDispatchInformation.Count > 0)
+                {
+                    foreach (var item in Model.lstDispatchInformation)
+                    {
+                        <tr>
+                            <td width="20%">
+                                <select class="form-control select-chosen" id="DispatchDocumentCode">
+                                    <option value="">--Select--</option>
+                                    @if (ViewBag.DispatchDocument != null)
+                                    {
+                                        foreach (var pro in ViewBag.DispatchDocument)
+                                        {
+                                            if (item.DocumentID.ToString() == pro.Value)
+                                            {
+                                                <option value="@pro.Value" selected>@pro.Text</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@pro.Value">@pro.Text</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" value="@item.DocumentNo" />
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" value="@item.FileName" />
+                            </td>
+                            <td>
+                                <input type="file" class="form-control" value="@item.FileName" />
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary" onclick="AddDispatchRow(this)"><i class="fa fa-plus"></i></button>
+                                <button type="button" class="btn btn-danger" onclick="remove(this)" disabled><i class="fa fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td width="20%">
+                            @Html.DropDownList("DispatchDocumentCode", ViewBag.DispatchDocument as SelectList, "--Select--", new { @class = "form-control select-chosen" })
+                        </td>
+                        <td width="20%">
+                            <input type="text" class="form-control" />
+                        </td>
+                        <td width="15%">
+                            <input type="text" class="form-control" />
+                        </td>
+                        <td width="20%">
+                            <input type="file" class="form-control" />
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" onclick="AddDispatchRow(this)"><i class="fa fa-plus"></i></button>
+                            <button type="button" class="btn btn-danger" onclick="remove(this)" disabled><i class="fa fa-trash"></i></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot id="DispatchFoot">
+                <tr>
+                    <td colspan="10">
+                        <button type="button" class="btn btn-primary pull-right" onclick="ShowLoadingUnLoading(this)">Next | <i class="fa fa-arrow-circle-o-right"></i></button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="border" style="border-top:dashed thin lavender" id="LoadingUnloadingDetail">
+        <div class="row" style="margin-top:20px;">
+            <div class="col-md-12">
+                <h4>Loading Unloading Time Information</h4>
+            </div>
+        </div>
+
+        <table class="table table-bordered" id="LoadingUnloading">
+            <thead>
+                <tr>
+                    <td colspan="8">
+                        <h5>Vehicle Loading Reporting Details</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">Vehicle Reporting</td>
+                    <td colspan="2">Vehicle Loading Gate In</td>
+                    <td colspan="2">Vehicle Loading Gate Out</td>
+                    <td colspan="2">Vehicle Detention</td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.lstLoadingLocation.ID > 0)
+                {
+                    <tr>
+                        <td>
+                            <label>Date</label>
+                            <input type="text" class="form-control" value="@Model.lstLoadingLocation.LoadingDate" id="LoadingDate" onchange="LoadingReport(this)" />
+                        </td>
+                        <td>
+                            <label>Time</label>
+                            <input type="time" class="form-control" value="@Model.lstLoadingLocation.LoadingTime" id="LoadingTime" onchange="LoadingGetTime(this)" />
+                        </td>
+                        <td>
+                            <label>Date</label>
+                            <input type="text" class="form-control" value="@Model.lstLoadingLocation.LoadingGateInDate" id="LoadingGateInDate" />
+                        </td>
+                        <td>
+                            <label>Time</label>
+                            <input type="time" class="form-control" value="@Model.lstLoadingLocation.LoadingGateInTime" id="LoadingGateInTime" />
+                        </td>
+                        <td>
+                            <label>Date</label>
+                            <input type="text" class="form-control" value="@Model.lstLoadingLocation.LoadingGateOutDate" id="LoadingGateOutDate" onchange="LoadingReport(this)" />
+                        </td>
+                        <td>
+                            <label>Time</label>
+                            <input type="time" class="form-control" value="@Model.lstLoadingLocation.LoadingGateOutTime" id="LoadingGateOutTime" onchange="LoadingGetTime(this)" />
+                        </td>
+                        <td>
+                            <label>Total Days</label>
+                            <input type="text" class="form-control" value="@Model.lstLoadingLocation.LoadingTotalDays" id="LoadingTotalDays" disabled />
+                        </td>
+                        <td>
+                            <label>Hours</label>
+                            <input type="text" class="form-control" value="@Model.lstLoadingLocation.LoadingTotalTime" id="LoadingTotalTime" disabled />
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td>
+                            <label>Date</label>
+                            <input type="text" class="form-control MakeDate" id="LoadingDate" onchange="LoadingReport(this)" />
+                        </td>
+                        <td>
+                            <label>Time</label>
+                            <input type="time" class="form-control" id="LoadingTime" onchange="LoadingGetTime(this)" />
+                        </td>
+                        <td>
+                            <label>Date</label>
+                            <input type="text" class="form-control MakeDate" id="LoadingGateInDate" />
+                        </td>
+                        <td>
+                            <label>Time</label>
+                            <input type="time" class="form-control" id="LoadingGateInTime" />
+                        </td>
+                        <td>
+                            <label>Date</label>
+                            <input type="text" class="form-control MakeDate" id="LoadingGateOutDate" onchange="LoadingReport(this)" />
+                        </td>
+                        <td>
+                            <label>Time</label>
+                            <input type="time" class="form-control" id="LoadingGateOutTime" onchange="LoadingGetTime(this)" />
+                        </td>
+                        <td>
+                            <label>Total Days</label>
+                            <input type="text" class="form-control" id="LoadingTotalDays" disabled />
+                        </td>
+                        <td>
+                            <label>Hours</label>
+                            <input type="text" class="form-control" id="LoadingTotalTime" disabled />
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <table class="table table-bordered" id="LoadingUnloading">
+            <thead>
+                <tr>
+                    <td colspan="8">
+                        <h5>Vehicle Un-Loading Reporting Details</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">Vehicle Reporting</td>
+                    <td colspan="2">Vehicle Un-Loading Gate In</td>
+                    <td colspan="2">Vehicle Un-Loading Gate Out</td>
+                    <td colspan="2">Vehicle Detention</td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.lstUnLoadingLocation.ID > 0)
+                {
+                    <tr>
+                        <td>
+                            <label>Date</label>
+                            <input type="text" class="form-control" value="@Model.lstUnLoadingLocation.UnLoadingDate" id="UnLoadingDate" onchange="UnLoadingReport(this)" />
+                        </td>
+                        <td>
+                            <label>Time</label>
+                            <input type="time" class="form-control" value="@Model.lstUnLoadingLocation.UnLoadingTime" id="UnLoadingTime" onchange="UnLoadingGetTime(this)" />
+                        </td>
+                        <td>
+                            <label>Date</label>
+                            <input type="text" class="form-control" value="@Model.lstUnLoadingLocation.UnLoadingGateInDate" id="UnLoadingGateInDate" />
+                        </td>
+                        <td>
+                            <label>Time</label>
+                            <input type="time" class="form-control" value="@Model.lstUnLoadingLocation.UnLoadingGateInTime" id="UnLoadingGateInTime" />
+                        </td>
+                        <td>
+                            <label>Date</label>
+                            <input type="text" class="form-control" value="@Model.lstUnLoadingLocation.UnLoadingGateOutDate" id="UnLoadingGateOutDate" onchange="UnLoadingReport(this)" />
+                        </td>
+                        <td>
+                            <label>Time</label>
+                            <input type="time" class="form-control" value="@Model.lstUnLoadingLocation.UnLoadingGateOutTime" id="UnLoadingGateOutTime" onchange="UnLoadingGetTime(this)" />
+                        </td>
+                        <td>
+                            <label>Total Days</label>
+                            <input type="text" class="form-control" value="@Model.lstUnLoadingLocation.UnLoadingTotalDays" id="UnLoadingTotalDays" disabled />
+                        </td>
+                        <td>
+                            <label>Hours</label>
+                            <input type="text" class="form-control" value="@Model.lstUnLoadingLocation.UnLoadingTotalTime" id="UnLoadingTotalTime" disabled />
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td>
+                            <label>Date</label>
+                            <input type="text" class="form-control" id="UnLoadingDate" onchange="UnLoadingReport(this)" />
+                        </td>
+                        <td>
+                            <label>Time</label>
+                            <input type="time" class="form-control" id="UnLoadingTime" onchange="UnLoadingGetTime(this)" />
+                        </td>
+                        <td>
+                            <label>Date</label>
+                            <input type="text" class="form-control" id="UnLoadingGateInDate" />
+                        </td>
+                        <td>
+                            <label>Time</label>
+                            <input type="time" class="form-control" id="UnLoadingGateInTime" />
+                        </td>
+                        <td>
+                            <label>Date</label>
+                            <input type="text" class="form-control" id="UnLoadingGateOutDate" onchange="UnLoadingReport(this)" />
+                        </td>
+                        <td>
+                            <label>Time</label>
+                            <input type="time" class="form-control" id="UnLoadingGateOutTime" onchange="UnLoadingGetTime(this)" />
+                        </td>
+                        <td>
+                            <label>Total Days</label>
+                            <input type="text" class="form-control" id="UnLoadingTotalDays" disabled />
+                        </td>
+                        <td>
+                            <label>Hours</label>
+                            <input type="text" class="form-control" id="UnLoadingTotalTime" disabled />
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot id="LoadingUnloadingFoot">
+                <tr>
+                    <td colspan="10">
+                        <button type="button" class="btn btn-primary pull-right" onclick="ShowReceivingDetail(this)">Next | <i class="fa fa-arrow-circle-o-right"></i></button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="border" style="border-top:dashed thin lavender" id="ReceivingInformation1">
+        <div class="row" style="margin-top:20px;">
+            <div class="col-md-12">
+                <h4>
+                    Receiving Information
+                    <button type="button" class="btn btn-default btn-sm pull-right" onclick="ReloadReceivingInfo(this)"><i class="fa fa-refresh fa-spin" id="Reload"></i></button>
+                </h4>
+            </div>
+        </div>
+
+        <table class="table" id="ReceivingInformation">
+            <thead>
+                <tr>
+                    <td>Received By</td>
+                    <td>Date</td>
+                    <td>Time</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.lstReceivingInformation.Count > 0)
+                {
+                    foreach (var item in Model.lstReceivingInformation)
+                    {
+                        <tr>
+                            <td width="20%">
+                                <select class="form-control select-chosen" id="EmployeeID">
+                                    <option value="">--Select--</option>
+                                    @if (ViewBag.ReceivedBy != null)
+                                    {
+                                        foreach (var pro in ViewBag.ReceivedBy)
+                                        {
+                                            if (item.EmployeeID.ToString() == pro.Value)
+                                            {
+                                                <option value="@pro.Value" selected>@pro.Text</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@pro.Value">@pro.Text</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            </td>
+                            <td width="20%">
+                                <input type="text" id="Date" class="form-control MakeDate" value="@item.Date" />
+                            </td>
+                            <td width="15%">
+                                <input type="time" id="" name="" class="form-control" value="@item.Time">
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary" onclick="AddReceivingInformationRow(this)"><i class="fa fa-plus"></i></button>
+                                <button type="button" class="btn btn-danger" onclick="remove(this)" disabled><i class="fa fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td width="20%">
+                            @Html.DropDownList("EmployeeID", ViewBag.ReceivedBy as SelectList, "--Select--", new { @class = "form-control select-chosen" })
+                        </td>
+                        <td width="20%">
+                            <input type="text" id="Date" class="form-control MakeDate" />
+                        </td>
+                        <td width="15%">
+                            <input type="time" id="" name="" class="form-control">
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" onclick="AddReceivingInformationRow(this)"><i class="fa fa-plus"></i></button>
+                            <button type="button" class="btn btn-danger" onclick="remove(this)" disabled><i class="fa fa-trash"></i></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="border" style="border-top:dashed thin lavender" id="ReceivingDocument1">
+        <h4>
+            Receiving Document Detail
+            <button type="button" class="btn btn-default btn-sm pull-right" onclick="ReloadReceivingDocument(this)"><i class="fa fa-refresh fa-spin" id="Reload"></i></button>
+        </h4>
+        <table class="table" id="ReceivingDocument">
+            <thead>
+                <tr>
+                    <td>Code</td>
+                    <td>Document No</td>
+                    <td>File Name</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.lstReceivingDocumentInformation.Count > 0)
+                {
+                    foreach (var item in Model.lstReceivingDocumentInformation)
+                    {
+                        <tr>
+                            <td width="20%">
+                                <select class="form-control select-chosen" id="ReceivingDocumentCode" onchange="GetDocument(this)">
+                                    <option value="">--Select--</option>
+                                    @if (ViewBag.DispatchDocument != null)
+                                    {
+                                        foreach (var pro in ViewBag.DispatchDocument)
+                                        {
+                                            if (item.DocumentID.ToString() == pro.Value)
+                                            {
+                                                <option value="@pro.Value" selected>@pro.Text</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@pro.Value">@pro.Text</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            </td>
+                            <td width="20%">
+                                <input type="text" class="form-control" value="@item.DocumentNo" />
+                            </td>
+                            <td width="15%">
+                                <input type="text" class="form-control" value="@item.FileName" />
+                            </td>
+                            <td width="20%">
+                                <input type="file" class="form-control" />
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary" onclick="AddReceivingDocumentRow(this)"><i class="fa fa-plus"></i></button>
+                                <button type="button" class="btn btn-danger" onclick="remove(this)" disabled><i class="fa fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td width="20%">
+                            @Html.DropDownList("ReceivingDocumentCode", ViewBag.DispatchDocument as SelectList, "--Select--", new { @class = "form-control select-chosen" })
+                        </td>
+                        <td width="20%">
+                            <input type="text" class="form-control" />
+                        </td>
+                        <td width="15%">
+                            <input type="text" class="form-control" />
+                        </td>
+                        <td width="20%">
+                            <input type="file" class="form-control" />
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" onclick="AddReceivingDocumentRow(this)"><i class="fa fa-plus"></i></button>
+                            <button type="button" class="btn btn-danger" onclick="remove(this)" disabled><i class="fa fa-trash"></i></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot id="ReceivingFoot">
+                <tr>
+                    <td colspan="10">
+                        <button type="button" class="btn btn-primary pull-right" onclick="ShowDamage(this)">Next | <i class="fa fa-arrow-circle-o-right"></i></button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="border" style="border-top:dashed thin lavender" id="DamageInformation">
+        <div class="row" style="margin-top:20px;">
+            <div class="col-md-12">
+                <h4>
+                    Damage Detail
+                    <button type="button" class="btn btn-default btn-sm pull-right" onclick="ReloadDamage(this)"><i class="fa fa-refresh fa-spin" id="Reload"></i></button>
+                </h4>
+            </div>
+        </div>
+
+        <table class="table" id="DamageDetail">
+            <thead>
+                <tr>
+                    <td>Product</td>
+                    <td>Damage Type</td>
+                    <td>Document Type</td>
+                    <td>Claim/Damage Cost</td>
+                    <td>Cause of Damage</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.lstDamageDetail.Count > 0)
+                {
+                    foreach (var item in Model.lstDamageDetail)
+                    {
+                        <tr>
+                            <td width="15%">
+                                <select class="form-control select-chosen" id="ProductItemID">
+                                    <option value="">--Select--</option>
+                                    @if (ViewBag.DamageItem != null)
+                                    {
+                                        foreach (var pro in ViewBag.DamageItem)
+                                        {
+                                            if (item.ProductItemID.ToString() == pro.Value)
+                                            {
+                                                <option value="@pro.Value" selected>@pro.Text</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@pro.Value">@pro.Text</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            </td>
+                            <td width="15%">
+                                <select class="form-control select-chosen" id="DamageTypeID">
+                                    <option value="">--Select--</option>
+                                    @if (ViewBag.DamageType != null)
+                                    {
+                                        foreach (var pro in ViewBag.DamageType)
+                                        {
+                                            if (item.DamageTypeID.ToString() == pro.Value)
+                                            {
+                                                <option value="@pro.Value" selected>@pro.Text</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@pro.Value">@pro.Text</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            </td>
+                            <td width="15%">
+                                <select class="form-control select-chosen" id="DocumentTypeID">
+                                    <option value="">--Select--</option>
+                                    @if (ViewBag.DocumentType != null)
+                                    {
+                                        foreach (var pro in ViewBag.DocumentType)
+                                        {
+                                            if (item.DocumentTypeID.ToString() == pro.Value)
+                                            {
+                                                <option value="@pro.Value" selected>@pro.Text</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@pro.Value">@pro.Text</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            </td>
+                            <td width="15%">
+                                <input type="text" class="form-control" value="@item.ClaimDamageCost" />
+                            </td>
+                            <td width="15%">
+                                <input type="text" class="form-control" value="@item.CauseOfDamage" />
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary" onclick="AddDamageRow(this)"><i class="fa fa-plus"></i></button>
+                                <button type="button" class="btn btn-danger" onclick="remove(this)" disabled><i class="fa fa-trash"></i></button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success pull-right"><i class="fa fa-info"></i> | Damage Detail</button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td width="15%">
+                            @*@Html.DropDownList("ProductItemID", ViewBag.DamageItem as SelectList, "--Select--", new { @class = "form-control select-chosen" })*@
+                            <select class="form-control select-chosen" id="ProductItemID" name="ProductCode">
+                            </select>
+                        </td>
+                        <td width="15%">
+                            @Html.DropDownList("DamageTypeID", ViewBag.DamageType as SelectList, "--Select--", new { @class = "form-control select-chosen" })
+                        </td>
+                        <td width="15%">
+                            @Html.DropDownList("DocumentTypeID", ViewBag.DocumentType as SelectList, "--Select--", new { @class = "form-control select-chosen" })
+                        </td>
+                        <td width="15%">
+                            <input type="text" class="form-control" id="ClaimDamageCost" onblur="DamageCostTotal(this)" />
+                        </td>
+                        <td width="15%">
+                            <input type="text" class="form-control" />
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" onclick="AddDamageRow(this)"><i class="fa fa-plus"></i></button>
+                            <button type="button" class="btn btn-danger" onclick="remove(this)" disabled><i class="fa fa-trash"></i></button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-success pull-right" onclick="$('#modal-addDamageInfo').modal('show');"><i class="fa fa-info"></i> | Damage Detail</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot id="DamageFoot">
+                <tr>
+                    <td colspan="10">
+                        <button type="button" class="btn btn-primary pull-right" onclick="ShowExpenses(this)">Next | <i class="fa fa-arrow-circle-o-right"></i></button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div id="modal-addDamageInfo" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="width:1300px;left:0%">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h2 class="modal-title"><i class="fa fa-pencil"></i> | Damage Details</h2>
+                </div>
+
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="DamageInfoModal">
+                            <thead>
+                                <tr>
+                                    <td>Claim Damage Cost</td>
+                                    <td>Claim to Insurance</td>
+                                    <td>Claim to Customer</td>
+                                    <td>Claim to Vehicle</td>
+                                    <td>Balance to</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" @*onclick="VehicleModalTr(this)"*@>Cancel</button>
+                    <button type="submit" id="Vehicle" class="btn btn-primary pull-right" onclick="$('#modal-addDamageInfo').modal('hide')"><b><i class="fa fa-plus"></i> Add Detail</b></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="border" style="border-top:dashed thin lavender" id="ExpensesInformation">
+        <div class="row" style="margin-top:20px;">
+            <div class="col-md-12">
+                <h4>
+                    Expenses
+                    <button type="button" class="btn btn-default btn-sm pull-right" onclick="ReloadExpense(this)"><i class="fa fa-refresh fa-spin" id="Reload"></i></button>
+                </h4>
+            </div>
+        </div>
+
+        <table class="table" id="Expenses">
+            <thead>
+                <tr>
+                    <td>Code</td>
+                    <td>Account</td>
+                    <td>Amount</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.lstExpenseDetail.Count > 0)
+                {
+                    foreach (var item in Model.lstExpenseDetail)
+                    {
+                        <tr>
+                            <td width="20%">
+                                <select class="form-control select-chosen" id="ExpenseID">
+                                    <option value="">--Select--</option>
+                                    @if (ViewBag.Expense != null)
+                                    {
+                                        foreach (var pro in ViewBag.Expense)
+                                        {
+                                            if (item.ExpenseID.ToString() == pro.Value)
+                                            {
+                                                <option value="@pro.Value" selected>@pro.Text</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@pro.Value">@pro.Text</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            </td>
+                            <td width="20%">
+                                <input type="text" class="form-control" value="@item.Account" />
+                            </td>
+                            <td width="15%">
+                                <input type="text" class="form-control" value="@item.Amount" />
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary" onclick="AddExpensesRow(this)"><i class="fa fa-plus"></i></button>
+                                <button type="button" class="btn btn-danger" onclick="remove(this)" disabled><i class="fa fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td width="20%">
+                            @Html.DropDownList("ExpenseID", ViewBag.Expense as SelectList, "--Select--", new { @class = "form-control select-chosen" })
+                        </td>
+                        <td width="20%">
+                            <input type="text" class="form-control" />
+                        </td>
+                        <td width="15%">
+                            <input type="text" class="form-control" />
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" onclick="AddExpensesRow(this)"><i class="fa fa-plus"></i></button>
+                            <button type="button" class="btn btn-danger" onclick="remove(this)" disabled><i class="fa fa-trash"></i></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="border" style="border-top:dashed thin lavender" id="FreightDetail">
+        <div class="row" style="margin-top:20px;">
+            <div class="col-md-12">
+                <h4>
+                    Freight
+                </h4>
+            </div>
+        </div>
+
+        <table class="table" id="FreightCharges">
+            <thead>
+                <tr>
+                    <td>Additional Frieght</td>
+                    <td>Weighbridge</td>
+                    <td>Labour</td>
+                    <td>Freight</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td width="22%">
+                        <input type="text" class="form-control text-right" id="AdditionalFrieght" onkeyup="GrandtotalFrieghtDetails('#FreightCharges',0,'Additional')"/>
+                    </td>
+                    <td width="22%">
+                        <input type="text" class="form-control text-right" id="Weighbridge" onkeyup="GrandtotalFrieghtDetails('#FreightCharges',1,'Weighbridge')"/>
+                    </td>
+                    <td width="22%">
+                        <input type="text" class="form-control text-right" id="Labour" onkeyup="GrandtotalFrieghtDetails('#FreightCharges',2,'Labour')"/>
+                    </td>
+                    <td width="22%">
+                        <input type="text" class="form-control text-right" id="Freight" onkeyup="GrandtotalFrieghtDetails('#FreightCharges',3,'Freight')"/>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" onclick="AddFrieghtDetial(this)"><i class="fa fa-plus"></i></button>
+                        <button type="button" class="btn btn-danger" onclick="remove(this)" disabled><i class="fa fa-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr class="grand_total_Freight">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <table class="table" id="remarks">
+        <tbody>
+            @if (Model.UniversalBilty.ID > 0)
+            {
+                <tr class="Allremarks">
+                    <td colspan="5">
+                        <label>Remarks</label>
+                        <textarea class="form-control" name="Remarks" id="Remarks" placeholder="Enter remarks if needed.">@Model.UniversalBilty.Remarks</textarea>
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr class="Allremarks">
+                    <td colspan="5">
+                        <label>Remarks</label>
+                        <textarea class="form-control" name="Remarks" id="Remarks" placeholder="Enter remarks if needed."></textarea>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    <button type="submit" id="SaveBtn" class="btn btn-primary pull-right" onclick="SaveData(this)"><i class="fa fa-save"></i> | Save Bilty</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>
+
+
+<script src="~/js/UniversalBilty.js"></script>
+<script src="~/js/pages/formsValidation.js"></script>
+@section Script
+{
+    <script>
+
+        $(".ddlsearchcity").click(function () {
+            $(".ddlsearchcity").chosen();
+        })
+        $(".ddlsearcharea").click(function () {
+            $(".ddlsearcharea").chosen();
+        })
+        $(".ddlsearchcitydrop").click(function () {
+            $(".ddlsearchcitydrop").chosen();
+        })
+        $(".ddlsearchareadrop").click(function () {
+            $(".ddlsearchareadrop").chosen();
+        })
+
+        $("#ContainerCode").click(function () {
+            $("#ContainerCode").chosen();
+        })
+        $("#ProductCode").click(function () {
+            $("#ProductCode").chosen();
+        })
+        $("#DispatchDocumentCode").click(function () {
+            $("#DispatchDocumentCode").chosen();
+        })
+        $("#EmployeeID").click(function () {
+            $("#EmployeeID").chosen();
+            $("#ReceivingDocumentCode").chosen();
+        })
+        $("#ProductItemID").click(function () {
+            $("#ProductItemID").chosen();
+            $("#DamageTypeID").chosen();
+            $("#DocumentTypeID").chosen();
+        })
+        $("#ExpenseID").click(function () {
+            $("#ExpenseID").chosen();
+        })
+
+
+        $(function () { FormsValidation.init(); });
+
+        document.querySelector("#ManualBiltyNo").focus();
+
+        $(document).ready(function () {
+            $(".chosen").chosen();
+            $("#ContainerPick").chosen();
+            $("#BiltyDate").datepicker({
+                altField: "#BiltyDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#MakeDate").datepicker({
+                altField: "#MakeDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#DeliveryDate").datepicker({
+                altField: "#DeliveryDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#LoadingDate").datepicker({
+                altField: "#LoadingDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#LoadingGateInDate").datepicker({
+                altField: "#LoadingGateInDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#LoadingGateOutDate").datepicker({
+                altField: "#LoadingGateOutDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#UnLoadingDate").datepicker({
+                altField: "#UnLoadingDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#UnLoadingGateInDate").datepicker({
+                altField: "#UnLoadingGateInDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#UnLoadingGateOutDate").datepicker({
+                altField: "#UnLoadingGateOutDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+        });
+
+        $("table").on("change", "input", function () {
+            var tableRow = $(this).closest("tr");
+            var one = Number(tableRow.find("#Quantity").val());
+            var two = Number(tableRow.find("#Weight").val());
+            var total = one * two;
+            tableRow.find("#TotalWeight").val(total);
+
+            var containerone = Number(tableRow.find("#ContainerQuantity").val());
+            var containertwo = Number(tableRow.find("#ContainerWeight").val());
+            var total = containerone * containertwo;
+            tableRow.find("#ContainerTotalWeight").val(total);
+
+            var DCost = Number(tableRow.find("#ClaimDamageCost").val());
+            var DInsure = Number(tableRow.find("#ClaimToInsurance").val());
+            var DCus = Number(tableRow.find("#ClaimToCustomer").val());
+            var DVeh = Number(tableRow.find("#ClaimToVehicle").val());
+            var total = DCost - DInsure - DCus - DVeh;
+            tableRow.find("#BalanceTo").val(total);
+        });
+
+        $("#btnVehicleInfo").click(function () {
+            debugger;
+            var Veh = $(".detailsVehicle tbody tr td:eq(0) select").val();
+            if (Veh == 0) {
+                Message("Error", "Vehicle is required", "error");
+            }
+            else {
+                $('#modal-addVehicleInfo').modal('show');
+                var RowsCount = $(".detailsVehicle tbody tr").length;
+
+                for (var i = 0; i < RowsCount; i++) {
+                    var VehicleType = $(".detailsVehicle tbody tr:eq('" + i + "') td:eq(0) select").val();
+                    var Quantity = $(".detailsVehicle tbody tr:eq('" + i + "') td:eq(1) input").val();
+
+                }
+                $("#VehiclemodalTable tbody").html('');
+
+                var RowsInputs = '<tr style="width:300px"> <td id="sno"> </td>   <td><input type="text" id="txtVehicleType" style="width: 180px;" readonly /></td>   <td><input type="text" class="txtRegNo" style="width: 108px;" /></td>     <td><input type="text" class="txtContactNo" style="width: 108px;" /></td>  <td> <input type="text" id="txtFathername" style="width: 108px;" /> </td>    <td> <input type="text"  style="width: 108px;" /> </td>  <td> <input type="text" class="txtNICno" style="width: 108px;" /> </td>  <td> <input type="text" id="txtDriverCell" style="width: 108px;" /> </td>  <td> <input type="text" id="txtSearchBroker" class="searchBroker"/> </td>   <td><button type="button" class="btn btn-danger btn-xs" onclick="RemoveInformationRow(this)"><i class="fa fa-trash"></i></button></td> </tr>';
+                var x = 0;
+                var Sno = 0;
+                for (var i = 0; i < RowsCount; i++) {
+                    Sno++
+                    var EachRowQuantity = $(".detailsVehicle tbody tr:eq('" + i + "') td:eq(1) input").val();
+                    for (var j = 0; j < EachRowQuantity; j++) {
+                        var _x = parseInt(j) + parseInt(x);
+                        var VehicleTypeValue = $(".detailsVehicle tbody tr:eq('" + i + "') td:eq(0) select option:selected").text();
+                        $(".VehiclemodalTable tbody").append(RowsInputs);
+
+                        $(".VehiclemodalTable tbody tr:eq('" + _x + "') td:eq(1) input").val(VehicleTypeValue);
+                        $(".VehiclemodalTable tbody tr:eq('" + _x + "') td:eq(0)").text(_x + 1);
+
+                    }
+
+                    x += parseInt(EachRowQuantity);
+
+
+                }
+                $(".txtContactNo").mask("9999-9999999");
+                $(".txtNICno").mask("99999-9999999-9");
+                $(this).addClass("hidden");
+                $("#btnUpdateVehicleInfo").removeClass("hidden");
+                //focused('VehiclemodalTable', 2);
+            }
+        });
+
+        $("#btnUpdateVehicleInfo").click(function () {
+            debugger;
+            var Veh = $(".detailsVehicle tbody tr td:eq(0) select").val();
+            if (Veh == 0) {
+                Message("Error", "Vehicle is required", "error");
+            }
+            else {
+                let Rowindex = 0
+                let row = $(".detailsVehicle tbody tr");
+                debugger;
+                for (var i = 0; i < row.length; i++) {
+                    let totalRowsGot = 0;
+                    //let RegNo = row.eq(i).find("td:eq(3)").text().trim();
+                    let VehicleType = row.eq(i).find("td:eq(0) select option:selected").text().trim();
+                    let qty = row.eq(i).find("td:eq(1) input").val().trim();
+                    // let ContainerID = row.eq(i).find("td:eq(3)").val().trim();
+                    let InfoTable = $(".VehiclemodalTable tbody tr");
+                    for (var j = 0; j < InfoTable.length; j++) {
+                        if (InfoTable.eq(j).find("td:eq(1)").find("input").val().trim() == VehicleType) {
+                            totalRowsGot++;
+                            let $row = InfoTable.eq(j).closest("tr");
+                            Rowindex = $row.index();
+                        }
+                    }
+                    //Rowindex += totalRowsGot - 1;
+                    totalRowsGot = parseInt(qty) - totalRowsGot;
+                    for (var k = 0; k < totalRowsGot; k++) {
+                        // $("#VehiclemodalTable tbody tr:eq(" + Rowindex + ")").after('<tr style="width:300px"> <td id="sno"> </td>   <td><input type="text" id="txtVehicleType" readonly value="' + VehicleType + '" style="width: 180px;" /></td>   <td><input type="text" class="txtRegNo" value="' + RegNo + '" style="width: 108px;" /></td>     <td><input type="text" class="txtContactNo" style="width: 108px;" /></td>  <td> <input type="text" id="txtFathername" style="width: 108px;" /> </td>    <td> <input type="text"  style="width: 108px;" /> </td>  <td> <input type="text" class="txtNICno" style="width: 108px;" /> </td>  <td> <input type="text" id="txtDriverCell" style="width: 108px;" /> </td>  <td> <input type="text" id="txtSearchBroker" class="searchBroker"/> </td>   </tr>');
+                        $(".VehiclemodalTable tbody tr:eq(" + Rowindex + ")").after('<tr style="width:300px"> <td id="sno"> </td>   <td><input type="text" id="txtVehicleType" readonly value="' + VehicleType + '" style="width: 180px;" /></td>   <td><input type="text" class="txtRegNo" style="width: 108px;" /></td>     <td><input type="text" class="txtContactNo" style="width: 108px;" /></td>  <td> <input type="text" id="txtFathername" style="width: 108px;" /> </td>    <td> <input type="text"  style="width: 108px;" /> </td>  <td> <input type="text" class="txtNICno" style="width: 108px;" /> </td>  <td> <input type="text" id="txtDriverCell" style="width: 108px;" /> </td>  <td> <input type="text" id="txtSearchBroker" class="searchBroker"/> </td> <td><button type="button" class="btn btn-danger btn-xs" onclick="RemoveInformationRow(this)"><i class="fa fa-trash"></i></button></td>  </tr>');
+                    }
+
+                }
+                $(".txtContactNo").mask("9999-9999999");
+                $(".txtNICno").mask("99999-9999999-9");
+                ApplySerial("VehicleInfoModal");
+                $("#modal-addVehicleInfo").modal('show');
+                //focused('VehicleInfoModal', 2);
+            }
+
+        });
+
+        $("#btnContainerInfo").click(function () {
+            debugger;
+            var Veh = $(".detailsContainer tbody tr td:eq(0) select").val();
+            if (Veh == 0) {
+                Message("Error", "Container is required", "error");
+            }
+            else {
+                $('#modal-addContainerInfo').modal('show');
+                var RowsCount = $(".detailsContainer tbody tr").length;
+                for (var i = 0; i < RowsCount; i++) {
+                    var VehicleType = $(".detailsContainer tbody tr:eq('" + i + "') td:eq(0) select").val();
+                    var Quantity = $(".detailsContainer tbody tr:eq('" + i + "') td:eq(1) input").val();
+                }
+                $("#ContainermodalTable tbody").html('');
+                //$.ajax({
+                //    url: ControllerUrl + "test",
+                //    type: 'GET',
+                //    dataType: 'json',
+                //    success: function (data) {
+
+
+                //    }
+                //});
+                // var RowsInputs = '<tr style="width:300px"> <td id="sno"> </td>   <td><input type="text" id="txtVehicleType" style="width: 180px;" /></td>   <td><input type="text" id="txtRegNo" style="width: 108px;" /></td>  <td><input type="text" id="txtVehicleContactNo" style="width: 108px;" /></td>  <td> <select class="mySelect"> </select> </td>  <td><input type="text" id="txtDrivername" style="width: 108px;" /></td>  <td> <input type="text" id="txtFathername" style="width: 108px;" /> </td>    <td> <input type="text" id="txtDriverNIC" style="width: 108px;" /> </td>  <td> <input type="text" id="txtDriverLicense" style="width: 108px;" /> </td>  <td> <input type="text" id="txtDriverCell" style="width: 108px;" /> </td>   </tr>';
+                var RowsInputs = '<tr style="width:300px"> <td id="sno"> </td>   <td><input type="text" id="txtContainerType" style="width: 180px;" readonly /></td>   <td><input type="text" class="txtContainerNo" style="width: 100px;" /></td>     <td><input type="text" class="txtWeight" style="width: 100px;" /></td>  <td> <select style="width: 180px;"><option value="0">--Select--</option>@foreach (var pro in ViewBag.PickLocation){<option value="@pro.Value">@pro.Text</option>}</select></td>    <td> <select style="width: 180px;" ><option value="0">--Select--</option>@foreach (var pro in ViewBag.DropLocation){<option value="@pro.Value">@pro.Text</option>}</select> </td>  <td> <input type="text" class="" style="width: 150px;" /> </td>  <td> <input type="text" id="txtDriverCell" style="width: 150px;" /> </td>  <td><button type="button" class="btn btn-danger btn-xs" onclick="RemoveInformationRow(this)"><i class="fa fa-trash"></i></button></td>  </tr>';
+                var x = 0;
+                var Sno = 0;
+                for (var i = 0; i < RowsCount; i++) {
+                    Sno++
+                    var EachRowQuantity = $(".detailsContainer tbody tr:eq('" + i + "') td:eq(1) input").val();
+                    for (var j = 0; j < EachRowQuantity; j++) {
+                        var _x = parseInt(j) + parseInt(x);
+                        var VehicleTypeValue = $(".detailsContainer tbody tr:eq('" + i + "') td:eq(0) select option:selected").text();
+                        $(".ContainermodalTable tbody").append(RowsInputs);
+
+                        $(".ContainermodalTable tbody tr:eq('" + _x + "') td:eq(1) input").val(VehicleTypeValue);
+                        $(".ContainermodalTable tbody tr:eq('" + _x + "') td:eq(0)").text(_x + 1);
+                    }
+                    x += parseInt(EachRowQuantity);
+                }
+
+                //debugger;
+                //var z = 0;
+                //$.each(data.textList, function (index, value) {
+                //    $('.mySelect').append($('<option>').text(value).attr('value', data.valuesList[z]));
+                //    z++;
+                //});
+
+
+                $(this).addClass("hidden");
+                $("#btnUpdateContainerInfo").removeClass("hidden");
+                //focused('ContainermodalTable', 2);
+            }
+
+        });
+
+        $("#btnUpdateContainerInfo").click(function () {
+            debugger;
+            var Veh = $(".detailsContainer tbody tr td:eq(0) select").val();
+            if (Veh == 0) {
+                Message("Error", "Container is required", "error");
+            }
+            else {
+                let Rowindex = 0
+                let row = $(".detailsContainer tbody tr");
+                debugger;
+                for (var i = 0; i < row.length; i++) {
+                    let totalRowsGot = 0;
+                    //let RegNo = row.eq(i).find("td:eq(3)").text().trim();
+                    let VehicleType = row.eq(i).find("td:eq(0) select option:selected").text().trim();
+                    let qty = row.eq(i).find("td:eq(1) input").val().trim();
+                    // let ContainerID = row.eq(i).find("td:eq(3)").val().trim();
+                    let InfoTable = $(".ContainermodalTable tbody tr");
+                    for (var j = 0; j < InfoTable.length; j++) {
+                        if (InfoTable.eq(j).find("td:eq(1)").find("input").val().trim() == VehicleType) {
+                            totalRowsGot++;
+                            let $row = InfoTable.eq(j).closest("tr");
+                            Rowindex = $row.index();
+                        }
+                    }
+                    //Rowindex += totalRowsGot - 1;
+                    totalRowsGot = parseInt(qty) - totalRowsGot;
+                    for (var k = 0; k < totalRowsGot; k++) {
+                        // $("#VehiclemodalTable tbody tr:eq(" + Rowindex + ")").after('<tr style="width:300px"> <td id="sno"> </td>   <td><input type="text" id="txtVehicleType" readonly value="' + VehicleType + '" style="width: 180px;" /></td>   <td><input type="text" class="txtRegNo" value="' + RegNo + '" style="width: 108px;" /></td>     <td><input type="text" class="txtContactNo" style="width: 108px;" /></td>  <td> <input type="text" id="txtFathername" style="width: 108px;" /> </td>    <td> <input type="text"  style="width: 108px;" /> </td>  <td> <input type="text" class="txtNICno" style="width: 108px;" /> </td>  <td> <input type="text" id="txtDriverCell" style="width: 108px;" /> </td>  <td> <input type="text" id="txtSearchBroker" class="searchBroker"/> </td>   </tr>');
+                        $(".ContainermodalTable tbody tr:eq(" + Rowindex + ")").after('<tr style="width:300px"> <td id="sno"> </td>   <td><input type="text" id="txtContainerType" value="' + VehicleType + '" style="width: 180px;" readonly /></td>   <td><input type="text" class="txtContainerNo" style="width: 100px;" /></td>     <td><input type="text" class="txtWeight" style="width: 100px;" /></td>  <td> <select style="width: 180px;"><option value="0">--Select--</option>@foreach (var pro in ViewBag.PickLocation){<option value="@pro.Value">@pro.Text</option>}</select></td>    <td> <select style="width: 180px;" ><option value="0">--Select--</option>@foreach (var pro in ViewBag.DropLocation){<option value="@pro.Value">@pro.Text</option>}</select> </td>  <td> <input type="text" class="" style="width: 150px;" /> </td>  <td> <input type="text" id="Remarks" style="width: 150px;" /> </td>  <td><button type="button" class="btn btn-danger btn-xs" onclick="RemoveInformationRow(this)"><i class="fa fa-trash"></i></button></td>  </tr>');
+                    }
+
+                }
+
+                ApplySerial("ContainerInfoModal");
+                $("#modal-addContainerInfo").modal('show');
+            }
+        });
+
+        function ApplySerial(TableID) {
+            debugger;
+            let table = $("#" + TableID + " tbody tr");
+            for (var i = 0; i < table.length; i++) {
+                table.eq(i).find("td:eq(0)").text(i + 1);
+            }
+        }
+        $(document).on("focus", "input.txtContainerNo", function (e) {
+            e.preventDefault();
+            $(this).mask("aaaa-999999-9");
+        });
+        //$(document).on("focus", "input.txtRegNo", function (e) {
+        //    e.preventDefault();
+        //    $(this).mask("aaaa-9999");
+        //});
+
+        function RemoveInformationRow(e) {
+            $(e).parent("td").parent("tr").fadeOut(100, function () { $(this).remove(); });
+        }
+
+        $(document).on("blur", ".MakeDate", function (e) {
+            debugger;
+            if ($(this).val().length == 3) {
+                $(this).focus();
+
+            }
+            else if ($(this).val().length == 5) {
+                $(this).focus();
+                $(this).val('');
+            }
+            else if ($(this).val().length > 6) {
+                $(this).focus();
+                $(this).val('');
+            }
+            else if ($(this).val().length == 1) {
+                $(this).val("0" + $(this).val());
+                var Today = new Date();
+                let getMonth = parseInt(Today.getMonth()) + 1
+                let getYear = Today.getFullYear();
+                getYear = getYear.toString().substring(2, 4);
+
+                let date = new Date(getMonth + "-" + $(this).val() + "-" + getYear);
+                $(this).val(date.toDateString());
+
+
+
+            }
+            else if ($(this).val().length == 2) {
+                var Today = new Date();
+                let getMonth = parseInt(Today.getMonth()) + 1
+                let getYear = Today.getFullYear();
+                //getYear = getYear.toString().substring(2, 4);
+                if ($(this).val() == "31") {
+                    if (isDateValid(getMonth)) {
+                        let date = new Date(getMonth + "-" + $(this).val() + "-" + getYear);
+                        $(this).val(date.toDateString());
+                    }
+                    else {
+                        $(this).focus();
+                        $(this).val('');
+                    }
+                }
+                else {
+                    let date = new Date(getMonth + "-" + $(this).val() + "-" + getYear);
+                    $(this).val(date.toDateString());
+                }
+
+
+            }
+            else if ($(this).val().length == 4) {
+                let _date = $(this).val();
+                if (_date.trim() != "") {
+                    let mm = _date.substring(0, 2);
+                    let dd = _date.substring(2, 4);
+                    let Today = new Date();
+                    let getYear = Today.getFullYear();
+                    getYear = getYear.toString().substring(2, 4);
+                    if (mm == "32") {
+                        if (isDateValid(dd)) {
+                            let date = new Date(dd + "-" + mm + "-" + getYear);
+                            $(this).val(date.toDateString());
+                        }
+                        else {
+                            $(this).focus();
+                            $(this).val('');
+                        }
+                    } else {
+                        let date = new Date(dd + "-" + mm + "-" + getYear);
+                        $(this).val(date.toDateString());
+                    }
+
+
+                }
+            }
+            else if ($(this).val().length == 6) {
+                var _Date = $(this).val();
+                if (_Date.trim() != "") {
+                    let mm = _Date.substring(0, 2);
+                    let dd = _Date.substring(2, 4);
+                    let yy = _Date.substring(4, 6);
+                    if (mm == "32") {
+                        if (isDateValid(dd)) {
+                            let _Final = dd + "-" + mm + "-" + yy;
+                            var final = new Date(_Final);
+                            $(this).val(final.toDateString());
+                        }
+                        else {
+                            $(this).focus();
+                            $(this).val('');
+                        }
+                    } else {
+                        let _Final = dd + "-" + mm + "-" + yy;
+                        var final = new Date(_Final);
+                        $(this).val(final.toDateString());
+                    }
+                }
+            }
+            if ($(this).val() == "Invalid Date") {
+                $(this).focus();
+                $(this).val('');
+            }
+        });
+        $(".MakeDate").focus(function () {
+            // $(this).val($("#hfDateFormatting").val());
+            debugger;
+            var date = new Date($(this).val());
+            let _date = date.toLocaleDateString();
+            let arr = _date.split("/");
+            debugger;
+            if (arr[2].length == 3) {
+
+            }
+            else {
+                if (arr[1].length == 1) {
+                    arr[1] = "0" + arr[1];
+                }
+                if (arr[0].length == 1) {
+                    arr[0] = "0" + arr[0];
+                }
+                $(this).val(arr[1] + arr[0] + arr[2].substring(2, 4));
+            }
+
+
+            $(this).select();
+        });
+
+        function AddProductddl() {
+            debugger;
+            $("#Product tbody tr").each(function () {
+                $("#ProductItemID").chosen('destroy');
+                let code = $(this);
+                let name = code.find("td:eq(0) select option:selected").text();
+                let ID = code.find("td:eq(0) select option").val();
+
+                $("#ProductItemID").append("<option value='" + ID + "'>" + name + "</option>");
+            })
+
+            $("#ProductItemID").chosen();
+        }
+
+        function DamageCostTotal() {
+            debugger;
+            $("#DamageDetail tbody tr");
+            let Amount = (this).find("td:eq(3) input").val();
+            var row = `<tr>
+                <td><input type='text' class='form-control' id='ClaimDamageCost' value='${Amount}' disabled></td>
+                <td><input type='text' class='form-control' id='ClaimToInsurance'></td>
+                <td><input type='text' class='form-control' id='ClaimToCustomer'></td>
+                <td><input type='text' class='form-control' id='ClaimToVehicle'></td>
+                <td><input type='text' class='form-control' id='BalanceTo' disabled></td>
+
+                </tr>`;
+            $('#DamageInfoModal tbody').append(row);
+        }
+
+        $("#ManualBiltyNo").blur(function () {
+            debugger;
+            let data = $("#ManualBiltyNo").val();
+            $.ajax({
+                url: '../Admin/UniversalBiltyManualNo',
+                type: "POST",
+                data: { data: data },
+                success: function (response) {
+                    if (response.Status != "OK") {
+                        //Message("Error", "Manual Bilty No already exist", "error");
+                        $(".Error").show();
+                        $("#ManualError").hide();
+                        //$("#ManualBiltyNo").focus();
+                    }
+                    else {
+                        $(".Error").hide();
+                        $("#ManualError").show();
+                    }
+                },
+                error: function (e) {
+                    Message("Error", "an error occured", "info");
+                }
+            })
+        })
+    </script>
+}

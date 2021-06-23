@@ -1,0 +1,420 @@
+﻿@{
+    ViewBag.Title = "Add Voucher";
+}
+
+<div class="content-header">
+    <div class="header-section">
+        <h1>
+            Accounts Vouchers<br><small>Add Vouchers</small>
+        </h1>
+    </div>
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>Admin</li>
+    <li><a href="javascript:void();">Accounts Voucher</a></li>
+</ul>
+
+<!-- END Datatables Header -->
+<!-- Datatables Content -->
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            <a id="" class="btn btn-primary btn-sm pull-right" onclick="$('#modal-add').modal('show'); Enable()" href="#">Add New | <i class="fa fa-plus"></i></a>
+        </div>
+    </div>
+
+    <div class="" id="grid">
+        @Html.Partial("_addvoucher")
+    </div>
+</div>
+
+<!-- END Datatables Content -->
+
+
+
+
+
+<div id="modal-add" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg modal-dialog-centered" style="width: 90%;">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal" onclick="SetDefaultValues()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title"><i class="fa fa-pencil-alt"></i>New Accounts Voucher</h2>
+            </div>
+            <div class="modal-body">
+                <form id="accounts_form">
+                    <div class="form-group row">
+                        <div class="col-md-4">
+                            <label for="id" class="col-form-label">Document Type*</label>
+                            @Html.DropDownList("accounts_transtypeId",
+                                ViewBag.transTypes as SelectList
+                                , new
+                                     {
+                                         Name = "accounts[transtypeId]"
+                                ,
+                                         @class = "form-control form-control-sm"
+                                ,
+                                         @required = true
+                                ,
+                                         @style = "width:50%"
+                            })
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id" class="col-form-label">Document Number*</label>
+                            <input type="text" name="accounts[id]" id="accounts_id" readonly class="form-control form-control-sm" style="width:50%" value="@ViewBag.documentNo" />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id" class="col-form-label">Date*</label>
+                            <input type="date" name="accounts[docDate]" id="accounts_docDate" style="width:50%" class="form-control form-control-sm" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4">
+                            <label for="id" class="col-form-label">Account Title</label>
+                            <input type="text" name="accounts[accountId]" onblur="$('#accounts_accountTitle').val(this.value);" id="accounts_accountId" class="form-control form-control-lg" />
+                        </div>
+                    </div>
+                    <div class="form-group row hide">
+                        <div class="col-md-4">
+                            <label for="id" class="col-form-label">Account Title</label>
+                            <input type="text" name="accounts[accountTitle]" id="accounts_accountTitle" class="form-control form-control-lg" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4">
+                            <label for="id" class="col-form-label">Narration</label>
+                            <textarea name="accounts[narration]" id="accounts_narration" class="form-control form-control-lg"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <table class="table table-striped table-responsive table-hover table-bordered" id="accounts_transaction_table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" scope="col">Sr</th>
+                                        <th class="text-center" scope="col">Inv #</th>
+                                        <th class="text-center" scope="col">Customer</th>
+                                        <th class="text-center" scope="col">Detail</th>
+                                        <th class="text-center" scope="col">Credit Amount</th>
+                                        <th class="text-center" scope="col">Debit Amount</th>
+                                        <th class="text-center" scope="col">Chq No</th>
+                                        <th class="text-center" scope="col">Total Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="accounts_transaction_tbody">
+                                    <tr>
+                                        <th scope="row" id="sr_1" name="sr[1]">1</th>
+                                        <td style="display:none"><input type="text" id="accounts_transaction_1_accounts_transaction_id" name="accounts_transaction[1][accounts_transaction_id]" value="0" class="form-control form-control-sm" /></td>
+                                        <td style="display:none"><input type="text" id="accounts_transaction_1_refId" name="accounts_transaction[1][refId]" value="@ViewBag.documentNo" class="form-control form-control-sm" /></td>
+                                        <td><input type="text" id="accounts_transaction_1_orders_id" name="accounts_transaction[1][orders_id]" class="form-control form-control-sm" /></td>
+                                        <td><input type="text" id="accounts_transaction_1_customers_id" name="accounts_transaction[1][customers_id]" class="form-control form-control-sm" /></td>
+                                        <td><input type="text" id="accounts_transaction_1_details" name="accounts_transaction[1][details]" class="form-control form-control-sm" /></td>
+                                        <td><input type="number" onchange="calculateTotal();" id="accounts_transaction_1_trans_cr" value="0.00" name="accounts_transaction[1][trans_cr]" class="form-control form-control-sm" /></td>
+                                        <td><input type="number" onchange="calculateTotal();" onblur="calculateLine(this)" id="accounts_transaction_1_trans_db" value="0.00" name="accounts_transaction[1][trans_db]" class="form-control form-control-sm" /></td>
+                                        <td><input type="number" id="accounts_transaction_1_chqNo" name="accounts_transaction[1][chqNo]" class="form-control form-control-sm" /></td>
+                                        <td><input type="number" id="accounts_transaction_1_amount" name="accounts_transaction[1][amount]" class="form-control form-control-sm" readonly /></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" id="sr_2" name="sr[2]">2</th>
+                                        <td style="display:none"><input type="text" id="accounts_transaction_2_accounts_transaction_id" name="accounts_transaction[2][accounts_transaction_id]" value="0" class="form-control form-control-sm" /></td>
+                                        <td style="display:none"><input type="text" id="accounts_transaction_2_refId" name="accounts_transaction[2][refId]" value="@ViewBag.documentNo" class="form-control form-control-sm" /></td>
+                                        <td><input type="text" id="accounts_transaction_2_orders_id" name="accounts_transaction[2][orders_id]" class="form-control form-control-sm" /></td>
+                                        <td><input type="text" id="accounts_transaction_2_customers_id" name="accounts_transaction[2][customers_id]" class="form-control form-control-sm" /></td>
+                                        <td><input type="text" id="accounts_transaction_2_details" name="accounts_transaction[2][details]" class="form-control form-control-sm" /></td>
+                                        <td><input type="number" onchange="calculateTotal();" id="accounts_transaction_2_trans_cr" name="accounts_transaction[2][trans_cr]" value="0.00" class="form-control form-control-sm" /></td>
+                                        <td><input type="number" onchange="calculateTotal();" onblur="calculateLine(this)" id="accounts_transaction_2_trans_db" value="0.00" name="accounts_transaction[2][trans_db]" class="form-control form-control-sm" /></td>
+                                        <td><input type="number" id="accounts_transaction_2_chqNo" name="accounts_transaction[2][chqNo]" class="form-control form-control-sm" /></td>
+                                        <td><input type="number" id="accounts_transaction_2_amount" name="accounts_transaction[2][amount]" class="form-control form-control-sm" readonly /></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" id="sr_3" name="sr[3]">3</th>
+                                        <td style="display:none"><input type="text" id="accounts_transaction_3_accounts_transaction_id" name="accounts_transaction[3][accounts_transaction_id]" value="0" class="form-control form-control-sm" /></td>
+                                        <td style="display:none"><input type="text" id="accounts_transaction_3_refId" name="accounts_transaction[3][refId]" value="@ViewBag.documentNo" class="form-control form-control-sm" /></td>
+                                        <td><input type="text" id="accounts_transaction_3_orders_id" name="accounts_transaction[3][orders_id]" class="form-control form-control-sm" /></td>
+                                        <td><input type="text" id="accounts_transaction_3_customers_id" name="accounts_transaction[3][customers_id]" class="form-control form-control-sm" /></td>
+                                        <td><input type="text" id="accounts_transaction_3_details" name="accounts_transaction[3][details]" class="form-control form-control-sm" /></td>
+                                        <td><input type="number" onchange="calculateTotal();" id="accounts_transaction_3_trans_cr" name="accounts_transaction[3][trans_cr]" value="0.00" class="form-control form-control-sm" /></td>
+                                        <td><input type="number" onchange="calculateTotal();" onblur="calculateLine(this)" id="accounts_transaction_3_trans_db" value="0.00" name="accounts_transaction[3][trans_db]" class="form-control form-control-sm" /></td>
+                                        <td><input type="number" id="accounts_transaction_3_chqNo" name="accounts_transaction[3][chqNo]" class="form-control form-control-sm" /></td>
+                                        <td><input type="number" id="accounts_transaction_3_amount" name="accounts_transaction[3][amount]" class="form-control form-control-sm" readonly /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-3">
+                            <div class="card" style="width: 37.5rem;">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <div class="form-group">
+                                            <strong>Total Amount: </strong>
+                                            <input type="text" readonly class="form-control-borderless float-right" id="accounts_amount" name="accounts[amount]" />
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" id="btnSaveEdit" class="btn btn-primary pull-right" onclick="SaveRecord(this)"><b><i class="fa fa-save"></i> Save</b></button>
+            </div>
+            <!-- END Modal Body -->
+        </div>
+    </div>
+</div>
+
+<script src="~/js/Function.js"></script>
+<script src="~/js/Software js/Vendor.js"></script>
+@section Script
+{
+    <script>
+        const SaveRecord = (e) => {
+            var data = document.querySelectorAll('form#accounts_form');
+            var children = data[0];
+            var parentObj = {};
+            var childObj = {};
+            var childArr = [];
+            var prevRowNum = 0;
+            for (var i = 0; i < children.length; i++) {
+                var child = children[i];
+                if (child.id.includes("ac_")) {
+                    continue;
+                }
+                if (child.value != "") {
+                    var tableName = child.name.split('[')[0].toLowerCase();
+                    var matches = child.name.match(/(?<=\[).*?(?=\])/g);
+                    if (tableName == '@ViewBag.parentTable') {
+                        parentObj[matches[0]] = child.value;
+                    }
+                    else {
+                        let rowNum = parseInt(child.id.split('_')[2]);
+                        if (prevRowNum != rowNum && prevRowNum != 0) {
+                            childArr.push(childObj);
+                            childObj = {};
+                            childObj[matches[1]] = child.value;
+                        }
+                        else {
+                            childObj[matches[1]] = child.value;
+                        }
+                        prevRowNum = prevRowNum != rowNum ? rowNum : prevRowNum;
+                    }
+                }
+                if (i+1 == children.length) {
+                    childArr.push(childObj);
+                    childObj = {};
+                }
+            }
+            console.log(parentObj)
+            console.log(childArr)
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: '@Url.Action("CreateVoucher", "Accounting")',
+                data: JSON.stringify({ 'accounts': parentObj,'accounts_transactions': childArr }),
+                success: function (response) {
+                    $("#grid").load(location.href + " #grid");
+                    ShowMessage(response.Message, "success");
+                    $('#modal-add').modal('hide');
+                    $('input').val('');
+                    $('#accounts_id').val(@ViewBag.documentNo + 1);
+                },
+                failure: function (response) {
+                    ShowMessage(response.Message, "error");
+                }
+            });
+        };
+
+        const Delete = (id) => {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Delete Anyway!'
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        type: 'POST',
+                        url: '@Url.Action("DeleteVoucher", "Accounting")',
+                        data: JSON.stringify({ 'id': id}),
+                        success: function (response) {
+                            $("#grid").load(location.href + " #grid");
+                            ShowMessage(response.Message, "success");
+                        },
+                        failure: function (response) {
+                            ShowMessage(response.Message, "error");
+                        }
+                    });
+                }
+            });
+        }
+
+        const update = (obj, e) => {
+            console.log(obj);
+            $("#modal-add").modal('show');
+            $('input').val('');
+            Object.entries(obj).forEach(([key, value]) => {
+                if (key == "accounts_transaction") {
+                    Object.entries(value).forEach(([index, object]) => {
+                        Object.entries(object).forEach(([iKey, iValue]) => {
+                            $('#accounts_transaction_' + (parseInt(index)+1) + '_' + iKey).val(iValue);
+                            calculateTotal();
+                            fillautocompleteOnEdit();
+                            console.log($('#accounts_transaction_' + (parseInt(index) + 1) + '_' + iKey).id);
+                            calculateLine('accounts_transaction_' + (parseInt(index) + 1) + '_' + iKey);
+                        });
+                    });
+                }
+                else {
+                    if (key == "docDate") $('#accounts_' + key).val(value.split("_")[0]);
+                    $('#accounts_' + key).val(value);
+                }
+            });
+        };
+
+        var customersObj = @Html.Raw(Json.Encode(ViewBag.customers));
+        var invObj = @Html.Raw(Json.Encode(ViewBag.invoices));
+        var gm_accObj = @Html.Raw(Json.Encode(ViewBag.gm_acc));
+        $(document).ready(function () {
+            // Customers Autocomplete
+            initautocomplete(customersObj, "accounts_transaction_1_customers_id", "customers_id", "accounts_transaction");
+            initautocomplete(customersObj, "accounts_transaction_2_customers_id", "customers_id", "accounts_transaction");
+            initautocomplete(customersObj, "accounts_transaction_3_customers_id", "customers_id", "accounts_transaction");
+
+            // Invoice Autocomplete
+            initautocomplete(invObj, "accounts_transaction_1_orders_id", "orders_id", "accounts_transaction");
+            initautocomplete(invObj, "accounts_transaction_2_orders_id", "orders_id", "accounts_transaction");
+            initautocomplete(invObj, "accounts_transaction_3_orders_id", "orders_id", "accounts_transaction");
+
+            // Accounts Autocomplete
+            initautocomplete(gm_accObj, "accounts_accountId", "accountId", "accounts");
+
+            $("#OwnerContactNo").keypress(function (e) {
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    $("#OwnerContactNo").css("border", "1px solid red");
+                    $("#errmsg").html("Contact No Only *").show();
+                    return false;
+                }
+                else {
+                    $("#errmsg").fadeOut("slow");
+                    $("#OwnerContactNo").css("border", "");
+                }
+            });
+            $("#PrimaryContactNo").keypress(function (e) {
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    $("#PrimaryContactNo").css("border", "1px solid red");
+                    $("#errmsg1").html("Contact No Only *").show();
+                    return false;
+                }
+                else {
+                    $("#errmsg1").fadeOut("slow");
+                    $("#PrimaryContactNo").css("border", "");
+                }
+            });
+            $("#SecContactNo").keypress(function (e) {
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    $("#SecContactNo").css("border", "1px solid red");
+                    $("#errmsg2").html("Contact No Only *").show();
+                    return false;
+                }
+                else {
+                    $("#errmsg2").fadeOut("slow");
+                    $("#SecContactNo").css("border", "");
+                }
+            });
+            $("#PTCLNo").keypress(function (e) {
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    $("#PTCLNo").css("border", "1px solid red");
+                    $("#errmsg3").html("Landline No Only *").show();
+                    return false;
+                }
+                else {
+                    $("#errmsg3").fadeOut("slow");
+                    $("#PTCLNo").css("border", "");
+                }
+            });
+            $("#example").DataTable({
+                //dom: 'Bfrtip',
+                //buttons: [
+                //    'copyHtml5',
+                //    'excelHtml5',
+                //    'csvHtml5',
+                //    'pdfHtml5'
+                //]
+            });
+            Space();
+        });
+
+        const calculateLine = obj => {
+            var index = obj.toString().includes('_') ? parseInt(obj.split('_')[2]) : parseInt(obj.id.split('_')[2]);
+            var totalRows = parseInt($(obj).parent().parent().parent().children().length);
+            if (index == totalRows) {
+                for (var i = index + 1; i < index + 6; i++) {
+                    let tr = '<tr>' +
+                        '<th scope = "row" id = "sr_' + i + '" name = "sr[' + i + ']" >' + i + '</th>' +
+                        '<td style="display:none"><input type="text" id="accounts_transaction_' + i + '_accounts_transaction_id" name="accounts_transaction[' + i + '][accounts_transaction_id]" value="0" class="form-control form-control-sm" /></td>' +
+                        '<td style="display:none"><input type="text" id="accounts_transaction_' + i + '_accounts_transaction_id" name="accounts_transaction[' + i + '][accounts_transaction_id]" value="0" class="form-control form-control-sm" /></td>' +
+                        '<td><input type="text" id="accounts_transaction_' + i + '_orders_id" name="accounts_transaction[' + i + '][orders_id]" class="form-control form-control-sm" /></td>' +
+                        '<td><input type="text" id="accounts_transaction_' + i + '_customers_id" name="accounts_transaction[' + i + '][customers_id]" class="form-control form-control-sm" /></td>' +
+                        '<td><input type="text" id="accounts_transaction_' + i + '_details" name="accounts_transaction[' + i + '][details]" class="form-control form-control-sm" /></td>' +
+                        '<td><input type="number" id="accounts_transaction_' + i + '_trans_cr" name="accounts_transaction[' + i + '][trans_cr]"  value="0.00" class="form-control form-control-sm" /></td>' +
+                        '<td><input type="number" onblur="calculateLine(this)" id="accounts_transaction_' + i + '_trans_db"  value="0.00" name="accounts_transaction[' + i + '][trans_db]" class="form-control form-control-sm" /></td>' +
+                        '<td><input type="number" id="accounts_transaction_' + i + '_chqNo" name="accounts_transaction[' + i + '][chqNo]" class="form-control form-control-sm" /></td> ' +
+                        '<td><input type="number" id="accounts_transaction_' + i + '_amount" name="accounts_transaction[' + i + '][amount]" class="form-control form-control-sm" /></td>' +
+                        '</tr>';
+                    $(obj).parent().parent().parent().append(tr);
+                    initautocomplete(customersObj, "accounts_transaction_" + i + "_customers_id", "customers_id", "accounts_transaction");
+                    initautocomplete(invObj, "accounts_transaction_" + i + "_orders_id", "orders_id", "accounts_transaction");
+                }
+            }
+        };
+
+        const SetDefaultValues = () => {
+            $('#accounts_id').val(@ViewBag.documentNo + 1);
+            $("input[type='number']").val(0.00);
+            $("input[type='text']").val("");
+            $("textarea").val("");
+            $("textarea").text("");
+            $("input[type='date']").val('@DateTime.Now.Date'.split('_')[0]);
+        }
+
+        const calculateTotal = () => {
+            var total = 0;
+            $('#accounts_transaction_tbody').children().each((index, element) => {
+                let debitAmount = $(element).find('[id$="trans_db"]').val();
+                let creditAmount = $(element).find('[id$="trans_cr"]').val();
+                let amount = creditAmount - debitAmount;
+                total += amount;
+                $(element).find('[id$="amount"]').val(amount.toFixed(2));
+            });
+            $('#accounts_amount').val(total.toFixed(2));
+        };
+
+        function Message(title, text, type) {
+            Swal.fire({
+                title: title + '!',
+                text: text,
+                icon: type,
+                confirmButtonText: 'OK'
+            })
+        }
+        function GetOrders() {
+            $('#example').DataTable();
+        }
+    </script>
+}

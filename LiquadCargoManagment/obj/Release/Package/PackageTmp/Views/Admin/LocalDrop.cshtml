@@ -1,0 +1,690 @@
+﻿@model LiquadCargoManagment.Models.OrderViewModel
+@using LiquadCargoManagment.Models
+
+@{
+    ViewBag.Title = "LocalDrop";
+}
+
+<!-- END Datatables Header -->
+<!-- Datatables Content -->
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            <h2>Local Drop Bilty</h2>
+        </div>
+    </div>
+
+    <table class="table table-responsive">
+        @if (Model.lstLocalDrop.ID > 0)
+        {
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="hidden" name="ID" id="hfEditID" value="@Model.lstLocalDrop.ID" />
+                        <label class="control-label">Bilty No</label>
+                        <input type="text" id="OrderNo" name="OrderNo" class="form-control" />
+                    </td>
+                    <td>
+                        <label class="control-label">Bilty Date</label>
+                        <input type="text" id="BiltyDate" name="BiltyDate" class="form-control" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <h4>Customer Information</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="30%">
+                        <label class="control-label">Consigner/Sender</label>
+                        <select class="form-control select-chosen" id="ConsignerSender" name="ConsignerSender" onchange="GetCustomer(this)">
+                            <option value="">--Select--</option>
+                            @if (ViewBag.Customer != null)
+                            {
+                                foreach (var pro in ViewBag.Customer)
+                                {
+                                    if (Model.lstLocalDrop.ConsignerSender.ToString() == pro.Value)
+                                    {
+                                        <option value="@pro.Value" selected>@pro.Text</option>
+
+                                    }
+                                    else
+                                    {
+                                        <option value="@pro.Value">@pro.Text</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </td>
+                    <td width="20%">
+                        <label class="control-label">Group</label>
+                        <input type="text" class="form-control" disabled value="@Model.lstLocalDrop.CustomerProfile.CustomerGroup.Name" />
+                    </td>
+                    <td width="20%">
+                        <label class="control-label">Company</label>
+                        <input type="text" class="form-control" disabled value="@Model.lstLocalDrop.CustomerProfile.CustomerCompany.Name" />
+                    </td>
+                    <td width="20%">
+                        <label class="control-label">Department</label>
+                        <input type="text" class="form-control" disabled value="@Model.lstLocalDrop.CustomerProfile.CustomerDepartment.Name" />
+                    </td>
+                    <td width="10%">
+                        <div class="radio-inline" style="padding-top:30px;">
+                            <label for="Pick">
+                                <input type="checkbox" id="Self" name="example-radios" value="Self"> | Self
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label">Consigner/Receiver</label>
+                        <select class="form-control select-chosen" id="ConsignerReceiver" name="ConsignerReceiver" onchange="GetCustomer(this)">
+                            <option value="">--Select--</option>
+                            @if (ViewBag.Customer != null)
+                            {
+                                foreach (var pro in ViewBag.Customer)
+                                {
+                                    if (Model.lstLocalDrop.ConsignerReceiver.ToString() == pro.Value)
+                                    {
+                                        <option value="@pro.Value" selected>@pro.Text</option>
+
+                                    }
+                                    else
+                                    {
+                                        <option value="@pro.Value">@pro.Text</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </td>
+                    <td>
+                        <label class="control-label">Group</label>
+                        <input type="text" class="form-control" disabled value="@Model.lstLocalDrop.CustomerProfile1.CustomerGroup.Name" />
+                    </td>
+                    <td>
+                        <label class="control-label">Company</label>
+                        <input type="text" class="form-control" disabled value="@Model.lstLocalDrop.CustomerProfile1.CustomerCompany.Name" />
+                    </td>
+                    <td>
+                        <label class="control-label">Department</label>
+                        <input type="text" class="form-control" disabled value="@Model.lstLocalDrop.CustomerProfile1.CustomerDepartment.Name" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label">Bill To</label>
+                        <select class="form-control select-chosen" id="BillTo" name="BillTo" onchange="GetCustomer(this)">
+                            <option value="">--Select--</option>
+                            @if (ViewBag.Customer != null)
+                            {
+                                foreach (var pro in ViewBag.Customer)
+                                {
+                                    if (Model.lstLocalDrop.BillTo.ToString() == pro.Value)
+                                    {
+                                        <option value="@pro.Value" selected>@pro.Text</option>
+
+                                    }
+                                    else
+                                    {
+                                        <option value="@pro.Value">@pro.Text</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </td>
+                    <td>
+                        <label class="control-label">Group</label>
+                        <input type="text" class="form-control" disabled value="@Model.lstLocalDrop.CustomerProfile2.CustomerGroup.Name" />
+                    </td>
+                    <td>
+                        <label class="control-label">Company</label>
+                        <input type="text" class="form-control" disabled value="@Model.lstLocalDrop.CustomerProfile2.CustomerCompany.Name" />
+                    </td>
+                    <td>
+                        <label class="control-label">Department</label>
+                        <input type="text" class="form-control" disabled value="@Model.lstLocalDrop.CustomerProfile.CustomerDepartment.Name" />
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>
+                        <label>Local Pick Date</label>
+                        <input type="text" class="form-control" id="LocalPickDate" name="LocalPickDate" value="@Model.lstLocalDrop.LocalPickDate" />
+                    </td>
+                    <td>
+                        <label>Vehicle Reg</label>
+                        <select class="form-control select-chosen" id="VehicleID">
+                            <option value="">--Select--</option>
+                            @if (ViewBag.Vehicle != null)
+                            {
+                                foreach (var pro in ViewBag.Vehicle)
+                                {
+                                    if (Model.lstLocalDrop.VehicleID.ToString() == pro.Value)
+                                    {
+                                        <option value="@pro.Value" selected>@pro.Text</option>
+
+                                    }
+                                    else
+                                    {
+                                        <option value="@pro.Value">@pro.Text</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </td>
+                    <td>
+                        <label>Scale</label>
+                        <select class="form-control">
+                            <option>--Select--</option>
+                        </select>
+                    </td>
+                    <td>
+                        <label>Broke</label>
+                        <select class="form-control">
+                            <option>--Select--</option>
+                        </select>
+                    </td>
+                    <td>
+                        <label>Freight Expense</label>
+                        <input type="text" class="form-control" id="FreightExpense" name="FreightExpense" value="@Model.lstLocalDrop.FreightExpense" />
+                    </td>
+                    <td>
+                        <label>Freight Charged</label>
+                        <input type="text" class="form-control" id="FreightCharged" name="FreightCharged" value="@Model.lstLocalDrop.FreightCharged" />
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td colspan="5">
+                        <h4>Location Information</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="30%">
+                        <label class="control-label">Pick Location</label>
+                        <select class="form-control select-chosen" id="PickLocationID" onchange="GetLocation(this)">
+                            <option value="">--Select--</option>
+                            @if (ViewBag.PickLocation != null)
+                            {
+                                foreach (var pro in ViewBag.PickLocation)
+                                {
+                                    if (Model.lstLocalDrop.PickLocationID.ToString() == pro.Value)
+                                    {
+                                        <option value="@pro.Value" selected>@pro.Text</option>
+
+                                    }
+                                    else
+                                    {
+                                        <option value="@pro.Value">@pro.Text</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </td>
+                    <td width="20%">
+                        <label class="control-label">City</label>
+                        <input type="text" class="form-control" disabled value="@Model.lstLocalDrop.PickLocation.City.CityName" />
+                    </td>
+                    <td width="20%">
+                        <label class="control-label">Area</label>
+                        <input type="text" class="form-control" disabled value="@Model.lstLocalDrop.PickLocation1.Area.Name" />
+                    </td>
+                    <td width="30%">
+                        <label class="control-label">Address</label>
+                        <input type="text" class="form-control" disabled value="@Model.lstLocalDrop.PickLocation1.Address" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="30%">
+                        <label class="control-label">Drop Location</label>
+                        <select class="form-control select-chosen" id="DropLocationID" onchange="GetLocation(this)">
+                            <option value="">--Select--</option>
+                            @if (ViewBag.PickLocation != null)
+                            {
+                                foreach (var pro in ViewBag.PickLocation)
+                                {
+                                    if (Model.lstLocalDrop.PickLocationID.ToString() == pro.Value)
+                                    {
+                                        <option value="@pro.Value" selected>@pro.Text</option>
+
+                                    }
+                                    else
+                                    {
+                                        <option value="@pro.Value">@pro.Text</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </td>
+                    <td width="20%">
+                        <label class="control-label">City</label>
+                        <input type="text" class="form-control" disabled value="@Model.lstLocalDrop.PickLocation1.City.CityName" />
+                    </td>
+                    <td width="20%">
+                        <label class="control-label">Area</label>
+                        <input type="text" class="form-control" disabled value="@Model.lstLocalDrop.PickLocation1.Area.Name" />
+                    </td>
+                    <td width="30%">
+                        <label class="control-label">Address</label>
+                        <input type="text" class="form-control" disabled value="@Model.lstLocalDrop.PickLocation1.Address" />
+                    </td>
+                </tr>
+            </tbody>
+        }
+
+        else
+        {
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="hidden" name="ID" id="hfEditID" value="@Model.lstLocalPick.ID" />
+                        <label class="control-label">Bilty No</label>
+                        <input type="text" id="OrderNo" name="OrderNo" class="form-control" />
+                    </td>
+                    <td>
+                        <label class="control-label">Bilty Date</label>
+                        <input type="text" id="BiltyDate" name="BiltyDate" class="form-control" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <h4>Customer Information</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="30%">
+                        <label class="control-label">Consigner/Sender</label>
+                        @Html.DropDownList("ConsignerSender", ViewBag.Customer as SelectList, "--Select--", new { @class = "form-control ConsignerSender select-chosen", onchange = "GetCustomer(this)" })
+                    </td>
+                    <td width="20%">
+                        <label class="control-label">Group</label>
+                        <input type="text" class="form-control" disabled />
+                    </td>
+                    <td width="20%">
+                        <label class="control-label">Company</label>
+                        <input type="text" class="form-control" disabled />
+                    </td>
+                    <td width="20%">
+                        <label class="control-label">Department</label>
+                        <input type="text" class="form-control" disabled />
+                    </td>
+                    <td width="10%">
+                        <div class="radio-inline" style="padding-top:30px;">
+                            <label for="Pick">
+                                <input type="checkbox" id="Self" name="example-radios" value="Self"> | Self
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label">Consigner/Receiver</label>
+                        @Html.DropDownList("ConsignerReceiver", ViewBag.Customer as SelectList, "--Select--", new { @class = "form-control ConsignerReceiver select-chosen", onchange = "GetCustomer(this)" })
+                    </td>
+                    <td>
+                        <label class="control-label">Group</label>
+                        <input type="text" class="form-control" disabled />
+                    </td>
+                    <td>
+                        <label class="control-label">Company</label>
+                        <input type="text" class="form-control" disabled />
+                    </td>
+                    <td>
+                        <label class="control-label">Department</label>
+                        <input type="text" class="form-control" disabled />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label">Bill To</label>
+                        @Html.DropDownList("BillTo", ViewBag.Customer as SelectList, "--Select--", new { @class = "form-control select-chosen", onchange = "GetCustomer(this)" })
+                    </td>
+                    <td>
+                        <label class="control-label">Group</label>
+                        <input type="text" class="form-control" disabled />
+                    </td>
+                    <td>
+                        <label class="control-label">Company</label>
+                        <input type="text" class="form-control" disabled />
+                    </td>
+                    <td>
+                        <label class="control-label">Department</label>
+                        <input type="text" class="form-control" disabled />
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>
+                        <label>Local Pick Date</label>
+                        <input type="text" class="form-control" id="LocalPickDate" name="LocalPickDate" />
+                    </td>
+                    <td>
+                        <label>Vehicle Reg</label>
+                        @Html.DropDownList("VehicleID", ViewBag.Vehicle as SelectList, "--Select--", new { @class = "form-control select-chosen" })
+                    </td>
+                    <td>
+                        <label>Scale</label>
+                        <select class="form-control">
+                            <option>--Select--</option>
+                        </select>
+                    </td>
+                    <td>
+                        <label>Broke</label>
+                        <select class="form-control">
+                            <option>--Select--</option>
+                        </select>
+                    </td>
+                    <td>
+                        <label>Freight Expense</label>
+                        <input type="text" class="form-control" id="FreightExpense" name="FreightExpense" />
+                    </td>
+                    <td>
+                        <label>Freight Charged</label>
+                        <input type="text" class="form-control" id="FreightCharged" name="FreightCharged" />
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td colspan="5">
+                        <h4>Location Information</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="30%">
+                        <label class="control-label">Pick Location</label>
+                        @Html.DropDownList("PickLocationID", ViewBag.PickLocation as SelectList, "--Select--", new { @class = "form-control select-chosen", onchange = "GetLocation(this)" })
+                    </td>
+                    <td width="20%">
+                        <label class="control-label">City</label>
+                        <input type="text" class="form-control" disabled />
+                    </td>
+                    <td width="20%">
+                        <label class="control-label">Area</label>
+                        <input type="text" class="form-control" disabled />
+                    </td>
+                    <td width="30%">
+                        <label class="control-label">Address</label>
+                        <input type="text" class="form-control" disabled />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="30%">
+                        <label class="control-label">Drop Location</label>
+                        @Html.DropDownList("DropLocationID", ViewBag.PickLocation as SelectList, "--Select--", new { @class = "form-control select-chosen", onchange = "GetLocation(this)" })
+                    </td>
+                    <td width="20%">
+                        <label class="control-label">City</label>
+                        <input type="text" class="form-control" disabled />
+                    </td>
+                    <td width="20%">
+                        <label class="control-label">Area</label>
+                        <input type="text" class="form-control" disabled />
+                    </td>
+                    <td width="30%">
+                        <label class="control-label">Address</label>
+                        <input type="text" class="form-control" disabled />
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+
+    <table class="table pro" id="Product">
+        <thead>
+            <tr>
+                <td colspan="5">
+                    <h4>Product Information</h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="control-label">Product</label>
+                </td>
+                <td>
+                    <label class="control-label">Package Type</label>
+                </td>
+                <td>
+                    <label class="control-label">Qty</label>
+                </td>
+                <td>
+                    <label class="control-label">Item</label>
+                </td>
+                <td>
+                    <label class="control-label">Total Item Qty</label>
+                </td>
+                <td>
+                    <label class="control-label">Total Weight</label>
+                </td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.lstLocalDropProduct.Count > 0)
+            {
+                foreach (var item in Model.lstLocalDropProduct)
+                {
+                    <tr>
+                        <td width="30%">
+                            <select class="form-control select-chosen" id="ProductID" onchange="GetProduct(this)">
+                                <option value="">--Select--</option>
+                                @if (ViewBag.Product != null)
+                                {
+                                    foreach (var pro in ViewBag.Product)
+                                    {
+                                        if (item.ProductID.ToString() == pro.Value)
+                                        {
+                                            <option value="@pro.Value" selected>@pro.Text</option>
+
+                                        }
+                                        else
+                                        {
+                                            <option value="@pro.Value">@pro.Text</option>
+                                        }
+                                    }
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" disabled value="@item.Product.PackageType.PackageTypeName" />
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" name="Qty" id="Qty" value="@item.Qty" />
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" name="Item" id="Item" value="@item.Item" />
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" name="TotalItemQty" id="TotalItemQty" value="@item.TotalItemQty" />
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" name="TotalWeight" id="TotalWeight" value="@item.TotalWeight" />
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" onclick="AddProduct(this)"><i class="fa fa-plus"></i></button>
+                        </td>
+                    </tr>
+                }
+            }
+
+            else
+            {
+                <tr>
+                    <td width="30%">
+                        @Html.DropDownList("ProductID", ViewBag.Product as SelectList, "--Select--", new { @class = "form-control select-chosen", onchange = "GetProduct(this)" })
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" disabled />
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="Qty" id="Qty" />
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="Item" id="Item" />
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="TotalItemQty" id="TotalItemQty" />
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="TotalWeight" id="TotalWeight" />
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" onclick="AddProduct(this)"><i class="fa fa-plus"></i></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <table class="table table-responsive">
+        <tfoot>
+            <tr>
+                <td colspan="6">
+                    <button type="submit" class="btn btn-primary pull-right" onclick="SaveLocalPick(this)"><i class="fa fa-save"></i> | Save</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+@section Script
+{
+    <script>
+
+        $(document).ready(function () {
+            Space();
+            $("#example").DataTable();
+            $(".select-chosen").chosen();
+        });
+
+
+
+        function Message(title, text, type) {
+            Swal.fire({
+                title: title + '!',
+                text: text,
+                icon: type,
+                confirmButtonText: 'OK'
+            })
+        }
+        function GetOrders() {
+            $('#example').DataTable();
+        }
+
+        function ClearItem() {
+            $("input[type='text']").val('');
+            $("input[type='hidden']").val('');
+            $("select").val('');
+        }
+        $(document).ready(function () {
+            $("#BiltyDate").datepicker({
+                altField: "#BiltyDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#LocalPickDate").datepicker({
+                altField: "#LocalPickDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+        });
+
+        function AddProduct(r) {
+            $(".select-chosen").chosen('destroy');
+            let parent = $(r).parent("td").parent("tr").html();
+            parent = parent.replace("btn-primary", "btn-danger").replace("fa-plus", "fa-trash").replace("AddProduct", "remove");
+            $("#Product").find("tbody").append(`<tr>${parent}</tr>`);
+            $(".select-chosen").chosen();
+        }
+        function remove(e) {
+            $(e).parent("td").parent("tr").fadeOut(300, function () { $(this).remove() });
+        }
+
+        function GetCustomer(e) {
+            let row = $(e).parent("td").parent("tr");
+            $.post(`../Admin/GetCustomer?id=${$(e).val()}`).done(function (response) {
+                row.find("td:eq(1) input").val(response.Group);
+                row.find("td:eq(2) input").val(response.CompanyName);
+                row.find("td:eq(3) input").val(response.Department);
+            });
+        }
+        function GetLocation(e) {
+            let row = $(e).parent("td").parent("tr");
+            $.post(`../Admin/GetArea?id=${$(e).val()}`).done(function (response) {
+                row.find("td:eq(1) input").val(response.City);
+                row.find("td:eq(2) input").val(response.Area);
+                row.find("td:eq(3) input").val(response.Address);
+            });
+        }
+        function GetProduct(e) {
+            let row = $(e).parent("td").parent("tr");
+            $.post(`../Admin/GetProductCascade?id=${$(e).val()}`).done(function (response) {
+                row.find("td:eq(1) input").val(response.PackageType);
+            });
+        }
+
+        function SaveLocalPick() {
+            debugger;
+            let Order = {}
+            let ID = $("#hfEditID").val();
+            let ConsignerSender = $(".ConsignerSender").val();
+            let ConsignerReceiver = $(".ConsignerReceiver").val();
+            let BillTo = $("#BillTo").val();
+            let LocalPickDate = $("#LocalPickDate").val();
+            let VehicleID = $("#VehicleID").val();
+            let FreightExpense = $("#FreightExpense").val();
+            let FreightCharged = $("#FreightCharged").val();
+            let PickLocationID = $("#PickLocationID").val();
+            let DropLocationID = $("#DropLocationID").val();
+
+            Order.ID = ID;
+            Order.ConsignerSender = ConsignerSender;
+            Order.ConsignerReceiver = ConsignerReceiver;
+            Order.BillTo = BillTo;
+            Order.LocalPickDate = LocalPickDate;
+            Order.VehicleID = VehicleID;
+            Order.FreightExpense = FreightExpense;
+            Order.FreightCharged = FreightCharged;
+            Order.PickLocationID = PickLocationID;
+            Order.DropLocationID = DropLocationID;
+
+            var Customers = new Array();
+            $("#Product tbody").each(function () {
+                var row = $(this);
+                var customer = {};
+                customer.ProductID = row.find("tr td:eq(0) select option:selected").val();
+                customer.Qty = row.find("tr td:eq(2) input").val();
+                customer.Item = row.find("tr td:eq(3) input").val();
+                customer.TotalItemQty = row.find("tr td:eq(4) input").val();
+                customer.TotalWeight = row.find("tr td:eq(5) input").val();
+                Customers.push(customer);
+            });
+
+            $.ajax({
+                url: "../Admin/AddLocalDrop",
+                type: "POST",
+                data: { Order: Order, Details: Customers },
+                success: function (r) {
+                    if (r.status != "OK") {
+                        Message("Error", "An Error Occured !", r.Message, "error");
+                    }
+                    else {
+                        Message("Success", "Local Drop Has Been Created Successfully", "success");
+                        window.location = "../Admin/LocalDropList";
+                    }
+                },
+                error: function (r) {
+                    Message("Error", r.fail, "error");
+                }
+            });
+        }
+
+    </script>
+}

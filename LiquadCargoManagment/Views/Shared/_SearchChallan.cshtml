@@ -1,0 +1,68 @@
+﻿@model IEnumerable<LiquadCargoManagment.Models.Bilty>
+@using LiquadCargoManagment.Models;
+<div class="table-responsive">
+    <table class="table display table-striped" id="example" style="font-size:10px">
+        <thead>
+            <tr>
+                <td><input type="checkbox" id="checkAll"/></td>
+                <td>Created Date</td>
+                <td>Bilty No</td>
+                <td>Bilty Date</td>
+                <td>Bill To</td>
+                <td>Vehicle No</td>
+                <td>Receiver</td>
+                <td>Customer Type</td>
+                <td>Quantity</td>
+                <td>Weight</td>
+                <td>Total Freight</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr class="Selected">
+                <td class="sel"><input type="checkbox" class="checkbox" id="CompactBiltyID" value="@item.ID" name="CompactBiltyID" /></td>
+                @if (item.CreatedDate != null)
+                {
+                    <td>@Convert.ToDateTime(item.CreatedDate).ToString(SoftwareFormatting.DateFormat)</td>
+                }
+                else
+                {
+                    <td>@Convert.ToDateTime(item.ModifiedDate).ToString(SoftwareFormatting.DateFormat)</td>
+                }
+                <td>@item.OrderNo</td>
+                <td>@Convert.ToDateTime(item.OrderDate).ToString(SoftwareFormatting.DateFormat)</td>
+                @*<td>@Convert.ToDateTime(item.DeliveryDate).ToString(SoftwareFormatting.DateFormat)</td>*@
+                @if (item.BillTo != null)
+                {
+                    <td>@item.CustomerCompany.Name</td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                @if (item.VehicleID != null)
+                {
+                    <td>@item.Vehicle.RegNo</td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                @if (item.Reciever != null)
+                {
+                    <td>@item.PickLocation2.LocationName</td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                <td>@item.CustomerType</td>
+                <td>@string.Format(SoftwareFormatting.NumberFormat, item.OrderDetailsTotalQTY)</td>
+                <td>@string.Format(SoftwareFormatting.NumberFormat, item.OrderDetailsTotalWeight)</td>
+                <td>@string.Format(SoftwareFormatting.NumberFormat, item.TotalFreight)</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

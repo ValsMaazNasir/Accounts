@@ -1,0 +1,428 @@
+﻿@model LiquadCargoManagment.Models.OrderViewModel
+@using LiquadCargoManagment.Models
+@{
+    ViewBag.Title = "DieselManagement";
+}
+
+    <div class="block full">
+
+        <div class="block-title row">
+            <div class="col-md-12">
+                <h2>Diesel</h2>
+            </div>
+        </div>
+
+        <table class="table" id="Diesel_Rate">
+            <tbody>
+                @if (Model.lstDiesel.ID > 0)
+                {
+                <tr>
+                    <td>
+                        <input type="hidden" name="ID" id="ID" value="@Model.lstDiesel.ID" />
+                        <label>Diesel Order No.</label>
+                        @if (ViewBag.DieselNo != null)
+                        {
+                            <input type="number" value="@ViewBag.DieselNo" class="form-control" id="SerialNo" disabled />
+                        }
+                        else
+                        {
+                            <input type="number" value="@Model.lstDiesel.SerialNo" class="form-control" id="SerialNo" disabled />
+                        }
+                    </td>
+                    <td>
+                        <label>Date</label>
+                        <input type="text" name="DieselDate" id="DieselDate" class="form-control" value="@Model.lstDiesel.DieselDate">
+                    </td>
+                    <td>
+                        <label>Petrol Pump</label>
+                        <select class="form-control Search" id="PetrolPump">
+                            @if (Model.lstDiesel.PetrolPump == "Awan PSO")
+                            {
+                                <option value="Awan PSO" selected>Awan PSO</option>
+                                <option value="Taj Petrolium">Taj Petrolium</option>
+                                <option value="Shah Hascol">Shah Hascol</option>
+                            }
+                            else if (Model.lstDiesel.PetrolPump == "Taj Petrolium")
+                            {
+                                <option value="Awan PSO">Awan PSO</option>
+                                <option value="Taj Petrolium" selected>Taj Petrolium</option>
+                                <option value="Shah Hascol">Shah Hascol</option>
+                            }
+                            else
+                            {
+                                <option value="Awan PSO">Awan PSO</option>
+                                <option value="Taj Petrolium">Taj Petrolium</option>
+                                <option value="Shah Hascol" selected>Shah Hascol</option>
+                            }
+
+                        </select>
+                    </td>
+                </tr>
+                    <tr>
+                        <td>
+                            <label>Diesel Rate(L)</label>
+                            <input type="number" name="DieselRate" id="DieselRate" class="form-control" value="@Model.lstDiesel.DieselRate"onkeyup="TotalThis(this)">
+                        </td>
+                        <td>
+                            <label>Oil Rate(L)</label>
+                            <input type="number" name="OilRate" id="OilRate" class="form-control" value="@Model.lstDiesel.OilRate"onkeyup="TotalThis(this)">
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td>
+                            <input type="hidden" name="ID" id="ID" value="@Model.lstDiesel.ID" />
+                            <label>Diesel Order No.</label>
+                            @if (ViewBag.DieselNo != null)
+                            {
+                                <input type="number" value="@ViewBag.DieselNo" class="form-control" id="SerialNo" disabled />
+                            }
+                            else
+                            {
+                                <input type="number" value="@Model.lstDiesel.SerialNo" class="form-control" id="SerialNo" disabled />
+                            }
+                        </td>
+                        <td>
+                            
+                            <label>Date</label>
+                            <input type="text" name="DieselDate" id="DieselDate" class="form-control">
+                        </td>
+                        <td>
+                            <label>Petrol Pump</label>
+                            <select class="form-control select-chosen" id="PetrolPump">
+                                <option>--Select--</option>
+                                <option value="Awan PSO">Awan PSO</option>
+                                <option value="Taj Petrolium">Taj Petrolium</option>
+                                <option value="Shah Hascol">Shah Hascol</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Diesel Rate(L)</label>
+                            <input type="number" name="DieselRate" id="DieselRate" class="form-control" onkeyup="TotalThis(this)">
+                        </td>
+                        <td>
+                            <label>Oil Rate(L)</label>
+                            <input type="number" name="OilRate" id="OilRate" class="form-control" onkeyup="TotalThis(this)">
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="table-responsive">
+
+            <table id="Add" class="table table-responsive css-serial" cellpadding="0" cellspacing="0">
+
+                <thead>
+
+                    <tr style="font-size:11px;">
+                        <td><label>Serial No.</label></td>
+                        <td>
+
+                            <label>Reg #</label>
+
+                        </td>
+
+                        <td>
+
+                            <label>Diesel(L)</label>
+
+                        </td>
+
+                        <td>
+
+                            <label>Rate</label>
+
+                        </td>
+
+                        <td>
+
+                            <label>Amount</label>
+
+                        </td>
+
+                        <td>
+
+                            <label>Oil(L)</label>
+
+                        </td>
+
+                        <td>
+
+                            <label>Rate</label>
+
+                        </td>
+
+                        <td>
+
+                            <label>Oil Amount</label>
+
+                        </td>
+
+                        <td>
+
+                            <label>Other Amount</label>
+
+                        </td>
+
+                        <td>
+
+                            <label>Net Amount</label>
+
+                        </td>
+                        <td>
+
+                            <label>Cash Received</label>
+
+                        </td>
+                        <td>
+
+                            <label>Cash Paid</label>
+
+                        </td>
+                        <td>
+
+                            <label>Remarks</label>
+
+                        </td>
+
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @if (Model.lstDieselExpense.Count > 0)
+                    {
+                        foreach (var item in Model.lstDieselExpense)
+                        {
+                            <tr>
+                                <td width="7%"></td>
+                                <td width="15%" style="padding:5px;">
+                                    <select class="form-control chosen" id="RegNo">
+                                        <option value="">--Select--</option>
+                                        @if (ViewBag.RegNo != null)
+                                        {
+                                            foreach (var pro in ViewBag.RegNo)
+                                            {
+                                                if (item.RegNo.ToString() == pro.Value)
+                                                {
+                                                    <option value="@pro.Value" selected>@pro.Text</option>
+
+                                                }
+                                                else
+                                                {
+                                                    <option value="@pro.Value">@pro.Text</option>
+                                                }
+                                            }
+                                        }
+                                    </select>
+                                </td>
+                                <td style="width:80px; padding:5px;">
+                                    <input type="text" id="DieselLiter" value="@item.DieselLiter" name="DieselLiter" class="form-control DieselLiter text-right" onkeyup="GrandtotalDiesel('#Add',2,'DieselLiter')" />
+                                </td>
+                                <td style="width:80px; padding:5px;">
+                                    <input type="text" id="DieselRate" value="@item.DieselRate" name="DieselRate" readonly class="form-control DieselRate text-right" @*onkeyup="GrandtotalDiesel('#Add',3,'DieselRate')"*@ />
+                                </td>
+                                <td style="width:180px; padding:5px;">
+                                    <input type="text" id="DieselAmount" value="@item.DieselAmount" name="DieselAmount" class="form-control text-right" readonly onkeyup="GrandtotalDiesel('#Add',4,'TotalAmount')" />
+                                </td>
+                                <td style="width:80px; padding:5px;">
+                                    <input type="text" id="OilLiter" value="@item.OilLiter" name="OilLiter" class="form-control OilLiter text-right" onkeyup="GrandtotalDiesel('#Add',5,'OilLiter')" />
+                                </td>
+                                <td style="width:80px; padding:5px;">
+                                    <input type="text" id="OilRate" value="@item.OilRate" name="OilRate" readonly class="form-control OilRate text-right" @*onkeyup="GrandtotalDiesel('#Add',6,'OilRate')"*@ />
+                                </td>
+                                <td style="width:180px; padding:5px;">
+                                    <input type="text" id="OilAmount" value="@item.OilAmount" name="OilAmount" class="form-control OilAmount text-right" readonly onkeyup="GrandtotalDiesel('#Add',7,'TotalOilAmount')" />
+                                </td>
+                                <td style="width:180px; padding:5px;">
+                                    <input type="text" id="OtherAmount" value="@item.OtherAmount" name="OtherAmount" class="form-control OtherAmount text-right" onkeyup="GrandtotalDiesel('#Add',8,'OtherAmount')" />
+                                </td>
+                                <td style="width:180px; padding:5px;">
+                                    <input type="text" id="NetAmount" value="@item.NetAmount" name="NetAmount" readonly class="form-control text-right" onkeyup="GrandtotalDiesel('#Add',9,'NetAmount')" />
+                                </td>
+                                <td style="width:180px; padding:5px;">
+                                    <input type="text" id="CashReceived" value="@item.CashReceived" name="CashReceived" class="form-control text-right" onkeyup="GrandtotalDiesel('#Add',10,'CashReceived')" />
+                                </td>
+                                <td style="width:180px; padding:5px;">
+                                    <input type="text" id="CashPaid" value="@item.CashPaid" name="CashPaid" class="form-control text-right" onkeyup="GrandtotalDiesel('#Add',11,'CashPaid')" />
+                                </td>
+                                <td style="width:180px; padding:5px;">
+                                    <input type="text" id="Remarks" value="@item.Remarks" name="Remarks" class="form-control" />
+                                </td>
+                                <td>
+                                    <button type="button" id="btnSaveEdit" class="btn btn-primary btn-sm" onclick="AddRow(this)">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                    else
+                    {
+                        <tr class="List">
+                            <td width="7%"></td>
+                            <td width="15%" style="padding:5px;">
+                                @Html.DropDownList("RegNo", ViewBag.RegNo as SelectList, "Select", new { @class = "form-control chosen" })
+                            </td>
+                            <td style="width:80px; padding:5px;">
+                                <input type="text" id="DieselLiter" name="DieselLiter" class="form-control DieselLiter text-right" onkeyup="GrandtotalDiesel('#Add',2,'DieselLiter')"/>
+                            </td>
+                            <td style="width:80px; padding:5px;">
+                                <input type="text" id="DieselRate" name="DieselRate" readonly class="form-control DieselRate text-right" @*onkeyup="GrandtotalDiesel('#Add',3,'DieselRate')"*@ />
+                            </td>
+                            <td style="width:180px; padding:5px;">
+                                <input type="text" id="DieselAmount" name="DieselAmount" class="form-control text-right" readonly onkeyup="GrandtotalDiesel('#Add',4,'TotalAmount')" />
+                            </td>
+                            <td style="width:80px; padding:5px;">
+                                <input type="text" id="OilLiter" name="OilLiter" class="form-control OilLiter text-right" onkeyup="GrandtotalDiesel('#Add',5,'OilLiter')" />
+                            </td>
+                            <td style="width:80px; padding:5px;">
+                                <input type="text" id="OilRate" name="OilRate" readonly class="form-control OilRate text-right" @*onkeyup="GrandtotalDiesel('#Add',6,'OilRate')"*@ />
+                            </td>
+                            <td style="width:180px; padding:5px;">
+                                <input type="text" id="OilAmount" name="OilAmount" class="form-control OilAmount text-right" readonly onkeyup="GrandtotalDiesel('#Add',7,'TotalOilAmount')" />
+                            </td>
+                            <td style="width:180px; padding:5px;">
+                                <input type="text" id="OtherAmount" name="OtherAmount" class="form-control OtherAmount text-right" onkeyup="GrandtotalDiesel('#Add',8,'OtherAmount')"/>
+                            </td>
+                            <td style="width:180px; padding:5px;">
+                                <input type="text" id="NetAmount" name="NetAmount" readonly class="form-control text-right" onkeyup="GrandtotalDiesel('#Add',9,'NetAmount')"/>
+                            </td>
+                            <td style="width:180px; padding:5px;">
+                                <input type="text" id="CashReceived" name="CashReceived" class="form-control text-right" onkeyup="GrandtotalDiesel('#Add',10,'CashReceived')"/>
+                            </td>
+                            <td style="width:180px; padding:5px;">
+                                <input type="text" id="CashPaid" name="CashPaid" class="form-control text-right" onkeyup="GrandtotalDiesel('#Add',11,'CashPaid')"/>
+                            </td>
+                            <td style="width:180px; padding:5px;">
+                                <input type="text" id="Remarks" name="Remarks" class="form-control" />
+                            </td>
+                            <td>
+                                <button type="button" id="btnSaveEdit" class="btn btn-primary btn-sm" onclick="AddRow(this)">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+                <tfoot>
+                    @if (Model.lstDiesel.ID > 0)
+                    {
+                        <tr class="grand_total" style="font-weight:bold;">
+                            <td colspan="2">
+                                Grand Total :
+                            </td>
+                            <td class="text-right" style="padding-right:13px;">@Model.lstDiesel.DieselTotalLiter</td>
+                            <td class="text-right" style="padding-right:13px;">@Model.lstDiesel.DieselTotalRate</td>
+                            <td class="text-right" style="padding-right:13px;">@Model.lstDiesel.DieselTotalAmount</td>
+                            <td class="text-right" style="padding-right:13px;">@Model.lstDiesel.OilTotalLiter</td>
+                            <td class="text-right" style="padding-right:13px;">@Model.lstDiesel.OilTotalRate</td>
+                            <td class="text-right" style="padding-right:13px;">@Model.lstDiesel.OilTotalAmount</td>
+                            <td class="text-right" style="padding-right:13px;">@Model.lstDiesel.TotalOtherAmount</td>
+                            <td class="text-right" style="padding-right:13px;">@Model.lstDiesel.TotalNetAmount</td>
+                            <td class="text-right" style="padding-right:13px;">@Model.lstDiesel.TotalCashReceived</td>
+                            <td class="text-right" style="padding-right:13px;">@Model.lstDiesel.TotalCashPaid</td>
+                            <td colspan="2"></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr class="grand_total" style="font-weight:bold;">
+                            <td colspan="2">
+                                Grand Total :
+                            </td>
+                            <td class="text-right" style="padding-right:13px;"></td>
+                            <td class="text-right" style="padding-right:13px;"></td>
+                            <td class="text-right" style="padding-right:13px;"></td>
+                            <td class="text-right" style="padding-right:13px;"></td>
+                            <td class="text-right" style="padding-right:13px;"></td>
+                            <td class="text-right" style="padding-right:13px;"></td>
+                            <td class="text-right" style="padding-right:13px;"></td>
+                            <td class="text-right" style="padding-right:13px;"></td>
+                            <td class="text-right" style="padding-right:13px;"></td>
+                            <td class="text-right" style="padding-right:13px;"></td>
+                            <td class="text-right" style="padding-right:13px;"></td>
+                            <td colspan="2"></td>
+                        </tr>
+                    }
+                    <tr>
+                        <td colspan="30">
+
+                            <button type="submit" class="btn btn-primary pull-right" id="Addbtn" onclick="SaveDiesel(this)"><b><i class="fa fa-save"></i> | Save</b></button>
+
+                        </td>
+                    </tr>
+                </tfoot>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+<!-- END Datatables Content -->
+<script src="~/js/Software js/DieselManagement.js"></script>
+
+@section Script{
+    <script>
+        $(document).ready(function () {
+            $('.chosen').chosen();
+        })
+        $(document).ready(function () {
+            GenerateSerial("Add");
+            TotalThis();
+            $("#DieselDate").datepicker({
+                altField: "#DieselDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+        });
+
+        $("table").on("keyup", '.DieselLiter, .DieselRate', function () {
+            var tableRow = $(this).closest("tr");
+            var one = Number(tableRow.find("#DieselLiter").val());
+            var two = Number(tableRow.find("#DieselRate").val());
+            var total = one * two;
+            tableRow.find("#DieselAmount").val(total);
+            tableRow.find("#NetAmount").val(total);
+        });
+        $("table").on("keyup", '.OilLiter, .OilRate', function () {
+            var tableRow = $(this).closest("tr");
+            var Oil1 = Number(tableRow.find("#OilLiter").val());
+            var Oil2 = Number(tableRow.find("#OilRate").val());
+            var totalOil = Oil1 * Oil2;
+            tableRow.find("#OilAmount").val(totalOil);
+        });
+        $("table").on("keyup", '.DieselAmount, .OilAmount, .OtherAmount', function () {
+            debugger;
+            var tableRow = $(this).closest("tr");
+            var Diesel = Number(tableRow.find("#DieselAmount").val());
+            var Oil = Number(tableRow.find("#OilAmount").val());
+            var Other = Number(tableRow.find("#OtherAmount").val());
+            var TotalAmount = Diesel + Oil + Other;
+            tableRow.find("#NetAmount").val(TotalAmount);
+        });
+        function Message(title, text, type) {
+            Swal.fire({
+                title: title + '!',
+                text: text,
+                icon: type,
+                confirmButtonText: 'OK'
+            })
+        }
+    </script>
+}
+

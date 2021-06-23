@@ -1,0 +1,732 @@
+﻿@model LiquadCargoManagment.Models.OrderViewModel
+@using LiquadCargoManagment.Models;
+
+@{
+    ViewBag.Title = "Bilty";
+}
+<div id="page-content" style="min-height: 199px;">
+    <div class="block full">
+        <div class="block-title row">
+            <div class="col-md-12">
+                <h2>Create Bilty</h2>
+            </div>
+        </div>
+        @if (Model.listBilty.ID > 0)
+        {
+            <div class="row">
+                <div class="col-md-3">
+                    <input type="hidden" name="ID" id="hfBiltyID" value="@Model.listBilty.ID" />
+                    <label>Order Date</label>
+                    <input type="text" class="form-control" id="OrderDate" value="@Model.listBilty.OrderDate" />
+                </div>
+                <div class="col-md-3">
+                    <label>Delivery Date</label>
+                    <input type="text" class="form-control" id="DeliveryDate" value="@Model.listBilty.DeliveryDate">
+                </div>
+                <div class="col-md-3">
+                    <label>Own Company</label>
+                    <select class="form-control Search" id="ddlOwnCompany" name="OwnCompany">
+                        <option value="">--Select--</option>
+                        @if (ViewBag.OwnCompany != null)
+                        {
+                            foreach (var item in (List<OwnCompany>)ViewBag.OwnCompany)
+                            {
+                                if (Model.listBilty.OwnCompany == item.ID)
+                                {
+                                    <text>
+                                        <option value="@item.ID" selected>@item.Code | @item.Name</option>
+                                    </text>
+                                }
+                                else
+                                {
+                                    <text>
+                                        <option value="@item.ID">@item.Code | @item.Name</option>
+                                    </text>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label>Bill To</label>
+                    @if (Model.listBilty.BillTo == null)
+                    {
+                        <select class="form-control Search" id="ddlBillTo" name="Billto">
+                            <option value="">--Select--</option>
+                            @foreach (var item in (List<CustomerCompany>)ViewBag.BillTo)
+                            {
+                                if (Model.listBilty.BillTo == item.ID)
+                                {
+                                    <text>
+                                        <option value="@item.ID" selected>@item.Code | @item.Name</option>
+                                    </text>
+                                }
+                                else
+                                {
+                                    <text>
+                                        <option value="@item.ID">@item.Code | @item.Name</option>
+                                    </text>
+                                }
+                            }
+                        </select>
+                    }
+                    else
+                    {
+                        <select class="form-control Search" id="ddlBillTo" name="Billto">
+                            <option value="">--Select--</option>
+                            @if (ViewBag.BillTo != null)
+                            {
+                                foreach (var item in (List<CustomerCompany>)ViewBag.BillTo)
+                                {
+                                    if (Model.listBilty.BillTo == item.ID)
+                                    {
+                                        <text>
+                                            <option value="@item.ID" selected>@item.Code | @item.Name</option>
+                                        </text>
+                                    }
+                                    else
+                                    {
+                                        <text>
+                                            <option value="@item.ID">@item.Code | @item.Name</option>
+                                        </text>
+                                    }
+                                }
+                            }
+                        </select>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Sender</label>
+                    <select class="form-control Search" id="ddlLocation" name="PickLocation">
+                        <option value="">--Select--</option>
+                        @if (ViewBag.PickLocation != null)
+                        {
+                            foreach (var item in (List<PickLocation>)ViewBag.PickLocation)
+                            {
+                                if (Model.listBilty.PickLocation == item.ID)
+                                {
+                                    <text>
+                                        <option value="@item.ID" selected>@item.LocationCode | @item.LocationName</option>
+                                    </text>
+                                }
+                                else
+                                {
+                                    <text>
+                                        <option value="@item.ID">@item.LocationCode | @item.LocationName</option>
+                                    </text>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label>Reciever</label>
+                    <select class="form-control Search" id="Reciever" name="Reciever">
+                        <option value="">--Select--</option>
+                        @if (ViewBag.Reciever != null)
+                        {
+                            foreach (var item in (List<PickLocation>)ViewBag.Reciever)
+                            {
+                                if (Model.listBilty.Reciever == item.ID)
+                                {
+                                    <text>
+                                        <option value="@item.ID" selected>@item.LocationCode | @item.LocationName</option>
+                                    </text>
+                                }
+                                else
+                                {
+                                    <text>
+                                        <option value="@item.ID">@item.LocationCode | @item.LocationName</option>
+                                    </text>
+                                }
+                            }
+                        }
+                    </select>
+
+                </div>
+
+                @*<div class="col-md-3">
+
+                        <label>Sender</label>
+                        @if (Model.listBilty == null)
+                        {
+                        <select class="form-control Search" id="ddlSender" name="Sender">
+                            <option value="">--Select--</option>
+                            @foreach (var item in (List<PickLocation>)ViewBag.Sender)
+                            {
+                                if (Model.listBilty.Sender == item.ID)
+                                {
+                                    <text>
+                                        <option value="@item.ID" selected>@item.LocationCode | @item.LocationName</option>
+                                    </text>
+                                }
+                                else
+                                {
+                                    <text>
+                                        <option value="@item.ID">@item.LocationCode | @item.LocationName</option>
+                                    </text>
+                                }
+                            }
+                        </select>
+                        }
+                        else
+                        {
+                            <select class="form-control Search" id="ddlSender" name="Sender">
+                                <option value="">--Select--</option>
+                                @if (ViewBag.Sender != null)
+                                {
+
+                                    foreach (var item in (List<PickLocation>)ViewBag.Sender)
+                                    {
+                                        if (Model.listBilty.Sender == item.ID)
+                                        {
+                                            <text>
+                                                <option value="@item.ID" selected>@item.LocationCode | @item.LocationName</option>
+                                            </text>
+                                        }
+                                        else
+                                        {
+                                            <text>
+                                                <option value="@item.ID">@item.LocationCode | @item.LocationName</option>
+                                            </text>
+                                        }
+                                    }
+                                }
+                            </select>
+                        }
+
+                    </div>*@
+
+                <div class="col-md-3">
+
+                    <label>Vehicle</label>
+                    <select class="form-control Search" id="VehicleID" name="VehicleID">
+                        <option value="">--Select--</option>
+                        @if (ViewBag.Vehicle != null)
+                        {
+
+                            foreach (var item in (List<Vehicle>)ViewBag.Vehicle)
+                            {
+                                if (Model.listBilty.VehicleID == item.VehicleID)
+                                {
+                                    <text>
+                                        <option value="@item.VehicleID" selected>@item.Code | @item.RegNo</option>
+                                    </text>
+                                }
+                                else
+                                {
+                                    <text>
+                                        <option value="@item.VehicleID">@item.Code | @item.RegNo</option>
+                                    </text>
+                                }
+                            }
+                        }
+                    </select>
+
+                </div>
+
+                
+                <div class="col-md-3">
+                    <label>External Vehicle</label>
+                    <input type="text" class="form-control" value="@Model.listBilty.ExternalVehicleNo" name="ExternalVehicleNo" id="ExternalVehicleNo"/>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+
+                    <label>Customer Type</label>
+                    <select class="form-control Search" id="CustomerType">
+                        @if (Model.listBilty.CustomerType == "Paid")
+                        {
+                            <option value="Paid" selected>Paid</option>
+                            <option value="To Pay">To Pay</option>
+                        }
+                        else
+                        {
+                            <option value="Paid">Paid</option>
+                            <option value="To Pay" selected>To Pay</option>
+                        }
+                    </select>
+
+                </div>
+                <div class="col-md-9">
+                    <label>Remarks</label>
+                    <input type="text" class="form-control" id="Remarks" value="@Model.listBilty.Remarks"/>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-3">
+                    <input type="hidden" name="ID" id="hfBiltyID" value="@Model.listBilty.ID" />
+                    <label>Order Date</label>
+                    @if (Model.listBilty.ID > 0)
+                    {
+                        <input type="text" class="form-control" id="OrderDate" value="@Model.listBilty.OrderDate" />
+                    }
+                    else
+                    {
+                        <input type="text" class="form-control" id="OrderDate" value="" />
+                    }
+                </div>
+                <div class="col-md-3">
+                    <label>Delivery Date</label>
+                    <input type="text" class="form-control" id="DeliveryDate" value="@Model.listBilty.DeliveryDate">
+                </div>
+                <div class="col-md-3">
+                    <label>Own Company</label>
+                    <select class="form-control Search" id="ddlOwnCompany" name="OwnCompany">
+                        <option value="">--Select--</option>
+                        @if (ViewBag.OwnCompany != null)
+                        {
+                            foreach (var item in (List<OwnCompany>)ViewBag.OwnCompany)
+                            {
+                                if (Model.listBilty.OwnCompany == item.ID)
+                                {
+                                    <text>
+                                        <option value="@item.ID" selected>@item.Code | @item.Name</option>
+                                    </text>
+                                }
+                                else
+                                {
+                                    <text>
+                                        <option value="@item.ID">@item.Code |  @item.Name</option>
+                                    </text>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label>Bill To</label>
+                    <select class="form-control Search" id="ddlBillTo" name="Billto">
+                        <option value="">--Select--</option>
+                        @if (ViewBag.BillTo != null)
+                        {
+                            foreach (var item in (List<CustomerCompany>)ViewBag.BillTo)
+                            {
+                                if (Model.listBilty.BillTo == item.ID)
+                                {
+                                    <text>
+                                        <option value="@item.ID" selected>@item.Code |  @item.Name</option>
+                                    </text>
+                                }
+                                else
+                                {
+                                    <text>
+                                        <option value="@item.ID">@item.Code |  @item.Name</option>
+                                    </text>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Sender</label>
+                    <select class="form-control Search" id="ddlLocation" name="PickLocation">
+                        <option value="">--Select--</option>
+                        @if (ViewBag.PickLocation != null)
+                        {
+                            foreach (var item in (List<PickLocation>)ViewBag.PickLocation)
+                            {
+                                if (Model.listBilty.PickLocation == item.ID)
+                                {
+                                    <text>
+                                        <option value="@item.ID" selected>@item.LocationCode | @item.LocationName</option>
+                                    </text>
+                                }
+                                else
+                                {
+                                    <text>
+                                        <option value="@item.ID">@item.LocationCode | @item.LocationName</option>
+                                    </text>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label>Reciever</label>
+                    <select class="form-control Search" id="Reciever" name="Reciever">
+                        <option value="">--Select--</option>
+                        @if (ViewBag.Reciever != null)
+                        {
+                            foreach (var item in (List<PickLocation>)ViewBag.Reciever)
+                            {
+                                if (Model.listBilty.Reciever == item.ID)
+                                {
+                                    <text>
+                                        <option value="@item.ID" selected>@item.LocationCode | @item.LocationName</option>
+                                    </text>
+                                }
+                                else
+                                {
+                                    <text>
+                                        <option value="@item.ID">@item.LocationCode | @item.LocationName</option>
+                                    </text>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label>Vehicle</label>
+                    <select class="form-control Search" id="VehicleID" name="VehicleID">
+                        <option value="">--Select--</option>
+                        @if (ViewBag.Vehicle != null)
+                        {
+                            foreach (var item in (List<Vehicle>)ViewBag.Vehicle)
+                            {
+                                if (Model.listBilty.VehicleID == item.VehicleID)
+                                {
+                                    <text>
+                                        <option value="@item.VehicleID" selected>@item.Code | @item.RegNo</option>
+                                    </text>
+                                }
+                                else
+                                {
+                                    <text>
+                                        <option value="@item.VehicleID">@item.Code | @item.RegNo</option>
+                                    </text>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label>External Vehicle</label>
+                    <input type="text" class="form-control" id="ExternalVehicleNo"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Customer Type</label>
+                    <select class="form-control Search" id="CustomerType" required>
+                        <option value="">--Select--</option>
+                        <option value="@Model.listBilty.CustomerType">Paid</option>
+                        <option value="@Model.listBilty.CustomerType">To Pay</option>
+                    </select>
+                </div>
+                <div class="col-md-9">
+                    <label>Remarks</label>
+                    <input type="text" class="form-control" id="Remarks" />
+                </div>
+            </div>
+        }
+    </div>
+    <div class="block full">
+        <div class="block-title row">
+            <div class="col-md-12">
+                <h2>Order Details</h2>
+            </div>
+        </div>
+        <table id="Add" class="table" cellpadding="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <td>
+                        <label>Broker</label>
+                        <a id="" class="btn btn-primary btn-xs pull-right" href="#" onclick="$('#modal-addProBroker').modal('show');"><i class="fa fa-plus"></i></a>
+                    </td>
+                    <td><label>Product Type</label></td>
+                    <td>
+                        <label>Product</label>
+                        <a id="" class="btn btn-primary btn-xs pull-right" href="#" onclick="$('#modal-addPro').modal('show');"><i class="fa fa-plus"></i></a>
+                    </td>
+                    <td><label>Weight</label></td>
+                    <td><label>Unit</label></td>
+                    <td><label>Quantity</label></td>
+                    <td><label>T/Weight</label></td>
+                    <td><label>Additional Frieght</label></td>
+                    <td><label>Weighbridge</label></td>
+                    <td><label>Labour</label></td>
+                    <td><label>Freight</label></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.listBiltyDetail != null && Model.listBiltyDetail.Count > 0)
+                {
+                    foreach (var item in Model.listBiltyDetail)
+                    {
+                        <tr class="DropDown">
+                            <td style="padding:2px;" width="15%">
+                                <input type="hidden" id="BiltyID" name="BiltyID" />
+                                @Html.DropDownList("ddlProductBroker", new SelectList(ViewBag.ProductBroker, "Value", "Text", item.ProductBrokerID), "--Select--", new { @class = "form-control ddlchosen", @tabindex = "1" })
+                            </td>
+                            <td style="padding:2px;" width="15%">
+                                @Html.DropDownList("ddlProductType", new SelectList(ViewBag.ProductType, "Value", "Text", item.ProductTypeId), "--Select--", new { @class = "form-control ddlchosen", @tabindex = "1", @onchange = "getProducts(this);GetUnitAuto(this)" })
+                            </td>
+                            <td style="padding:2px;" width="15%">
+                                @Html.DropDownList("ProductId", new SelectList(ViewBag.Product, "Value", "Text", item.ProductId), "--Select--", new { @class = "form-control ddlchosen", @tabindex = "1", @onchange = "GetUnitAuto(this)" })
+                            </td>
+                            <td style="width:80px; padding:2px;">
+                                <input type="text" value="@item.Weight" class="form-control amount text-right" autocomplete="off" name="Weight" pattern="([0-9]{1,3}).([0-9]{1,3})" onkeypress="return inputLimiter(event,'custom')" onkeyup="Grandtotal('#Add',3,'weight')" id="txtWeight">
+                            </td>
+                            @if (item.ProductId == null)
+                            {
+                                <td style="width:50px; padding:2px;">
+                                    <input type="text" value="" class="form-control" disabled autocomplete="off" name="Unit" onkeyup="Grandtotal('#Add',4,'unit')" id="txtUnit">
+                                </td>
+                            }
+                            else
+                            {
+                                <td style="width:50px; padding:2px;">
+                                    <input type="text" value="@item.Product.Unit" class="form-control" disabled autocomplete="off" name="Unit" onkeyup="Grandtotal('#Add',4,'unit')" id="txtUnit">
+                                </td>
+                            }
+                            <td style="width:50px; padding:2px;">
+                                <input type="text" value="@item.QTY" class="form-control amount text-right" autocomplete="off" onkeyup="Grandtotal('#Add',5,'qty')" name="Quantity" id="txtQuantity">
+                            </td>
+                            <td style="width:100px; padding:2px;">
+                                <input type="text" value="@item.TotalWeight" class="form-control txtTotalWeight text-right" autocomplete="off" readonly name="TotalWeight" onkeyup="Grandtotal('#Add', 6,'totalweight')" id="txtTotalWeight">
+                            </td>
+                            <td style="width:400px; padding:2px;">
+                                <input type="text" value="@item.AdditionalFreight" class="form-control text-right" autocomplete="off" name="AdditionalFreight" id="AdditionalFreight" onkeyup="Grandtotal('#Add', 7,'Additional')">
+                            </td>
+                            <td style="width:400px; padding:2px;">
+                                <input type="text" value="@item.Weighbridge" class="form-control text-right" autocomplete="off" name="weighbridge" id="weighbridge" onkeyup="Grandtotal('#Add', 8,'Weighbridge')">
+                            </td>
+                            <td style="width:400px; padding:2px;">
+                                <input type="text" value="@item.Labour" class="form-control text-right" autocomplete="off" name="Labour" id="Labour" onkeyup="Grandtotal('#Add', 9,'Labour')">
+                            </td>
+                            <td style="width:100px; padding:2px;">
+                                <input type="text" value="@item.Freight" class="form-control text-right" autocomplete="off" name="Freight" onkeyup="Grandtotal('#Add', 10,'totalfreight')" id="txtFreight">
+                            </td>
+                            <td>
+                                <button type="button" id="btnSaveEdit" class="btn btn-primary" onclick="AddRow(this)" style="margin-top:-5px">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr class="DropDown Searchable">
+                        @*<td style="padding:2px;" width="15%">
+                            @Html.DropDownList("ddlReciever", ViewBag.Receive as SelectList, "--Select--", new { @class = "form-control ddlchosen" })
+                        </td>*@
+                        <td style="padding:2px;" width="15%">
+                            @Html.DropDownList("ddlProductBroker", ViewBag.ProductBroker as SelectList, "--Select--",new { @class = "form-control ddlchosen" })
+                        </td>
+                        <td style="padding:2px;" width="15%">
+                            @Html.DropDownList("ddlProductType", ViewBag.ProductType as SelectList, "--Select--", new { @class = "form-control ddlchosen", onchange = "getProducts(this);GetUnitAuto(this)" })
+                        </td>
+                        <td style="padding:2px;" width="15%">
+                            <select class="form-control select-chosen" id="name" onchange="GetUnitAuto(this)">
+                                <option>--Select--</option>
+                                @if (ViewBag.Product != null)
+                                {
+                                    foreach (var pro in ViewBag.Product)
+                                    {
+                                        <option value="@pro.Value">@pro.Text</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                        <td style="width:80px; padding:2px;">
+                            <input type="text" class="form-control amount text-right" autocomplete="off" name="Weight" pattern="([0-9]{1,3}).([0-9]{1,3})" onkeypress="return inputLimiter(event,'custom')" onkeyup="Grandtotal('#Add',3,'weight')" id="txtWeight">
+                        </td>
+                        <td style="width:50px; padding:2px;">
+                            <input type="text" value="" class="form-control" disabled autocomplete="off" name="Unit" onkeyup="Grandtotal('#Add',4,'unit')" id="txtUnit">
+                        </td>
+                        <td style="width:50px; padding:2px;">
+                            <input type="text" value="" class="form-control amount text-right" autocomplete="off" onkeyup="Grandtotal('#Add',5,'qty')" name="Quantity" id="txtQuantity">
+                        </td>
+                        <td style="width:100px; padding:2px;">
+                            <input type="text" value="" class="form-control txtTotalWeight text-right" autocomplete="off" readonly name="TotalWeight" onkeyup="Grandtotal('#Add', 6,'totalweight')" id="txtTotalWeight">
+                        </td>
+                         <td style="width:400px; padding:2px;">
+                            <input type="text" value="" class="form-control text-right" autocomplete="off" name="AdditionalFreight" id="AdditionalFreight"onkeyup="Grandtotal('#Add', 7,'Additional')">
+                         </td>
+                        <td style="width:400px; padding:2px;">
+                            <input type="text" value="" class="form-control text-right" autocomplete="off" name="weighbridge" id="weighbridge"onkeyup="Grandtotal('#Add', 8,'Weighbridge')">
+                        </td>
+                        <td style="width:400px; padding:2px;">
+                            <input type="text" value="" class="form-control text-right" autocomplete="off" name="Labour" id="Labour"onkeyup="Grandtotal('#Add', 9,'Labour')">
+                        </td>
+                        <td style="width:100px; padding:2px;">
+                            <input type="text" value="" class="form-control text-right" autocomplete="off" name="Freight" onkeyup="Grandtotal('#Add', 10,'totalfreight')" id="txtFreight">
+                        </td>
+                        <td>
+                            <button type="button" id="btnSaveEdit" class="btn btn-primary" onclick="AddRow(this)" style="margin-top:-5px">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                @if (Model.listBilty.ID > 0)
+                {
+                    <tr class="grand_total" style="font-weight:bold;">
+                        <td colspan="3">Grand Total : </td>
+                        <td class="text-right" style="padding-right:10px;">@Model.listBilty.OrderDetailsTotalWeight</td>
+                        <td></td>
+                        <td class="text-right" style="padding-right:10px;">@Model.listBilty.OrderDetailsTotalQTY</td>
+                        <td class="text-right" style="padding-right:10px;">@Model.listBilty.WeightQTYTotal</td>
+                        <td class="text-right">@Model.listBilty.TotalAdditionalFreight</td>
+                        <td class="text-right">@Model.listBilty.TotalWeighbridge</td>
+                        <td class="text-right">@Model.listBilty.Labour</td>
+                        <td class="text-right">@Model.listBilty.TotalFreight</td>
+                        <td></td>
+                    </tr>
+                }
+                else
+                {
+                    <tr class="grand_total" style="font-weight:bold;">
+                        <td colspan="3">Grand Total : </td>
+                        <td class="text-right" style="padding-right:10px;"></td>
+                        <td class="text-right"></td>
+                        <td class="text-right" style="padding-right:10px;"></td>
+                        <td class="text-right" style="padding-right:10px;"></td>
+                        <td class="text-right" style="padding-right:10px;"></td>
+                        <td class="text-right" style="padding-right:10px;"></td>
+                        <td class="text-right"></td>
+                        <td class="text-right"></td>
+                        <td class="text-right"></td>
+                    </tr>
+                }
+                <tr>
+                    <td colspan="13">
+                        <button type="submit" class="btn btn-primary pull-right" id="Addbtn" onclick="SaveBilty(this)"><b><i class="fa fa-save"></i> | Save</b></button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    @Html.Partial("_BiltyModal")
+    <br /><br /><br />
+</div>
+
+<script src="~/js/Software js/CompactBilty.js"></script>
+
+@section Script{
+    <script>
+        $(document).ready(function () {
+            $(".ddlchosen").chosen();
+            $(".Search").chosen();
+            $("#DeliveryDate").datepicker({
+                altField: "#DeliveryDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#OrderDate").datepicker({
+                altField: "#OrderDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#example").DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ]
+            });
+        });
+        $("table").on("change", "input", function () {
+            var tableRow = $(this).closest("tr");
+            var one = Number(tableRow.find("#txtWeight").val());
+            var two = Number(tableRow.find("#txtQuantity").val());
+            var total = one * two;
+            tableRow.find("#txtTotalWeight").val(total);
+        });
+        function disable() {
+            $("#Addbtn").attr("disabled", true);
+        }
+        function enable() {
+            $("#Addbtn").attr("disabled", false);
+        }
+        function SaveBilty() {
+            disable();
+            let Order = {}
+            debugger;
+            let ID = $("#hfBiltyID").val();
+            let OrderDate = $("#OrderDate").val();
+            let DeliveryDate = $("#DeliveryDate").val();
+            let BillTo = $("#ddlBillTo").val();
+            let Sender = $("#ddlSender").val();
+            let owncompany = $("#ddlOwnCompany").val();
+            let CustomerType = $("#CustomerType").val();
+            let picklocation = $("#ddlLocation").val();
+            let Vehicle = $("#VehicleID").val();
+            let ExternalVehicle = $("#ExternalVehicleNo").val();
+            let Reciever = $("#Reciever").val();
+            let Remarks = $("#Remarks").val();
+            if (OrderDate == "" || DeliveryDate == "" || owncompany == "") {
+                Message("Required", "Enter all requried fields", "error");
+                enable();
+                return;
+            }
+            Order.ID = ID;
+            Order.OrderDate = OrderDate;
+            Order.BillTo = BillTo;
+            Order.DeliveryDate = DeliveryDate;
+            Order.Sender = Sender;
+            Order.Reciever = Reciever;
+            Order.VehicleID = Vehicle;
+            Order.ExternalVehicleNo = ExternalVehicle;
+            Order.OwnCompany = owncompany;
+            Order.CustomerType = CustomerType;
+            Order.PickLocation = picklocation;
+            Order.Remarks = Remarks;
+            Order.OrderDetailsTotalWeight = $("#Add").find("tfoot tr.grand_total td:eq(1)").text();
+            Order.OrderDetailsTotalQTY = $("#Add").find("tfoot tr.grand_total td:eq(3)").text();
+            Order.WeightQTYTotal = $("#Add").find("tfoot tr.grand_total td:eq(4)").text();
+            Order.TotalAdditionalFreight = $("#Add").find("tfoot tr.grand_total td:eq(5)").text();
+            Order.TotalWeighbridge = $("#Add").find("tfoot tr.grand_total td:eq(6)").text();
+            Order.Labour = $("#Add").find("tfoot tr.grand_total td:eq(7)").text();
+            Order.TotalFreight = $("#Add").find("tfoot tr.grand_total td:eq(8)").text();
+
+            Order.TotalWeight = $("#Add").find("tfoot tr.grand_total td:eq(1)").text();
+            Order.TotalQty = $("#Add").find("tfoot tr.grand_total td:eq(3)").text();
+            Order.TotalWeightQty = $("#Add").find("tfoot tr.grand_total td:eq(4)").text();
+
+            var customers = new Array();
+            $("#Add tbody tr").each(function () {
+                var row = $(this);
+                var customer = {};
+                customer.ID = row.find("td:eq(0) input").val();
+                customer.ProductBrokerID = row.find("td:eq(0) select option:selected").val();
+                customer.ProductTypeId = row.find("td:eq(1) select option:selected").val();
+                customer.ProductId = row.find("td:eq(2) select option:selected").val();
+                customer.Weight = row.find("td:eq(3) input").val();
+                customer.QTY = row.find("td:eq(5) input").val();
+                customer.TotalWeight = row.find("td:eq(6) input").val();
+                customer.AdditionalFreight = row.find("td:eq(7) input").val();
+                customer.Weighbridge = row.find("td:eq(8) input").val();
+                customer.Labour = row.find("td:eq(9) input").val();
+                customer.Freight = row.find("td:eq(10) input").val();
+                customers.push(customer);
+            });
+            $.ajax({
+                url: "../Admin/InsertBilty",
+                type: "POST",
+                data: { Details: customers, Order: Order },
+                success: function (r) {
+                    if (r.status == "OK") {
+                        enable();
+                        Message("Success", "Bilty Created Successfully", "success");
+                        window.location = "../Admin/BiltyGrid";
+                    }
+                    else {
+                        enable();
+                        Message("Error", "An Error Occured !", "error");
+                    }
+                }
+            });
+        }
+    </script>
+}

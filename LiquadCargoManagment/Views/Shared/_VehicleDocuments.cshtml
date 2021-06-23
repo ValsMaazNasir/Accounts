@@ -1,0 +1,87 @@
+﻿@*@using Newtonsoft.Json;*@
+@model IEnumerable<LiquadCargoManagment.Models.VehicleDocument>
+@using LiquadCargoManagment.Models;
+
+<div class="table-responsive">
+    <table class="table display table-striped" id="example" style="font-size:11px;">
+        <thead>
+            <tr>
+                <td>Created Date</td>
+                <td>Documents</td>
+                <td>V/Reg No</td>
+                <td>SMS Alert</td>
+                <td>Email Alert</td>
+                <td>Renewal Date</td>
+                <td>Expiry Date</td>
+                <td>Alert Type</td>
+                <td>Alert Before</td>
+                <td>IsActive</td>
+                <td>Operation</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                //string jsonData = JsonConvert.SerializeObject(item);
+                string jsonData = "{";
+                jsonData += " 'ID' : '" + item.ID + "', ";
+                jsonData += " 'CreatedDate' : '" + item.CreatedDate + "', ";
+                jsonData += " 'VehicleRegNo' : '" + item.VehicleRegNo + "', ";
+                jsonData += " 'VehicleType' : '" + item.VehicleType + "', ";
+                jsonData += " 'VehicleOwnership' : '" + item.VehicleOwnership + "', ";
+                jsonData += " 'PrincipleCompany' : '" + item.PrincipleCompany + "', ";
+                jsonData += " 'SMSAlert' : '" + item.SMSAlert + "', ";
+                jsonData += " 'EmailAlert' : '" + item.EmailAlert + "', ";
+                jsonData += " 'VehicleDocumentType' : '" + item.VehicleDocumentType + "', ";
+                jsonData += " 'VehicleDocuments' : '" + item.VehicleDocuments + "', ";
+                jsonData += " 'RenewalDate' : '" + item.RenewalDate + "' ,";
+                jsonData += " 'ExpiryDate' : '" + item.ExpiryDate + "' ,";
+                jsonData += " 'AlertType' : '" + item.AlertType + "' ,";
+                jsonData += " 'AlertBefore' : '" + item.AlertBefore + "' ,";
+                jsonData += " 'AlertFrequency' : '" + item.AlertFrequency + "' ,";
+                jsonData += " 'Remarks' : '" + item.Remarks + "' ";
+                jsonData += "}";
+
+                <tr>
+                    @if (item.CreatedDate != null)
+                    {
+                        <td>@Convert.ToDateTime(item.CreatedDate).ToString(SoftwareFormatting.DateFormat)</td>
+                    }
+                    else
+                    {
+                        <td>@Convert.ToDateTime(item.ModifiedDate).ToString(SoftwareFormatting.DateFormat)</td>
+                    }
+                    <td>@item.DocumentUpload</td>
+                    @if (@item.Vehicle != null)
+                    {
+                        <td>@item.Vehicle.RegNo</td>
+                    }
+                    <td>@item.SMSAlert</td>
+                    <td>@item.EmailAlert</td>
+                    <td>@Convert.ToDateTime(item.RenewalDate).ToString(SoftwareFormatting.DateFormat)</td>
+                    <td>@Convert.ToDateTime(item.ExpiryDate).ToString(SoftwareFormatting.DateFormat)</td>
+                    <td>@item.AlertType</td>
+                    <td>@item.AlertBefore</td>
+                    @if (item.IsActive == true)
+                    {
+                        <td>
+                            <a onclick="ChangeStatus(@item.ID,false)"><i class="fa fa-toggle-on text-primary" style="font-size:25px;"></i></a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <a onclick="ChangeStatus(@item.ID,true)"><i class="fa fa-toggle-off text-danger" style="font-size:25px;"></i></a>
+                        </td>
+                    }
+                    <td>
+                        <button type="button" onclick="viewRecordRead(@jsonData,this)" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></button>
+                        <button type="button" onclick="viewRecord(@jsonData,this)" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></button>
+                        <button type="button" onclick="DeleteModel(@item.ID)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

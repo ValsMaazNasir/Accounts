@@ -1,0 +1,111 @@
+﻿@model IEnumerable<LiquadCargoManagment.Models.UniversalBilty>
+
+@using LiquadCargoManagment.Models;
+<div class="table-responsive">
+    <table class="table display table-striped" id="example" style="font-size:10px">
+        <thead>
+            <tr>
+                <td width="80px"><input type="checkbox" id="checkAll" /> | Select All</td>
+                <td>CreatedDate</td>
+                <td>Order No</td>
+                <td>Manual Bilty No</td>
+                <td>Bilty Date</td>
+                <td>Own Company</td>
+                <td>Pick Location</td>
+                <td>Drop Location</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr class="Selected">
+                <td class="sel"><input type="checkbox" class="checkbox" id="UniversalBiltyID" value="@item.ID" name="UniversalBiltyID" /></td>
+                @if (item.CreatedDate != null)
+                {
+                    <td>
+                        @Convert.ToDateTime(item.CreatedDate).ToString(SoftwareFormatting.DateFormat)
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Convert.ToDateTime(item.ModifiedDate).ToString(SoftwareFormatting.DateFormat)
+                        <small class="text-success">Modified</small>
+                    </td>
+                }
+                @if (item.AutoBiltyNo != null)
+                {
+                    <td>@item.AutoBiltyNo</td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                @if (item.ManualBiltyNo != null)
+                {
+                    <td>@item.ManualBiltyNo</td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                @if (item.BiltyDate != null)
+                {
+                    <td>@Convert.ToDateTime(item.BiltyDate).ToString(SoftwareFormatting.DateFormat)</td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                @if (item.OwnCompanyID != null)
+                {
+                    <td>@item.OwnCompany.Name</td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                @if (item.UniversalBiltyLocationInformations != null)
+                {
+                    <td>
+                        @foreach (var items in item.UniversalBiltyLocationInformations)
+                        {
+                            if (items.PickLocation != null)
+                            {
+                                <text>@items.PickLocation.LocationName</text>
+                            }
+                            else
+                            {
+                                <text></text>
+                            }
+                        }
+                    </td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                @if (item.UniversalBiltyLocationInformations != null)
+                {
+                    <td>
+                        @foreach (var items in item.UniversalBiltyLocationInformations)
+                        {
+                            if (items.PickLocation1 != null)
+                            {
+                                <text>@items.PickLocation1.LocationName</text>
+                            }
+                            else
+                            {
+                                <text></text>
+                            }
+                        }
+                    </td>
+                }
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+

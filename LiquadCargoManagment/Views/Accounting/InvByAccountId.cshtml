@@ -1,0 +1,33 @@
+﻿@using Newtonsoft.Json;
+@model List<LiquadCargoManagment.Models.GetCustomersByAcc_Result>
+@using LiquadCargoManagment.Models;
+@{
+    ViewBag.Title = "Account Voucher";
+}
+<div class="table-responsive">
+    <table class="table display table-striped" id="example">
+        <thead>
+            <tr>
+                <td>id</td>
+                <td>Customer</td>
+                <td>Total Amount</td>
+                <td>`Paid Amount</td>
+                <td>Amount To Pay</td>
+                <td>Due Amount</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.customers_id</td>
+                    <td>@item.customerName</td>
+                    <td>@item.TotalAmount</td>
+                    <td>@item.PaidAmount</td>
+                    <td>@item.AmountToPay</td>
+                    <td>@item.DueAmount</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

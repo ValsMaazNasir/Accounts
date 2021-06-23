@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewBag.Title = "ProductBroker";
+}
+
+
+
+    <div id="page-content" style="min-height: 199px;">
+
+        <div class="block full">
+            <div class="block-title row">
+                <div class="col-md-12">
+                    <h2>Create Product Broker</h2>
+                    <a id="" class="btn btn-primary btn-sm pull-right" onclick="$('#modal-add').modal('show'); Enable(); ClearItem();" href="#">Add New | <i class="fa fa-plus"></i></a>
+                </div>
+            </div>
+            <div class="" id="grid">
+                @Html.Partial("_ProductBroker")
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="modal-add" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header text-center">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h2 class="modal-title"><i class="fa fa-pencil-alt"></i> Product Broker</h2>
+                        </div>
+                        <!-- END Modal Header -->
+                        <!-- Modal Body -->
+                        @using (Ajax.BeginForm("SaveProductBroker", "Admin", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "fnSuccess", OnFailure = "fnFailed" }))
+                        {
+                            <div class="modal-body">
+                                <table class="table table-responsive">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <label class="control-label">Name</label>
+                                                <input type="hidden" id="hfEditID" name="Id"/>
+                                                <input type="text" id="Name" name="Name" class="form-control" />
+                                            </td>
+                                            <td>
+                                                <label class="control-label">Address</label>
+                                                <input type="text" id="Address" name="Address" class="form-control" />
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <button type="submit" id="btnSaveEdit" class="btn btn-primary pull-right"><b><i class="fa fa-save"></i> Save</b></button>
+                            </div>
+                        }
+                        <!-- END Modal Body -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="~/js/Function.js"></script>
+<script src="~/js/Software js/ProductBroker.js"></script>
+@section Script
+{
+    <script>
+
+        $(document).ready(function () {
+            $("#example").DataTable({
+                //dom: 'Bfrtip',
+                //buttons: [
+                //    'copyHtml5',
+                //    'excelHtml5',
+                //    'csvHtml5',
+                //    'pdfHtml5'
+                //]
+            });
+            GetOrders();
+        });
+
+        function GetOrders() {
+            $('#example').DataTable();
+        }
+
+        function ClearItem() {
+            $("input[type='text']").val('');
+            $("input[type='hidden']").val('');
+        }
+
+        function viewRecord(object, e) {
+            console.log(object);
+            Enable();
+            $("#modal-add").modal('show');
+            $("#Name").val(object.Name);
+            $("#Address").val(object.Address);
+            let OrderID = object.Id;
+            $("#hfEditID").val(OrderID);
+        }
+
+        function viewRecordRead(object, e) {
+            console.log(object);
+            Disable();
+            $("#modal-add").modal('show');
+            $("#Name").val(object.Name);
+            $("#Address").val(object.Address);
+            let OrderID = object.Id;
+            $("#hfEditID").val(OrderID);
+        }
+        function Disable() {
+            $("#Name").attr('disabled', true);
+            $("#Address").attr('disabled', true);
+        }
+        function Enable() {
+            $("#Name").attr('disabled', false);
+            $("#Address").attr('disabled', false);
+        }
+    </script>
+}

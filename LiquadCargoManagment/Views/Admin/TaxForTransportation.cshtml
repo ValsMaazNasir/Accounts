@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "TaxForTransportation";
+}
+
+<div class="content-header">
+
+    <div class="header-section">
+        <h1>
+            Tax For Transportation<br><small>Create Read Update Delete Tax For Transportation</small>
+        </h1>
+    </div>
+
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>Admin</li>
+    <li><a href="javascript:;">Tax For Transportation</a></li>
+</ul>
+
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+
+            <a id="" class="btn btn-primary btn-sm pull-right" onclick="$('#modal-add').modal('show'); ClearItem(); Enable();" href="#">Add New | <i class="fa fa-plus"></i></a>
+
+        </div>
+    </div>
+    <div class="" id="grid">
+        @Html.Partial("_TaxForTransportation")
+    </div>
+</div>
+
+<div id="modal-add" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title"><i class="fa fa-pencil"></i> Tax For Transportation</h2>
+            </div>
+            <!-- END Modal Header -->
+            <!-- Modal Body -->
+            @using (Ajax.BeginForm("InsertTaxForTransportation", "Admin", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "fnSuccess", OnFailure = "fnFailed" }))
+            {
+                <div class="modal-body">
+                    <table class="table table-responsive">
+                        <tbody>
+                            <tr>
+                                <td width="40%">
+                                    <input type="hidden" name="ID" id="hfEditID" />
+                                    <label class="control-label">Tax Rate Name</label>
+                                    <input type="text" id="Name" name="Name" class="form-control" required />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="40%">
+                                    <label class="control-label">Origin Province</label>
+                                    @Html.DropDownList("OriginProvince", ViewBag.Province as SelectList, "--Select--", new { @class = "form-control" })
+                                </td>
+                                <td width="20%">
+                                    <label class="control-label">Tax Rate %</label>
+                                    <input type="number" id="TaxRatePercentOrigin" name="TaxRatePercentOrigin" class="form-control">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="40%">
+                                    <label class="control-label"> Destination Province</label>
+                                    @Html.DropDownList("DestinationProvince", ViewBag.ProvinceDestination as SelectList, "--Select--", new { @class = "form-control" })
+                                </td>
+                                <td width="20%">
+                                    <label class="control-label">Tax Rate %</label>
+                                    <input type="number" id="TaxRatePercentDestination" name="TaxRatePercentDestination" class="form-control">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" id="btnSaveEdit" class="btn btn-primary pull-right"><b><i class="fa fa-save"></i> Save</b></button>
+                </div>
+            }
+            <!-- END Modal Body -->
+        </div>
+    </div>
+</div>
+
+<script src="~/js/Function.js"></script>
+<script src="~/js/Software js/TaxForTransportation.js"></script>
+@section Script
+{
+    <script>
+        $(document).ready(function () {
+            $("#example").DataTable({
+                //dom: 'Bfrtip',
+                //buttons: [
+                //    'copyHtml5',
+                //    'excelHtml5',
+                //    'csvHtml5',
+                //    'pdfHtml5'
+                //]
+            });
+        });
+
+        function Message(title, text, type) {
+            Swal.fire({
+                title: title + '!',
+                text: text,
+                icon: type,
+                confirmButtonText: 'OK'
+            })
+        }
+        function GetOrders() {
+            $('#example').DataTable();
+        }
+
+        function ClearItem() {
+            $("input[type='text']").val('');
+            $("input[type='hidden']").val('');
+            $("input[type='number']").val('');
+            $("textarea").val('');
+            $("select").val('');
+        }
+
+    </script>
+}

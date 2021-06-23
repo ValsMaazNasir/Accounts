@@ -1,0 +1,5 @@
+Login
+Dashboard 
+Users list
+bookings
+Earnings

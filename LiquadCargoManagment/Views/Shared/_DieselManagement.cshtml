@@ -1,0 +1,60 @@
+﻿@model IEnumerable<LiquadCargoManagment.Models.Diesel>
+@using LiquadCargoManagment.Models
+
+<table class="table display table-striped" id="example" style="font-size:11px;">
+    <thead>
+        <tr>
+            <td>Created Date</td>
+            <td>D/Date</td>
+            <td>D/Total Liter</td>
+            <td>Diesel Rate</td>
+            <td>D/Total Amount</td>
+            <td>O/Total Liter</td>
+            <td>Oil Rate</td>
+            <td>O/Total Amount</td>
+            <td>Petrol Pump</td>
+            <td>Operation</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+        <tr>
+            @if (item.CreatedDate != null)
+            {
+                <td>@Convert.ToDateTime(item.CreatedDate).ToString(SoftwareFormatting.DateFormat)</td>
+            }
+            else
+            {
+                <td>@Convert.ToDateTime(item.ModifiedDate).ToString(SoftwareFormatting.DateFormat)
+                    <label class="text-warning" style="font-size:10px;">Modified</label>
+                </td>
+            }
+            <td>@Convert.ToDateTime(item.DieselDate).ToString(SoftwareFormatting.DateFormat)</td>
+            <td>@item.DieselTotalLiter</td>
+            <td>@item.DieselRate</td>
+            <td>@string.Format(SoftwareFormatting.NumberFormat, item.DieselTotalAmount)</td>
+            <td>@item.OilTotalLiter</td>
+            <td>@item.OilRate</td>
+            <td>@string.Format(SoftwareFormatting.NumberFormat, item.OilTotalAmount)</td>
+            <td>@item.PetrolPump</td>
+
+            <td>
+                <a href="../Admin/DieselManagement?id=@item.ID" class="btn btn-primary btn-xs">
+                    <i class="fa fa-eye"></i>
+                </a>
+
+
+                <a href="../Admin/DieselManagement?id=@item.ID" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></a>
+
+
+                <button type="button" onclick="DeleteModel(@item.ID)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+

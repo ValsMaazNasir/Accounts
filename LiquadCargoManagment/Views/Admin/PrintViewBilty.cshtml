@@ -1,0 +1,63 @@
+﻿
+@model IEnumerable<LiquadCargoManagment.Models.Bilty>
+@using LiquadCargoManagment.Models;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PrintViewBilty</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+</head>
+<body>
+
+    <table class="table table-striped text-center">
+        <thead>
+            <tr>
+                <td style="font-size:13px; border:1px solid;">Bilty Inquiry <br /> 0312-12345678</td>
+                <td style="font-size:20px;"><b>UNIVERSAL BILTY MANAGEMENT SYSTEM</b></td>
+                <td style="font-size:13px; border:1px solid;">Mingora</td>
+            </tr>
+        </thead>
+    </table>
+    <table class="table table-striped text-center">
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="font-size:14px; width:200px; border:1px solid;">@Convert.ToDateTime(item.CreatedDate).ToString(SoftwareFormatting.DateFormat)</td>
+                    <td><h1>TRANSIT RECEIPT</h1></td>
+                    <td style="font-size:14px; width:120px; border:1px solid;">Customer Copy</td>
+                </tr>
+                <tr>
+                    <td style="font-size:10px;">BillTo : @item.CustomerCompany.Name</td>
+                </tr>
+                <tr>
+                    <td style="font-size:10px;">Sender : @item.CustomerCompany1.Name</td>
+                </tr>
+                <tr>
+                    <td style="font-size: 10px;">Reciever : @item.PickLocation1.LocationName</td>
+                </tr>
+                <tr>
+                    <td style="font-size:10px;">Address : </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            window.print();
+        });
+
+    </script>
+</body>
+</html>

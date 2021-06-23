@@ -1,0 +1,251 @@
+﻿@model LiquadCargoManagment.Areas.Accounts.Models.ARInvoiceModel
+@using LiquadCargoManagment.Areas.Accounts.Helpers;;
+
+@{
+    Layout = "~/Areas/Accounts/Views/Shared/_Layout1.cshtml";
+
+    ViewBag.Title = "Login";
+    //Layout = "~/Areas/Accounts/Views/Shared/Layout.cshtml";
+}
+@section LinkStyleSection{
+    @Styles.Render("~/assets/cache/datepickerstyle")
+    @Styles.Render("~/assets/cache/select2style")
+}
+@section LinkScriptSection{
+    @Scripts.Render("~/assets/cache/datepickerscript")
+    @Scripts.Render("~/assets/cache/select2script")
+    @Scripts.Render("~/assets/js/Arinvoice")
+}
+@section InLineScriptSection{
+    <script>
+    @if (ViewBag.PageType == "View")
+    {
+       @:DisableView();
+    }
+
+        $('.datepicker').datepicker();
+    </script>
+}
+
+<!--Page content-->
+<!--===================================================-->
+<div id="page-content">
+    @{Html.RenderPartial("BreadCrumb");}
+    <div class="panel">
+        <!--Block Styled Form -->
+        <!--===================================================-->
+        @using (Ajax.BeginForm("Save", "arinvoice", null, new AjaxOptions { HttpMethod = "POST", OnBegin = "OnFormBegin", OnComplete = "OnFormComplete", OnSuccess = "OnFormSuccess", OnFailure = "OnFormFailure" }, new { @id = "FormMember", @autocomplete = "off" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.ID)
+            <div class="panel-body">
+                <div class="row">
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label">Series<span class="text-danger">*</span></label>
+
+                            @Html.TextBoxFor(m => m.Code, null, new { @class = "form-control", @placeholder = "Series *" })
+                            @Html.ValidationMessageFor(m => m.Code, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label">Posting Date<span class="text-danger">*</span></label>
+                            @Html.TextBoxFor(m => m.PostingDate, null, new { @class = "form-control", @type = "date" })
+                            @Html.ValidationMessageFor(m => m.PostingDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <br clear="all" />
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label">Due Date<span class="text-danger">*</span></label>
+                            @Html.TextBoxFor(m => m.DueDate, null, new { @class = "form-control", @type = "date" })
+                            @Html.ValidationMessageFor(m => m.DueDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label">Document Date <span class="text-danger">*</span></label>
+                            @Html.TextBoxFor(m => m.DocumentDate, null, new { @class = "form-control", @type = "date" })
+                            @Html.ValidationMessageFor(m => m.DocumentDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <table class="table table-striped heavyTable" id="GlTable">
+                        <thead>
+                            <tr>
+
+                                <td>Item Name</td>
+                                <td>Quantity</td>
+                                <td>Price</td>
+                                <td>Discount%</td>
+                                <td>DiscAmount</td>
+                                <td>PriceAfterDisc</td>
+                                <td>Tax Rate</td>
+                                <td>Tax Amount</td>
+                                <td>Line Total</td>
+
+
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @for (int i = 0; i < Model.ARInvoiceDetails.Count; i++)
+                            {
+                                <tr class="change">
+                                    <td style="width:300px">
+
+                                        @Html.TextBox("ARInvoiceDetails[0].ProductID", Model.ARInvoiceDetails[i].ProductID, new { @class = "form-control" })
+                                    </td>
+
+                                    <td>
+                                        @Html.TextBox("ARInvoiceDetails[0].Qty", Model.ARInvoiceDetails[i].Qty, new { @class = "form-control" })
+                                    </td>
+
+                                    <td>
+                                        @Html.TextBox("ARInvoiceDetails[0].Price", Model.ARInvoiceDetails[i].Price, new { @class = "form-control" })
+                                    </td>
+
+
+                                    <td>
+                                        @Html.TextBox("ARInvoiceDetails[0].DiscountInPercentage", Model.ARInvoiceDetails[i].DiscountInPercentage, new { @class = "form-control", @id = "DiscountRate" })
+                                    </td>
+
+
+
+                                    <td>
+
+                                        @Html.TextBox("ARInvoiceDetails[0].Discount", Model.ARInvoiceDetails[i].Discount, new { @class = "form-control", @id = "DiscAmount", @onkeyup = "Grandtotal('#GlTable', 4, 'Discount')" })
+                                    </td>
+
+                                    <td>
+                                        <input type="text" class="form-control" name="PriceADisc" id="PriceADisc" />
+
+                                    </td>
+
+                                    <td>
+
+                                        @Html.TextBox("ARInvoiceDetails[0].TaxRate", Model.ARInvoiceDetails[i].Discount, new { @class = "form-control", @id = "TaxRate" })
+
+                                    </td>
+
+                                    <td>
+
+                                        @Html.TextBox("ARInvoiceDetails[0].TaxAmount", Model.ARInvoiceDetails[i].TaxAmount, new { @class = "form-control", @id = "TaxAmount", @onkeyup = "Grandtotal('#GlTable', 7, 'Tax')" })
+
+                                    </td>
+
+                                    <td>
+                                        @Html.TextBox("ARInvoiceDetails[0].Total", Model.ARInvoiceDetails[i].Total, new { @class = "form-control", @id = "LineTotal", @onkeyup = "Grandtotal('#GlTable', 8, 'Line')" })
+                                    </td>
+
+
+                                    <td>
+                                        <a class="btn btn-primary" onclick="AddRow(this)"><i class=" fa fa-plus"></i></a>
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr class="Total">
+                                <td> <label id="JournalRemarks">Journal Remarks</label></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                                <td></td>
+                                <td>
+                                    <label>Total</label>
+
+                                </td>
+                                <td colspan="3" id="LineTotal">
+                                    @Html.TextBoxFor(model => model.Total, new { @class = "form-control", @readonly = true })
+                                </td>
+                                <td></td>
+
+
+
+
+                                @*<td><button type="button" class="btn btn-info" onclick="" data-toggle="modal" data-target="#modal-add"><i class="fa fa-paypal"></i></button></td>*@
+                            </tr>
+                            <tr class="TotalDiscount">
+                                <td>
+
+                                    @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                                <td></td>
+                                <td></td>
+                                <td><label>Discount</label></td>
+                                <td colspan="3" id="DiscountTotal">
+                                    @Html.TextBoxFor(model => model.Discount, new { @class = "form-control", @readonly = true })
+                                </td>
+                                <td></td>
+                            </tr>
+
+                            <tr class="TotalTax">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                                <td></td>
+                                <td></td>
+                                <td><label>Tax Amount</label></td>
+                                <td colspan="3" id="TaxTotal">
+                                    @Html.TextBoxFor(model => model.TaxAmount, new { @class = "form-control", @readonly = true })
+                                </td>
+                                <td></td>
+                            </tr>
+
+
+
+                            <tr class="grand_total" style="font-weight:bold;">
+
+                                <td></td>
+
+                                <td></td>
+                                <td></td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="">Grand Total</td>
+                                <td id="Grand">@Html.TextBoxFor(model => model.GrandTotal, new { @class = "form-control", @readonly = true }) </td>
+                                <td></td>
+
+                                <td></td>
+                                <td></td>
+
+                            </tr>
+
+
+                        </tfoot>
+
+
+                    </table>
+
+                </div>
+            </div>
+            <div class="panel-footer text-right">
+                <a class="btn btn-info" href="@ViewBag.PageURL" tabindex="8">Back</a>
+                <button class="btn btn-success" type="submit" tabindex="9">Save</button>
+            </div>}
+
+        <!--===================================================-->
+        <!--End Block Styled Form -->
+    </div>
+</div>
+<!--===================================================-->
+<!--End page content-->

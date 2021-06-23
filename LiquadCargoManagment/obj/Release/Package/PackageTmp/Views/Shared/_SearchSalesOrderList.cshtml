@@ -1,0 +1,91 @@
+﻿@model IEnumerable<LiquadCargoManagment.Models.SaleOrder>
+<table class="table nowrap display table-striped" id="example" style="width:100%">
+    <thead>
+        <tr>
+            <td>Customer</td>
+            <td>OrderDate</td>
+            <td>Sale Order No.</td>
+            <td>Invoice No.</td>
+            <td>Vehicle No.</td>
+            <td>Loading Point</td>
+            <td>Destination Point</td>
+            <td>Shipment Type</td>
+            <td>Product</td>
+            <td>Status</td>
+            <td>Created by</td>
+            <td>Operation</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            @if (item.CustomerCompany != null)
+            {
+                <td>
+                    @item.CustomerCompany.Name
+
+                </td>
+            }
+            else
+            {
+                <td>
+                </td>
+            }
+
+            @if (item.OrderDate != null)
+            {
+                <td>
+                    @Convert.ToDateTime(item.OrderDate).ToString(LiquadCargoManagment.Models.SoftwareFormatting.DateFormat)
+                </td>
+            }
+            else
+            {
+                <td></td>
+            }
+            <td>@item.SaleOrderNo</td>
+            <td>@item.InvoiceNo</td>
+            <td>@item.Vehicle.RegNo</td>
+            <td>@item.PickLocation.LocationName</td>
+            <td>
+                @if (item.SaleOrdeDestinations != null)
+                {
+                    foreach (var dest in item.SaleOrdeDestinations)
+                    {
+                        if (dest.PickLocation.LocationName != null)
+                        {
+                            <text>
+                                @dest.PickLocation.LocationName
+                            </text>
+                        }
+
+                    }
+                }
+            </td>
+            <td>@item.ShipmentType.Name</td>
+
+
+            <td>
+                @if (item.SaleOrderProducts != null)
+                {
+                    foreach (var prod in item.SaleOrderProducts)
+                    {
+                        if (prod.Product != null)
+                        {
+                            <text>
+                                @prod.Product.Name
+                            </text>
+                        }
+                    }
+                }
+            </td>
+            <td>@item.Status
+            <td>
+            <td>
+                <a href="@Url.Action("NewSalesOrder","admin",new { id = item.ID})" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></a>
+                <a href="DeleteModel(@item.ID)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

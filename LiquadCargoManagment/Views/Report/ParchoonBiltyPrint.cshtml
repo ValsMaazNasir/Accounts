@@ -1,0 +1,721 @@
+﻿@model LiquadCargoManagment.Models.ParchoonBiltyModal
+@using LiquadCargoManagment.Models
+@using LiquadCargoManagment.Helpers
+@{
+    Layout = "";
+    double CountTotalWeight = 0;
+    double CountTotalExpense = 0;
+    int otherCharge = 0;
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="~/assets/css/A4.css" rel="stylesheet" />
+    <link href="~/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <style>
+        .div {
+            border-style: groove;
+            border-width: 1px;
+            border-color: black;
+            font-weight: bold;
+            width: 120px;
+        }
+
+        body {
+            background-color: #FFFFFF;
+        }
+    </style>
+</head>
+
+
+<body id="page" class="page" style="font-size:11px;height:600px !important ">
+
+
+
+
+    <div id="top">
+
+        <table style="margin-left: 7px;width:100%">
+            <tr>
+                <td width="20%" valign="top">
+                    <div style="font-weight:bold;font-size:13px !important" class="text-center div">
+                        Bilty Inquiry<br />021-32350886
+                    </div>
+                </td>
+                @if (Model.lstBiltyOrderDetail.OwnCompany != null)
+                {
+                    <td width="60%" align="center"><div class="text-center" style="font-size:17px !important;font-weight:bold;font-family:Arial Black !important">@Model.lstBiltyOrderDetail.OwnCompany.Name</div></td>
+                }
+                else
+                {
+                    <td width="60%" align="center">
+                        <div class="text-center" style="font-size:17px !important;font-weight:bold;font-family:Arial Black !important"></div>
+                    </td>
+                }
+                @if (Model.lstBiltyOrderDetail.PickLocationID != null)
+                {
+                    <td width="20%" valign="middle">
+                        <div style="font-weight:bold;font-size:13px !important;width:134px" class="text-center div">&nbsp;@Model.lstBiltyOrderDetail.City.CityName </div>
+
+                    </td>
+                }
+                else
+                {
+                    <td width="20%" valign="middle">
+                        <div style="font-weight:bold;font-size:13px !important;width:134px" class="text-center div">&nbsp; </div>
+
+                    </td>
+                }
+
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <p class="StartPositon text-center" style="word-break:break-word; width:62%;" >@Model.lstBiltyOrderDetail.OwnCompany.Address <br />@Model.lstBiltyOrderDetail.OwnCompany.Address2 </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="text-center div" style="width:120px;font-size:13px !important">
+                        @Convert.ToDateTime(Model.lstBiltyOrderDetail.Date).ToString("dd-MMM-yyyy")
+                    </div>
+                </td>
+                <td>
+                    <div class="text-center" style="font-size:18px !important;font-weight:bold">
+                        TRANSIT RECEIPT
+                    </div>
+                </td>
+                <td>
+                    <div style="width:134px;font-size:13px !important" class="text-center div">Customer Copy</div>
+                    <div style="width:134px;font-size:13px !important" class="text-center div">BiltyNo:&nbsp;@Model.lstBiltyOrderDetail.BiltyNo</div>
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <table width="100%" style="margin-left: ">
+                        <tr>
+                            <td width="14%">Transit from</td>
+                            @if (Model.lstBiltyOrderDetail.PickLocationID != null)
+                            {
+                                <td width="22%" align="left">@Model.lstBiltyOrderDetail.City.CityName</td>
+                            }
+                            else
+                            {
+                                <td width="22%" align="left"></td>
+                            }
+                            <td width="12%">To</td>
+                            @if (Model.lstBiltyOrderDetail.DropLocationID != null)
+                            {
+                                <td width="22%" align="left">@Model.lstBiltyOrderDetail.City1.CityName</td>
+                            }
+                            else
+                            {
+                                 <td width="22%" align="left"></td>
+                            }
+                            <td width="7%">D/N No</td>
+                            <td width="7%">@Model.lstBiltyOrderDetail.DNNo</td>
+                            <td width="10%">Manual Bilty#</td>
+                            <td align="left">@Model.lstBiltyOrderDetail.ManualBiltyNo</td>
+
+                        </tr>
+                        <tr>
+                            <td>Sender Name</td>
+                            @if (Model.lstBiltyOrderDetail.CustomerCompanyID != null)
+                            {
+                                <td colspan="1">@Model.lstBiltyOrderDetail.CustomerCompany.Name</td>
+                            }
+                            else
+                            {
+                                <td colspan="1"></td>
+                            }
+                            @if (Model.lstBiltyOrderDetail.ReceiverID != null)
+                            {
+                                <td colspan="4">Receiver Name:- @Model.lstBiltyOrderDetail.Receiver.Name </td>
+                            }
+                            else
+                            {
+                                <td colspan="4">Receiver Name:-  </td>
+                            }
+                        </tr>
+                        <tr>
+                            <td>Receiver No:</td>
+                            @if (Model.lstBiltyOrderDetail.ReceiverID != null)
+                            {
+                                <td>@Model.lstBiltyOrderDetail.Receiver.Contact</td>
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+
+                            <td width="10%">Transporter:</td>
+                            @if (Model.lstBiltyOrderDetail.DropStationID != null)
+                            {
+                                <td width="50%" align="left" colspan="3" valign="top" style="word-break:break-word;text-decoration: underline;">@Model.lstBiltyOrderDetail.Transporter.Name</td>
+                            }
+                            else
+                            {
+                                <td width="50%" align="left" colspan="3" valign="top" style="word-break:break-word;text-decoration: underline;"></td>
+                            }
+
+                        </tr>
+                        <tr>
+                            <td>Receiver's Address</td>
+                            @if (Model.lstBiltyOrderDetail.ReceiverID != null)
+                            {
+                                <td colspan="2">@Model.lstBiltyOrderDetail.Receiver.Name</td>
+                            }
+                            else
+                            {
+                                <td colspan="2"></td>
+                            }
+
+                            <td>Transporter No</td>
+                            @if (Model.lstBiltyOrderDetail.DropLocationID != null)
+                            {
+                                <td colspan="2">
+                                    @if (Model.lstBiltyOrderDetail.Transporter != null)
+                                    {
+                                        <text>@Convert.ToString("0" + Model.lstBiltyOrderDetail.Transporter.ContactNo)</text>
+                                    }
+                                    else
+                                    {
+
+                                    }
+                                    &nbsp;&nbsp;&nbsp;
+                                    @if (Model.lstBiltyOrderDetail.Transporter != null)
+                                    {
+                                        <text> @Convert.ToString("   0" + Model.lstBiltyOrderDetail.Transporter.SecondaryContactNo)</text>
+                                    }
+                                    else
+                                    {
+                                        <text></text>
+                                    }
+
+                                </td>
+                            }
+                            else
+                            {
+                                <td colspan="2"></td>
+                            }
+
+                        </tr>
+                        @*<tr><td >Manual Bilty No</td><td colspan="1">@Model.lstBiltyOrderDetail[0].ManualBiltyNo</td><td >Bilty Date</td><td colspan="2">@Convert.ToDateTime(Model.lstBiltyOrderDetail[0].ManualBiltyDate).ToString("dd-MMM-yy")</td></tr>*@
+
+                    </table>
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                        <table id="tblCustomer" style="margin-left:" class="tblCustomer" height="250px">
+                            <thead style="border:1px solid black;">
+                                <tr>
+                                    <th width="4%" align="center">Qty</th>
+
+                                    <th width="25%" style="word-wrap:break-word;" align="center">Package Type</th>
+                                    <th colspan="3" width="35%" style="word-wrap:break-word;">Description</th>
+                                    <th width="4%" align="center">Unit Wg</th>
+                                    <th width="8%" align="center">Total Wg</th>
+                                    <th width="18%" align="center">Freight</th>
+                                    <th width="8%" align="center">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.lstOrderPackageType.Count() > 0)
+                                {
+
+                                    foreach (var item in Model.lstOrderPackageType)
+                                    {
+                                        CountTotalWeight = CountTotalWeight + Convert.ToDouble(item.Qty * @item.Weight);
+
+                                        <tr style="height:15px">
+                                            <td align="center">@item.Qty</td>
+                                            @if (item.Product.PackageTypeID != null)
+                                            {
+                                                <td>@item.Product.PackageType.PackageTypeName </td>
+                                            }
+                                            else 
+                                            {
+                                                <td></td>
+                                            }
+                                            @if (item.Product.PackageTypeID != null)
+                                            {
+                                                <td colspan="3"> @item.Product.PackageType.Description </td>
+                                            }
+                                            else 
+                                            { 
+                                                   <td colspan="3"></td> 
+                                            }
+
+                                            <td align="center">
+                                                @String.Format("{0:n0}", Math.Round(Convert.ToDouble(item.Weight), 0))
+                                            </td>
+                                            <td align="center">@Convert.ToDouble(item.Qty * @item.Weight)</td>
+                                            @if (Model.lstOrderExpense.Count() > 0)
+                                            {
+                                                try
+                                                {
+                                                    if (Model.lstOrderExpense[otherCharge].ExpensesType.ExpensesTypeName != null)
+                                                    {
+                                                        CountTotalExpense = CountTotalExpense + Convert.ToDouble(Model.lstOrderExpense[otherCharge].Amount);
+                                                        
+                                                        <td>
+                                                            @Model.lstOrderExpense[otherCharge].ExpensesType.ExpensesTypeName
+                                                        </td>
+                                                        if (Model.lstBiltyOrderDetail.PaymentType.ToLower() == "topay" || Model.lstBiltyOrderDetail.PaymentType == null || Model.lstBiltyOrderDetail.PaymentType.ToLower() == "")
+                                                        {
+
+                                                            <td align="right">@String.Format("{0:n0}", Math.Round(Convert.ToDouble(Model.lstOrderExpense[otherCharge].Amount), 0))</td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td align="right">Paid</td>
+                                                        }
+
+                                                        otherCharge = otherCharge + 1;
+                                                    }
+                                                    else
+                                                    {
+                                                        <td></td>
+                                                        <td align="right"></td>
+                                                    }
+                                                }
+                                                catch (Exception)
+                                                {
+                                                    <td></td>
+                                                    <td align="right"></td>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <td></td>
+                                                <td align="right"></td>
+                                            }
+                                        </tr>
+                                    }
+                                }
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td align="right"></td>
+                                    <td colspan="4" align="center">Additional Weight </td>
+                                    <td align="right"></td>
+
+                                    <td align="right"> @String.Format("{0:n0}", Math.Round(Convert.ToDouble(Model.lstBiltyOrderDetail.AdditionalWeight), 0))</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr style="border: 1px solid black;">
+                                    <td align="right">@Model.lstOrderPackageType.Sum(x => x.Qty)</td>
+                                    <td colspan="4" align="left" class="text-center">Grand Total </td>
+
+                                    <td align="right">
+
+                                        @String.Format("{0:n0}", Math.Round(Convert.ToDouble(Model.lstOrderPackageType.Sum(x => x.Weight)), 0))
+                                    </td>
+                                    <td align="right">@String.Format("{0:n0}", Math.Round(Convert.ToDouble(CountTotalWeight + Model.lstBiltyOrderDetail.AdditionalWeight)), 0)</td>
+                                    <td></td>
+                                    @if (Model.lstBiltyOrderDetail.PaymentType.ToLower() == "topay" || Model.lstBiltyOrderDetail.PaymentType == null || Model.lstBiltyOrderDetail.PaymentType.ToLower() == "")
+                                    {
+                                        <td align="right">@CountTotalExpense</td>
+                                    }
+                                    else
+                                    {
+                                        <td align="right">Paid</td>
+                                    }
+                                </tr>
+                                <tr style=" border: 1px solid black;">
+                                    <td colspan="9">Remarks:@Model.lstBiltyOrderDetail.Remarks</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div style="margin-left:x;">
+                        <table width="100%">
+                            <tr>
+                                <td width="80%" align="left"> <p style="margin-bottom: 0rem;">* insure your goods by your self, Goods do not delivered without bilty</p></td>
+                                <td width="20%" align="left">UserId:&nbsp; @ApplicationHelper.UserID</td>
+                            </tr>
+                            <tr>
+                                <td width="80%" align="left">  <p style="margin-bottom: 0rem;">System Generated bilty no signature required</p></td>
+                                <td width="20%" align="left">Document# @Model.lstBiltyOrderDetail.ID</td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+    @if (ViewBag.isOnePage == false)
+    {
+        <div id="bottom" style="margin-top:1500px">
+            @*<div style="border-top: 2px dotted black;"></div>*@
+            <br />
+            <table style="margin-left: 7px;width:100%">
+                <tr>
+                    <td width="20%" valign="top">
+                        <div style="font-weight:bold;font-size:13px !important" class="text-center div">
+                            Bilty Inquiry<br />021-32350886
+                        </div>
+                    </td>
+                    @if (Model.lstBiltyOrderDetail.OwnCompany != null)
+                    {
+                        <td width="60%" align="center"><div class="text-center" style="font-size:17px !important;font-weight:bold;font-family:Arial Black !important">@Model.lstBiltyOrderDetail.OwnCompany.Name</div></td>
+                    }
+                    else
+                    {
+                        <td width="60%" align="center">
+                            <div class="text-center" style="font-size:17px !important;font-weight:bold;font-family:Arial Black !important"></div>
+                        </td>
+                    }
+                    @if (Model.lstBiltyOrderDetail.PickLocationID != null)
+                    {
+                        <td width="20%" valign="middle">
+                            <div style="font-weight:bold;font-size:13px !important;width:134px" class="text-center div">&nbsp;@Model.lstBiltyOrderDetail.City.CityName </div>
+                        </td>
+                    }
+                    else
+                    {
+                        <td width="20%" valign="middle">
+                            <div style="font-weight:bold;font-size:13px !important;width:134px" class="text-center div">&nbsp; </div>
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    <td colspan="3" align="center">
+                        <p class="StartPositon text-center" style="word-break:break-word; width:62%;">@Model.lstBiltyOrderDetail.OwnCompany.Address <br />@Model.lstBiltyOrderDetail.OwnCompany.Address2 </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="text-center div" style="width:120px;font-size:13px !important">
+                            @Convert.ToDateTime(Model.lstBiltyOrderDetail.Date).ToString("dd-MMM-yyyy")
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-center" style="font-size:18px !important;font-weight:bold">
+                            TRANSIT RECEIPT
+                        </div>
+                    </td>
+                    <td>
+                        <div style="width:134px;font-size:13px !important" class="text-center div">Customer Copy</div>
+                        <div style="width:134px;font-size:13px !important" class="text-center div">BiltyNo:&nbsp;@Model.lstBiltyOrderDetail.BiltyNo</div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <table width="100%" style="margin-left: ">
+                            <tr>
+                                <td width="14%">Transit from</td>
+                                @if (Model.lstBiltyOrderDetail.PickLocationID != null)
+                                {
+                                    <td width="22%" align="left">@Model.lstBiltyOrderDetail.City.CityName</td>
+                                }
+                                else
+                                {
+                                    <td width="22%" align="left"></td>
+                                }
+                                <td width="12%">To</td>
+                                @if (Model.lstBiltyOrderDetail.DropLocationID != null)
+                                {
+                                    <td width="22%" align="left">@Model.lstBiltyOrderDetail.City1.CityName</td>
+                                }
+                                else
+                                {
+                                    <td width="22%" align="left"></td>
+                                }
+                                <td width="7%">D/N No</td>
+                                <td width="7%">@Model.lstBiltyOrderDetail.DNNo</td>
+                                <td width="10%">Manual Bilty#</td>
+                                <td align="left">@Model.lstBiltyOrderDetail.ManualBiltyNo</td>
+
+                            </tr>
+                            <tr>
+                                <td>Sender Name</td>
+                                @if (Model.lstBiltyOrderDetail.CustomerCompanyID != null)
+                                {
+                                    <td colspan="1">@Model.lstBiltyOrderDetail.CustomerCompany.Name</td>
+                                }
+                                else
+                                {
+                                    <td colspan="1"></td>
+                                }
+                                @if (Model.lstBiltyOrderDetail.ReceiverID != null)
+                                {
+                                    <td colspan="4">Receiver Name:- @Model.lstBiltyOrderDetail.Receiver.Name </td>
+                                }
+                                else
+                                {
+                                    <td colspan="4">Receiver Name:-  </td>
+                                }
+                            </tr>
+                            <tr>
+                                <td>Receiver No:</td>
+                                @if (Model.lstBiltyOrderDetail.ReceiverID != null)
+                                {
+                                    <td>@Model.lstBiltyOrderDetail.Receiver.Contact</td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+
+                                <td width="10%">Transporter:</td>
+                                @if (Model.lstBiltyOrderDetail.DropStationID != null)
+                                {
+                                    <td width="50%" align="left" colspan="3" valign="top" style="word-break:break-word;text-decoration: underline;">@Model.lstBiltyOrderDetail.Transporter.Name</td>
+                                }
+                                else
+                                {
+                                    <td width="50%" align="left" colspan="3" valign="top" style="word-break:break-word;text-decoration: underline;"></td>
+                                }
+
+                            </tr>
+                            <tr>
+                                <td>Receiver's Address</td>
+                                @if (Model.lstBiltyOrderDetail.ReceiverID != null)
+                                {
+                                    <td colspan="2">@Model.lstBiltyOrderDetail.Receiver.Name</td>
+                                }
+                                else
+                                {
+                                    <td colspan="2"></td>
+                                }
+
+                                <td>Transporter No</td>
+                                @if (Model.lstBiltyOrderDetail.DropLocationID != null)
+                                {
+                                    <td colspan="2">
+                                        @if (Model.lstBiltyOrderDetail.Transporter != null)
+                                        {
+                                            <text>@Convert.ToString("0" + Model.lstBiltyOrderDetail.Transporter.ContactNo)</text>
+                                        }
+                                        else
+                                        {
+
+                                        }
+                                        &nbsp;&nbsp;&nbsp;
+                                        @if (Model.lstBiltyOrderDetail.Transporter != null)
+                                        {
+                                            <text> @Convert.ToString("   0" + Model.lstBiltyOrderDetail.Transporter.SecondaryContactNo)</text>
+
+                                        }
+                                        else
+                                        {
+                                            <text></text>
+                                        }
+
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td colspan="2"></td>
+                                }
+
+                            </tr>
+                            @*<tr><td >Manual Bilty No</td><td colspan="1">@Model.lstBiltyOrderDetail[0].ManualBiltyNo</td><td >Bilty Date</td><td colspan="2">@Convert.ToDateTime(Model.lstBiltyOrderDetail[0].ManualBiltyDate).ToString("dd-MMM-yy")</td></tr>*@
+
+                        </table>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div style="margin-left: -15px;">
+                            <table id="tblCustomer" class="tblCustomer" height="250">
+                                <thead style="border:1px solid black;">
+                                    <tr>
+                                        <th width="4%" align="center">Qty</th>
+                                        <th width="25%" style="word-wrap:break-word;" align="center">Package Type</th>
+                                        <th colspan="3" width="35%" style="word-wrap:break-word;">Description</th>
+
+
+
+                                        <th width="4%" align="center">Unit Wg</th>
+                                        <th width="8%" align="center">Total Wg</th>
+                                        <th width="18%" align="center">Freight</th>
+                                        <th width="8%" align="center">Amount</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.lstOrderPackageType.Count() > 0)
+                                    {
+                                        otherCharge = 0;
+                                        CountTotalExpense = 0;
+                                        CountTotalWeight = 0;
+                                        CountTotalExpense = 0;
+                                        foreach (var item in Model.lstOrderPackageType)
+                                        {
+                                            CountTotalWeight = CountTotalWeight + Convert.ToDouble(item.Qty * @item.Weight);
+
+                                            <tr style="height:15px">
+                                                <td align="center">@item.Qty</td>
+
+                                                <td>@item.Product.PackageType.PackageTypeName </td>
+                                                <td colspan="3"> @item.Product.PackageType.Description </td>
+
+                                                <td align="center">
+                                                    @String.Format("{0:n0}", Math.Round(Convert.ToDouble(item.Weight), 0))
+
+                                                </td>
+                                                <td align="center">@Convert.ToDouble(item.Qty * @item.Weight)</td>
+                                                @if (Model.lstOrderExpense.Count() > 0)
+                                                {
+                                                    try
+                                                    {
+                                                        if (Model.lstOrderExpense[otherCharge].ExpensesType.ExpensesTypeName != null)
+                                                        {
+                                                            CountTotalExpense = CountTotalExpense + Convert.ToDouble(Model.lstOrderExpense[otherCharge].Amount);
+                                                            <td>
+                                                                @Model.lstOrderExpense[otherCharge].ExpensesType.ExpensesTypeName
+                                                            </td>
+                                                            if (Model.lstBiltyOrderDetail.PaymentType.ToLower() == "topay" || Model.lstBiltyOrderDetail.PaymentType == null || Model.lstBiltyOrderDetail.PaymentType.ToLower() == "")
+                                                            {
+                                                                <td align="right">@Model.lstOrderExpense[otherCharge].Amount</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td align="right">Paid</td>
+                                                            }
+                                                            otherCharge = otherCharge + 1;
+                                                        }
+                                                        else
+                                                        {
+                                                            <td></td>
+                                                            <td align="right"></td>
+                                                        }
+                                                    }
+                                                    catch (Exception)
+                                                    {
+                                                        <td></td>
+                                                        <td align="right"></td>
+                                                    }
+
+
+
+                                                }
+                                                else
+                                                {
+                                                    <td></td>
+                                                    <td align="right"></td>
+                                                }
+
+
+                                            </tr>
+
+                                        }
+                                    }
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td align="right"></td>
+                                        <td colspan="4" align="center">Additional Weight </td>
+                                        <td align="right"></td>
+
+                                        <td align="right"> @String.Format("{0:n0}", Math.Round(Convert.ToDouble(Model.lstBiltyOrderDetail.AdditionalWeight), 0))</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr style=" border: 1px solid black;">
+                                        <td align="right">@Model.lstOrderPackageType.Sum(x => x.Qty)</td>
+                                        <td colspan="4" align="left" class="text-center">Grand Total </td>
+
+                                        <td align="right">
+                                            @String.Format("{0:n0}", Math.Round(Convert.ToDouble(Model.lstOrderPackageType.Sum(x => x.Weight)), 0))
+                                        </td>
+                                        <td align="right">@String.Format("{0:n0}", Math.Round(Convert.ToDouble(CountTotalWeight + Model.lstBiltyOrderDetail.AdditionalWeight)), 0)</td>
+                                        <td></td>
+                                        @if (Model.lstBiltyOrderDetail.PaymentType.ToLower() == "topay" || Model.lstBiltyOrderDetail.PaymentType == null || Model.lstBiltyOrderDetail.PaymentType.ToLower() == "")
+                                        {
+                                            <td align="right">@CountTotalExpense</td>
+                                        }
+                                        else
+                                        {
+                                            <td align="right">Paid</td>
+                                        }
+                                    </tr>
+                                    <tr style=" border: 1px solid black;">
+                                        <td colspan="9">Remarks:@Model.lstBiltyOrderDetail.Remarks</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div style="margin-left:-15px;">
+                            <table width="100%">
+                                <tr>
+                                    <td width="80%" align="left"> <p style="margin-bottom: 0rem;">* insure your goods by your self, Goods do not delivered without bilty</p></td>
+                                    <td width="20%" align="left">UserId: &nbsp; @ApplicationHelper.UserID</td>
+
+
+
+
+                                </tr>
+                                <tr>
+                                    <td width="80%" align="left">  <p style="margin-bottom: 0rem;">System Generated bilty no signature required</p></td>
+                                    <td width="20%" align="left">Document# @Model.lstBiltyOrderDetail.ID</td>
+
+                                </tr>
+                            </table>
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    }
+
+
+
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    @if (ViewBag.isOnePage == true)
+    {
+        <script>
+
+        $(document).ready(function () {
+            //var pdf = new jsPDF("letter");
+            var pdf = new jsPDF('p', 'mm', [297, 210]);
+            pdf.setFillColor(17, 22, 22, 1);
+            //pdf.canvas.height = 72 * 11;
+            //pdf.canvas.width = 72 * 8.5;
+            pdf.addHTML(document.body, function () {
+                window.close
+                pdf.save('@Model.lstBiltyOrderDetail.BiltyNo' + '.pdf');
+            });
+        });
+
+        </script>
+    }
+    else
+    {
+        <script type="text/javascript">
+            window.print();
+
+
+        </script>
+    }
+</body>
+</html>
+

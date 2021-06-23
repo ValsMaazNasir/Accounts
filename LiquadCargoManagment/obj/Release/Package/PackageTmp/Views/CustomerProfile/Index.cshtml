@@ -1,0 +1,76 @@
+﻿@model IEnumerable<LiquadCargoManagment.Models.CustomerProfile>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="page-content" style="min-height: 199px;">
+    <div class="block full">
+        <div class="block-title row">
+            <div class="col-md-12">
+                <h2>Order Details</h2>
+                <a class="btn btn-primary btn-sm pull-right" href="@Url.Action("Create", "CustomerProfile")">Add New | <i class="fa fa-plus"></i></a>
+            </div>
+        </div>
+        <table id="example" class="table" cellpadding="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <td>Customers</td>
+                    <td>Own Company</td>
+                    <td>Payment Term</td>
+                    <td>Credit Term</td>
+                    <td>Invoice Format</td>
+                    <td>Created Date</td>
+                    <td>Operation</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CustomerCompany.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OwnCompany.Name)
+                        </td>
+                      
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PaymentTerm)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreditTerm)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InvoiceFormat)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedDate)
+                        </td>
+                        <td>
+                            <a href="../CustomerProfile/Details?id=@item.ProfileId" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></a>
+                            <a href="../CustomerProfile/Edit?id=@item.ProfileId" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></a>
+                            <a href="../CustomerProfile/Delete?id=@item.ProfileId" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.ProfileId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.ProfileId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ProfileId })*@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@section Script
+{
+    <script>
+        $(document).ready(function () {
+            GetOrders();
+        });
+        function GetOrders() {
+            $('#example').DataTable();
+        }
+    </script>
+}

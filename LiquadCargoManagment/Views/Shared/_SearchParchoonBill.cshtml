@@ -1,0 +1,63 @@
+﻿@model IEnumerable<LiquadCargoManagment.Models.ParchoonBilty>
+
+@using LiquadCargoManagment.Models;
+<div class="table-responsive">
+    <table class="table display table-striped" id="example" style="font-size:10px">
+        <thead>
+            <tr>
+                <td><input type="checkbox" id="checkAll" /></td>
+                <td>Created Date</td>
+                <td>Bilty No</td>
+                <td>Bilty Date</td>
+                <td>Bill To</td>
+                <td>Vehicle No</td>
+                <td>Location</td>
+                <td>Payment Type</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="Selected">
+                    <td class="sel"><input type="checkbox" class="checkbox" id="ParchoonBiltyID" value="@item.ID" name="ParchoonBiltyID" /></td>
+                    @if (item.CreatedDate != null)
+                    {
+                        <td>@Convert.ToDateTime(item.CreatedDate).ToString(SoftwareFormatting.DateFormat)</td>
+                    }
+                    else
+                    {
+                        <td>@Convert.ToDateTime(item.ModifiedDate).ToString(SoftwareFormatting.DateFormat)</td>
+                    }
+                    <td>@item.ManualBiltyNo</td>
+                    <td>@Convert.ToDateTime(item.Date).ToString(SoftwareFormatting.DateFormat)</td>
+                    @if (item.CustomerCompany != null)
+                    {
+                        <td>@item.CustomerCompany.Name</td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                    @if (item.VehicleTypeID != null)
+                    {
+                        <td>@item.VehicleType.Name</td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                    @if (item.PickLocationID != null)
+                    {
+                        <td>@item.City.CityName</td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                    <td>@item.PaymentType</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

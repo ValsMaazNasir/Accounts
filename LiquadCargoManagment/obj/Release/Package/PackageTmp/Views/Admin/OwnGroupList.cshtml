@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "OwnGroupList";
+}
+
+<div class="block full">
+    <div class="block-title row">
+        <h3>Own Group</h3>
+        <a id="" class="btn btn-primary btn-sm pull-right" onclick="MessageShow(this)" href="#">Add New | <i class="fa fa-plus"></i></a>
+    </div>
+    <div class="" id="Subgrid">
+        @Html.Partial("_OwnGroupList")
+    </div>
+</div>
+
+@section Script
+{
+    <script>
+        $(document).ready(function () {
+            $("#example").DataTable({
+                //dom: 'Bfrtip',
+                //buttons: [
+                //    'copyHtml5',
+                //    'excelHtml5',
+                //    'csvHtml5',
+                //    'pdfHtml5'
+                //]
+            });
+        });
+        function GetOrders() {
+            $('#example').DataTable();
+        }
+        function MessageShow() {
+            Message("Info", "you can't create owngroup because you have to buy a new subcription", "info");
+        }
+    </script>
+}
+

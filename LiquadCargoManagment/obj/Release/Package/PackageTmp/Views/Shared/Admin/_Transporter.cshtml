@@ -1,0 +1,130 @@
+﻿@model IEnumerable<Bilty.Data.usp_Stations>
+@using System.Text;
+@using LiquadCargoManagment.DataAccessLayer
+@{ int count = 0;}
+<table class="table table-striped" id="tblUserAccount">
+    <thead class="th-color">
+        <tr>
+
+            <td width="2%"><div style="text-align:center;">S.NO</div></td>
+            <td>
+                Code
+            </td>
+
+            <td>
+                Name
+            </td>
+
+            <td>
+                City
+            </td>
+
+            <td>
+                Contact Person
+            </td>
+
+            <td>
+                Contact No
+            </td>
+
+            <td>
+                Sec Contact Person
+            </td>
+
+            <td>
+                Sec Contact No
+            </td>
+            <td>
+                Status
+            </td>
+            <td>
+                Created Date
+            </td>
+            <td>
+                Modified Date
+            </td>
+            <td>
+                Operation
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            count++;
+            StringBuilder jsonStringUserInfo = new StringBuilder();
+            jsonStringUserInfo.Append(" { ");
+            jsonStringUserInfo.Append("\"ID\": \"" + @item.ID + "\",");
+            jsonStringUserInfo.Append("\"Code\": \"" + @item.Code + "\",");
+            jsonStringUserInfo.Append("\"Name\": \"" + @item.Name + "\",");
+            jsonStringUserInfo.Append("\"CityID\": \"" + @item.CityID + "\",");
+            jsonStringUserInfo.Append("\"SecondaryContactPerson\": \"" + @item.SecondaryContactPerson + "\",");
+            jsonStringUserInfo.Append("\"ContactNo\": \"" + @item.ContactNo + "\",");
+            jsonStringUserInfo.Append("\"SecondaryContactNo\": \"" + @item.SecondaryContactNo + "\",");
+            jsonStringUserInfo.Append("\"Address\": \"" + @item.Address.Trim() + "\",");
+            jsonStringUserInfo.Append("\"ContactPerson\": \"" + @item.ContactPerson + "\",");
+            jsonStringUserInfo.Append("\"Description\": \"" + @item.Description + "\",");
+            jsonStringUserInfo.Append("\"IsActive\": \"" + @item.isActive + "\"");
+            jsonStringUserInfo.Append("}");
+<tr>
+    <td align="center">@count</td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Code)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.CityName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ContactPerson)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ContactNo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SecondaryContactPerson)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SecondaryContactNo)
+    </td>
+
+    <td>
+        @item.isActive
+    </td>
+    <td>
+        @item.DateCreated
+    </td>
+    <td>
+        @item.DateModified
+    </td>
+
+    <td>
+        <a href="javascript:EditStation('@item.ID');" class="edit">Edit</a><input id="station-@item.ID" type="hidden" value="@jsonStringUserInfo.ToString()" />
+
+    </td>
+</tr>}
+    </tbody>
+</table>
+
+<script>$(function () {
+
+        $('#tblUserAccount').DataTable({
+            'paging': true,
+            'lengthChange': false,
+            'searching': true,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false,
+
+            'processing': true
+
+        })
+
+
+
+    });</script>

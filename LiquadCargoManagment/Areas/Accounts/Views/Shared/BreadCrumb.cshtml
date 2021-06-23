@@ -1,0 +1,35 @@
+﻿@using LiquadCargoManagment.Areas.Accounts.Models;
+
+<!--Page Title-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+
+<div class="content-header">
+
+    <div class="header-section">
+        <h1>
+            @ViewBag.ControllerName
+        </h1>
+    </div>
+</div>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--End page title-->
+@{
+    List<BreadCrumbMenu> BreadCrumbMenus = (List<BreadCrumbMenu>)ViewBag.BreadCrumbMenus;
+}
+@if (BreadCrumbMenus.Count > 0)
+{
+    
+<ul class="breadcrumb breadcrumb-top">
+    <li><a href="/dashboard"><i class="fa fa-home"></i></a></li>
+    @{
+        foreach (BreadCrumbMenu Menu in BreadCrumbMenus)
+        {
+            <li><a href="@Menu.AccessURL">@Menu.Name</a></li>
+        }
+    }
+</ul>
+}
+
+
+

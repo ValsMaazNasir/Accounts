@@ -1,0 +1,403 @@
+﻿@model LiquadCargoManagment.Models.ParchoonBilty
+@{
+    ViewBag.Title = "BiltySystem";
+}
+
+<style>
+    #DamageInformation, #DispatchInformation,
+    #ExpensesInformation,
+    #ProductInformation,
+    #ReceivingInformation1,
+    #ContainerInformation,
+    #ReceivingDocument1,
+    #VehicleInformation,
+    #PackageTypeInformation,
+    #LoadingUnloadingDetail,
+    #Payment,
+    #SearchVehicle {
+        display: none;
+    }
+</style>
+
+<div class="content-header">
+
+    <div class="header-section">
+        <h1>
+            Create Manual Bilty <br><small>Create Read Update Delete Universal Bilty</small>
+        </h1>
+    </div>
+
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>Admin</li>
+    <li><a href="javascript:;">Create Universal Bilty</a></li>
+</ul>
+
+<!-- END Datatables Header -->
+<!-- Datatables Content -->
+<div class="block full">
+
+    <div class="block-title row">
+        <div class="col-md-4">
+            <h2><i class="fa fa-pencil"></i> | Manual Bilty</h2>
+        </div>
+        <div class="col-md-8">
+            <button type="button" class="btn btn-default pull-right" title="Show all" data-toggle="tooltip" onclick="ShowAllForms(this)"><i class="fa fa-eye" style="font-size:18px; color:black;"></i></button>
+            <button type="button" class="btn btn-default pull-right" title="Hide all" data-toggle="tooltip" onclick="HideAllForms(this)" style="margin-right:3px;"><i class="fa fa-eye-slash" style="font-size:18px; color:black;"></i></button>
+
+            <div class="btn-group btn-group-sm pull-right" style="margin-right:5px;">
+                <a href="javascript:void(0)" style="font-size:14px;" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Open | <span class="caret"></span></a>
+                <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+                    <li><a href="#">Customer Info</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#Location">Location Info</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#VehicleInformation" onclick="ShowVehicle(this)">Document Info</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#ContainerInformation" onclick="ShowContainer(this)">Package Info</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#ProductInformation" onclick="ShowProduct(this)">Expenses</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#DispatchInformation" onclick="ShowDispatchDocument(this)">Payment Term</a></li>
+                    <li class="divider"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <table class="table">
+        <tbody>
+
+            <tr>
+                <td hidden>
+                    <label>Order No</label>
+                    @Html.TextBox("txt", "", new { @class = "form-control" })
+
+                </td>
+                <td>
+                    <label>Shipment Type</label>
+                    @Html.DropDownListFor(x => x.ShipmentTypeID, ViewBag.ShipmentTypes as SelectList,htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ShipmentTypeID, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    <label>Payment Type</label>
+                    @Html.DropDownListFor(x => x.PaymentType, ViewBag.PaymentTypes as SelectList, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PaymentType, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    <label>Date</label>
+                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Bilty No </label>
+                    @Html.TextBox("txt", "", new { @class = "form-control" })
+
+                </td>
+                <td>
+                    <label> Bilty No Date</label>
+                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                </td>
+                <td>
+                    <label>Manual Bilty No</label>
+                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <label>DN No</label>
+                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                </td>
+                <td>
+                    <label>Vehicle Type</label>
+                    @Html.DropDownListFor(x => x.VehicleTypeID, ViewBag.VehicleTypes as SelectList, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.VehicleTypeID, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    <label>Broker Name</label>
+                    @Html.DropDownListFor(x => x.BrokerID, ViewBag.Brokers as SelectList, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.BrokerID, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Cell#</label>
+                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+
+
+    <div class="border" style="border-top:dashed thin lavender">
+        <h3>
+            Location
+        </h3>
+        <table class="table" id="Location">
+            <thead>
+                <tr>
+                    <td>Delivery Type</td>
+                    <td>Pick Location</td>
+                    <td>Drop Location</td>
+                    <td>Reciver Name</td>
+                    <td hidden class="PickStation">Pick Station</td>
+                    <td hidden class="DropStation">Drop Station</td>
+                    <td class="PickAddress">Pick Address</td>
+                    <td class="DropAddress">Drop Address</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="LocationCode" id="LocalPick">
+                    <td>
+                        @Html.DropDownListFor(x => x.DeliverType, ViewBag.DeliveryTypes as SelectList, "--Select--", htmlAttributes: new { @class = "form-control DeliveryType",@onchange= "Stations(this)" })
+                        @Html.ValidationMessageFor(model => model.DeliverType, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(x => x.PickLocationID, ViewBag.Cities as SelectList, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PickLocationID, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(x => x.DropLocationID, ViewBag.Cities as SelectList, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.DropLocationID, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(x => x.ReceiverID, ViewBag.Receivers as SelectList, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Receiver, "", new { @class = "text-danger" })
+                    </td>
+                    <td hidden class="PickStation">
+                        @Html.DropDownListFor(x => x.PickStationID, ViewBag.Stations as SelectList, htmlAttributes: new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.PickStationID, "", new { @class = "text-danger" })
+                    </td>
+                    <td hidden class="DropStation">
+                        @Html.DropDownListFor(x => x.DropStationID, ViewBag.Stations as SelectList, htmlAttributes: new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.DropStationID, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="PickAddress">
+                        @Html.TextBox("txt", "", new { @class = "form-control" })
+                    </td>
+                    <td class="DropAddress">
+                        @Html.TextBox("txt", "", new { @class = "form-control" })
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" onclick="AddLocation(this);"><i class="fa fa-plus"></i></button>
+                    </td>
+                </tr>
+
+
+            </tbody>
+            <tfoot id="LocationFoot">
+                <tr>
+                    <td colspan="10">
+                        <button type="button" class="btn btn-primary pull-right" onclick="ShowDocument(this)">Next | <i class="fa fa-arrow-circle-o-right"></i></button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    @Html.Partial("_ParchoonBiltyDocumentType",Model.ParchoonBiltyDocumentTypes.ToList())
+
+    @Html.Partial("_ParchoonBiltyProduct",Model.ParchoonBiltyProducts.ToList())
+
+    @Html.Partial("_ParchoonBiltyExpense",Model.ParchoonBiltyExpenses.ToList())
+
+    <div class="border" style="border-top:dashed thin lavender" id="Payment">
+        <h3>
+            Payment Term
+        </h3>
+        <table class="table detailsContainer" id="Container">
+            <thead>
+                <tr>
+                    <td>Local Freight</td>
+                    <td>Freight Rs</td>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td width="30%">
+                        @Html.TextBox("txt", "", new { @class = "form-control" })
+
+                    </td>
+                    <td width="15%">
+                        @Html.TextBox("txt", "", new { @class = "form-control" })
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" onclick="AddPaymentRow(this)"><i class="fa fa-plus"></i></button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <table class="table" id="remarks">
+        <tbody>
+
+            <tr class="Allremarks">
+                <td colspan="5">
+                    <label>Remarks</label>
+                    <textarea class="form-control" name="Remarks" id="Remarks" placeholder="Enter remarks if needed."></textarea>
+                </td>
+            </tr>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    <button type="submit" id="SaveBtn" class="btn btn-primary pull-right" onclick="SaveData(this)"><i class="fa fa-save"></i> | Save Bilty</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>
+
+
+@*<script src="~/js/UniversalBilty.js"></script>*@
+<script src="~/js/pages/formsValidation.js"></script>
+@section Script
+{
+    <script>
+
+
+        $(function () { FormsValidation.init(); });
+
+        document.querySelector("#ManualBiltyNo").focus();
+
+        $(document).ready(function () {
+            $(".chosen").chosen();
+            $("#BiltyDate").datepicker({
+                altField: "#BiltyDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#DeliveryDate").datepicker({
+                altField: "#DeliveryDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#LoadingDate").datepicker({
+                altField: "#LoadingDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#LoadingGateInDate").datepicker({
+                altField: "#LoadingGateInDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#LoadingGateOutDate").datepicker({
+                altField: "#LoadingGateOutDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#UnLoadingDate").datepicker({
+                altField: "#UnLoadingDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#UnLoadingGateInDate").datepicker({
+                altField: "#UnLoadingGateInDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+            $("#UnLoadingGateOutDate").datepicker({
+                altField: "#UnLoadingGateOutDate",
+                altFormat: "d-M-y",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1947:5000"
+            });
+        });
+
+        function AddLocation(A) {
+            debugger;
+            var parent = $(A).parent("td").parent("tr").html();
+            parent = parent.replace("btn-primary", "btn-danger").replace("fa-plus", "fa-trash").replace("AddLocation", "remove");
+            $("#Location").find("tbody").append(`<tr>${parent}</tr>`);
+        }
+        function AddDocument(A) {
+            debugger;
+            var parent = $(A).parent("td").parent("tr").html();
+            parent = parent.replace("btn-primary", "btn-danger").replace("fa-plus", "fa-trash").replace("AddDocument", "remove");
+            $("#Document").find("tbody").append(`<tr>${parent}</tr>`);
+        }
+        function AddPackage(A) {
+            debugger;
+            var parent = $(A).parent("td").parent("tr").html();
+            parent = parent.replace("btn-primary", "btn-danger").replace("fa-plus", "fa-trash").replace("AddDocument", "remove");
+            $("#Package").find("tbody").append(`<tr>${parent}</tr>`);
+        }
+        function AddExpense(A) {
+            debugger;
+            var parent = $(A).parent("td").parent("tr").html();
+            parent = parent.replace("btn-primary", "btn-danger").replace("fa-plus", "fa-trash").replace("AddDocument", "remove");
+            $("#Expense").find("tbody").append(`<tr>${parent}</tr>`);
+        }
+        function remove(e) {
+            $(e).parent("td").parent("tr").fadeOut(100, function () { $(this).remove(); });
+        }
+        function ShowDocument() {
+            $("#VehicleInformation").show("slow");
+            $("#LocationFoot").hide("slow");
+        }
+        function ShowPackage() {
+            $("#ProductInformation").show("slow");
+            $("#VehicleFoot").hide("slow");
+        }
+        function ShowExpense() {
+            $("#ContainerInformation").show("slow");
+            $("#ProductFoot").hide("slow");
+        }
+        function ShowPayment() {
+            $("#Payment").show("slow");
+            $("#ContainerFoot").hide("slow");
+        }
+
+        function Stations() {
+            debugger;
+            var DeliveryType = $(".DeliveryType").val();
+            if (DeliveryType == "Direct") {
+                $(".PickStation").show();
+                $(".PickAddress").hide();
+            }
+            else if (DeliveryType == "InDirect") {
+                $(".PickStation").show();
+                $(".DropStation").show();
+                $(".PickAddress").hide();
+                $(".DropAddress").hide();
+            }
+            else {
+                $(".PickStation").hide();
+                $(".DropStation").hide();
+                $(".PickAddress").show();
+                $(".DropAddress").show();
+            }
+        }
+
+    </script>
+}
+
+
+

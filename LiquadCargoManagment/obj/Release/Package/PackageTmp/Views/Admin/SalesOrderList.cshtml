@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = "SalesOrderList";
+}
+
+<div class="content-header">
+
+    <div class="header-section">
+        <h1>
+            Sales Order <br><small>Create Read Update Delete Sales Order</small>
+        </h1>
+    </div>
+
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>Admin</li>
+    <li><a href="javascript:;">Search Sales Order</a></li>
+</ul>
+
+<div class="block full">
+    <div class="block-title row">
+        <div class="col-md-12">
+            <a id="" class="btn btn-primary btn-sm pull-right" href="#" style="margin-left:5px">Add Sales Order | <i class="fa fa-plus"></i></a>
+            <a id="" class="btn btn-primary btn-sm pull-right" onclick="$('#modal-add').modal('show');" href="#">Search Sales Order | <i class="fa fa-search"></i></a>
+        </div>
+    </div>
+   
+        @Html.Partial("_SearchSalesOrderList")
+
+</div>
+
+<div id="modal-add" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        @using (Html.BeginForm("SalesOrderList", "admin", FormMethod.Get))
+        {
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <h2 class="modal-title"><i class="fa fa-search"></i> Search Sales Order</h2>
+            </div>
+            <!-- END Modal Header -->
+            <!-- Modal Body -->
+                <div class="modal-body">
+                    <table class="table table-responsive">
+                        
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label class="control-label">Date From</label>
+                                    <input type="text" id="DateFrom" name="searchFrom" class="form-control" />
+                                </td>
+                                <td>
+                                    <label class="control-label">Date To</label>
+                                    <input type="text" id="DateTo" name="searchTo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="control-label">Shipment Type</label>
+                                    @Html.DropDownList("ShipmentTypeId", ViewBag.ShipmentType as SelectList, "--Select--", new { @class = "form-control" })
+                                </td>
+                                <td>
+                                    <label class="control-label lblOrderno">Order No.</label>
+                                    <input type="text" id="OrderNo" name="Orderno" class="form-control" />
+                                </td>
+                               
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="control-label">Loading Point</label>
+                                    @Html.DropDownList("LoadingPoint", ViewBag.LoadingPoint as SelectList, "--Select--", new { @class = "form-control" })
+                                </td>
+                                <td>
+                                    <label class="control-label">Destination Point</label>
+                                    @Html.DropDownList("DestinationPoint", ViewBag.LoadingPoint as SelectList, "--Select--", new { @class = "form-control" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="control-label">Vehicle Reg No.</label>
+                                    @Html.DropDownList("vehicleId", ViewBag.VehicleReg as SelectList, "--Select--", new { @class = "form-control" })
+                                </td>
+                                <td>
+                                    <label class="control-label">Loading Date</label>
+                                    <input type="text" id="LoadingDate" name="LoadingDate" class="form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="submit" id="btnSaveEdit" class="btn btn-primary pull-right"><b><i class="fa fa-search"></i> Search</b></button>
+                </div>
+            <!-- END Modal Body -->
+        </div>
+        }
+    </div>
+</div>
+
+@section Script
+{
+        
+    <script>
+        $(document).ready(function () {
+            GetOrders();
+        });
+        function GetOrders() {
+            $("#example").DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
+           
+            });
+        }
+    </script>
+}
+

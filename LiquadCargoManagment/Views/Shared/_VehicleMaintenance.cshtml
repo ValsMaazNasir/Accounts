@@ -1,0 +1,82 @@
+﻿@using Newtonsoft.Json;
+@model IEnumerable<LiquadCargoManagment.Models.VehicleMaintenance>
+@using LiquadCargoManagment.Models
+
+<div class="table-responsive">
+    <table class="table display table-striped" id="example" style="font-size:11px;">
+        <thead>
+            <tr>
+                <td>Vehicle Reg No</td>
+                <td>Vehicle Type</td>
+                <td>Status</td>
+                <td>OMC</td>
+                <td>Maintenance Type</td>
+                <td>Start From</td>
+                <td>Expiry Date</td>
+                <td>Alert Type</td>
+                <td>IsActive</td>
+                <td>Operation</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                // string jsonData = JsonConvert.SerializeObject(item);
+                string jsonData = "{";
+                jsonData += " 'ID' : '" + item.ID + "', ";
+                jsonData += " 'VehicleRegNo' : '" + item.VehicleRegNo + "', ";
+                jsonData += " 'VehicleType' : '" + item.VehicleType + "', ";
+                jsonData += " 'OwnerShip' : '" + item.OwnerShip + "', ";
+                jsonData += " 'PrincipleCompany' : '" + item.PrincipleCompany + "', ";
+                jsonData += " 'MaintenanceTypeID' : '" + item.MaintenanceTypeID + "', ";
+                jsonData += " 'StartFrom' : '" + item.StartFrom + "', ";
+                jsonData += " 'ExpiryDate' : '" + item.ExpiryDate + "', ";
+                jsonData += " 'AlertType' : '" + item.AlertType + "', ";
+                jsonData += " 'SMSNo' : '" + item.SMSNo + "', ";
+                jsonData += " 'EmailAdd' : '" + item.EmailAdd + "', ";
+                jsonData += " 'AlertFrequency' : '" + item.AlertFrequency + "', ";
+                jsonData += " 'AlertBefore' : '" + item.AlertBefore + "', ";
+                jsonData += " 'GracePeriod' : '" + item.GracePeriod + "', ";
+                jsonData += " 'CurrentOdoMeter' : '" + item.CurrentOdoMeter + "', ";
+                jsonData += " 'DueKMs' : '" + item.DueKMs + "', ";
+                jsonData += " 'GracedueKMs' : '" + item.GraceDueKMs + "' ";
+                jsonData += "}";
+
+                <tr>
+                    <td>@Html.DisplayName(item.Vehicle.RegNo)</td>
+                    <td>@Html.DisplayName(item.VehicleType1.Name)</td>
+                    <td>@Html.DisplayName(item.Vehicle1.OwnershipStatus)</td>
+                    <td>@Html.DisplayName(item.PrincipleCompany1.Name)</td>
+                    <td>@Html.DisplayName(item.MaintenanceType.Name)</td>
+                    <td>@Convert.ToDateTime(item.StartFrom).ToString(SoftwareFormatting.DateFormat)</td>
+                    <td>@Convert.ToDateTime(item.ExpiryDate).ToString(SoftwareFormatting.DateFormat)</td>
+                    <td>@item.AlertType</td>
+                    @if (item.IsActive == true)
+                    {
+                        <td>
+                            <a onclick="ChangeStatus(@item.ID,false)"><i class="fa fa-toggle-on text-primary" style="font-size:25px;"></i></a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <a onclick="ChangeStatus(@item.ID,true)"><i class="fa fa-toggle-off text-danger" style="font-size:25px;"></i></a>
+                        </td>
+                    }
+                    <td>
+                        <button type="button" onclick="viewRecordRead(@jsonData,this)" class="btn btn-primary btn-xs">
+                            <i class="fa fa-eye"></i>
+                        </button>
+
+                        <button type="button" onclick="viewRecord(@jsonData,this)" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></button>
+
+                        <button type="button" onclick="DeleteModel(@item.ID)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

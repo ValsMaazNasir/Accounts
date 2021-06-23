@@ -1,0 +1,118 @@
+﻿@model IEnumerable<LiquadCargoManagment.Models.Vehicle>
+@using LiquadCargoManagment.Models
+
+    <div class="table-responsive">
+        <table class="table display table-striped" id="example">
+            <thead>
+                <tr>
+
+                    <td>Created Date</td>
+                    <td>Code</td>
+                    <td>Reg#</td>
+                    <td>Vehicle Type</td>
+                    <td>Vehicle Standard</td>
+                    <td>Owner Name</td>
+                    <td>Owner Contact</td>
+                    <td>Description</td>
+                    <td>IsActive</td>
+                    <td>Operation</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    //string jsonData = JsonConvert.SerializeObject(item);
+                    string jsonData = "{";
+                    jsonData += " 'VehicleID' : '" + item.VehicleID + "', ";
+                    jsonData += " 'CreatedDate' : '" + item.CreatedDate + "', ";
+                    jsonData += " 'RegNo' : '" + item.RegNo + "', ";
+                    jsonData += " 'Code' : '" + item.Code + "', ";
+                    jsonData += " 'BodyType' : '" + item.BodyType + "', ";
+                    jsonData += " 'ChasisNo' : '" + item.ChasisNo + "', ";
+                    jsonData += " 'Description' : '" + item.Description + "', ";
+                    jsonData += " 'DimensionUnitType' : '" + item.DimensionUnitType + "', ";
+                    jsonData += " 'Documents' : '" + item.Documents + "', ";
+                    jsonData += " 'EngineNo' : '" + item.EngineNo + "' ,";
+                    jsonData += " 'Height' : '" + item.Height + "' ,";
+                    jsonData += " 'Width' : '" + item.Width + "' ,";
+                    jsonData += " 'IsOwnVehicle' : '" + item.IsOwnVehicle + "' ,";
+                    jsonData += " 'Length' : '" + item.Length + "' ,";
+                    jsonData += " 'LoadingLimitNHA' : '" + item.LoadingLimitNHA + "' ,";
+                    jsonData += " 'Make' : '" + item.Make + "' ,";
+                    jsonData += " 'ManufacturerName' : '" + item.ManufacturerName + "' ,";
+                    jsonData += " 'ManufacturingYear' : '" + item.ManufacturingYear + "' ,";
+                    jsonData += " 'MaximumLoadingCapacity' : '" + item.MaximumLoadingCapacity + "' ,";
+                    jsonData += " 'OwnerContact' : '" + item.OwnerContact + "' ,";
+                    jsonData += " 'OwnerName' : '" + item.OwnerName + "' ,";
+                    jsonData += " 'OwnerNIC' : '" + item.OwnerNIC + "' ,";
+                    jsonData += " 'PurchaseFromDetail' : '" + item.PurchaseFromDetail + "' ,";
+                    jsonData += " 'PurchaseFromName' : '" + item.PurchaseFromName + "' ,";
+                    jsonData += " 'PurchasingAmount' : '" + item.PurchasingAmount + "' ,";
+                    jsonData += " 'PurchasingDate' : '" + item.PurchasingDate + "' ,";
+                    jsonData += " 'VehicleColor' : '" + item.VehicleColor + "' ,";
+                    jsonData += " 'VehicleModel' : '" + item.VehicleModel + "' ,";
+                    jsonData += " 'VehicleTypeID' : '" + item.VehicleTypeID + "',";
+                    jsonData += " 'StandardVehicleID' : '" + item.StandardVehicleID + "',";
+                    jsonData += " 'PrincipleCompanyId' : '" + item.PrincipleCompanyId + "',";
+                    jsonData += " 'Comission' : '" + item.Comission + "',";
+                    jsonData += " 'Amount' : '" + item.Amount + "',";
+                    jsonData += " 'Amount2' : '" + item.Amount2 + "'";
+                    jsonData += "}";
+                <tr>
+                    @if (item.CreatedDate != null)
+                    {
+                        <td>@Convert.ToDateTime(item.CreatedDate).ToString(SoftwareFormatting.DateFormat)</td>
+                    }
+                    else
+                    {
+                        <td>@Convert.ToDateTime(item.ModifiedDate).ToString(SoftwareFormatting.DateFormat)</td>
+                    }
+                    <td>@item.Code</td>
+                    <td>@item.RegNo</td>
+                    <td>@item.VehicleType.Name</td>
+                    @if (item.StandardVehicleID != null)
+                    {
+                        <td>@Html.DisplayFor(x => item.StandardVehicle.Name)</td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                    <td>@item.OwnerName</td>
+                    @if (item.OwnerContact != null)
+                    {
+                        <td>@string.Format(LiquadCargoManagment.Models.SoftwareFormatting.ContactNoFormat, Convert.ToInt64(item.OwnerContact))</td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                    <td>@item.Description</td>
+                    @if (item.IsActive == true)
+                    {
+                        <td>
+                            <a onclick="ChangeStatus(@item.VehicleID,false)"><i class="fa fa-toggle-on text-primary" style="font-size:25px;"></i></a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <a onclick="ChangeStatus(@item.VehicleID,true)"><i class="fa fa-toggle-off text-danger" style="font-size:25px;"></i></a>
+                        </td>
+                    }
+                    <td>
+                        <button type="button" onclick="viewRecordRead(@jsonData,this)" class="btn btn-primary btn-xs">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                        <button type="button" onclick="viewRecord(@jsonData,this)" class="btn btn-default btn-xs">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button type="button" onclick="DeleteModel(@item.VehicleID)" class="btn btn-danger btn-xs">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>

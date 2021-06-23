@@ -1,0 +1,158 @@
+﻿body {
+    margin: 0px;
+    padding: 0;
+    background-color: #FAFAFA;
+    font: 12pt "Tahoma";
+}
+p {
+    margin-bottom: 0rem;
+}
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.StartPositon {
+    text-align: center;
+    margin-bottom: 0rem;
+}
+.bold{
+    font-weight:bold;
+
+}
+.page {
+    
+    width: 21cm;
+    min-height: 29.7cm;
+    padding: 0.5cm;
+    margin: 1cm auto;
+    border: 1px #D3D3D3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.subpage {
+    padding: 1cm;
+    border: 5px red solid;
+    height: 256mm;
+    outline: 2cm #FFEAEA solid;
+}
+
+@page {
+    size: A4;
+    margin: 0;
+}
+
+@media print {
+    .page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+}
+
+@media print {
+    body {
+        width: 21cm;
+        height: 29.7cm;
+        margin: 30mm 45mm 30mm 45mm;
+        /* change the margins as you want them to be. */
+    }
+}
+
+#top,
+#bottom {
+    
+    height: 48%;
+   
+}
+
+#footer {
+    height: 10%;
+}
+#header {
+    height: 90%;
+}
+
+
+#top {
+
+    top: -10px;
+  width:100%;
+}
+
+#bottom {
+    bottom: 0;
+    
+}
+
+
+hr {
+    border: none;
+    border-top: 1px dotted #f00;
+    color: #fff;
+    background-color: #fff;
+    height: 1px;
+    width: 100%;
+}
+
+.dotted-line {
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+
+ 
+.tblCustomer th {
+    border-right: solid 1px ;
+    border-left: solid 1px ;
+}
+
+.tblCustomer td {
+    border-right: solid 1px;
+    border-left: solid 1px;
+}
+tfoot{
+    border:solid 1px;
+}
+table#tblCustomer {
+    border: 1px solid black;  
+    width: 98%;
+}
+    table#tblCustomer th{
+        text-align:center;
+    }
+
+    table {
+        margin-left: px;
+    }
+
+/*@media screen {
+    #printSection {
+        display: block;
+    }
+}*/
+
+@media print {
+    body * {
+        visibility: visible;
+    }
+
+    #printSection, #printSection * {
+        visibility: visible;
+    }
+
+    #printSection {
+        position: absolute;
+       
+        width: 100%;
+        height: 100%;
+        background: yellow;
+    }
+}

@@ -1,0 +1,54 @@
+﻿@using LiquadCargoManagment.Models;
+@model IEnumerable<LiquadCargoManagment.Models.ParchoonBiltyDocumentType>
+
+<div>
+    <table class="table" id="Document">
+        <thead>
+            <tr>
+                <td>Document Type</td>
+                <td>Document#</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count() > 0)
+            {
+                int j = 0;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td width="30%">
+                            @Html.DropDownList("[" + @j + "].DocumentTypeID", ViewBag.DocumentTypes as SelectList, "--Select--", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessage("[" + @j + "].DocumentTypeID", "", new { @class = "text-danger" })
+                        </td>
+                        <td width="20%">
+                            @Html.TextBox("[" + @j + "].DocumentNo", "", new { @class = "form-control" })
+                        </td>
+                        <td width="20%">
+                            <input type="file" class="form-control" />
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                int j = 0;
+                <tr>
+                    <td width="30%">
+                        @Html.DropDownList("[" + @j + "].DocumentTypeID", ViewBag.DocumentTypes as SelectList,"--Select--", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessage("[" + @j + "].DocumentTypeID", "", new { @class = "text-danger" })
+                    </td>
+                    <td width="20%">
+                        @Html.TextBox("[" + @j + "].DocumentNo", "", new { @class = "form-control" })
+                    </td>
+                    <td width="20%">
+                        <input type="file" class="form-control" />
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" onclick="AddDocument(this);"><i class="fa fa-plus"></i></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
